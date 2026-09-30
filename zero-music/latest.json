@@ -1,0 +1,6 @@
+{
+  "version": "1.4",
+  "notes": "What's new in 1.4\n\n- **Much better search**\n  - Songs appear as you type, from the very first letter, most popular first\n  - Your recent searches are remembered\n  - Results show **artists** (with their own page: top songs and albums), songs, **live playlists** and albums\n  - Searches like \"phonk playlists\", \"kishore kumar hits\" or \"english top 100\" show live playlists first. Save any of them to your Library.\n- **Import your YouTube Music library**: Settings \u2192 Sign in to YouTube Music. Your Liked Music and every library playlist (private ones too) come in directly, with no links or API.\n- **Removed** the Spotify developer/API setup. Pasting Spotify links still works.\n- **Updates** now work even if api.github.com is blocked on your network.",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v1.4/ZeroMusic-1.4.apk",
+  "size": 14682022
+}

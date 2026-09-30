@@ -1,7 +1,7 @@
 {
-  "version": "2.0.1",
-  "notes": "Zero-Music 2.0.1\n\n- **More reliable automatic updates**: updates now install shortly after you leave the app, even if Android put the app to sleep. If Android needs your one-time confirmation, the app asks when you next open it.\n- If an update ever fails, Settings \u2192 App updates shows why.",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v2.0.1/ZeroMusic-2.0.1.apk",
+  "version": "2.0.2",
+  "notes": "Zero-Music 2.0.2\n\n- If Google sign-in fails, Settings now shows exactly why, plus the app's fingerprint (SHA-1) to check against Google Cloud.",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v2.0.2/ZeroMusic-2.0.2.apk",
   "size": 17136267,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",

@@ -1,52 +1,85 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ZeroMusic Terms of Service</title>
-  <meta name="description" content="Terms for using ZeroMusic.">
-  <link rel="stylesheet" href="/zero-music/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZeroMusic | Terms of Service</title>
+  <meta name="description" content="Terms for using the ZeroMusic Android app.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ZeroMusic | Terms of Service">
+  <meta property="og:description" content="Terms for using the ZeroMusic Android app.">
+  <meta property="og:url" content="https://zero.skillissue.gg/zero-music/terms">
+  <meta property="og:image" content="https://zero.skillissue.gg/assets/logo.png">
+  <link rel="canonical" href="https://zero.skillissue.gg/zero-music/terms" />
+  <link rel="icon" type="image/svg+xml" href="/zero-music/icon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- The main site's design system (served from the same origin) -->
+  <link rel="stylesheet" href="/styles/main.css?v=34" />
+  <link rel="stylesheet" href="/zero-music/zm.css?v=2" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
-<body>
-  <div class="wrap">
-    <header>
-      <div class="logo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12,3v10.55c-0.59,-0.34 -1.27,-0.55 -2,-0.55 -2.21,0 -4,1.79 -4,4s1.79,4 4,4 4,-1.79 4,-4V7h4V3h-6z"/></svg></div>
-      <a href="/zero-music/">ZeroMusic</a>
-      <nav><a href="/zero-music/privacy/">Privacy</a><a href="/zero-music/terms/">Terms</a></nav>
-    </header>
-    <h1>Terms of service</h1>
-    <p class="muted">Effective September 30, 2026</p>
-
-    <p>By downloading or using the ZeroMusic Android app ("ZeroMusic", "the app"), you agree to these terms. If you don't agree, please don't use the app.</p>
-
-    <h2>The app</h2>
-    <p>ZeroMusic is a free, independent music player provided for personal, non-commercial use. It is not affiliated with, endorsed by or sponsored by Google, YouTube, Spotify or any other service it connects to.</p>
-
-    <h2>Your responsibilities</h2>
-    <ul>
-      <li>You are responsible for how you use the app and for following the laws that apply to you, including copyright law.</li>
-      <li>Content you find, play or download through the app belongs to its respective owners. Downloads are for your personal, offline listening in the app only; don't redistribute them.</li>
-      <li>When the app connects to third-party services such as YouTube, Spotify or Google Drive, their own terms also apply to you.</li>
-    </ul>
-
-    <h2>Third-party services</h2>
-    <p>The app relies on third-party services it doesn't control. They may change or stop working at any time, and features that depend on them may stop working as a result. We are not responsible for third-party content or services.</p>
-
-    <h2>Your data</h2>
-    <p>How the app handles your data is described in the <a href="/zero-music/privacy/">privacy policy</a>.</p>
-
-    <h2>No warranty</h2>
-    <p>The app is provided "as is" and "as available", without warranties of any kind, express or implied, including fitness for a particular purpose and non-infringement. We don't guarantee that the app will be uninterrupted, error-free or that data won't be lost. Keep your own copies of anything important.</p>
-
-    <h2>Limitation of liability</h2>
-    <p>To the fullest extent permitted by law, the developer of ZeroMusic is not liable for any indirect, incidental, special or consequential damages, or any loss of data, arising from your use of or inability to use the app.</p>
-
-    <h2>Changes and termination</h2>
-    <p>We may update the app or these terms at any time. Updated terms will be posted on this page with a new effective date; continuing to use the app means you accept them. You can stop using the app at any time by uninstalling it.</p>
-
-    <h2>Contact</h2>
-    <p>Questions about these terms: <a href="mailto:surajmavuleti@gmail.com">surajmavuleti@gmail.com</a></p>
-    <footer>© 2026 ZeroMusic · <a href="/zero-music/">Home</a> · <a href="/zero-music/privacy/">Privacy policy</a> · <a href="/zero-music/terms/">Terms of service</a> · Contact: <a href="mailto:surajmavuleti@gmail.com">surajmavuleti@gmail.com</a></footer>
+<body data-theme="dark">
+  <div class="parallax-bg" id="parallaxBg"></div>
+  <canvas id="matrixCanvas"></canvas>
+  <div class="zm-container">
+    <div class="nav-top gs-reveal">
+      <a href="/zero-music" class="brand magnetic">devzero<span>/zero-music/terms</span></a>
+      <div class="nav-links">
+        <a href="/zero-music/privacy" class="magnetic hide-sm">privacy</a>
+        <a href="/zero-music/terms" class="magnetic hide-sm">terms</a>
+        <a href="/wiki" class="back-btn magnetic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg> Return to Core</a>
+      </div>
+    </div>
+    <h1 class="gs-reveal" data-scramble>Terms of Service</h1>
+    <div class="meta gs-reveal">Last Updated: September 30, 2026 // App: ZeroMusic // Status: Active</div>
+    <div class="gs-reveal">
+      <h2>1. Acceptance</h2>
+      <p>By downloading or using the ZeroMusic Android app ("ZeroMusic", "the app"), you agree to these terms. If you don't agree, please don't use the app.</p>
+      <h2>2. The App</h2>
+      <p>ZeroMusic is a free, independent music player provided for personal, non-commercial use. It is not affiliated with, endorsed by or sponsored by Google, YouTube, Spotify or any other service it connects to.</p>
+      <h2>3. Your Responsibilities</h2>
+      <ul>
+        <li>You are responsible for how you use the app and for following the laws that apply to you, including copyright law.</li>
+        <li>Content you find, play or download through the app belongs to its respective owners. Downloads are for your personal, offline listening in the app only; don't redistribute them.</li>
+        <li>When the app connects to third-party services such as YouTube, Spotify or Google Drive, their own terms also apply to you.</li>
+      </ul>
+      <h2>4. Third-Party Services</h2>
+      <p>The app relies on third-party services it doesn't control. They may change or stop working at any time, and features that depend on them may stop working as a result. We are not responsible for third-party content or services.</p>
+      <h2>5. Your Data</h2>
+      <p>How the app handles your data is described in the <a href="/zero-music/privacy">privacy policy</a>.</p>
+      <h2>6. No Warranty</h2>
+      <p>The app is provided "as is" and "as available", without warranties of any kind, express or implied, including fitness for a particular purpose and non-infringement. We don't guarantee that the app will be uninterrupted or error-free, or that data won't be lost. Keep your own copies of anything important.</p>
+      <h2>7. Limitation of Liability</h2>
+      <p>To the fullest extent permitted by law, the developer of ZeroMusic is not liable for any indirect, incidental, special or consequential damages, or any loss of data, arising from your use of or inability to use the app.</p>
+      <h2>8. Changes and Termination</h2>
+      <p>We may update the app or these terms at any time. Updated terms will be posted on this page with a new date; continuing to use the app means you accept them. You can stop using the app at any time by uninstalling it.</p>
+      <h2>9. Contact</h2>
+      <p>Questions about these terms: <a href="mailto:surajmavuleti@gmail.com">surajmavuleti@gmail.com</a></p>
+    </div>
+    <footer class="zm-footer gs-reveal">
+      <span>© 2026 devzero // ZeroMusic</span>
+      <span><a href="/zero-music">home</a><a href="/zero-music/privacy">privacy</a><a href="/zero-music/terms">terms</a><a href="mailto:surajmavuleti@gmail.com">contact</a></span>
+    </footer>
   </div>
+  <script src="/scripts/main.js?v=35"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (typeof gsap !== "undefined") {
+        gsap.from(".gs-reveal", { y: 40, opacity: 0, duration: 1.2, stagger: 0.08, ease: "power4.out", delay: 0.2 });
+      }
+      document.querySelectorAll("[data-scramble]").forEach(el => {
+        const original = el.textContent;
+        const chars = "!<>-_\\/[]{}—=+*^?#________";
+        let iter = 0;
+        const interval = setInterval(() => {
+          el.textContent = original.split("").map((letter, i) => i < iter ? original[i] : chars[Math.floor(Math.random() * chars.length)]).join("");
+          if (iter >= original.length) clearInterval(interval);
+          iter += 1 / 3;
+        }, 30);
+      });
+    });
+  </script>
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
 </body>
 </html>

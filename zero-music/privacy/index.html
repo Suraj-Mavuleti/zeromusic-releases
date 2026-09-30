@@ -1,70 +1,103 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ZeroMusic Privacy Policy</title>
-  <meta name="description" content="How ZeroMusic handles your data.">
-  <link rel="stylesheet" href="/zero-music/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZeroMusic | Privacy Policy</title>
+  <meta name="description" content="How the ZeroMusic Android app handles your data.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ZeroMusic | Privacy Policy">
+  <meta property="og:description" content="How the ZeroMusic Android app handles your data.">
+  <meta property="og:url" content="https://zero.skillissue.gg/zero-music/privacy">
+  <meta property="og:image" content="https://zero.skillissue.gg/assets/logo.png">
+  <link rel="canonical" href="https://zero.skillissue.gg/zero-music/privacy" />
+  <link rel="icon" type="image/svg+xml" href="/zero-music/icon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- The main site's design system (served from the same origin) -->
+  <link rel="stylesheet" href="/styles/main.css?v=34" />
+  <link rel="stylesheet" href="/zero-music/zm.css?v=2" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
-<body>
-  <div class="wrap">
-    <header>
-      <div class="logo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12,3v10.55c-0.59,-0.34 -1.27,-0.55 -2,-0.55 -2.21,0 -4,1.79 -4,4s1.79,4 4,4 4,-1.79 4,-4V7h4V3h-6z"/></svg></div>
-      <a href="/zero-music/">ZeroMusic</a>
-      <nav><a href="/zero-music/privacy/">Privacy</a><a href="/zero-music/terms/">Terms</a></nav>
-    </header>
-    <h1>Privacy policy</h1>
-    <p class="muted">Effective September 30, 2026</p>
-
-    <p>This policy explains what information the ZeroMusic Android app ("ZeroMusic", "the app", "we") uses and why. In short: ZeroMusic has no servers of its own, shows no ads, has no analytics or tracking, and does not sell or share your data.</p>
-
-    <h2>Information stored on your device</h2>
-    <p>To work, the app keeps the following on your phone, in storage only ZeroMusic can access:</p>
-    <ul>
-      <li>Your liked songs, imported playlists and downloaded songs.</li>
-      <li>Your listening history (which songs you played, how often and when), used only to make recommendations inside the app. You can clear it at any time in <strong>Settings → Playback → Listening history</strong>.</li>
-      <li>Your settings.</li>
-    </ul>
-    <p>Uninstalling the app deletes all of this from your phone.</p>
-
-    <h2>Google sign-in and Google Drive (optional)</h2>
-    <p>If you choose <strong>Sign in with Google</strong>, the app asks Google for two permissions:</p>
-    <div class="table-scroll">
-      <table>
+<body data-theme="dark">
+  <div class="parallax-bg" id="parallaxBg"></div>
+  <canvas id="matrixCanvas"></canvas>
+  <div class="zm-container">
+    <div class="nav-top gs-reveal">
+      <a href="/zero-music" class="brand magnetic">devzero<span>/zero-music/privacy</span></a>
+      <div class="nav-links">
+        <a href="/zero-music/privacy" class="magnetic hide-sm">privacy</a>
+        <a href="/zero-music/terms" class="magnetic hide-sm">terms</a>
+        <a href="/wiki" class="back-btn magnetic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg> Return to Core</a>
+      </div>
+    </div>
+    <h1 class="gs-reveal" data-scramble>Privacy Policy</h1>
+    <div class="meta gs-reveal">Last Updated: September 30, 2026 // App: ZeroMusic // Status: Active</div>
+    <div class="gs-reveal">
+      <h2>1. Overview</h2>
+      <p>This policy explains what information the ZeroMusic Android app ("ZeroMusic", "the app") uses and why. In short: ZeroMusic has no servers of its own, shows no ads, has no analytics or tracking, and does not sell or share your data.</p>
+      <h2>2. Data Stored On Your Device</h2>
+      <p>To work, the app keeps the following on your phone, in storage only ZeroMusic can access:</p>
+      <ul>
+        <li>Your liked songs, imported playlists and downloaded songs.</li>
+        <li>Your listening history (which songs you played, how often and when), used only for recommendations inside the app. Clear it any time in <strong>Settings → Playback → Listening history</strong>.</li>
+        <li>Your settings.</li>
+      </ul>
+      <p>Uninstalling the app deletes all of this from your phone.</p>
+      <h2>3. Google Sign-In and Google Drive (Optional)</h2>
+      <p>If you choose <strong>Sign in with Google</strong>, the app asks Google for two permissions:</p>
+      <div class="table-scroll"><table>
         <tr><th>Permission</th><th>What ZeroMusic does with it</th></tr>
         <tr><td><code>email</code></td><td>Shows which Google account you're signed in with, in Settings. The address is stored only on your phone.</td></tr>
-        <tr><td><code>drive.appdata</code></td><td>Saves one backup file (your liked songs, playlists, listening history and settings) in a hidden app folder in your Google Drive, and reads it back when you sign in on another phone. This permission only covers ZeroMusic's own folder: the app <strong>cannot</strong> see, open or change any other files in your Drive.</td></tr>
-      </table>
+        <tr><td><code>drive.appdata</code></td><td>Saves one backup file (liked songs, playlists, listening history and settings) in a hidden app folder in your Google Drive, and reads it back when you sign in on another phone. This permission only covers ZeroMusic's own folder: the app <strong>cannot</strong> see, open or change any other files in your Drive.</td></tr>
+      </table></div>
+      <p>This data goes directly between your phone and Google. It never passes through servers run by us, and we never have access to it. The backup is stored under your Google account and governed by <a href="https://policies.google.com/privacy">Google's privacy policy</a>.</p>
+      <h2>4. Limited Use Disclosure</h2>
+      <p>ZeroMusic's use and transfer of information received from Google APIs to any other app will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements. Google user data is used only to provide the backup and sync feature described above. It is not used for advertising, not sold, not transferred to anyone else, not used to train AI or machine-learning models, and not read by humans.</p>
+      <h2>5. Deleting Your Google Data</h2>
+      <ul>
+        <li>In the app: <strong>Settings → Google account → Sign out</strong> stops syncing.</li>
+        <li>To delete the backup file: in Google Drive on the web, open <strong>Settings → Manage apps</strong>, find ZeroMusic and choose <strong>Delete hidden app data</strong>.</li>
+        <li>To remove ZeroMusic's access entirely: visit <a href="https://myaccount.google.com/connections">myaccount.google.com/connections</a> and remove ZeroMusic.</li>
+      </ul>
+      <h2>6. Services The App Connects To</h2>
+      <p>To play music and provide features, the app connects directly from your phone to these services. They receive your IP address and the request itself (for example, a search term), as any website you visit would, and handle it under their own privacy policies:</p>
+      <ul>
+        <li><strong>YouTube / YouTube Music</strong>: search, recommendations and audio (<a href="https://policies.google.com/privacy">Google privacy policy</a>).</li>
+        <li><strong>Spotify</strong>: only when you import a Spotify link or connect a Spotify account (<a href="https://www.spotify.com/legal/privacy-policy/">Spotify privacy policy</a>). If you connect an account, the app reads your playlists and liked songs to import them. Your Spotify login tokens are stored only on your phone.</li>
+        <li><strong>LRCLIB</strong> (lrclib.net): lyrics. The app sends the song title, artist and length.</li>
+        <li><strong>GitHub</strong>: checking for and downloading app updates.</li>
+      </ul>
+      <h2>7. Children</h2>
+      <p>ZeroMusic is not directed at children under 13 and does not knowingly collect information from them.</p>
+      <h2>8. Changes</h2>
+      <p>If this policy changes, the updated version will be posted on this page with a new date.</p>
+      <h2>9. Contact</h2>
+      <p>Questions about privacy: <a href="mailto:surajmavuleti@gmail.com">surajmavuleti@gmail.com</a></p>
     </div>
-    <p>This data goes directly between your phone and Google. It never passes through servers run by us, and we never have access to it. The backup is stored under your Google account and governed by <a href="https://policies.google.com/privacy">Google's privacy policy</a>.</p>
-    <p><strong>Limited Use disclosure:</strong> ZeroMusic's use and transfer of information received from Google APIs to any other app will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements. Google user data is used only to provide the backup and sync feature described above. It is not used for advertising, not sold, not transferred to anyone else, not used to train AI or machine-learning models, and not read by humans.</p>
-
-    <h3>Deleting your Google data</h3>
-    <ul>
-      <li>In the app: <strong>Settings → Google account → Sign out</strong> stops syncing.</li>
-      <li>To delete the backup file: in Google Drive on the web, open <strong>Settings → Manage apps</strong>, find ZeroMusic and choose <strong>Delete hidden app data</strong>.</li>
-      <li>To remove ZeroMusic's access entirely: visit <a href="https://myaccount.google.com/connections">myaccount.google.com/connections</a> and remove ZeroMusic.</li>
-    </ul>
-
-    <h2>Services the app connects to</h2>
-    <p>To play music and provide features, the app connects directly from your phone to these services. They receive your IP address and the request itself (for example, a search term), as any website you visit would, and handle it under their own privacy policies:</p>
-    <ul>
-      <li><strong>YouTube / YouTube Music</strong> for search, recommendations and audio (<a href="https://policies.google.com/privacy">Google privacy policy</a>).</li>
-      <li><strong>Spotify</strong>, only when you import a Spotify link or connect a Spotify account (<a href="https://www.spotify.com/legal/privacy-policy/">Spotify privacy policy</a>). If you connect an account, the app reads your playlists and liked songs to import them. Your Spotify login tokens are stored only on your phone.</li>
-      <li><strong>LRCLIB</strong> (lrclib.net) for lyrics. The app sends the song title, artist and length.</li>
-      <li><strong>GitHub</strong> to check for app updates and download them.</li>
-    </ul>
-
-    <h2>Children</h2>
-    <p>ZeroMusic is not directed at children under 13 and does not knowingly collect information from them.</p>
-
-    <h2>Changes</h2>
-    <p>If this policy changes, the updated version will be posted on this page with a new effective date.</p>
-
-    <h2>Contact</h2>
-    <p>Questions about privacy: <a href="mailto:surajmavuleti@gmail.com">surajmavuleti@gmail.com</a></p>
-    <footer>© 2026 ZeroMusic · <a href="/zero-music/">Home</a> · <a href="/zero-music/privacy/">Privacy policy</a> · <a href="/zero-music/terms/">Terms of service</a> · Contact: <a href="mailto:surajmavuleti@gmail.com">surajmavuleti@gmail.com</a></footer>
+    <footer class="zm-footer gs-reveal">
+      <span>© 2026 devzero // ZeroMusic</span>
+      <span><a href="/zero-music">home</a><a href="/zero-music/privacy">privacy</a><a href="/zero-music/terms">terms</a><a href="mailto:surajmavuleti@gmail.com">contact</a></span>
+    </footer>
   </div>
+  <script src="/scripts/main.js?v=35"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (typeof gsap !== "undefined") {
+        gsap.from(".gs-reveal", { y: 40, opacity: 0, duration: 1.2, stagger: 0.08, ease: "power4.out", delay: 0.2 });
+      }
+      document.querySelectorAll("[data-scramble]").forEach(el => {
+        const original = el.textContent;
+        const chars = "!<>-_\\/[]{}—=+*^?#________";
+        let iter = 0;
+        const interval = setInterval(() => {
+          el.textContent = original.split("").map((letter, i) => i < iter ? original[i] : chars[Math.floor(Math.random() * chars.length)]).join("");
+          if (iter >= original.length) clearInterval(interval);
+          iter += 1 / 3;
+        }, 30);
+      });
+    });
+  </script>
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
 </body>
 </html>

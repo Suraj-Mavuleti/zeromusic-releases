@@ -1,10 +1,10 @@
 {
-  "version": "1.7.1",
-  "notes": "**This version is discontinued.** Zero-Music is moving to a new, properly signed version. Please download the new version, uninstall this one, and install the new one. Sorry for the inconvenience!",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v1.7.1/ZeroMusic-1.7.1.apk",
+  "version": "1.7.2",
+  "notes": "This version no longer works. Please install Zero-Music V2.0.",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v1.7.2/ZeroMusic-1.7.2.apk",
   "size": 17119911,
   "mirrors": [
-    "https://zero.skillissue.gg/zero-music/download/ZeroMusic-1.7.1.apk",
-    "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic-1.7.1.apk"
+    "https://zero.skillissue.gg/zero-music/download/ZeroMusic-1.7.2.apk",
+    "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic-1.7.2.apk"
   ]
 }

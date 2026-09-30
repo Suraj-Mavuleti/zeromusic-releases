@@ -22,7 +22,7 @@ code { font-family: var(--font-mono); font-size: 13px; color: var(--text); backg
 .hero { display: flex; align-items: center; gap: 24px; margin-bottom: 16px; }
 .app-icon { width: 72px; height: 72px; border-radius: 18px; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.5); }
 .hero h1 { margin: 0; }
-.lead { font-size: 18px; color: var(--text-muted); line-height: 1.7; margin-bottom: 32px; }
+.zm-lead { font-size: 18px; color: var(--text-muted); line-height: 1.7; margin-bottom: 32px; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 56px; }
 .btn { font-family: var(--font-mono); font-size: 13px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; padding: 14px 22px; border-radius: 8px; display: inline-flex; align-items: center; gap: 10px; transition: transform 0.2s, opacity 0.2s; }
 .btn:hover { transform: translateY(-1px); }

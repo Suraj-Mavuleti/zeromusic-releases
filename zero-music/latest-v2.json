@@ -1,8 +1,8 @@
 {
-  "version": "2.0",
-  "notes": "Zero-Music V2.0\n\n- **New, properly signed app.** If you had an older version, uninstall it and install this one. This is a one-time switch; updates are automatic from here on. Sorry for the inconvenience!\n- **Check for updates** in Settings \u2192 App updates. Updates still download and install by themselves when you're not using the app.\n- Includes everything from 1.7: true crossfade, karaoke lyrics with translation, smart shuffle, radio, Daily Mixes, Discover Weekly, Listen together and more.",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v2.0/ZeroMusic-2.0.apk",
-  "size": 17119879,
+  "version": "2.0.1",
+  "notes": "Zero-Music 2.0.1\n\n- **More reliable automatic updates**: updates now install shortly after you leave the app, even if Android put the app to sleep. If Android needs your one-time confirmation, the app asks when you next open it.\n- If an update ever fails, Settings \u2192 App updates shows why.",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v2.0.1/ZeroMusic-2.0.1.apk",
+  "size": 17136267,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk"

@@ -1,8 +1,8 @@
 {
-  "version": "1.5.2",
-  "notes": "What's new in 1.5.2\n\n- **Fixed first-time updates.** The first time you update, Android asks you to allow Zero-Music to install apps. The app now asks before downloading, and once you've allowed it and come back, the update continues by itself, even if Android restarted the app. You only have to do this once.",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v1.5.2/ZeroMusic-1.5.2.apk",
-  "size": 17053703,
+  "version": "1.6",
+  "notes": "What's new in 1.6\n\n- **Updates install themselves.** No more \"update available\" popups: new versions download in the background and install silently when you're not using the app and nothing is playing. You'll just see a \"Zero-Music updated\" notification.\n- Android asks you to confirm one last time for this update. After that, updates are silent (Android 12 and newer).",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v1.6/ZeroMusic-1.6.apk",
+  "size": 17053439,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk"

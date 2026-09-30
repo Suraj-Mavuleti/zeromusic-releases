@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZeroMusic | Listen together</title>
+  <meta name="description" content="Join a Zero-Music listening session.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ZeroMusic | Terms of Service">
+  <meta property="og:description" content="Join a Zero-Music listening session.">
+  <meta property="og:url" content="https://zero.skillissue.gg/zero-music/listen">
+  <meta property="og:image" content="https://zero.skillissue.gg/assets/logo.png">
+  <link rel="canonical" href="https://zero.skillissue.gg/zero-music/listen" />
+  <link rel="icon" type="image/svg+xml" href="/zero-music/icon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- The main site's design system (served from the same origin) -->
+  <link rel="stylesheet" href="/styles/main.css?v=34" />
+  <link rel="stylesheet" href="/zero-music/zm.css?v=3" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body data-theme="dark">
+  <div class="parallax-bg" id="parallaxBg"></div>
+  <canvas id="matrixCanvas"></canvas>
+  <div class="zm-container">
+    <div class="nav-top gs-reveal">
+      <a href="/zero-music" class="brand magnetic">devzero<span>/zero-music/listen</span></a>
+      <div class="nav-links"><a href="/zero-music" class="back-btn magnetic">About Zero-Music</a></div>
+    </div>
+    <div class="hero gs-reveal">
+      <img class="app-icon" src="/zero-music/icon.svg" alt="ZeroMusic icon">
+      <h1 data-scramble>Listen together</h1>
+    </div>
+    <div class="meta gs-reveal">You've been invited to a listening session</div>
+    <p class="zm-lead gs-reveal">Open this link on your Android phone with Zero-Music installed, and you'll hear what your friend is playing, in sync.</p>
+    <div class="actions gs-reveal">
+      <a class="btn btn-primary magnetic" id="open-app" href="#">Open in Zero-Music</a>
+      <a class="btn btn-secondary magnetic" href="https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk">Get Zero-Music</a>
+    </div>
+    <p class="note gs-reveal">The session key stays in this link (after the #) and is never sent to any server. Messages between phones are end-to-end encrypted.</p>
+    <footer class="zm-footer gs-reveal">
+      <span>© 2026 devzero // ZeroMusic</span>
+      <span><a href="/zero-music">home</a><a href="/zero-music/privacy">privacy</a><a href="/zero-music/terms">terms</a></span>
+    </footer>
+  </div>
+  <script src="/scripts/main.js?v=35"></script>
+  <script>
+    (function () {
+      var params = new URLSearchParams(location.search);
+      var room = params.get("r") || "";
+      var key = (location.hash.match(/k=([^&]+)/) || [])[1] || "";
+      // Android: hand the invite (key included, only to the app) to Zero-Music.
+      var target = "intent://zero.skillissue.gg/zero-music/listen?r=" + encodeURIComponent(room) + "&k=" + encodeURIComponent(key) +
+        "#Intent;scheme=https;package=com.zeromusic.app;S.browser_fallback_url=" +
+        encodeURIComponent("https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk") + ";end";
+      document.getElementById("open-app").href = target;
+      if (typeof gsap !== "undefined") gsap.from(".gs-reveal", { y: 40, opacity: 0, duration: 1.2, stagger: 0.08, ease: "power4.out", delay: 0.2 });
+    })();
+  </script>
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+</body>
+</html>

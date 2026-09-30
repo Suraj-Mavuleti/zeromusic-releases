@@ -1,8 +1,8 @@
 {
-  "version": "1.7",
-  "notes": "What's new in 1.7\n\n- **True crossfade**: songs now overlap while fading (Settings \u2192 Sound)\n- **Lyrics**: karaoke-style highlighting, full-screen mode, **Translate**, and the current line on your **lock screen**\n- **Smart shuffle**: tap shuffle twice to mix in recommended songs (\u2728)\n- **Start radio** from any song, **Artist radio** on artist pages\n- **Daily Mixes** and **Discover Weekly** on Home (and in your offline backup)\n- **Listen together**: player \u22ee \u2192 Listen together. Invite friends and they hear what you play, in sync, end-to-end encrypted\n- **Share your stats** as an image (Library \u2192 Your stats \u2192 Share)\n- **Quick Settings tile** for play/pause\n- **\"Hey Google, play \u2026 on Zero-Music\"**\n- **Auto-play when Bluetooth connects** (Settings \u2192 Playback)\n- **Tablet & landscape** layouts\n- **Add to queue** everywhere: long-press songs on Home, or queue a whole playlist from its header",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v1.7/ZeroMusic-1.7.apk",
-  "size": 17119883,
+  "version": "1.7.1",
+  "notes": "**This version is discontinued.** Zero-Music is moving to a new, properly signed version. Please download the new version, uninstall this one, and install the new one. Sorry for the inconvenience!",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v1.7.1/ZeroMusic-1.7.1.apk",
+  "size": 17119911,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk"

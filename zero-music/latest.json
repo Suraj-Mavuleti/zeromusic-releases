@@ -1,6 +1,10 @@
 {
-  "version": "1.4",
-  "notes": "What's new in 1.4\n\n- **Much better search**\n  - Songs appear as you type, from the very first letter, most popular first\n  - Your recent searches are remembered\n  - Results show **artists** (with their own page: top songs and albums), songs, **live playlists** and albums\n  - Searches like \"phonk playlists\", \"kishore kumar hits\" or \"english top 100\" show live playlists first. Save any of them to your Library.\n- **Import your YouTube Music library**: Settings \u2192 Sign in to YouTube Music. Your Liked Music and every library playlist (private ones too) come in directly, with no links or API.\n- **Removed** the Spotify developer/API setup. Pasting Spotify links still works.\n- **Updates** now work even if api.github.com is blocked on your network.",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v1.4/ZeroMusic-1.4.apk",
-  "size": 14682022
+  "version": "1.5",
+  "notes": "What's new in 1.5\n\n- **Home-screen widget**: song, artwork, \u2665, play/pause and next. Plus a \u2665 button in the notification.\n- **Your own playlists**: create, rename, drag to reorder. Add songs from any \u22ee menu or the player.\n- **Sound**: fade between songs, equalizer (presets + custom), bass boost, even-out volume (Settings \u2192 Sound)\n- **Speed & pitch** in the player (\u22ee): slowed, sped-up and nightcore presets\n- **Android Auto & Wear OS**: browse Your Mix, liked songs, playlists and downloads, and search by voice\n- **Chromecast**: cast button in the player\n- **Moods & genres** on Home: Workout, Chill, Phonk, Bollywood, Lo-fi and more, with live playlists\n- **New releases** from artists you listen to\n- **Your stats** (Library): top songs, artists, minutes and when you listen\n- **Sort & filter** your library\n- **Player colours** follow the album art\n- **Share** songs, and share or open YouTube / Spotify links with Zero-Music to play or import them\n- Updates now also download from a mirror if GitHub is blocked\n- New black app icon",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v1.5/ZeroMusic-1.5.apk",
+  "size": 17053699,
+  "mirrors": [
+    "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",
+    "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk"
+  ]
 }

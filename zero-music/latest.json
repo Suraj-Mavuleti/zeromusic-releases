@@ -1,7 +1,7 @@
 {
-  "version": "1.5.1",
-  "notes": "What's new in 1.5.1\n\n- **No more refresh buttons.** Everything updates by itself:\n  - Home reloads when you open it, after you've played new songs, and every half hour. When you're offline it retries until you're back online.\n  - App updates are checked automatically.\n  - Your YouTube Music library re-imports and the offline backup tops up automatically.",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v1.5.1/ZeroMusic-1.5.1.apk",
+  "version": "1.5.2",
+  "notes": "What's new in 1.5.2\n\n- **Fixed first-time updates.** The first time you update, Android asks you to allow Zero-Music to install apps. The app now asks before downloading, and once you've allowed it and come back, the update continues by itself, even if Android restarted the app. You only have to do this once.",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v1.5.2/ZeroMusic-1.5.2.apk",
   "size": 17053703,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",

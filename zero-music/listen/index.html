@@ -12,7 +12,8 @@
   <meta property="og:url" content="https://zero.skillissue.gg/zero-music/listen">
   <link rel="canonical" href="https://zero.skillissue.gg/zero-music/listen" />
   <link rel="icon" type="image/svg+xml" href="/zero-music/icon.svg">
-  <link rel="stylesheet" href="/zero-music/zm.css?v=4" />
+  <link rel="stylesheet" href="/zero-music/zm.css?v=5" />
+  <script>if (/Android/i.test(navigator.userAgent)) document.documentElement.classList.add("android");</script>
 </head>
 <body>
   <header class="appbar">
@@ -27,7 +28,7 @@
       <p class="zm-lead">Open this link on your Android phone with Zero-Music installed, and you'll hear what your friend is playing, in sync.</p>
       <div class="cta" style="justify-content:flex-start">
         <a class="btn filled" id="open-app" href="#">Open in Zero-Music</a>
-        <a class="btn tonal" href="/zero-music/download/ZeroMusic.apk" download="Zero-Music.apk"><svg class="i " viewBox="0 0 24 24" aria-hidden="true"><path d="M19,9h-4V3H9v6H5l7,7 7,-7zM5,18v2h14v-2H5z"/></svg>Get Zero-Music</a>
+        <a class="btn tonal android-only" href="/zero-music/download/ZeroMusic.apk" download="Zero-Music.apk"><svg class="i " viewBox="0 0 24 24" aria-hidden="true"><path d="M19,9h-4V3H9v6H5l7,7 7,-7zM5,18v2h14v-2H5z"/></svg>Get Zero-Music</a>
       </div>
     </div>
     <p class="note">The session key stays in this link (after the #) and is never sent to any server. Messages between phones are end-to-end encrypted.</p>

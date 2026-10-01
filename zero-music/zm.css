@@ -15,8 +15,13 @@ a { color: var(--primary); text-underline-offset: 3px; }
 .appbar { position: sticky; top: 0; z-index: 20; height: var(--bar); display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 16px; background: rgba(14,14,18,.92); backdrop-filter: blur(12px); }
 .brand { display: flex; align-items: center; gap: 12px; color: var(--text); text-decoration: none; font-size: 22px; font-weight: 700; letter-spacing: -.01em; }
 .brand img { width: 36px; height: 36px; border-radius: 10px; }
-.get { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px 0 12px; border-radius: 20px; background: var(--primary); color: var(--on-primary); font-weight: 600; font-size: 14px; text-decoration: none; white-space: nowrap; }
+.get { display: none; align-items: center; gap: 8px; height: 40px; padding: 0 16px 0 12px; border-radius: 20px; background: var(--primary); color: var(--on-primary); font-weight: 600; font-size: 14px; text-decoration: none; white-space: nowrap; }
 .get .i { width: 20px; height: 20px; }
+
+/* Download buttons appear only on Android; a PC or laptop never sees them. */
+html.android .get { display: inline-flex; }
+html:not(.android) .android-only { display: none !important; }
+html.android .desktop-only { display: none; }
 
 /* Navigation: a bottom bar on phones, a rail on wide screens, like the app. */
 .tabs { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; height: calc(var(--nav) + env(safe-area-inset-bottom)); padding-bottom: env(safe-area-inset-bottom); display: flex; background: var(--surface); }
@@ -88,7 +93,6 @@ footer a { color: var(--muted); }
 
 /* Wide screens: rail on the left; the top-right download button is for phones. */
 @media (min-width: 840px) {
-  .get { display: none; }
   .appbar { padding-left: 104px; }
   .tabs { top: 0; right: auto; bottom: 0; width: 88px; height: auto; flex-direction: column; justify-content: center; gap: 20px; padding: 0; z-index: 30; }
   .tab { flex: none; }

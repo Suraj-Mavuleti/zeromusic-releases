@@ -1,8 +1,8 @@
 {
-  "version": "2.0.3",
-  "notes": "Zero-Music 2.0.3\n\n- Checks for updates every 5 minutes, so new versions arrive sooner.\n- Updates download from zero.skillissue.gg first, which is faster.",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v2.0.3/ZeroMusic-2.0.3.apk",
-  "size": 17136267,
+  "version": "2.1",
+  "notes": "Zero-Music 2.1\n\n- **Better recommendations**: radio, mixes and the offline backup now use YouTube Music's own song radio. Real songs only, no random videos.\n- **Lyrics for regional songs**: Telugu, Tamil, Hindi, Punjabi and more now come from YouTube Music when other sources don't have them. Lyrics are saved for offline, and you can nudge them if they're out of sync.\n- **Sleep timer** (player \u22ee), with a gentle fade-out\n- **Faster playback**: the next song loads in advance, and recently played songs replay without using data\n- **Pick your artists** on first launch for instant recommendations\n- **Song info**: plays, first played, go to artist or album\n- **Sound per device**: separate equalizer for the speaker, headphones and each Bluetooth device\n- **New 4\u00d72 widget** with your next songs\n- **Shared playlists**: in Library, open a playlist \u2192 \u22ee \u2192 Collaborate, and friends can add songs too",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v2.1/ZeroMusic-2.1.apk",
+  "size": 17188219,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk"

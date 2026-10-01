@@ -1,0 +1,92 @@
+[
+  {
+    "version": "2.3",
+    "date": "2026-10-01T08:59:22Z",
+    "notes": "- **Smart playlists** in Library: Most played, Recently added, Forgotten favourites and Never played. They update by themselves.\n- **App shortcuts**: long-press the app icon for Resume, Shuffle liked, Search and Car mode.\n- **Blend**: one playlist of you and your friends' favourites, refreshed every day. Library → Blend with a friend."
+  },
+  {
+    "version": "2.2",
+    "date": "2026-10-01T08:36:34Z",
+    "notes": "- **Not interested**: hide a song or an artist from your recommendations. Songs you keep skipping are learned too.\n- **New release alerts** from the artists you play most.\n- **Charts play the song**, not the music video.\n- **Data and quality**: choose streaming quality for Wi-Fi and mobile data, or switch to Downloads only.\n- **Smart cleanup**: songs you always skip leave the offline backup.\n- **Visualizer** behind the player.\n- **Car mode**: huge buttons and voice requests.\n- **Multi-select**: long-press songs to queue, download or add several at once.\n- **Search**: filter by songs, artists, albums or playlists, and search by voice.\n- **Queue**: save it as a playlist, clear it, undo."
+  },
+  {
+    "version": "2.1.1",
+    "date": "2026-10-01T03:06:48Z",
+    "notes": "- **Recommendations refresh right away**: Your Mix, Daily Mixes and Discover Weekly are rebuilt with the new song radio straight after updating (no waiting for them to expire), and the offline backup swaps out the random videos it downloaded before. Your own downloads aren't touched."
+  },
+  {
+    "version": "2.1",
+    "date": "2026-10-01T02:59:12Z",
+    "notes": "- **Better recommendations**: radio, mixes and the offline backup now use YouTube Music's own song radio. Real songs only, no random videos.\n- **Lyrics for regional songs**: Telugu, Tamil, Hindi, Punjabi and more now come from YouTube Music when other sources don't have them. Lyrics are saved for offline, and you can nudge them if they're out of sync.\n- **Sleep timer** (player ⋮), with a gentle fade-out\n- **Faster playback**: the next song loads in advance, and recently played songs replay without using data\n- **Pick your artists** on first launch for instant recommendations\n- **Song info**: plays, first played, go to artist or album\n- **Sound per device**: separate equalizer for the speaker, headphones and each Bluetooth device\n- **New 4×2 widget** with your next songs\n- **Shared playlists**: in Library, open a playlist → ⋮ → Collaborate, and friends can add songs too"
+  },
+  {
+    "version": "2.0.3",
+    "date": "2026-10-01T02:32:33Z",
+    "notes": "- Checks for updates every 5 minutes, so new versions arrive sooner.\n- Updates download from zero.skillissue.gg first, which is faster."
+  },
+  {
+    "version": "2.0.2",
+    "date": "2026-09-30T17:56:53Z",
+    "notes": "- If Google sign-in fails, Settings now shows exactly why, plus the app's fingerprint (SHA-1) to check against Google Cloud."
+  },
+  {
+    "version": "2.0.1",
+    "date": "2026-09-30T17:12:17Z",
+    "notes": "- **More reliable automatic updates**: updates now install shortly after you leave the app, even if Android put the app to sleep. If Android needs your one-time confirmation, the app asks when you next open it.\n- If an update ever fails, Settings → App updates shows why."
+  },
+  {
+    "version": "2.0",
+    "date": "2026-09-30T16:59:17Z",
+    "notes": "- **New, properly signed app.** If you had an older version, uninstall it and install this one. This is a one-time switch; updates are automatic from here on. Sorry for the inconvenience!\n- **Check for updates** in Settings → App updates. Updates still download and install by themselves when you're not using the app.\n- Includes everything from 1.7: true crossfade, karaoke lyrics with translation, smart shuffle, radio, Daily Mixes, Discover Weekly, Listen together and more."
+  },
+  {
+    "version": "1.7.1",
+    "date": "2026-09-30T16:45:32Z",
+    "notes": "**This version is discontinued.** Zero-Music is moving to a new, properly signed version. Please download the new version, uninstall this one, and install the new one. Sorry for the inconvenience!"
+  },
+  {
+    "version": "1.7",
+    "date": "2026-09-30T16:27:51Z",
+    "notes": "- **True crossfade**: songs now overlap while fading (Settings → Sound)\n- **Lyrics**: karaoke-style highlighting, full-screen mode, **Translate**, and the current line on your **lock screen**\n- **Smart shuffle**: tap shuffle twice to mix in recommended songs (✨)\n- **Start radio** from any song, **Artist radio** on artist pages\n- **Daily Mixes** and **Discover Weekly** on Home (and in your offline backup)\n- **Listen together**: player ⋮ → Listen together. Invite friends and they hear what you play, in sync, end-to-end encrypted\n- **Share your stats** as an image (Library → Your stats → Share)\n- **Quick Settings tile** for play/pause\n- **\"Hey Google, play … on Zero-Music\"**\n- **Auto-play when Bluetooth connects** (Settings → Playback)\n- **Tablet & landscape** layouts\n- **Add to queue** everywhere: long-press songs on Home, or queue a whole playlist from its header"
+  },
+  {
+    "version": "1.6",
+    "date": "2026-09-30T15:56:57Z",
+    "notes": "- **Updates install themselves.** No more \"update available\" popups: new versions download in the background and install silently when you're not using the app and nothing is playing. You'll just see a \"Zero-Music updated\" notification.\n- Android asks you to confirm one last time for this update. After that, updates are silent (Android 12 and newer)."
+  },
+  {
+    "version": "1.5.2",
+    "date": "2026-09-30T15:45:56Z",
+    "notes": "- **Fixed first-time updates.** The first time you update, Android asks you to allow Zero-Music to install apps. The app now asks before downloading, and once you've allowed it and come back, the update continues by itself, even if Android restarted the app. You only have to do this once."
+  },
+  {
+    "version": "1.5.1",
+    "date": "2026-09-30T15:02:13Z",
+    "notes": "- **No more refresh buttons.** Everything updates by itself:\n  - Home reloads when you open it, after you've played new songs, and every half hour. When you're offline it retries until you're back online.\n  - App updates are checked automatically.\n  - Your YouTube Music library re-imports and the offline backup tops up automatically."
+  },
+  {
+    "version": "1.5",
+    "date": "2026-09-30T14:54:19Z",
+    "notes": "- **Home-screen widget**: song, artwork, ♥, play/pause and next. Plus a ♥ button in the notification.\n- **Your own playlists**: create, rename, drag to reorder. Add songs from any ⋮ menu or the player.\n- **Sound**: fade between songs, equalizer (presets + custom), bass boost, even-out volume (Settings → Sound)\n- **Speed & pitch** in the player (⋮): slowed, sped-up and nightcore presets\n- **Android Auto & Wear OS**: browse Your Mix, liked songs, playlists and downloads, and search by voice\n- **Chromecast**: cast button in the player\n- **Moods & genres** on Home: Workout, Chill, Phonk, Bollywood, Lo-fi and more, with live playlists\n- **New releases** from artists you listen to\n- **Your stats** (Library): top songs, artists, minutes and when you listen\n- **Sort & filter** your library\n- **Player colours** follow the album art\n- **Share** songs, and share or open YouTube / Spotify links with Zero-Music to play or import them\n- Updates now also download from a mirror if GitHub is blocked\n- New black app icon"
+  },
+  {
+    "version": "1.4",
+    "date": "2026-09-30T13:52:07Z",
+    "notes": "- **Much better search**\n  - Songs appear as you type, from the very first letter, most popular first\n  - Your recent searches are remembered\n  - Results show **artists** (with their own page: top songs and albums), songs, **live playlists** and albums\n  - Searches like \"phonk playlists\", \"kishore kumar hits\" or \"english top 100\" show live playlists first. Save any of them to your Library.\n- **Import your YouTube Music library**: Settings → Sign in to YouTube Music. Your Liked Music and every library playlist (private ones too) come in directly, with no links or API.\n- **Removed** the Spotify developer/API setup. Pasting Spotify links still works.\n- **Updates** now work even if api.github.com is blocked on your network."
+  },
+  {
+    "version": "1.3",
+    "date": "2026-09-30T12:16:11Z",
+    "notes": "- **Your Mix**: 50 songs like your favourites, new every day\n- **More from your top artists**: their songs you haven't played yet\n- **Like songs** ♥ in the player or any song's menu. Find them in Library → Liked songs\n- **Offline backup** (Settings): keeps at least 500 songs on your phone (all liked songs and playlists, plus recommendations) and keeps it fresh automatically. When you're offline, Home offers to play them.\n- **Sign in with Google** (Settings): your liked songs, playlists, history and settings follow you to a new phone. Needs a one-time setup; see the README."
+  },
+  {
+    "version": "1.2",
+    "date": "2026-09-30T11:55:42Z",
+    "notes": "- **New Home tab with recommendations**\n  - **Quick picks**: songs similar to what you've played recently\n  - **Because you listened to…**: more like your most-played songs\n  - **Top songs** in your country and worldwide (YouTube Music charts)\n  - **Recently played**, one tap to jump back in\n- Your listening history stays on your phone. Clear it anytime in Settings.\n- Cleaner song titles for music videos."
+  },
+  {
+    "version": "1.1",
+    "date": "2026-09-30T11:46:15Z",
+    "notes": "- **Import from a link, no API needed:** Settings → paste any Spotify or YouTube Music playlist, album or song link. Works with Spotify-made playlists too (up to 100 songs).\n- **Imported playlists** are saved in Library.\n- **In-app updates:** ZeroMusic now tells you when a new version is out and installs it with one tap.\n\nUpdating from 1.0: install this APK once by hand. Future updates install from inside the app."
+  }
+]

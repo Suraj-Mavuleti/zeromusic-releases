@@ -1,8 +1,8 @@
 {
-  "version": "2.1.1",
-  "notes": "Zero-Music 2.1.1\n\n- **Recommendations refresh right away**: Your Mix, Daily Mixes and Discover Weekly are rebuilt with the new song radio straight after updating (no waiting for them to expire), and the offline backup swaps out the random videos it downloaded before. Your own downloads aren't touched.",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v2.1.1/ZeroMusic-2.1.1.apk",
-  "size": 17188223,
+  "version": "2.2",
+  "notes": "Not interested + skip learning, new release alerts, charts as songs, data saver and Downloads only, smart backup cleanup, visualizer, car mode, multi-select, search tabs and voice search, queue save/clear/undo",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v2.2/ZeroMusic-2.2.apk",
+  "size": 17270135,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk"

@@ -10,3 +10,14 @@ Once installed, ZeroMusic checks this repo for new versions and offers to update
 
 `zero-music/` is the app's website (home page, privacy policy, terms), published with GitHub Pages and served at
 [zero.skillissue.gg/zero-music](https://zero.skillissue.gg/zero-music) through a rewrite on the main site.
+
+---
+
+## 👨‍💻 Author & Education
+
+* **Suraj Mavuleti (Dev Zero)**
+* 🎓 **Bachelor of Science (BS) in Electronic Systems** — **Indian Institute of Technology, Madras (IIT Madras / IITM)**
+* 🌐 **Official Website & Systems Wiki:** [zero.skillissue.gg](https://zero.skillissue.gg)
+* 💼 **LinkedIn Profile:** [linkedin.com/in/suraj-mavuleti-b95993320](https://www.linkedin.com/in/suraj-mavuleti-b95993320)
+* 🐙 **GitHub:** [@Suraj-Mavuleti](https://github.com/Suraj-Mavuleti)
+

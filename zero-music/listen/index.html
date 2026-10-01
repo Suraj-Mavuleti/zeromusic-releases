@@ -47,9 +47,18 @@
     (function () {
       var params = new URLSearchParams(location.search);
       var room = params.get("r") || "";
+      var type = params.get("t") || "";
       var key = (location.hash.match(/k=([^&]+)/) || [])[1] || "";
+      var name = decodeURIComponent((location.hash.match(/n=([^&]+)/) || [])[1] || "");
+      if (type === "collab") {
+        // A shared playlist rather than a listening session.
+        document.querySelector("h1").textContent = "Shared playlist";
+        document.querySelector(".meta").textContent = name ? "You've been invited to \u201c" + name + "\u201d" : "You've been invited to a shared playlist";
+        document.querySelector(".zm-lead").textContent = "Open this link on your Android phone with Zero-Music installed to add songs to the playlist together.";
+      }
       // Android: hand the invite (key included, only to the app) to Zero-Music.
       var target = "intent://zero.skillissue.gg/zero-music/listen?r=" + encodeURIComponent(room) + "&k=" + encodeURIComponent(key) +
+        (type ? "&t=" + encodeURIComponent(type) : "") + (name ? "&n=" + encodeURIComponent(name) : "") +
         "#Intent;scheme=https;package=com.zeromusic.app;S.browser_fallback_url=" +
         encodeURIComponent("https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk") + ";end";
       document.getElementById("open-app").href = target;

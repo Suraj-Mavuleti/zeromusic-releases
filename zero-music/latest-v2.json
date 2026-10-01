@@ -1,8 +1,8 @@
 {
-  "version": "2.2",
-  "notes": "Not interested + skip learning, new release alerts, charts as songs, data saver and Downloads only, smart backup cleanup, visualizer, car mode, multi-select, search tabs and voice search, queue save/clear/undo",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v2.2/ZeroMusic-2.2.apk",
-  "size": 17270135,
+  "version": "2.3",
+  "notes": "Smart playlists (Most played, Recently added, Forgotten favourites, Never played), app icon shortcuts (Resume, Shuffle liked, Search, Car mode), and Blend: a shared playlist of you and your friends' favourites",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v2.3/ZeroMusic-2.3.apk",
+  "size": 17276903,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk"

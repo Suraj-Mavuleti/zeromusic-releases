@@ -1,7 +1,7 @@
 {
-  "version": "2.0.2",
-  "notes": "Zero-Music 2.0.2\n\n- If Google sign-in fails, Settings now shows exactly why, plus the app's fingerprint (SHA-1) to check against Google Cloud.",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v2.0.2/ZeroMusic-2.0.2.apk",
+  "version": "2.0.3",
+  "notes": "Zero-Music 2.0.3\n\n- Checks for updates every 5 minutes, so new versions arrive sooner.\n- Updates download from zero.skillissue.gg first, which is faster.",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v2.0.3/ZeroMusic-2.0.3.apk",
   "size": 17136267,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",

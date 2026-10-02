@@ -722,7 +722,8 @@
           artist: track.artist || '',
           duration: track.duration || 0,
           cover: track.cover || '',
-          device: 'web'
+          device: 'web',
+          format: 'mp3'
         })
       }).catch(err => {
         console.warn('Song archival report warning:', err);

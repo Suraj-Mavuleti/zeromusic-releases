@@ -44,326 +44,287 @@
 }
   </script>
   <link rel="icon" type="image/svg+xml" href="/zero-music/icon.svg">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <!-- Core site styles & ZeroMusic theme -->
   <link rel="stylesheet" href="/styles/main.css?v=34" />
-  <link rel="stylesheet" href="/zero-music/zm.css?v=12" />
-  <script src="https://unpkg.com/lenis@1.0.42/dist/lenis.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <link rel="stylesheet" href="/zero-music/zm.css?v=14" />
   <script>if (/Android/i.test(navigator.userAgent)) document.documentElement.classList.add("android");</script>
 </head>
-<body data-theme="dark">
-  <div class="parallax-bg" id="parallaxBg"></div>
-  <canvas id="matrixCanvas"></canvas>
-
-  <!-- ── Top Glass Navigation Bar ── -->
-  <header class="zm-topbar">
-    <a href="/zero-music" class="zm-brand-lockup magnetic">
-      <img src="/zero-music/icon.svg" alt="ZeroMusic Logo" class="zm-brand-logo">
-      <div class="zm-brand-text">devzero<span>/zero-music</span></div>
-    </a>
-
-    <div class="zm-topbar-actions">
-      <!-- Dynamic View Toggle (Shown only on mobile/tablet if needed, hidden on laptop) -->
-      <button id="btn-toggle-view" class="zm-view-pill magnetic" aria-label="Toggle Mode" style="display: none;">
-        <span id="toggle-icon">🎧</span>
-        <span id="toggle-text">Web Player</span>
-      </button>
-
-      <a href="/wiki" class="zm-return-btn magnetic">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-        <span>Return to Core</span>
-      </a>
-    </div>
-  </header>
+<body data-theme="dark" class="zm-app-body">
 
   <!-- ══════════════════════════════════════════════════════════════
-       PANE 1: MOBILE & TABLET DOWNLOAD SHOWCASE
+       PANE 1: MOBILE & TABLET DOWNLOAD SHOWCASE (Arc / Nothing Minimal)
        ══════════════════════════════════════════════════════════════ -->
   <section id="zm-download-view" style="display: none;">
-    <div class="mobile-hero-section gs-reveal">
-      <img src="/zero-music/icon.svg" alt="ZeroMusic" class="app-icon-glow">
-      <div class="mobile-hero-badge">Android 8.0+ // Ad-Free // Sideload Ready</div>
-      <h1 class="mobile-hero-h1" data-scramble>ZeroMusic</h1>
-      <p class="mobile-hero-sub">The ad-free music streamer and offline player for Android. No subscriptions, background playback, and automatic synced lyrics.</p>
-
-      <div class="mobile-download-cta-box">
-        <a class="btn-dl-primary magnetic" href="/zero-music/download/ZeroMusic.apk" download="Zero-Music.apk">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download APK
-        </a>
-        <button class="btn-dl-secondary magnetic" data-switch-view="player">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
-          Launch Web Player
+    <header class="zm-mobile-topbar">
+      <a href="/zero-music" class="zm-mobile-brand">
+        <img src="/zero-music/icon.svg" alt="ZeroMusic Logo" class="zm-mobile-logo">
+        <span class="zm-mobile-title">ZeroMusic</span>
+      </a>
+      <div class="zm-mobile-actions">
+        <button id="btn-toggle-view" class="zm-mobile-toggle-btn" aria-label="Toggle Player">
+          <span id="toggle-icon">🎧</span>
+          <span id="toggle-text">Web Player</span>
         </button>
+        <a href="/wiki" class="zm-mobile-core-link">Core</a>
       </div>
+    </header>
 
-      <div class="mobile-version-tag">
-        <span id="version">Latest version</span> • Zero Ads • No Account Needed
-      </div>
-    </div>
-
-    <!-- Feature Showcase Grid -->
-    <div class="features-grid-showcase gs-reveal">
-      <div class="feature-glass-card">
-        <div class="feature-icon-badge">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+    <div class="mobile-landing-container">
+      <div class="mobile-hero">
+        <div class="mobile-app-icon-wrap">
+          <img src="/zero-music/icon.svg" alt="ZeroMusic" class="mobile-app-icon">
         </div>
-        <h3>Zero Ads Forever</h3>
-        <p>Direct audio stream extraction via NewPipeExtractor without commercial breaks, banners, or sponsorships.</p>
-      </div>
+        <h1 class="mobile-hero-title">ZeroMusic</h1>
+        <p class="mobile-hero-desc">Ad-free streaming, time-synced lyrics, and smart offline backup for Android.</p>
 
-      <div class="feature-glass-card">
-        <div class="feature-icon-badge">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-        </div>
-        <h3>Smart Offline Backup</h3>
-        <p>Maintains 500+ songs on your device: your favourites, daily mixes and smart offline backup for zero-data days.</p>
-      </div>
-
-      <div class="feature-glass-card">
-        <div class="feature-icon-badge">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="21" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="15" y1="18" x2="3" y2="18"/></svg>
-        </div>
-        <h3>Synced Karaoke Lyrics</h3>
-        <p>Real-time line-by-line synced lyrics powered by LRCLIB. Tap any line to instantly jump to that point in the track.</p>
-      </div>
-
-      <div class="feature-glass-card">
-        <div class="feature-icon-badge">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-        </div>
-        <h3>1-Click Link Import</h3>
-        <p>Paste any public Spotify or YouTube playlist/album link to automatically import all tracks into your library.</p>
-      </div>
-
-      <div class="feature-glass-card">
-        <div class="feature-icon-badge">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-        </div>
-        <h3>Pro Audio Engine</h3>
-        <p>10-band device equalizer, bass boost, volume leveling, crossfade between tracks, and Android Auto integration.</p>
-      </div>
-
-      <div class="feature-glass-card">
-        <div class="feature-icon-badge">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <h3>Private &amp; Decentralized</h3>
-        <p>No analytics, no ad tracking, and no proprietary lock-in. Optional Google Drive sync stays in your own account.</p>
-      </div>
-    </div>
-
-    <!-- Comparison Table -->
-    <div class="comparison-table-wrap gs-reveal">
-      <table class="comparison-table">
-        <thead>
-          <tr>
-            <th>Feature</th>
-            <th style="color: var(--zm-orange);">ZeroMusic</th>
-            <th>Spotify Free</th>
-            <th>YouTube Music Free</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Commercials / Ads</td>
-            <td class="td-zeromusic">Zero Ads</td>
-            <td>Every 3-4 songs</td>
-            <td>Frequent video ads</td>
-          </tr>
-          <tr>
-            <td>Background Playback</td>
-            <td class="td-zeromusic">Yes (Free)</td>
-            <td>Yes (with ads)</td>
-            <td>Screen must stay on</td>
-          </tr>
-          <tr>
-            <td>Offline Downloads</td>
-            <td class="td-zeromusic">Yes (500+ tracks)</td>
-            <td>Paid Premium only</td>
-            <td>Paid Premium only</td>
-          </tr>
-          <tr>
-            <td>Synced Lyrics</td>
-            <td class="td-zeromusic">Yes (Unlimited)</td>
-            <td>Limited quota</td>
-            <td>Basic text</td>
-          </tr>
-          <tr>
-            <td>Account Needed</td>
-            <td class="td-zeromusic">None required</td>
-            <td>Mandatory account</td>
-            <td>Mandatory Google login</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <footer class="zm-footer gs-reveal" style="margin-top: 40px;">
-      <span>© 2026 devzero // ZeroMusic // built by <a href="/">Suraj Mavuleti</a></span>
-      <span>
-        <a href="/zero-music">home</a>
-        <a href="/zero-music/release-notes">release notes</a>
-        <a href="/zero-music/privacy">privacy</a>
-        <a href="/zero-music/terms">terms</a>
-        <a href="mailto:surajmavuleti@gmail.com">contact</a>
-      </span>
-    </footer>
-  </section>
-
-  <!-- ══════════════════════════════════════════════════════════════
-       PANE 2: DESKTOP & LAPTOP WEB PLAYER APP
-       ══════════════════════════════════════════════════════════════ -->
-  <div id="zm-player-view">
-    <!-- Sidebar -->
-    <aside class="player-sidebar">
-      <div class="sidebar-section-title">Menu</div>
-      <div class="sidebar-nav-list">
-        <button class="sidebar-item active" data-view="home">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          Discover
-        </button>
-        <button class="sidebar-item" data-view="search">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          Search
-        </button>
-        <button class="sidebar-item" data-view="library">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          Liked Songs
-        </button>
-      </div>
-
-      <!-- Ad-Shield Card -->
-      <div class="adshield-card">
-        <div id="adshield-pulse-dot" class="adshield-pulse-dot"></div>
-        <div class="adshield-info">
-          <div class="adshield-title">Ad-Shield Active</div>
-          <div id="adshield-status-text" class="adshield-sub">Protected • Zero Ads</div>
+        <div class="mobile-cta-stack">
+          <a class="btn-mobile-download" href="/zero-music/download/ZeroMusic.apk" download="Zero-Music.apk">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>Download APK</span>
+            <span class="mobile-version-badge" id="version">Latest</span>
+          </a>
+          <button class="btn-mobile-webplayer" data-switch-view="player">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 18 12 6 20 6 4"/></svg>
+            <span>Launch Web Player</span>
+          </button>
         </div>
       </div>
 
-    </aside>
-
-    <!-- Main Stage -->
-    <main class="player-main-stage">
-      <!-- Search Input Container -->
-      <div class="stage-search-container">
-        <div class="stage-search-box">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--zm-text-muted);"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input type="text" id="zm-search-input" class="search-input-field" placeholder="Search songs, artists, albums, or lyrics..." autocomplete="off">
-          <button id="zm-search-clear" class="search-btn-clear" aria-label="Clear Search">✕</button>
-        </div>
-        <!-- Autocomplete Suggestions Dropdown -->
-        <div id="zm-search-suggestions" class="stage-suggest-dropdown"></div>
-      </div>
-
-      <!-- Mood & Genre Chips -->
-      <div class="mood-chips-row">
-        <button class="mood-chip active" data-genre="all">🔥 All Trending</button>
-        <button class="mood-chip" data-genre="Lo-Fi Beats">☕ Lo-Fi</button>
-        <button class="mood-chip" data-genre="Synthwave Retro">🌆 Synthwave</button>
-        <button class="mood-chip" data-genre="Drift Phonk">🏎️ Phonk</button>
-        <button class="mood-chip" data-genre="Hip Hop Hits">🎤 Hip-Hop</button>
-        <button class="mood-chip" data-genre="Rock Classics">🎸 Rock</button>
-        <button class="mood-chip" data-genre="Pop Hits 2026">✨ Pop</button>
-        <button class="mood-chip" data-genre="Deep Focus Ambient">🎧 Focus</button>
-      </div>
-
-      <!-- SECTION: HOME / DISCOVER -->
-      <section id="section-home" class="main-content-section active-section">
-        <!-- Hero Spotlight Card -->
-        <div class="hero-spotlight-card">
-          <div class="spotlight-art-wrap">
-            <img id="spotlight-art" class="spotlight-art-img" src="https://i.ytimg.com/vi/4NRXx6U8ABQ/hqdefault.jpg" alt="Featured">
-          </div>
-          <div class="spotlight-info">
-            <div class="spotlight-badge">Featured Track • High Fidelity</div>
-            <h2 id="spotlight-title" class="spotlight-title">Blinding Lights</h2>
-            <div id="spotlight-artist" class="spotlight-artist">The Weeknd</div>
-            <div class="spotlight-actions">
-              <button id="btn-spotlight-play" class="btn-spotlight-play">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                Play Now
-              </button>
-              <canvas id="spotlight-visualizer-canvas" class="spotlight-visualizer-canvas" width="140" height="36"></canvas>
-            </div>
+      <!-- Clean 4-Bullet Feature Grid -->
+      <div class="mobile-features-grid">
+        <div class="mobile-feat-box">
+          <div class="feat-dot">✦</div>
+          <div class="feat-text">
+            <h4>Zero Ads Forever</h4>
+            <p>Direct audio stream extraction with zero video ads, audio breaks, or sponsorships.</p>
           </div>
         </div>
-
-        <div class="section-headline-bar" style="margin-top: 36px;">
-          <div class="section-headline-text">
-            <span>Global Top Charts</span>
-            <span class="section-headline-badge">Trending 2026</span>
+        <div class="mobile-feat-box">
+          <div class="feat-dot">✦</div>
+          <div class="feat-text">
+            <h4>Offline Music Storage</h4>
+            <p>Automatically maintains 500+ songs on device for zero-data offline playback.</p>
           </div>
         </div>
-        <div id="trending-tracks-grid" class="tracks-grid"></div>
-      </section>
+        <div class="mobile-feat-box">
+          <div class="feat-dot">✦</div>
+          <div class="feat-text">
+            <h4>Synced Karaoke Lyrics</h4>
+            <p>Real-time line-by-line synced lyrics powered by LRCLIB with tap-to-seek.</p>
+          </div>
+        </div>
+        <div class="mobile-feat-box">
+          <div class="feat-dot">✦</div>
+          <div class="feat-text">
+            <h4>Background Playback</h4>
+            <p>Plays continuously when apps are switched or screen is turned off.</p>
+          </div>
+        </div>
+      </div>
 
-      <!-- SECTION: SEARCH RESULTS -->
-      <section id="section-search" class="main-content-section">
-        <div class="section-headline-bar">
-          <div id="search-results-header" class="section-headline-text">Search Results</div>
-        </div>
-        <div id="search-results-grid" class="tracks-grid">
-          <div class="zm-loading">Type in the search bar above to find any song...</div>
-        </div>
-      </section>
-
-      <!-- SECTION: LIBRARY (LIKED SONGS & HISTORY) -->
-      <section id="section-library" class="main-content-section">
-        <div class="section-headline-bar">
-          <div class="section-headline-text">Liked Songs ♥</div>
-        </div>
-        <div id="liked-songs-list" class="track-rows-wrap">
-          <div class="zm-empty">No liked songs yet. Click the heart icon on any track to save it here.</div>
-        </div>
-
-        <div class="section-headline-bar" style="margin-top: 40px;">
-          <div class="section-headline-text">Recently Played</div>
-        </div>
-        <div id="history-songs-list" class="track-rows-wrap">
-          <div class="zm-empty">Your listening history will appear here.</div>
-        </div>
-      </section>
-
-      <!-- ── Pure Bottom Footer: Legal, Terms, Release Notes, Contact ── -->
-      <footer class="zm-player-footer">
-        <div class="zm-player-footer-left">
-          <span>© 2026 devzero // ZeroMusic // built by <a href="/">Suraj Mavuleti</a></span>
-          <span class="zm-player-footer-sub">Ad-free high-fidelity web audio engine</span>
-        </div>
-        <div class="zm-player-footer-links">
+      <footer class="zm-footer">
+        <span>© 2026 devzero // ZeroMusic // built by <a href="/">Suraj Mavuleti</a></span>
+        <span>
           <a href="/zero-music">home</a>
           <a href="/zero-music/release-notes">release notes</a>
           <a href="/zero-music/privacy">privacy</a>
           <a href="/zero-music/terms">terms</a>
           <a href="mailto:surajmavuleti@gmail.com">contact</a>
-        </div>
+        </span>
       </footer>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       PANE 2: DESKTOP & LAPTOP WEB PLAYER APP (APPLE / SPOTIFY LUXE)
+       ══════════════════════════════════════════════════════════════ -->
+  <div id="zm-player-view">
+    <!-- Left Navigation Sidebar -->
+    <aside class="player-sidebar">
+      <div class="sidebar-top-group">
+        <!-- Brand Lockup -->
+        <a href="/zero-music" class="sidebar-brand-lockup">
+          <img src="/zero-music/icon.svg" alt="ZeroMusic" class="sidebar-brand-icon">
+          <div class="sidebar-brand-meta">
+            <span class="sidebar-brand-text">ZeroMusic</span>
+            <span class="sidebar-brand-sub">by devzero</span>
+          </div>
+        </a>
+
+        <!-- Main Navigation -->
+        <nav class="sidebar-nav-block">
+          <div class="sidebar-block-title">DISCOVER</div>
+          <button class="sidebar-item active" data-view="home">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>Listen Now</span>
+          </button>
+          <button class="sidebar-item" data-view="search">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <span>Search</span>
+          </button>
+        </nav>
+
+        <!-- Collection -->
+        <div class="sidebar-nav-block">
+          <div class="sidebar-block-title">COLLECTION</div>
+          <button class="sidebar-item" data-view="library">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <span>Liked Songs</span>
+          </button>
+        </div>
+
+        <!-- Curated Playlists / Moods -->
+        <div class="sidebar-nav-block">
+          <div class="sidebar-block-title">GENRES</div>
+          <div class="sidebar-genres-list">
+            <button class="sidebar-genre-item" data-genre-trigger="Lo-Fi Beats">Lo-Fi Beats</button>
+            <button class="sidebar-genre-item" data-genre-trigger="Synthwave Retro">Synthwave</button>
+            <button class="sidebar-genre-item" data-genre-trigger="Drift Phonk">Midnight Phonk</button>
+            <button class="sidebar-genre-item" data-genre-trigger="Deep Focus Ambient">Deep Focus</button>
+            <button class="sidebar-genre-item" data-genre-trigger="Rock Classics">Rock Classics</button>
+            <button class="sidebar-genre-item" data-genre-trigger="Pop Hits 2026">Global Pop</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Footer -->
+      <div class="sidebar-bottom-group">
+        <a href="/wiki" class="sidebar-return-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          <span>Return to Core</span>
+        </a>
+        <div class="sidebar-audio-status">
+          <span class="status-indicator-dot" id="adshield-pulse-dot"></span>
+          <span class="status-indicator-label" id="adshield-status-text">Ad-Free Audio</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Center Stage Container -->
+    <main class="player-main-stage">
+      <!-- Stage Sticky Navigation & Search Header -->
+      <header class="stage-nav-header">
+        <div class="stage-search-shell">
+          <div class="stage-search-box">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="search-icon"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="zm-search-input" class="search-input-field" placeholder="Search songs, artists, albums..." autocomplete="off">
+            <button id="zm-search-clear" class="search-btn-clear" aria-label="Clear Search">✕</button>
+          </div>
+          <!-- Autocomplete Dropdown -->
+          <div id="zm-search-suggestions" class="stage-suggest-dropdown"></div>
+        </div>
+
+        <!-- Clean Text-Only Category Filter Chips -->
+        <div class="mood-chips-row">
+          <button class="mood-chip active" data-genre="all">All</button>
+          <button class="mood-chip" data-genre="Lo-Fi Beats">Lo-Fi</button>
+          <button class="mood-chip" data-genre="Synthwave Retro">Synthwave</button>
+          <button class="mood-chip" data-genre="Drift Phonk">Phonk</button>
+          <button class="mood-chip" data-genre="Hip Hop Hits">Hip-Hop</button>
+          <button class="mood-chip" data-genre="Rock Classics">Rock</button>
+          <button class="mood-chip" data-genre="Pop Hits 2026">Pop</button>
+          <button class="mood-chip" data-genre="Deep Focus Ambient">Ambient</button>
+        </div>
+      </header>
+
+      <!-- Scrollable Stage Content -->
+      <div class="stage-scroll-canvas">
+        <!-- SECTION: HOME / DISCOVER -->
+        <section id="section-home" class="main-content-section active-section">
+          <!-- Cinematic Editorial Billboard (Apple Music / Spotify Style) -->
+          <div class="editorial-billboard">
+            <div class="editorial-art-frame">
+              <img id="spotlight-art" class="editorial-art-img" src="https://i.ytimg.com/vi/4NRXx6U8ABQ/hqdefault.jpg" alt="Featured Track">
+            </div>
+            <div class="editorial-info-pane">
+              <span class="editorial-eyebrow">SPOTLIGHT RELEASE</span>
+              <h2 id="spotlight-title" class="editorial-heading">Blinding Lights</h2>
+              <div id="spotlight-artist" class="editorial-subheading">The Weeknd</div>
+              <div class="editorial-actions-row">
+                <button id="btn-spotlight-play" class="btn-editorial-play">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 18 12 6 20 6 4"/></svg>
+                  <span>Play Now</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section: Trending Grid -->
+          <div class="section-heading-bar">
+            <h3>Trending Now</h3>
+          </div>
+          <div id="trending-tracks-grid" class="tracks-grid"></div>
+
+          <!-- Section: Popular Tracklist Rows -->
+          <div class="section-heading-bar" style="margin-top: 52px;">
+            <h3>Top Charts</h3>
+          </div>
+          <div id="popular-tracks-table" class="track-rows-wrap"></div>
+        </section>
+
+        <!-- SECTION: SEARCH RESULTS -->
+        <section id="section-search" class="main-content-section">
+          <div class="section-heading-bar">
+            <h3 id="search-results-header">Search Results</h3>
+          </div>
+          <div id="search-results-grid" class="tracks-grid">
+            <div class="zm-empty">Type in the search bar above to explore tracks...</div>
+          </div>
+        </section>
+
+        <!-- SECTION: LIBRARY (LIKED SONGS & HISTORY) -->
+        <section id="section-library" class="main-content-section">
+          <div class="section-heading-bar">
+            <h3>Liked Songs</h3>
+          </div>
+          <div id="liked-songs-list" class="track-rows-wrap">
+            <div class="zm-empty">No liked tracks yet. Click the heart icon on any song to save it here.</div>
+          </div>
+
+          <div class="section-heading-bar" style="margin-top: 48px;">
+            <h3>Listening History</h3>
+          </div>
+          <div id="history-songs-list" class="track-rows-wrap">
+            <div class="zm-empty">Your listening history will appear here.</div>
+          </div>
+        </section>
+
+        <!-- Pure Bottom Legal & Terms Footer -->
+        <footer class="zm-player-footer">
+          <div class="zm-player-footer-left">
+            <span>© 2026 devzero // ZeroMusic // built by <a href="/">Suraj Mavuleti</a></span>
+            <span class="zm-player-footer-sub">Ad-free high-fidelity web audio engine</span>
+          </div>
+          <div class="zm-player-footer-links">
+            <a href="/zero-music">home</a>
+            <a href="/zero-music/release-notes">release notes</a>
+            <a href="/zero-music/privacy">privacy</a>
+            <a href="/zero-music/terms">terms</a>
+            <a href="mailto:surajmavuleti@gmail.com">contact</a>
+          </div>
+        </footer>
+      </div>
     </main>
   </div>
 
   <!-- ══════════════════════════════════════════════════════════════
-       SYNCED LYRICS DRAWER (APPLE MUSIC STYLE)
+       SYNCED LYRICS DRAWER (APPLE MUSIC DARK LUXE)
        ══════════════════════════════════════════════════════════════ -->
-  <aside id="lyrics-drawer" class="ambient-lyrics-overlay">
-    <div class="lyrics-top-bar">
-      <div class="lyrics-top-heading">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="21" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="15" y1="18" x2="3" y2="18"/></svg>
-        Synced Lyrics
+  <aside id="lyrics-drawer" class="lyrics-slideover-sheet">
+    <div class="lyrics-header">
+      <div class="lyrics-header-track">
+        <img id="lyrics-large-art" class="lyrics-header-thumb" src="/zero-music/icon.svg" alt="Cover Art">
+        <div class="lyrics-header-meta">
+          <h4 id="lyrics-track-title">No song playing</h4>
+          <p id="lyrics-track-artist">Select a song to start</p>
+        </div>
       </div>
-      <button id="btn-close-lyrics" class="btn-close-drawer" aria-label="Close Lyrics">✕</button>
+      <button id="btn-close-lyrics" class="btn-close-sheet" aria-label="Close Lyrics">✕</button>
     </div>
-    <div class="lyrics-ambient-header">
-      <img id="lyrics-large-art" class="lyrics-hero-art" src="/zero-music/icon.svg" alt="Cover Art">
-      <div class="lyrics-hero-meta">
-        <h4 id="lyrics-track-title">No song playing</h4>
-        <p id="lyrics-track-artist">Select a song to start</p>
-      </div>
-    </div>
-    <div id="lyrics-lines-container" class="lyrics-flow-container">
+    <div id="lyrics-lines-container" class="lyrics-scroll-body">
       <div class="lyrics-status">Play a song to follow live time-synced lyrics</div>
     </div>
   </aside>
@@ -371,84 +332,87 @@
   <!-- ══════════════════════════════════════════════════════════════
        QUEUE DRAWER
        ══════════════════════════════════════════════════════════════ -->
-  <aside id="queue-drawer" class="ambient-queue-overlay">
-    <div class="lyrics-top-bar">
-      <div class="lyrics-top-heading">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
-        Upcoming Queue (<span id="queue-count-badge">0</span>)
+  <aside id="queue-drawer" class="queue-slideover-sheet">
+    <div class="queue-header">
+      <div class="queue-header-title">
+        <span>Up Next</span>
+        <span class="queue-counter" id="queue-count-badge">0</span>
       </div>
-      <button id="btn-close-queue" class="btn-close-drawer" aria-label="Close Queue">✕</button>
+      <button id="btn-close-queue" class="btn-close-sheet" aria-label="Close Queue">✕</button>
     </div>
-    <div id="queue-items-list" class="queue-items-scrollbox">
+    <div id="queue-items-list" class="queue-scroll-body">
       <div class="zm-empty">Queue is empty</div>
     </div>
   </aside>
 
   <!-- ══════════════════════════════════════════════════════════════
-       FLOATING GLASS PLAYER DOCK
+       MASTER BOTTOM PLAYER BAR (EDGE-TO-EDGE FLUSH DOCK)
        ══════════════════════════════════════════════════════════════ -->
-  <div id="floating-player-dock" class="floating-player-dock">
+  <footer id="floating-player-dock" class="master-player-bar">
     <!-- Left: Track Metadata -->
-    <div class="dock-left-track">
-      <div class="dock-thumb-wrap">
-        <img id="player-track-art" class="dock-thumb-img" src="/zero-music/icon.svg" alt="Album Art">
+    <div class="player-left-col">
+      <div class="player-art-wrap">
+        <img id="player-track-art" class="player-art-img" src="/zero-music/icon.svg" alt="Album Art">
       </div>
-      <div class="dock-meta-wrap">
-        <div id="player-track-title" class="dock-track-title">ZeroMusic</div>
-        <div id="player-track-artist" class="dock-track-artist">Select a track to play</div>
+      <div class="player-meta-wrap">
+        <div id="player-track-title" class="player-title-text">ZeroMusic</div>
+        <div id="player-track-artist" class="player-artist-text">Select a track to play</div>
       </div>
-      <button id="btn-like-current" class="btn-dock-heart" aria-label="Like Track">
+      <button id="btn-like-current" class="btn-player-heart" aria-label="Like Track">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
       </button>
     </div>
 
-    <!-- Center: Transport Controls & Scrubber -->
-    <div class="dock-center-controls">
-      <div class="dock-buttons-row">
-        <button id="btn-shuffle" class="dock-btn" title="Shuffle (S)" aria-label="Shuffle">
+    <!-- Center: Transport & Scrubber -->
+    <div class="player-center-col">
+      <div class="player-transport-row">
+        <button id="btn-shuffle" class="transport-btn" title="Shuffle (S)" aria-label="Shuffle">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
         </button>
-        <button id="btn-prev" class="dock-btn" title="Previous" aria-label="Previous">
+        <button id="btn-prev" class="transport-btn" title="Previous" aria-label="Previous">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="19 20 9 12 19 4 19 20"/><line x1="5" y1="19" x2="5" y2="5" stroke="currentColor" stroke-width="2"/></svg>
         </button>
-        <button id="btn-play-pause" class="btn-main-playpause" title="Play/Pause (Space)" aria-label="Play">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        <button id="btn-play-pause" class="btn-circle-playpause" title="Play/Pause (Space)" aria-label="Play">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 18 12 6 20 6 4"/></svg>
         </button>
-        <button id="btn-next" class="dock-btn" title="Next" aria-label="Next">
+        <button id="btn-next" class="transport-btn" title="Next" aria-label="Next">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19" stroke="currentColor" stroke-width="2"/></svg>
         </button>
-        <button id="btn-repeat" class="dock-btn" title="Repeat" aria-label="Repeat">
+        <button id="btn-repeat" class="transport-btn" title="Repeat" aria-label="Repeat">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
         </button>
       </div>
 
-      <div class="dock-timeline-row">
-        <span id="time-elapsed" class="dock-time-text">0:00</span>
-        <div class="dock-slider-track">
-          <div id="progress-bar-fill" class="dock-progress-fill"></div>
-          <input type="range" id="playback-progress" class="dock-range-input" min="0" max="100" value="0" step="0.1" aria-label="Timeline scrubber">
+      <div class="player-timeline-row">
+        <span id="time-elapsed" class="time-digit-text">0:00</span>
+        <div class="scrubber-track-wrap">
+          <div id="progress-bar-fill" class="scrubber-fill"></div>
+          <input type="range" id="playback-progress" class="scrubber-input" min="0" max="100" value="0" step="0.1" aria-label="Seek timeline">
         </div>
-        <span id="time-duration" class="dock-time-text">0:00</span>
+        <span id="time-duration" class="time-digit-text">0:00</span>
       </div>
     </div>
 
     <!-- Right: Volume, Lyrics, Queue -->
-    <div class="dock-right-actions">
-      <div class="dock-volume-group">
-        <button id="btn-mute" class="dock-btn" title="Mute (M)" aria-label="Mute">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+    <div class="player-right-col">
+      <div class="volume-slider-group">
+        <button id="btn-mute" class="transport-btn" title="Mute (M)" aria-label="Mute">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
         </button>
-        <input type="range" id="volume-slider" class="dock-range-input" min="0" max="100" value="85" aria-label="Volume">
+        <input type="range" id="volume-slider" class="volume-range-input" min="0" max="100" value="85" aria-label="Volume">
       </div>
 
-      <button id="btn-lyrics-toggle" class="dock-action-pill" title="Toggle Synced Lyrics (L)">
-        Lyrics
+      <button id="btn-lyrics-toggle" class="player-util-btn" title="Lyrics (L)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="21" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="15" y1="18" x2="3" y2="18"/></svg>
+        <span>Lyrics</span>
       </button>
-      <button id="btn-queue-toggle" class="dock-action-pill" title="Toggle Queue (Q)">
-        Queue
+
+      <button id="btn-queue-toggle" class="player-util-btn" title="Queue (Q)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        <span>Queue</span>
       </button>
     </div>
-  </div>
+  </footer>
 
   <!-- Hidden Audio Engine -->
   <div id="yt-audio-container" aria-hidden="true" style="position:absolute;width:1px;height:1px;left:-9999px;opacity:0;">
@@ -457,31 +421,13 @@
 
   <!-- Core site scripts & ZeroMusic engine -->
   <script src="/scripts/main.js?v=35"></script>
-  <script src="/zero-music/player.js?v=3"></script>
+  <script src="/zero-music/player.js?v=4"></script>
   <script>
     fetch("/zero-music/latest-v2.json", { cache: "no-store" }).then(r => r.json()).then(feed => {
       const size = feed.size ? " // " + (feed.size / 1048576).toFixed(1) + " MB" : "";
       const versionEl = document.getElementById("version");
-      if (versionEl) versionEl.textContent = "Version " + feed.version + size;
+      if (versionEl) versionEl.textContent = "v" + feed.version + size;
     }).catch(() => {});
-
-    document.addEventListener("DOMContentLoaded", () => {
-      if (typeof gsap !== "undefined") {
-        gsap.from(".gs-reveal", { y: 30, opacity: 0, duration: 1.0, stagger: 0.08, ease: "power4.out", delay: 0.1 });
-      }
-      document.querySelectorAll("[data-scramble]").forEach(el => {
-        const original = el.textContent;
-        const chars = "!<>-_\\/[]{}—=+*^?#________";
-        let iter = 0;
-        const interval = setInterval(() => {
-          el.textContent = original.split("").map((letter, i) => i < iter ? original[i] : chars[Math.floor(Math.random() * chars.length)]).join("");
-          if (iter >= original.length) clearInterval(interval);
-          iter += 1 / 3;
-        }, 30);
-      });
-    });
   </script>
-  <div id="cursor-dot"></div>
-  <div id="cursor-ring"></div>
 </body>
 </html>

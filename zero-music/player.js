@@ -826,21 +826,15 @@
         <div class="card-art-box">
           <img src="${track.thumbnail}" alt="${escapeHtml(track.title)}" loading="lazy" />
           <button class="card-hover-play" aria-label="Play ${escapeHtml(track.title)}">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 18 12 6 20 6 4"/></svg>
+          </button>
+          <button class="card-hover-like ${isTrackLiked(track.id) ? 'liked' : ''}" title="Like">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="${isTrackLiked(track.id) ? '#f97316' : 'none'}" stroke="${isTrackLiked(track.id) ? '#f97316' : 'currentColor'}" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
           </button>
         </div>
-        <h4 class="card-title" title="${escapeHtml(track.title)}">${escapeHtml(track.title)}</h4>
-        <p class="card-artist" title="${escapeHtml(track.artist)}">${escapeHtml(track.artist)}</p>
-        <div class="card-footer-meta">
-          <span class="card-duration-text">${track.duration || '3:30'}</span>
-          <div class="card-quick-actions">
-            <button class="btn-card-action btn-card-queue" title="Add to Queue">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            </button>
-            <button class="btn-card-action btn-card-like ${isTrackLiked(track.id) ? 'liked' : ''}" title="Like">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="${isTrackLiked(track.id) ? '#f97316' : 'none'}" stroke="${isTrackLiked(track.id) ? '#f97316' : 'currentColor'}" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </button>
-          </div>
+        <div class="card-meta">
+          <h4 class="card-title" title="${escapeHtml(track.title)}">${escapeHtml(track.title)}</h4>
+          <p class="card-artist" title="${escapeHtml(track.artist)}">${escapeHtml(track.artist)}</p>
         </div>
       </div>
     `).join('');
@@ -849,27 +843,31 @@
       const idx = parseInt(card.dataset.index, 10);
       const track = tracks[idx];
 
-      card.querySelector('.card-hover-play').addEventListener('click', (e) => {
-        e.stopPropagation();
-        playTrack(track, tracks, idx);
-      });
+      const playBtn = card.querySelector('.card-hover-play');
+      if (playBtn) {
+        playBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          playTrack(track, tracks, idx);
+        });
+      }
 
       card.addEventListener('click', () => {
         playTrack(track, tracks, idx);
       });
 
-      card.querySelector('.btn-card-queue').addEventListener('click', (e) => {
-        e.stopPropagation();
-        addToQueue(track);
-      });
-
-      card.querySelector('.btn-card-like').addEventListener('click', (e) => {
-        e.stopPropagation();
-        toggleLikeTrack(track);
-        e.currentTarget.classList.toggle('liked', isTrackLiked(track.id));
-        e.currentTarget.querySelector('svg').setAttribute('fill', isTrackLiked(track.id) ? '#f97316' : 'none');
-        e.currentTarget.querySelector('svg').setAttribute('stroke', isTrackLiked(track.id) ? '#f97316' : 'currentColor');
-      });
+      const likeBtn = card.querySelector('.card-hover-like');
+      if (likeBtn) {
+        likeBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          toggleLikeTrack(track);
+          likeBtn.classList.toggle('liked', isTrackLiked(track.id));
+          const svg = likeBtn.querySelector('svg');
+          if (svg) {
+            svg.setAttribute('fill', isTrackLiked(track.id) ? '#f97316' : 'none');
+            svg.setAttribute('stroke', isTrackLiked(track.id) ? '#f97316' : 'currentColor');
+          }
+        });
+      }
     });
   }
 
@@ -1007,6 +1005,20 @@
       item.addEventListener('click', (e) => {
         e.preventDefault();
         switchMainView(item.dataset.view);
+      });
+    });
+
+    // Sidebar Genre Mood Links
+    document.querySelectorAll('[data-genre-trigger]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const genre = btn.dataset.genreTrigger;
+        document.querySelectorAll('.mood-chip').forEach(c => {
+          c.classList.toggle('active', c.dataset.genre === genre);
+        });
+        const input = document.getElementById('zm-search-input');
+        if (input) input.value = genre;
+        executeSearch(genre);
       });
     });
 
@@ -1221,6 +1233,10 @@
     const trendingGrid = document.getElementById('trending-tracks-grid');
     if (trendingGrid) {
       renderTrackGrid(trendingGrid, TRENDING_TRACKS);
+    }
+    const popularTable = document.getElementById('popular-tracks-table');
+    if (popularTable) {
+      renderTrackRows(popularTable, TRENDING_TRACKS.slice(0, 6));
     }
     updateVolumeUI();
   });

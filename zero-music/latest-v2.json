@@ -1,6 +1,6 @@
 {
   "version": "2.4",
-  "notes": "Spotify library import: import Liked Songs and playlists with free web sign-in, persistent browser sessions for Spotify and YouTube Music",
+  "notes": "- **Spotify library import**: import your Liked Songs and every playlist in your library, private ones too. Free and zero setup: sign in once and your session stays on this phone.\n- **One-tap sign-in**: YouTube Music and Spotify sign-in now remember your session and use your phone's existing Google / Spotify accounts so you don't have to re-enter credentials.\n- **Automatic library sync**: Spotify imports refresh automatically every 12 hours in the background and sync with your offline backup.\n- **Instant playback matching**: Spotify tracks resolve to high-quality audio streams on the fly and stay cached for offline listening.",
   "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v2.4/ZeroMusic-2.4.apk",
   "size": 17309671,
   "mirrors": [

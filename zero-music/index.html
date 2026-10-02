@@ -51,7 +51,7 @@
   <!-- Google Identity Services for Drive AppData Cloud Sync -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   <!-- Standalone ZeroMusic Design System (No interference from external css) -->
-  <link rel="stylesheet" href="/zero-music/zm.css?v=23" />
+  <link rel="stylesheet" href="/zero-music/zm.css?v=24" />
   <script>
     (function() {
       var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 820;
@@ -59,6 +59,128 @@
       if (/Android/i.test(navigator.userAgent)) document.documentElement.classList.add("android");
     })();
   </script>
+
+  <!-- ZeroMusic Shield — Anti-Inspection & DevTools Protection -->
+  <script>
+  (function(){
+    /* ── NUKE FUNCTION ─────────────────────────────────────────── */
+    var _nuked = false;
+    function _nuke() {
+      if (_nuked) return;
+      _nuked = true;
+      /* Stop audio / video / navigation */
+      try { window.stop(); } catch(e){}
+      /* Clear all timers */
+      try {
+        var id = setTimeout(function(){}, 0);
+        for (var i = 0; i <= id; i++) { clearTimeout(i); clearInterval(i); }
+      } catch(e){}
+      /* Atomic DOM replacement - wipes entire DOM completely */
+      try {
+        document.documentElement.innerHTML = '<head><title>Access Denied</title><style>*{margin:0;padding:0;box-sizing:border-box}html,body{background:#000;color:#fff;font-family:system-ui,-apple-system,sans-serif;height:100vh;width:100vw;overflow:hidden;display:flex;align-items:center;justify-content:center}::selection{background:none}</style></head><body><div style="text-align:center;padding:32px;max-width:480px;"><div style="font-size:64px;margin-bottom:16px;line-height:1;">⛔</div><h1 style="color:#ef4444;font-size:26px;font-weight:900;letter-spacing:1px;margin-bottom:12px;font-family:monospace;">ACCESS DENIED</h1><p style="color:#94a3b8;font-size:16px;line-height:1.5;margin-bottom:24px;">You are not supposed to be here.</p><div style="display:inline-block;padding:6px 16px;background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:999px;color:#f87171;font-size:12px;font-weight:600;font-family:monospace;letter-spacing:0.5px;">SECURITY PROTOCOL ACTIVE</div></div></body>';
+      } catch(e){}
+      /* Nullify all network channels */
+      try {
+        window.fetch = function(){ return Promise.reject(); };
+        window.XMLHttpRequest = function(){ this.open = function(){}; this.send = function(){}; };
+      } catch(e){}
+    }
+
+    /* ── KEYBOARD SHORTCUT BLOCKING ───────────────────────────── */
+    document.addEventListener('keydown', function(e) {
+      /* F12 */
+      if (e.key === 'F12' || e.keyCode === 123) { e.preventDefault(); e.stopPropagation(); _nuke(); return false; }
+      /* Ctrl+Shift+I / Cmd+Opt+I (Inspector) */
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.keyCode === 73)) { e.preventDefault(); e.stopPropagation(); _nuke(); return false; }
+      if (e.metaKey && e.altKey && (e.key === 'I' || e.key === 'i' || e.keyCode === 73)) { e.preventDefault(); e.stopPropagation(); _nuke(); return false; }
+      /* Ctrl+Shift+J / Cmd+Opt+J (Console) */
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'J' || e.key === 'j' || e.keyCode === 74)) { e.preventDefault(); e.stopPropagation(); _nuke(); return false; }
+      if (e.metaKey && e.altKey && (e.key === 'J' || e.key === 'j' || e.keyCode === 74)) { e.preventDefault(); e.stopPropagation(); _nuke(); return false; }
+      /* Ctrl+Shift+C / Cmd+Opt+C (Element Picker) */
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'C' || e.key === 'c' || e.keyCode === 67)) { e.preventDefault(); e.stopPropagation(); _nuke(); return false; }
+      if (e.metaKey && e.altKey && (e.key === 'C' || e.key === 'c' || e.keyCode === 67)) { e.preventDefault(); e.stopPropagation(); _nuke(); return false; }
+      /* Ctrl+U / Cmd+Opt+U (View Source) */
+      if ((e.ctrlKey || e.metaKey) && !e.shiftKey && (e.key === 'U' || e.key === 'u' || e.keyCode === 85)) { e.preventDefault(); e.stopPropagation(); _nuke(); return false; }
+      if (e.metaKey && e.altKey && (e.key === 'U' || e.key === 'u' || e.keyCode === 85)) { e.preventDefault(); e.stopPropagation(); _nuke(); return false; }
+      /* Ctrl+Shift+K (Firefox Console) */
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'K' || e.key === 'k' || e.keyCode === 75)) { e.preventDefault(); e.stopPropagation(); _nuke(); return false; }
+      /* Ctrl+S (Save page) */
+      if ((e.ctrlKey || e.metaKey) && !e.shiftKey && (e.key === 'S' || e.key === 's' || e.keyCode === 83)) { e.preventDefault(); return false; }
+    }, true);
+
+    /* ── RIGHT-CLICK DISABLE ──────────────────────────────────── */
+    document.addEventListener('contextmenu', function(e) { e.preventDefault(); e.stopPropagation(); return false; }, true);
+
+    /* ── DRAG / SELECT / COPY DISABLE ─────────────────────────── */
+    document.addEventListener('selectstart', function(e) { if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') { e.preventDefault(); } }, true);
+    document.addEventListener('copy', function(e) { if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') { e.preventDefault(); } }, true);
+    document.addEventListener('dragstart', function(e) { e.preventDefault(); }, true);
+
+    /* ── CONSOLE POISONING ────────────────────────────────────── */
+    try {
+      var _noop = function(){};
+      Object.defineProperty(window, 'console', {
+        configurable: false,
+        get: function() {
+          return { log:_noop, warn:_noop, error:_noop, info:_noop, debug:_noop, dir:_noop, table:_noop, trace:_noop, assert:_noop,
+                   clear:_noop, count:_noop, countReset:_noop, group:_noop, groupCollapsed:_noop, groupEnd:_noop,
+                   time:_noop, timeLog:_noop, timeEnd:_noop, profile:_noop, profileEnd:_noop, timeStamp:_noop };
+        },
+        set: _noop
+      });
+    } catch(e){}
+
+    /* ── DEVTOOLS DETECTION — DEBUGGER TIMING ─────────────────── */
+    function _checkDebugger() {
+      var t0 = Date.now();
+      debugger;
+      var t1 = Date.now();
+      if (t1 - t0 > 100) {
+        _nuke();
+      }
+    }
+
+    function _checkEval() {
+      var t0 = Date.now();
+      (function(){}).constructor('debugger')();
+      var t1 = Date.now();
+      if (t1 - t0 > 100) {
+        _nuke();
+      }
+    }
+
+    /* ── DEVTOOLS DETECTION — DOCKED RESIZE ────────────────────── */
+    window.addEventListener('resize', function() {
+      var wDiff = window.outerWidth - window.innerWidth;
+      var hDiff = window.outerHeight - window.innerHeight;
+      if (wDiff > 320 || hDiff > 320) {
+        _nuke();
+      }
+    });
+
+    /* ── DETECTION LOOP ───────────────────────────────────────── */
+    setInterval(function() {
+      if (_nuked) return;
+      _checkDebugger();
+      _checkEval();
+    }, 1200);
+
+    /* ── ANTI-IFRAME ──────────────────────────────────────────── */
+    if (window.top !== window.self) {
+      window.top.location = window.self.location;
+    }
+
+    /* ── BLOCK PAGE SAVE / PRINT ──────────────────────────────── */
+    window.addEventListener('beforeprint', function(e) { e.preventDefault(); _nuke(); });
+
+  })();
+  </script>
+
+  <style>
+    /* Anti-selection on all elements except inputs */
+    body, body * { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+    input, textarea, [contenteditable] { -webkit-user-select: text; -moz-user-select: text; -ms-user-select: text; user-select: text; }
+  </style>
 </head>
 <body data-theme="dark" class="zm-app-body">
 
@@ -699,7 +821,7 @@
   <div id="zm-toast" class="zm-toast-message"></div>
 
   <!-- ZeroMusic Player Engine (Self-contained, ad-free) -->
-  <script src="/zero-music/player.js?v=23"></script>
+  <script src="/zero-music/player.js?v=24"></script>
   <script>
     fetch("/zero-music/latest-v2.json", { cache: "no-store" }).then(r => r.json()).then(feed => {
       const size = feed.size ? " // " + (feed.size / 1048576).toFixed(1) + " MB" : "";

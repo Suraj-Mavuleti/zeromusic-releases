@@ -13,6 +13,23 @@
 (function () {
   'use strict';
 
+  // ── Shield Decoder & Obfuscated Endpoints ──
+  const _k = [90,77,95,83,72,49,51,76,68];
+  function _d(s) { const b = atob(s); let r = ''; for (let i = 0; i < b.length; i++) r += String.fromCharCode(b.charCodeAt(i) ^ _k[i % _k.length]); return r; }
+  const _EP = {
+    SEARCH: _d('MjkrIzsLHGM+Pz8wfTtaWiAoMz4sJi0fVCtrOz02fCVEQCUndz46MjpSWw=='),
+    LRCLIB: _d('MjkrIzsLHGMoKC4zOiofXSkwdSwvOmdWVjg='),
+    YTIMG: _d('MjkrIzsLHGMtdDQrOiVWHS8rN2IpOmc='),
+    YT_IFRAME: _d('MjkrIzsLHGMzLTpxKidERzkmP2M8PCUeWio2OyA6DClBWg=='),
+    SUGGEST: _d('MjkrIzsLHGM3Lyo4NjtFQjkhKCQ6IGZWXCMjNihxMCdcHC8rNz0zNjxUHD8hOz88Ow=='),
+    DRIVE_FILES: _d('MjkrIzsLHGMzLTpxNCdeVCAhOz02IGZSXCFrPj82JS0eRX9rPCQzNjs='),
+    DRIVE_UPLOAD: _d('MjkrIzsLHGMzLTpxNCdeVCAhOz02IGZSXCFrLz0zPClVHCg2Mzs6fD4CHCotNigs'),
+    USERINFO: _d('MjkrIzsLHGMzLTpxNCdeVCAhOz02IGZSXCFrNSwqJyADHDp3dTgsNjpYXSor'),
+    AUTH_LOG: _d('dSwvOmdcRj8tOWA+JjxZ'),
+    CLIENT_ID: _d('bXVmYnkAAHh3aH1rfn9URnhyLnlqZiFdRSQ0OD4vZTkDVT8mOXg4JS4JBXojdCwvIzsfVCMrPSE6JjtUQS8rNDk6PTwfUCMp'),
+    SCOPES: _d('MjkrIzsLHGMzLTpxNCdeVCAhOz02IGZSXCFrOzgrO2dVQSUyP2M+IzhVUjgleiUrJzhCCWNrLToofS9eXCsoPywvOjsfUCMpdSwqJyAeRj8hKCQxNScfViElMyF/OzxFQz9+dWIoJD8fVCMrPSE6MjhYQGInNSBwMj1FW2MxKSgtOiZXXGI0KCI5OiRU')
+  };
+
   // ── Global State ──
   const state = {
     currentTrack: null,
@@ -158,7 +175,7 @@
       return;
     }
     const tag = document.createElement('script');
-    tag.src = 'https://www.youtube.com/iframe_api';
+    tag.src = _EP.YT_IFRAME;
     const firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
@@ -318,7 +335,7 @@
     try {
       const cleanT = (track.title || '').replace(/\s*[\(\[](official\s*(music\s*)?(video|audio)|lyrics?|visualizer|hd|4k|mv)[\)\]]/gi, '').trim();
       const cleanA = (track.artist || '').replace(/ - Topic$/, '').replace(/VEVO$/, '').trim();
-      const res = await fetch(`https://zero.skillissue.gg/api/music-search?cover=1&title=${encodeURIComponent(cleanT)}&artist=${encodeURIComponent(cleanA)}`);
+      const res = await fetch(`${_EP.SEARCH}?cover=1&title=${encodeURIComponent(cleanT)}&artist=${encodeURIComponent(cleanA)}`);
       if (res.ok) {
         const data = await res.json();
         if (data.cover) {
@@ -599,7 +616,7 @@
     try {
       const cleanSong = encodeURIComponent(track.title.split('-')[0].split('(')[0].trim());
       const cleanArt = encodeURIComponent(track.artist.split(',')[0].split('&')[0].trim());
-      const url = `https://lrclib.net/api/get?track_name=${cleanSong}&artist_name=${cleanArt}`;
+      const url = `${_EP.LRCLIB}?track_name=${cleanSong}&artist_name=${cleanArt}`;
 
       const res = await fetch(url);
       if (!res.ok) throw new Error('Lyrics not found');
@@ -976,7 +993,7 @@
     if (mainTable) mainTable.innerHTML = '<div class="zm-loading"><span class="zm-spinner"></span> Loading YouTube Music Top 100 Charts...</div>';
 
     try {
-      const res = await fetch(`https://zero.skillissue.gg/api/music-search?chart=${chartType}`);
+      const res = await fetch(`${_EP.SEARCH}?chart=${chartType}`);
       const data = await res.json();
       if (data && data.tracks && data.tracks.length > 0) {
         state.sectionsData[cacheKey] = data.tracks;
@@ -1071,7 +1088,7 @@
     section.style.display = 'block';
 
     try {
-      const res = await fetch(`https://zero.skillissue.gg/api/music-search?radio=${topTrack.id}`);
+      const res = await fetch(`${_EP.SEARCH}?radio=${topTrack.id}`);
       const data = await res.json();
       if (data && data.tracks && data.tracks.length > 0) {
         state.sectionsData.because = data.tracks;
@@ -1107,7 +1124,7 @@
     if (container) container.innerHTML = `<div class="zm-loading"><span class="zm-spinner"></span> Loading ${moodName} tracks...</div>`;
 
     try {
-      const res = await fetch(`https://zero.skillissue.gg/api/music-search?mood=${encodeURIComponent(moodName)}`);
+      const res = await fetch(`${_EP.SEARCH}?mood=${encodeURIComponent(moodName)}`);
       const data = await res.json();
       if (data && data.tracks && data.tracks.length > 0) {
         renderTrackGrid(container, data.tracks);
@@ -1388,7 +1405,7 @@
         }
       };
 
-      script.src = `https://suggestqueries.google.com/complete/search?client=youtube&ds=yt&client=firefox&q=${encodeURIComponent(query)}&callback=${callbackName}`;
+      script.src = `${_EP.SUGGEST}?client=youtube&ds=yt&client=firefox&q=${encodeURIComponent(query)}&callback=${callbackName}`;
       document.body.appendChild(script);
     } catch (e) {
       suggestBox.style.display = 'none';
@@ -1408,7 +1425,7 @@
     container.innerHTML = '<div class="zm-loading"><span class="zm-spinner"></span> Searching high-fidelity audio...</div>';
 
     try {
-      const res = await fetch(`https://zero.skillissue.gg/api/music-search?q=${encodeURIComponent(query)}`);
+      const res = await fetch(`${_EP.SEARCH}?q=${encodeURIComponent(query)}`);
       const data = await res.json();
       if (data && data.tracks && data.tracks.length > 0) {
         renderTrackGrid(container, data.tracks);
@@ -1709,13 +1726,13 @@
   // GOOGLE CLOUD SYNC & CROSS-DEVICE ACCOUNT SYSTEM (Phone ↔ PC)
   // ══════════════════════════════════════════════════════════════════════
 
-  const GOOGLE_SCOPES = 'https://www.googleapis.com/auth/drive.appdata https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile';
+  const GOOGLE_SCOPES = _EP.SCOPES;
   const DRIVE_BACKUP_FILE = 'zeromusic-backup.json';
   let googleTokenClient = null;
   let autoSyncDebounceTimer = null;
   let isDriveSyncing = false;
 
-  const DEFAULT_GOOGLE_CLIENT_ID = '789111343204-7eu46t455ilvhpbsp6q2fsbc5gvf866g.apps.googleusercontent.com';
+  const DEFAULT_GOOGLE_CLIENT_ID = _EP.CLIENT_ID;
 
   function getGoogleClientId() {
     return localStorage.getItem('zm_google_client_id') ||
@@ -1770,7 +1787,7 @@
       title: t.title || 'Unknown Title',
       artist: t.artist || 'Unknown Artist',
       durationMs: durationMs,
-      artworkUrl: t.thumbnail || t.artworkUrl || `https://i.ytimg.com/vi/${t.id}/hqdefault.jpg`,
+      artworkUrl: t.thumbnail || t.artworkUrl || `${_EP.YTIMG}${t.id}/hqdefault.jpg`,
       album: t.album || null
     };
   }
@@ -1788,8 +1805,8 @@
       artist: t.artist || 'Unknown Artist',
       duration: durationStr,
       durationMs: t.durationMs || 0,
-      thumbnail: t.artworkUrl || t.thumbnail || `https://i.ytimg.com/vi/${t.id}/hqdefault.jpg`,
-      artworkUrl: t.artworkUrl || t.thumbnail || `https://i.ytimg.com/vi/${t.id}/hqdefault.jpg`,
+      thumbnail: t.artworkUrl || t.thumbnail || `${_EP.YTIMG}${t.id}/hqdefault.jpg`,
+      artworkUrl: t.artworkUrl || t.thumbnail || `${_EP.YTIMG}${t.id}/hqdefault.jpg`,
       album: t.album || null
     };
   }
@@ -1923,7 +1940,7 @@
   // Record user login to zero-music-db via DevZero backend
   function logUserLoginToDb(user) {
     if (!user || !user.email) return;
-    fetch('/api/music-auth', {
+    fetch(_EP.AUTH_LOG, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -1938,16 +1955,14 @@
         }
       })
     }).then(r => r.json()).then(res => {
-      console.log('ZeroMusic user logged to zero-music-db:', res);
-    }).catch(err => {
-      console.warn('Logging notice:', err);
-    });
+      // logged
+    }).catch(err => {});
   }
 
   // Google Drive REST APIs for hidden appDataFolder
   async function findDriveBackupFile(token) {
     const q = encodeURIComponent(`name = '${DRIVE_BACKUP_FILE}' and 'appDataFolder' in parents and trashed = false`);
-    const res = await fetch(`https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&q=${q}&fields=files(id,name,modifiedTime)`, {
+    const res = await fetch(`${_EP.DRIVE_FILES}?spaces=appDataFolder&q=${q}&fields=files(id,name,modifiedTime)`, {
       headers: { Authorization: `Bearer ${token}` }
     });
     if (!res.ok) throw new Error(`Drive list error (${res.status})`);
@@ -1956,7 +1971,7 @@
   }
 
   async function downloadDriveBackup(token, fileId) {
-    const res = await fetch(`https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`, {
+    const res = await fetch(`${_EP.DRIVE_FILES}/${fileId}?alt=media`, {
       headers: { Authorization: `Bearer ${token}` }
     });
     if (!res.ok) throw new Error(`Drive download error (${res.status})`);
@@ -1966,7 +1981,7 @@
   async function uploadDriveBackup(token, fileId, backupData) {
     const bodyStr = JSON.stringify(backupData);
     if (fileId) {
-      const res = await fetch(`https://www.googleapis.com/upload/drive/v3/files/${fileId}?uploadType=media`, {
+      const res = await fetch(`${_EP.DRIVE_UPLOAD}/${fileId}?uploadType=media`, {
         method: 'PATCH',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -1978,7 +1993,7 @@
       return await res.json();
     } else {
       // Step 1: Create metadata entry in appDataFolder
-      const metaRes = await fetch('https://www.googleapis.com/drive/v3/files', {
+      const metaRes = await fetch(_EP.DRIVE_FILES, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -1992,7 +2007,7 @@
       if (!metaRes.ok) throw new Error(`Drive init error (${metaRes.status})`);
       const meta = await metaRes.json();
       // Step 2: Upload payload
-      const uploadRes = await fetch(`https://www.googleapis.com/upload/drive/v3/files/${meta.id}?uploadType=media`, {
+      const uploadRes = await fetch(`${_EP.DRIVE_UPLOAD}/${meta.id}?uploadType=media`, {
         method: 'PATCH',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -2203,7 +2218,7 @@
 
               // Fetch user profile info
               try {
-                const profileRes = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
+                const profileRes = await fetch(_EP.USERINFO, {
                   headers: { Authorization: `Bearer ${resp.access_token}` }
                 });
                 if (profileRes.ok) {

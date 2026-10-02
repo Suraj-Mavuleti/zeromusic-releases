@@ -50,7 +50,7 @@
   <!-- Google Identity Services for Drive AppData Cloud Sync -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   <!-- Standalone ZeroMusic Design System (No interference from external css) -->
-  <link rel="stylesheet" href="/zero-music/zm.css?v=22" />
+  <link rel="stylesheet" href="/zero-music/zm.css?v=23" />
   <script>
     (function() {
       var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 820;
@@ -672,9 +672,9 @@
           <button id="btn-toggle-client-id" class="btn-text-link">OAuth 2.0 Web Client ID Setup ▾</button>
           <div id="sync-client-id-drawer" class="sync-client-id-drawer" style="display: none;">
             <label for="input-custom-client-id" class="sync-input-label">Web Client ID (from Google Cloud Console):</label>
-            <input type="text" id="input-custom-client-id" class="zm-modal-input" placeholder="e.g. 123456789-xxxx.apps.googleusercontent.com">
-            <p class="sync-client-tip">Create a Web Client ID in the same Google Cloud project as your Android app with <code>https://zero.skillissue.gg</code> under Authorized JavaScript Origins.</p>
-            <button id="btn-save-client-id" class="btn-action-ghost btn-save-id">Save Client ID</button>
+            <input type="text" id="input-custom-client-id" class="zm-modal-input" value="789111343204-7eu46t455ilvhpbsp6q2fsbc5gvf866g.apps.googleusercontent.com">
+            <p class="sync-client-tip">Configured with your Google Cloud Web Client ID for <code>https://zero.skillissue.gg</code>.</p>
+            <button id="btn-save-client-id" class="btn-action-ghost btn-save-id">Update Client ID</button>
           </div>
         </div>
       </div>
@@ -698,7 +698,7 @@
   <div id="zm-toast" class="zm-toast-message"></div>
 
   <!-- ZeroMusic Player Engine (Self-contained, ad-free) -->
-  <script src="/zero-music/player.js?v=22"></script>
+  <script src="/zero-music/player.js?v=23"></script>
   <script>
     fetch("/zero-music/latest-v2.json", { cache: "no-store" }).then(r => r.json()).then(feed => {
       const size = feed.size ? " // " + (feed.size / 1048576).toFixed(1) + " MB" : "";

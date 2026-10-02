@@ -1715,10 +1715,12 @@
   let autoSyncDebounceTimer = null;
   let isDriveSyncing = false;
 
+  const DEFAULT_GOOGLE_CLIENT_ID = '789111343204-7eu46t455ilvhpbsp6q2fsbc5gvf866g.apps.googleusercontent.com';
+
   function getGoogleClientId() {
     return localStorage.getItem('zm_google_client_id') ||
            window.ZERO_MUSIC_CLIENT_ID ||
-           '';
+           DEFAULT_GOOGLE_CLIENT_ID;
   }
 
   function setGoogleClientId(id) {

@@ -1758,15 +1758,52 @@
   }
 
   function getGoogleToken() {
-    const token = localStorage.getItem('zm_google_token');
+    return localStorage.getItem('zm_google_token') || null;
+  }
+
+  function isTokenExpired() {
     const exp = parseInt(localStorage.getItem('zm_google_token_exp') || '0', 10);
-    if (!token) return null;
-    if (Date.now() >= exp) {
-      localStorage.removeItem('zm_google_token');
-      localStorage.removeItem('zm_google_token_exp');
-      return null;
-    }
-    return token;
+    return !exp || Date.now() >= exp - 60000;
+  }
+
+  function ensureGoogleToken(interactive = false) {
+    return new Promise((resolve) => {
+      const token = getGoogleToken();
+      if (token && !isTokenExpired()) {
+        resolve(token);
+        return;
+      }
+
+      const clientId = getGoogleClientId();
+      if (!clientId || !window.google?.accounts?.oauth2) {
+        resolve(token || null);
+        return;
+      }
+
+      try {
+        const client = google.accounts.oauth2.initTokenClient({
+          client_id: clientId,
+          scope: GOOGLE_SCOPES,
+          callback: async (resp) => {
+            if (resp && resp.access_token) {
+              const expiresIn = Number(resp.expires_in) || 3500;
+              localStorage.setItem('zm_google_token', resp.access_token);
+              localStorage.setItem('zm_google_token_exp', (Date.now() + expiresIn * 1000).toString());
+              updateSyncStatusBadge('online');
+              resolve(resp.access_token);
+            } else {
+              resolve(interactive ? null : token);
+            }
+          },
+          error_callback: () => {
+            resolve(interactive ? null : token);
+          }
+        });
+        client.requestAccessToken({ prompt: interactive ? 'consent' : '' });
+      } catch (_) {
+        resolve(token || null);
+      }
+    });
   }
 
   // Conversion: Web Track -> Android Track
@@ -2023,7 +2060,7 @@
   // Master Sync Execution
   async function syncWithGoogleDrive(interactive = false) {
     if (isDriveSyncing) return;
-    const token = getGoogleToken();
+    const token = await ensureGoogleToken(interactive);
     if (!token) {
       if (interactive) {
         showToast('Please sign in to Google to sync');
@@ -2076,8 +2113,7 @@
 
   // Debounced auto-sync trigger whenever local library changes
   function triggerAutoSync() {
-    const token = getGoogleToken();
-    if (!token) return;
+    if (!getGoogleUser()) return;
     clearTimeout(autoSyncDebounceTimer);
     autoSyncDebounceTimer = setTimeout(() => {
       syncWithGoogleDrive(false);
@@ -2117,8 +2153,7 @@
   // Render Auth UI (Header pill and Modal stats)
   function renderSyncUI() {
     const user = getGoogleUser();
-    const token = getGoogleToken();
-    const isSignedIn = !!(user && token);
+    const isSignedIn = !!user;
 
     const btnAuth = document.getElementById('btn-google-auth');
     const badgeProfile = document.getElementById('user-profile-badge');
@@ -2324,9 +2359,19 @@
       });
     }
 
-    // Auto-sync on startup if previously signed in and token is fresh
-    if (getGoogleToken()) {
-      syncWithGoogleDrive(false);
+    // Auto-sync on startup if previously signed in (keep them logged in)
+    if (getGoogleUser()) {
+      updateSyncStatusBadge('online');
+      let attempts = 0;
+      const gisInterval = setInterval(() => {
+        attempts++;
+        if (window.google?.accounts?.oauth2) {
+          clearInterval(gisInterval);
+          syncWithGoogleDrive(false);
+        } else if (attempts > 30) {
+          clearInterval(gisInterval);
+        }
+      }, 500);
     }
   }
 

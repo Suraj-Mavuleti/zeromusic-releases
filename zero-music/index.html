@@ -51,7 +51,7 @@
   <!-- Google Identity Services for Drive AppData Cloud Sync -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   <!-- Standalone ZeroMusic Design System (No interference from external css) -->
-  <link rel="stylesheet" href="/zero-music/zm.css?v=24" />
+  <link rel="stylesheet" href="/zero-music/zm.css?v=25" />
   <script>
     (function() {
       var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 820;
@@ -821,7 +821,7 @@
   <div id="zm-toast" class="zm-toast-message"></div>
 
   <!-- ZeroMusic Player Engine (Self-contained, ad-free) -->
-  <script src="/zero-music/player.js?v=24"></script>
+  <script src="/zero-music/player.js?v=25"></script>
   <script>
     fetch("/zero-music/latest-v2.json", { cache: "no-store" }).then(r => r.json()).then(feed => {
       const size = feed.size ? " // " + (feed.size / 1048576).toFixed(1) + " MB" : "";

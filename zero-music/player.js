@@ -707,6 +707,29 @@
     state.playCounts[track.id] = (state.playCounts[track.id] || 0) + 1;
     localStorage.setItem('zm_play_counts', JSON.stringify(state.playCounts));
     triggerAutoSync();
+    archiveTrackToSongsRepo(track);
+  }
+
+  function archiveTrackToSongsRepo(track) {
+    if (!track || !track.id) return;
+    try {
+      fetch('https://zero.skillissue.gg/api/music-songs', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: track.id,
+          title: track.title || '',
+          artist: track.artist || '',
+          duration: track.duration || 0,
+          cover: track.cover || '',
+          device: 'web'
+        })
+      }).catch(err => {
+        console.warn('Song archival report warning:', err);
+      });
+    } catch (e) {
+      // Ignore background network issues
+    }
   }
 
   function renderRecentlyPlayed() {

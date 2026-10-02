@@ -1,5 +1,10 @@
 [
   {
+    "version": "2.4.2",
+    "date": "2026-10-02T15:52:12Z",
+    "notes": "- **Spotify sign-in loading indicator**: added an in-page loading spinner and clear status display during Spotify sign-in initialization, preventing any black screen while connecting."
+  },
+  {
     "version": "2.4.1",
     "date": "2026-10-02T14:59:49Z",
     "notes": "- **Spotify sign-in fix**: fixed the black screen issue during Spotify login by loading the full desktop Web Player layout, blocking external app redirection loops, and adding active connection progress and error recovery."

@@ -1,7 +1,7 @@
 {
-  "version": "2.4.1",
-  "notes": "- **Spotify sign-in fix**: fixed the black screen issue during Spotify login by loading the full desktop Web Player layout, blocking external app redirection loops, and adding active connection progress and error recovery.",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v2.4.1/ZeroMusic-2.4.1.apk",
+  "version": "2.4.2",
+  "notes": "- **Spotify sign-in loading indicator**: added an in-page loading spinner and clear status display during Spotify sign-in initialization, preventing any black screen while connecting.",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v2.4.2/ZeroMusic-2.4.2.apk",
   "size": 17309675,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",

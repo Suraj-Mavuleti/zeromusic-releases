@@ -1774,6 +1774,12 @@
         return;
       }
 
+      // CRITICAL: NEVER open an OAuth prompt automatically on page load or background sync
+      if (!interactive) {
+        resolve(token || null);
+        return;
+      }
+
       const clientId = getGoogleClientId();
       if (!clientId || !window.google?.accounts?.oauth2) {
         resolve(token || null);
@@ -1792,14 +1798,14 @@
               updateSyncStatusBadge('online');
               resolve(resp.access_token);
             } else {
-              resolve(interactive ? null : token);
+              resolve(token || null);
             }
           },
           error_callback: () => {
-            resolve(interactive ? null : token);
+            resolve(token || null);
           }
         });
-        client.requestAccessToken({ prompt: interactive ? 'consent' : '' });
+        client.requestAccessToken({ prompt: 'select_account' });
       } catch (_) {
         resolve(token || null);
       }
@@ -1975,7 +1981,7 @@
   }
 
   // Record user login to zero-music-db via DevZero backend
-  function logUserLoginToDb(user) {
+  function logUserLoginToDb(user, device = 'web') {
     if (!user || !user.email) return;
     fetch(_EP.AUTH_LOG, {
       method: 'POST',
@@ -1984,11 +1990,11 @@
         email: user.email,
         name: user.name || 'Anonymous User',
         avatar: user.avatar || '',
+        device: device,
         stats: {
           likedSongs: state.likedTracks.length,
           playlists: state.playlists.length,
-          historyTracks: state.history.length,
-          platform: 'web-desktop'
+          historyTracks: state.history.length
         }
       })
     }).then(r => r.json()).then(res => {
@@ -2215,7 +2221,7 @@
   }
 
   // Google OAuth Flow
-  function signInWithGoogle() {
+  function signInWithGoogle(device = 'web') {
     const clientId = getGoogleClientId();
     if (!clientId) {
       openSyncModal();
@@ -2236,49 +2242,58 @@
     }
 
     try {
-      if (!googleTokenClient) {
-        googleTokenClient = google.accounts.oauth2.initTokenClient({
-          client_id: clientId,
-          scope: GOOGLE_SCOPES,
-          callback: async (resp) => {
-            if (resp.error) {
-              console.error('Google Sign-in error:', resp);
-              showToast('Google Sign-In: ' + (resp.error_description || resp.error));
-              return;
-            }
-            if (resp.access_token) {
-              const expiresIn = Number(resp.expires_in) || 3500;
-              localStorage.setItem('zm_google_token', resp.access_token);
-              localStorage.setItem('zm_google_token_exp', (Date.now() + expiresIn * 1000).toString());
-
-              // Fetch user profile info
-              try {
-                const profileRes = await fetch(_EP.USERINFO, {
-                  headers: { Authorization: `Bearer ${resp.access_token}` }
-                });
-                if (profileRes.ok) {
-                  const p = await profileRes.json();
-                  const userObj = {
-                    email: p.email,
-                    name: p.name || p.email.split('@')[0],
-                    avatar: p.picture || ''
-                  };
-                  localStorage.setItem('zm_google_user', JSON.stringify(userObj));
-                  logUserLoginToDb(userObj);
-                }
-              } catch (pe) {
-                console.warn('Profile fetch note:', pe);
-              }
-
-              renderSyncUI();
-              showToast('Signed in as ' + (getGoogleUser()?.name || 'Google User'));
-              await syncWithGoogleDrive(true);
-            }
+      googleTokenClient = google.accounts.oauth2.initTokenClient({
+        client_id: clientId,
+        scope: GOOGLE_SCOPES,
+        callback: async (resp) => {
+          if (resp.error) {
+            console.error('Google Sign-in error:', resp);
+            showToast('Google Sign-In: ' + (resp.error_description || resp.error));
+            return;
           }
-        });
-      }
+          if (resp.access_token) {
+            const expiresIn = Number(resp.expires_in) || 3500;
+            localStorage.setItem('zm_google_token', resp.access_token);
+            localStorage.setItem('zm_google_token_exp', (Date.now() + expiresIn * 1000).toString());
 
-      googleTokenClient.requestAccessToken({ prompt: '' });
+            // Fetch user profile info
+            let userObj = null;
+            try {
+              const profileRes = await fetch(_EP.USERINFO, {
+                headers: { Authorization: `Bearer ${resp.access_token}` }
+              });
+              if (profileRes.ok) {
+                const p = await profileRes.json();
+                userObj = {
+                  email: p.email,
+                  name: p.name || p.email.split('@')[0],
+                  avatar: p.picture || ''
+                };
+              }
+            } catch (pe) {
+              console.warn('Profile fetch note:', pe);
+            }
+
+            if (!userObj || !userObj.email) {
+              userObj = {
+                email: 'listener@zeromusic.app',
+                name: 'ZeroMusic Listener',
+                avatar: ''
+              };
+            }
+
+            localStorage.setItem('zm_google_user', JSON.stringify(userObj));
+            logUserLoginToDb(userObj, device);
+
+            renderSyncUI();
+            renderMobileAuthUI();
+            showToast('Signed in as ' + (userObj.name || 'Google User'));
+            await syncWithGoogleDrive(true);
+          }
+        }
+      });
+
+      googleTokenClient.requestAccessToken({ prompt: 'select_account' });
     } catch (e) {
       console.error('Failed to initiate Google Sign-in:', e);
       showToast('OAuth Error: ' + e.message);
@@ -2359,28 +2374,58 @@
       });
     }
 
-    // Auto-sync on startup if previously signed in (keep them logged in)
+    // Keep user logged in permanently on startup
     if (getGoogleUser()) {
       updateSyncStatusBadge('online');
-      let attempts = 0;
-      const gisInterval = setInterval(() => {
-        attempts++;
-        if (window.google?.accounts?.oauth2) {
-          clearInterval(gisInterval);
-          syncWithGoogleDrive(false);
-        } else if (attempts > 30) {
-          clearInterval(gisInterval);
-        }
-      }, 500);
+      // Silently sync only if token is non-null and fresh — NEVER prompt or popup on page load!
+      const token = getGoogleToken();
+      if (token && !isTokenExpired()) {
+        syncWithGoogleDrive(false);
+      }
     }
+  }
+
+  // ── Mobile Device Auth & Telemetry ──
+  function renderMobileAuthUI() {
+    const user = getGoogleUser();
+    const btn = document.getElementById('btn-mobile-google-auth');
+    const badge = document.getElementById('mobile-user-profile-badge');
+    const avatar = document.getElementById('mobile-user-avatar-img');
+    const name = document.getElementById('mobile-user-display-name');
+
+    if (user && user.email) {
+      if (btn) btn.style.display = 'none';
+      if (badge) badge.style.display = 'inline-flex';
+      if (avatar) avatar.src = user.avatar || "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23aaa'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E";
+      if (name) name.textContent = user.name || user.email.split('@')[0];
+    } else {
+      if (btn) btn.style.display = 'inline-flex';
+      if (badge) badge.style.display = 'none';
+    }
+  }
+
+  function initMobileAuth() {
+    renderMobileAuthUI();
+    document.getElementById('btn-mobile-google-auth')?.addEventListener('click', () => {
+      signInWithGoogle('mobile');
+    });
+    // Download APK click tracking
+    document.querySelectorAll('.btn-mobile-download').forEach(el => {
+      el.addEventListener('click', () => {
+        const user = getGoogleUser();
+        if (user && user.email) {
+          logUserLoginToDb(user, 'mobile-apk-download');
+        }
+      });
+    });
   }
 
   // ── Initializer ──
   document.addEventListener('DOMContentLoaded', () => {
     initDeviceRouting();
     if (isAndroidDevice() || isUserMobileDevice()) {
-      // Android / mobile users are strictly restricted to the APK download showcase.
-      // Audio engine, lyrics sync, desktop feeds, and player DOM are never initialized.
+      // Android / mobile users: enable mobile authentication & download tracking
+      initMobileAuth();
       return;
     }
     initYouTubeEngine();

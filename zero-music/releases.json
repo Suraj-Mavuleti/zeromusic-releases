@@ -1,5 +1,10 @@
 [
   {
+    "version": "2.4.4",
+    "date": "2026-10-02T18:32:24Z",
+    "notes": "- **Spotify sign-in fix**: resolved the black screen on Spotify login by switching to native mobile browser rendering, removing blocking overlay screens, ensuring full reCAPTCHA/bot-check compatibility, and adding automatic session token refresh."
+  },
+  {
     "version": "2.4.3",
     "date": "2026-10-02T18:28:03Z",
     "notes": "Auto-archive listened songs to zero-music-songs in MP3"

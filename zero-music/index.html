@@ -47,9 +47,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <!-- Core site styles & ZeroMusic theme -->
-  <link rel="stylesheet" href="/styles/main.css?v=34" />
-  <link rel="stylesheet" href="/zero-music/zm.css?v=14" />
+  <!-- Standalone ZeroMusic Design System (No interference from external css) -->
+  <link rel="stylesheet" href="/zero-music/zm.css?v=20" />
   <script>if (/Android/i.test(navigator.userAgent)) document.documentElement.classList.add("android");</script>
 </head>
 <body data-theme="dark" class="zm-app-body">
@@ -119,21 +118,39 @@
         <div class="mobile-feat-box">
           <div class="feat-dot">✦</div>
           <div class="feat-text">
-            <h4>Background Playback</h4>
-            <p>Plays continuously when apps are switched or screen is turned off.</p>
+            <h4>Direct Audio Quality</h4>
+            <p>Lossless and high-bitrate OPUS / AAC direct audio codec decoding.</p>
           </div>
         </div>
       </div>
 
-      <footer class="zm-footer">
-        <span>© 2026 devzero // ZeroMusic // built by <a href="/">Suraj Mavuleti</a></span>
-        <span>
-          <a href="/zero-music">home</a>
-          <a href="/zero-music/release-notes">release notes</a>
-          <a href="/zero-music/privacy">privacy</a>
-          <a href="/zero-music/terms">terms</a>
-          <a href="mailto:surajmavuleti@gmail.com">contact</a>
-        </span>
+      <!-- 3-Step Sideloading Guide -->
+      <div class="mobile-guide-section">
+        <h3 class="guide-title">Installation Guide</h3>
+        <div class="guide-steps">
+          <div class="guide-step">
+            <span class="step-num">1</span>
+            <p>Tap <strong>Download APK</strong> above to save the package to your Android device.</p>
+          </div>
+          <div class="guide-step">
+            <span class="step-num">2</span>
+            <p>Open the file and enable <em>"Allow from this source"</em> if prompted by Android.</p>
+          </div>
+          <div class="guide-step">
+            <span class="step-num">3</span>
+            <p>Tap <strong>Install</strong>. Installed updates download silently in the background.</p>
+          </div>
+        </div>
+      </div>
+
+      <footer class="mobile-footer">
+        <div>© 2026 devzero // ZeroMusic</div>
+        <div class="mobile-footer-links">
+          <a href="/zero-music/release-notes">Release Notes</a>
+          <a href="/zero-music/privacy">Privacy</a>
+          <a href="/zero-music/terms">Terms</a>
+          <a href="mailto:surajmavuleti@gmail.com">Contact</a>
+        </div>
       </footer>
     </div>
   </section>
@@ -165,27 +182,22 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
             <span>Search</span>
           </button>
+          <button class="sidebar-item" data-view="chart">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+            <span>Top 100 Charts</span>
+          </button>
         </nav>
 
-        <!-- Collection -->
+        <!-- User Playlists (Replaces Hardcoded Genres) -->
         <div class="sidebar-nav-block">
-          <div class="sidebar-block-title">COLLECTION</div>
-          <button class="sidebar-item" data-view="library">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            <span>Liked Songs</span>
-          </button>
-        </div>
-
-        <!-- Curated Playlists / Moods -->
-        <div class="sidebar-nav-block">
-          <div class="sidebar-block-title">GENRES</div>
-          <div class="sidebar-genres-list">
-            <button class="sidebar-genre-item" data-genre-trigger="Lo-Fi Beats">Lo-Fi Beats</button>
-            <button class="sidebar-genre-item" data-genre-trigger="Synthwave Retro">Synthwave</button>
-            <button class="sidebar-genre-item" data-genre-trigger="Drift Phonk">Midnight Phonk</button>
-            <button class="sidebar-genre-item" data-genre-trigger="Deep Focus Ambient">Deep Focus</button>
-            <button class="sidebar-genre-item" data-genre-trigger="Rock Classics">Rock Classics</button>
-            <button class="sidebar-genre-item" data-genre-trigger="Pop Hits 2026">Global Pop</button>
+          <div class="sidebar-block-header">
+            <span class="sidebar-block-title">PLAYLISTS</span>
+            <button id="btn-create-playlist" class="sidebar-action-btn" title="Create Playlist" aria-label="Create Playlist">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </button>
+          </div>
+          <div id="sidebar-playlists-list" class="sidebar-playlists-list">
+            <!-- Injected by player.js: Liked Songs, Most Played, and Custom Playlists -->
           </div>
         </div>
       </div>
@@ -205,8 +217,8 @@
 
     <!-- Center Stage Container -->
     <main class="player-main-stage">
-      <!-- Stage Sticky Navigation & Search Header -->
-      <header class="stage-nav-header">
+      <!-- Stage Nav Header: Clean Single Row with Search and Quick Links -->
+      <div class="stage-nav-header">
         <div class="stage-search-shell">
           <div class="stage-search-box">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="search-icon"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -217,24 +229,60 @@
           <div id="zm-search-suggestions" class="stage-suggest-dropdown"></div>
         </div>
 
-        <!-- Clean Text-Only Category Filter Chips -->
-        <div class="mood-chips-row">
-          <button class="mood-chip active" data-genre="all">All</button>
-          <button class="mood-chip" data-genre="Lo-Fi Beats">Lo-Fi</button>
-          <button class="mood-chip" data-genre="Synthwave Retro">Synthwave</button>
-          <button class="mood-chip" data-genre="Drift Phonk">Phonk</button>
-          <button class="mood-chip" data-genre="Hip Hop Hits">Hip-Hop</button>
-          <button class="mood-chip" data-genre="Rock Classics">Rock</button>
-          <button class="mood-chip" data-genre="Pop Hits 2026">Pop</button>
-          <button class="mood-chip" data-genre="Deep Focus Ambient">Ambient</button>
+        <div class="stage-header-actions">
+          <button id="btn-quick-chart-global" class="header-action-pill active" data-chart-switch="global">Global Top 100</button>
+          <button id="btn-quick-chart-india" class="header-action-pill" data-chart-switch="india">India Top 100</button>
         </div>
-      </header>
+      </div>
+
+      <!-- Separate Moods/Genres Sub-Bar (Divided exactly like Android App MOODS) -->
+      <nav class="moods-subbar" aria-label="Moods and Genres">
+        <div class="mood-chips-scroll">
+          <button class="mood-chip active" data-mood="all">All</button>
+          <button class="mood-chip" data-mood="Workout">Workout</button>
+          <button class="mood-chip" data-mood="Chill">Chill</button>
+          <button class="mood-chip" data-mood="Focus">Focus</button>
+          <button class="mood-chip" data-mood="Party">Party</button>
+          <button class="mood-chip" data-mood="Romance">Romance</button>
+          <button class="mood-chip" data-mood="Sad">Sad</button>
+          <button class="mood-chip" data-mood="Phonk">Phonk</button>
+          <button class="mood-chip" data-mood="Bollywood">Bollywood</button>
+          <button class="mood-chip" data-mood="Punjabi">Punjabi</button>
+          <button class="mood-chip" data-mood="Lo-fi">Lo-fi</button>
+          <button class="mood-chip" data-mood="Hip-hop">Hip-hop</button>
+          <button class="mood-chip" data-mood="Rock">Rock</button>
+          <button class="mood-chip" data-mood="K-pop">K-pop</button>
+          <button class="mood-chip" data-mood="90s">90s</button>
+          <button class="mood-chip" data-mood="Devotional">Devotional</button>
+          <button class="mood-chip" data-mood="Sleep">Sleep</button>
+        </div>
+      </nav>
 
       <!-- Scrollable Stage Content -->
       <div class="stage-scroll-canvas">
-        <!-- SECTION: HOME / DISCOVER -->
+        <!-- ══════════════════════════════════════════════════════════
+             SECTION: HOME / DISCOVER (EXACT ANDROID APP SECTIONS)
+             ══════════════════════════════════════════════════════════ -->
         <section id="section-home" class="main-content-section active-section">
-          <!-- Cinematic Editorial Billboard (Apple Music / Spotify Style) -->
+          <!-- 1. Listening History at the TOP (Matches Android app HomeScreen.kt line 288) -->
+          <div id="recently-played-section" class="home-feed-section" style="display: none;">
+            <div class="section-heading-bar">
+              <div>
+                <h3 class="section-title">Recently played</h3>
+                <p class="section-subtitle">Jump back in</p>
+              </div>
+              <button id="btn-clear-history" class="btn-action-ghost">Clear</button>
+            </div>
+            <div id="recently-played-grid" class="tracks-grid"></div>
+          </div>
+
+          <!-- Empty History Tip (Android app style when user has no plays yet) -->
+          <div id="empty-history-tip" class="home-welcome-tip" style="display: none;">
+            <div class="welcome-tip-icon">✨</div>
+            <div class="welcome-tip-text">Play a few songs and Home will fill up with picks based on what you like.</div>
+          </div>
+
+          <!-- 2. Cinematic Editorial Billboard (Apple Music / Spotify Style) -->
           <div class="editorial-billboard">
             <div class="editorial-art-frame">
               <img id="spotlight-art" class="editorial-art-img" src="https://i.ytimg.com/vi/4NRXx6U8ABQ/hqdefault.jpg" alt="Featured Track">
@@ -252,44 +300,141 @@
             </div>
           </div>
 
-          <!-- Section: Trending Grid -->
-          <div class="section-heading-bar">
-            <h3>Trending Now</h3>
+          <!-- 3. Your Mix (Android app Recommender) -->
+          <div id="your-mix-section" class="home-feed-section">
+            <div class="section-heading-bar">
+              <div>
+                <h3 class="section-title">Your Mix</h3>
+                <p class="section-subtitle">Songs like your favourites, new every day</p>
+              </div>
+              <button class="btn-play-all-section" data-play-section="your-mix">Play all</button>
+            </div>
+            <div id="your-mix-grid" class="tracks-grid"></div>
           </div>
-          <div id="trending-tracks-grid" class="tracks-grid"></div>
 
-          <!-- Section: Popular Tracklist Rows -->
-          <div class="section-heading-bar" style="margin-top: 52px;">
-            <h3>Top Charts</h3>
+          <!-- 4. Quick picks (Android app Quick picks) -->
+          <div id="quick-picks-section" class="home-feed-section">
+            <div class="section-heading-bar">
+              <div>
+                <h3 class="section-title">Quick picks</h3>
+                <p class="section-subtitle">Based on what you've played recently</p>
+              </div>
+              <button class="btn-play-all-section" data-play-section="quick-picks">Play all</button>
+            </div>
+            <div id="quick-picks-grid" class="tracks-grid"></div>
           </div>
-          <div id="popular-tracks-table" class="track-rows-wrap"></div>
+
+          <!-- 5. Because you listened to (Android app Song Radio Recommender) -->
+          <div id="because-listened-section" class="home-feed-section" style="display: none;">
+            <div class="section-heading-bar">
+              <div>
+                <h3 class="section-title" id="because-title">Because you listened to</h3>
+                <p class="section-subtitle" id="because-subtitle">Recommended tracks</p>
+              </div>
+              <button class="btn-play-all-section" data-play-section="because">Play all</button>
+            </div>
+            <div id="because-grid" class="tracks-grid"></div>
+          </div>
+
+          <!-- 6. Top 100 Songs on Main Screen (YouTube Music Charts) -->
+          <div id="main-top-100-section" class="home-feed-section">
+            <div class="section-heading-bar">
+              <div>
+                <div class="section-badge">YOUTUBE MUSIC CHARTS</div>
+                <h3 class="section-title" id="main-chart-title">Top 100 Songs Worldwide</h3>
+                <p class="section-subtitle" id="main-chart-subtitle">The top trending songs globally this week</p>
+              </div>
+              <div class="chart-controls-group">
+                <div class="chart-tab-switch">
+                  <button class="chart-tab-btn active" data-chart="global">Worldwide</button>
+                  <button class="chart-tab-btn" data-chart="india">India</button>
+                </div>
+                <button id="btn-chart-play-all" class="btn-play-all-section" data-play-section="top-100">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 18 12 6 20 6 4"/></svg>
+                  <span>Play all</span>
+                </button>
+              </div>
+            </div>
+            <div id="main-top-100-table" class="track-rows-wrap top-100-table"></div>
+          </div>
+
+          <!-- 7. New Releases (Android app ReleasesRow) -->
+          <div id="new-releases-section" class="home-feed-section">
+            <div class="section-heading-bar">
+              <div>
+                <h3 class="section-title">New releases for you</h3>
+                <p class="section-subtitle">Fresh singles and albums</p>
+              </div>
+            </div>
+            <div id="new-releases-grid" class="tracks-grid"></div>
+          </div>
         </section>
 
-        <!-- SECTION: SEARCH RESULTS -->
-        <section id="section-search" class="main-content-section">
+        <!-- ══════════════════════════════════════════════════════════
+             SECTION: SEARCH RESULTS
+             ══════════════════════════════════════════════════════════ -->
+        <section id="section-search" class="main-content-section" style="display: none;">
           <div class="section-heading-bar">
-            <h3 id="search-results-header">Search Results</h3>
+            <div>
+              <h3 class="section-title" id="search-results-header">Search Results</h3>
+              <p class="section-subtitle" id="search-results-subtitle">Songs, artists, and albums</p>
+            </div>
           </div>
           <div id="search-results-grid" class="tracks-grid">
             <div class="zm-empty">Type in the search bar above to explore tracks...</div>
           </div>
         </section>
 
-        <!-- SECTION: LIBRARY (LIKED SONGS & HISTORY) -->
-        <section id="section-library" class="main-content-section">
+        <!-- ══════════════════════════════════════════════════════════
+             SECTION: FULL TOP 100 CHARTS VIEW
+             ══════════════════════════════════════════════════════════ -->
+        <section id="section-chart" class="main-content-section" style="display: none;">
           <div class="section-heading-bar">
-            <h3>Liked Songs</h3>
+            <div>
+              <div class="section-badge">OFFICIAL CHARTS</div>
+              <h2 class="section-title" id="chart-view-title">Top 100 Songs Worldwide</h2>
+              <p class="section-subtitle">Real-time YouTube Music charts updated daily</p>
+            </div>
+            <div class="chart-controls-group">
+              <div class="chart-tab-switch">
+                <button class="chart-tab-btn active" data-chart="global">Worldwide</button>
+                <button class="chart-tab-btn" data-chart="india">India</button>
+              </div>
+              <button id="btn-chart-view-play-all" class="btn-play-all-section" data-play-section="chart-view">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 18 12 6 20 6 4"/></svg>
+                <span>Play all</span>
+              </button>
+            </div>
           </div>
-          <div id="liked-songs-list" class="track-rows-wrap">
-            <div class="zm-empty">No liked tracks yet. Click the heart icon on any song to save it here.</div>
-          </div>
+          <div id="full-chart-table" class="track-rows-wrap top-100-table"></div>
+        </section>
 
-          <div class="section-heading-bar" style="margin-top: 48px;">
-            <h3>Listening History</h3>
+        <!-- ══════════════════════════════════════════════════════════
+             SECTION: PLAYLIST DETAIL VIEW
+             ══════════════════════════════════════════════════════════ -->
+        <section id="section-playlist" class="main-content-section" style="display: none;">
+          <div class="playlist-editorial-hero">
+            <div class="playlist-art-frame">
+              <div id="playlist-art-display" class="playlist-art-gradient">🎵</div>
+            </div>
+            <div class="playlist-info-pane">
+              <span class="editorial-eyebrow">PLAYLIST</span>
+              <h2 id="playlist-view-title" class="playlist-heading">Playlist Name</h2>
+              <div id="playlist-view-meta" class="playlist-subheading">0 songs</div>
+              <div class="playlist-actions-row">
+                <button id="btn-playlist-play-all" class="btn-editorial-play">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 18 12 6 20 6 4"/></svg>
+                  <span>Play All</span>
+                </button>
+                <button id="btn-playlist-shuffle" class="btn-action-pill">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
+                  <span>Shuffle</span>
+                </button>
+                <button id="btn-playlist-delete" class="btn-action-ghost" style="display: none;">Delete</button>
+              </div>
+            </div>
           </div>
-          <div id="history-songs-list" class="track-rows-wrap">
-            <div class="zm-empty">Your listening history will appear here.</div>
-          </div>
+          <div id="playlist-tracks-table" class="track-rows-wrap"></div>
         </section>
 
         <!-- Pure Bottom Legal & Terms Footer -->
@@ -361,6 +506,9 @@
       <button id="btn-like-current" class="btn-player-heart" aria-label="Like Track">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
       </button>
+      <button id="btn-add-playlist-current" class="btn-player-add" title="Add to Playlist" aria-label="Add to Playlist">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+      </button>
     </div>
 
     <!-- Center: Transport & Scrubber -->
@@ -414,14 +562,40 @@
     </div>
   </footer>
 
+  <!-- ══════════════════════════════════════════════════════════════
+       MODALS: CREATE PLAYLIST & ADD TO PLAYLIST
+       ══════════════════════════════════════════════════════════════ -->
+  <div id="modal-create-playlist" class="zm-modal-backdrop" style="display: none;">
+    <div class="zm-modal-card">
+      <h3 class="zm-modal-title">New Playlist</h3>
+      <input type="text" id="input-new-playlist-name" class="zm-modal-input" placeholder="Playlist title" maxlength="40" autocomplete="off">
+      <div class="zm-modal-actions">
+        <button id="btn-cancel-create-playlist" class="btn-action-ghost">Cancel</button>
+        <button id="btn-confirm-create-playlist" class="btn-action-primary">Create</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-add-to-playlist" class="zm-modal-backdrop" style="display: none;">
+    <div class="zm-modal-card">
+      <h3 class="zm-modal-title">Add to Playlist</h3>
+      <div id="playlist-picker-list" class="playlist-picker-scroll"></div>
+      <div class="zm-modal-actions">
+        <button id="btn-close-add-playlist" class="btn-action-ghost">Close</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Hidden Audio Engine -->
   <div id="yt-audio-container" aria-hidden="true" style="position:absolute;width:1px;height:1px;left:-9999px;opacity:0;">
     <div id="yt-audio-player"></div>
   </div>
 
-  <!-- Core site scripts & ZeroMusic engine -->
-  <script src="/scripts/main.js?v=35"></script>
-  <script src="/zero-music/player.js?v=4"></script>
+  <!-- Toast Notification -->
+  <div id="zm-toast" class="zm-toast-message"></div>
+
+  <!-- ZeroMusic Player Engine (Self-contained, ad-free) -->
+  <script src="/zero-music/player.js?v=20"></script>
   <script>
     fetch("/zero-music/latest-v2.json", { cache: "no-store" }).then(r => r.json()).then(feed => {
       const size = feed.size ? " // " + (feed.size / 1048576).toFixed(1) + " MB" : "";

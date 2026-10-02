@@ -53,30 +53,30 @@
 
   // ── Curated High-Fidelity Seeds (Instant Load & Offline Fallback) ──
   const SEED_YOUR_MIX = [
-    { id: '4NRXx6U8ABQ', title: 'Blinding Lights', artist: 'The Weeknd', duration: '3:20', thumbnail: 'https://i.ytimg.com/vi/4NRXx6U8ABQ/hqdefault.jpg' },
-    { id: '34Na4j8AVgA', title: 'Starboy', artist: 'The Weeknd ft. Daft Punk', duration: '3:50', thumbnail: 'https://i.ytimg.com/vi/34Na4j8AVgA/hqdefault.jpg' },
-    { id: 'TUVcZfQe-Kw', title: 'Levitating', artist: 'Dua Lipa', duration: '3:23', thumbnail: 'https://i.ytimg.com/vi/TUVcZfQe-Kw/hqdefault.jpg' },
-    { id: 'h5Nn9nKrk48', title: 'Save Your Tears', artist: 'The Weeknd', duration: '3:35', thumbnail: 'https://i.ytimg.com/vi/h5Nn9nKrk48/hqdefault.jpg' },
-    { id: 'b8m9zhNAgKs', title: 'Sunflower', artist: 'Post Malone, Swae Lee', duration: '2:38', thumbnail: 'https://i.ytimg.com/vi/b8m9zhNAgKs/hqdefault.jpg' },
-    { id: 'fKopy74weus', title: 'Thunder', artist: 'Imagine Dragons', duration: '3:07', thumbnail: 'https://i.ytimg.com/vi/fKopy74weus/hqdefault.jpg' },
+    { id: '4NRXx6U8ABQ', title: 'Blinding Lights', artist: 'The Weeknd', duration: '3:20', thumbnail: 'https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/6f/bc/e6/6fbce6c4-c38c-72d8-4fd0-66cfff32f679/20UMGIM12176.rgb.jpg/600x600bb.jpg' },
+    { id: '34Na4j8AVgA', title: 'Starboy', artist: 'The Weeknd ft. Daft Punk', duration: '3:50', thumbnail: 'https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/b5/92/bb/b592bb72-52e3-e756-9b26-9f56d08f47ab/16UMGIM67864.rgb.jpg/600x600bb.jpg' },
+    { id: 'TUVcZfQe-Kw', title: 'Levitating', artist: 'Dua Lipa', duration: '3:23', thumbnail: 'https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/6c/11/d6/6c11d681-aa3a-d59e-4c2e-f77e181026ab/190295092665.jpg/600x600bb.jpg' },
+    { id: 'h5Nn9nKrk48', title: 'Save Your Tears', artist: 'The Weeknd', duration: '3:35', thumbnail: 'https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/83/3a/f7/833af71b-2e0c-3303-24f5-8f5c546c073b/20UMGIM21167.rgb.jpg/600x600bb.jpg' },
+    { id: 'b8m9zhNAgKs', title: 'Sunflower', artist: 'Post Malone, Swae Lee', duration: '2:38', thumbnail: 'https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/4b/30/2c/4b302cb6-7a14-5464-4e97-0577e9d0be49/18UMGIM82277.rgb.jpg/600x600bb.jpg' },
+    { id: 'fKopy74weus', title: 'Thunder', artist: 'Imagine Dragons', duration: '3:07', thumbnail: 'https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/11/7a/b8/117ab805-6811-8929-18b9-0fad7baf0c25/17UMGIM98210.rgb.jpg/600x600bb.jpg' },
   ];
 
   const SEED_QUICK_PICKS = [
-    { id: 'yKNxeF4KMsY', title: 'Yellow', artist: 'Coldplay', duration: '4:29', thumbnail: 'https://i.ytimg.com/vi/yKNxeF4KMsY/hqdefault.jpg' },
-    { id: '2Vv-BfVoq4g', title: 'Perfect', artist: 'Ed Sheeran', duration: '4:23', thumbnail: 'https://i.ytimg.com/vi/2Vv-BfVoq4g/hqdefault.jpg' },
-    { id: 'fJ9rUzIMcZQ', title: 'Bohemian Rhapsody', artist: 'Queen', duration: '5:55', thumbnail: 'https://i.ytimg.com/vi/fJ9rUzIMcZQ/hqdefault.jpg' },
-    { id: 'dX3k_QDnzHE', title: 'Midnight City', artist: 'M83', duration: '4:03', thumbnail: 'https://i.ytimg.com/vi/dX3k_QDnzHE/hqdefault.jpg' },
-    { id: 'kXYiU_JCYtU', title: 'Numb', artist: 'Linkin Park', duration: '3:07', thumbnail: 'https://i.ytimg.com/vi/kXYiU_JCYtU/hqdefault.jpg' },
-    { id: 'JGwWNGJdvx8', title: 'Shape of You', artist: 'Ed Sheeran', duration: '3:53', thumbnail: 'https://i.ytimg.com/vi/JGwWNGJdvx8/hqdefault.jpg' },
+    { id: 'yKNxeF4KMsY', title: 'Yellow', artist: 'Coldplay', duration: '4:29', thumbnail: 'https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/f5/93/8c/f5938c49-964c-31d1-4b33-78b634f71fb7/190295978075.jpg/600x600bb.jpg' },
+    { id: '2Vv-BfVoq4g', title: 'Perfect', artist: 'Ed Sheeran', duration: '4:23', thumbnail: 'https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/15/e6/e8/15e6e8a4-4190-6a8b-86c3-ab4a51b88288/190295851286.jpg/600x600bb.jpg' },
+    { id: 'fJ9rUzIMcZQ', title: 'Bohemian Rhapsody', artist: 'Queen', duration: '5:55', thumbnail: 'https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/8b/0a/ea/8b0aea60-6f4a-195b-5958-cdf459c2333b/602527644271.jpg/600x600bb.jpg' },
+    { id: 'dX3k_QDnzHE', title: 'Midnight City', artist: 'M83', duration: '4:03', thumbnail: 'https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/cb/7b/a9/cb7ba903-b5f1-cc21-90db-7a81b7aa0997/724596951057.jpg/600x600bb.jpg' },
+    { id: 'kXYiU_JCYtU', title: 'Numb', artist: 'Linkin Park', duration: '3:07', thumbnail: 'https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/13/44/05/134405bd-9e27-a678-8953-b5f724201f95/093624948988.jpg/600x600bb.jpg' },
+    { id: 'JGwWNGJdvx8', title: 'Shape of You', artist: 'Ed Sheeran', duration: '3:53', thumbnail: 'https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/15/e6/e8/15e6e8a4-4190-6a8b-86c3-ab4a51b88288/190295851286.jpg/600x600bb.jpg' },
   ];
 
   const SEED_NEW_RELEASES = [
-    { id: 'fcnDmrtj6Sk', title: 'Dai Dai', artist: 'Shakira & Burna Boy', duration: '4:01', thumbnail: 'https://i.ytimg.com/vi/fcnDmrtj6Sk/hqdefault.jpg' },
-    { id: 'V9PVRfjEBTI', title: 'BIRDS OF A FEATHER', artist: 'Billie Eilish', duration: '3:30', thumbnail: 'https://i.ytimg.com/vi/V9PVRfjEBTI/hqdefault.jpg' },
-    { id: 'JFcgOboQZ08', title: 'Espresso', artist: 'Sabrina Carpenter', duration: '2:55', thumbnail: 'https://i.ytimg.com/vi/JFcgOboQZ08/hqdefault.jpg' },
-    { id: 'L8eRzOYhLuw', title: 'Taste', artist: 'Sabrina Carpenter', duration: '2:37', thumbnail: 'https://i.ytimg.com/vi/L8eRzOYhLuw/hqdefault.jpg' },
-    { id: 'GzU8KqOY8YA', title: 'Not Like Us', artist: 'Kendrick Lamar', duration: '4:34', thumbnail: 'https://i.ytimg.com/vi/GzU8KqOY8YA/hqdefault.jpg' },
-    { id: 'k2qgadSvNyU', title: 'Good Luck, Babe!', artist: 'Chappell Roan', duration: '3:38', thumbnail: 'https://i.ytimg.com/vi/k2qgadSvNyU/hqdefault.jpg' }
+    { id: 'fcnDmrtj6Sk', title: 'Dai Dai', artist: 'Shakira & Burna Boy', duration: '4:01', thumbnail: 'https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/61/49/8d/61498ded-f0dc-227d-cd1d-2051b5d9f195/196874328590.jpg/600x600bb.jpg' },
+    { id: 'V9PVRfjEBTI', title: 'BIRDS OF A FEATHER', artist: 'Billie Eilish', duration: '3:30', thumbnail: 'https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/92/9f/69/929f69f1-9977-3a44-d674-11f70c852d1b/24UMGIM36186.rgb.jpg/600x600bb.jpg' },
+    { id: 'JFcgOboQZ08', title: 'Espresso', artist: 'Sabrina Carpenter', duration: '2:55', thumbnail: 'https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/a1/1c/ca/a11ccab6-7d4c-e041-d028-998bcebeb709/24UMGIM61704.rgb.jpg/600x600bb.jpg' },
+    { id: 'L8eRzOYhLuw', title: 'Taste', artist: 'Sabrina Carpenter', duration: '2:37', thumbnail: 'https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/f6/15/d0/f615d0ab-e0c4-575d-907e-1cc084642357/24UMGIM61704.rgb.jpg/600x600bb.jpg' },
+    { id: 'GzU8KqOY8YA', title: 'Not Like Us', artist: 'Kendrick Lamar', duration: '4:34', thumbnail: 'https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/31/3a/3f/313a3fbc-bb8f-80c7-b5a2-e226869a38cd/24UMGIM51924.rgb.jpg/600x600bb.jpg' },
+    { id: 'k2qgadSvNyU', title: 'Good Luck, Babe!', artist: 'Chappell Roan', duration: '3:38', thumbnail: 'https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/29/a7/c4/29a7c478-351d-25eb-a116-3e68118cdab8/24UMGIM31246.rgb.jpg/600x600bb.jpg' }
   ];
 
   // ── Device Routing & View Switcher ──
@@ -283,6 +283,80 @@
     if (statusText) statusText.textContent = text;
   }
 
+  // ── Authentic Square Album Cover Art Resolver & Cache ──
+  const COVER_CACHE_KEY = 'zm_cover_art_cache';
+  let coverCache = {};
+  try {
+    coverCache = JSON.parse(localStorage.getItem(COVER_CACHE_KEY) || '{}');
+  } catch(e) {
+    coverCache = {};
+  }
+
+  function saveCoverCache() {
+    try {
+      localStorage.setItem(COVER_CACHE_KEY, JSON.stringify(coverCache));
+    } catch(e) {}
+  }
+
+  function updateArtworkInUI(trackId, coverUrl) {
+    if (!coverUrl) return;
+    document.querySelectorAll(`img[data-track-id="${trackId}"]`).forEach(img => {
+      img.src = coverUrl;
+    });
+    if (state.currentTrack && state.currentTrack.id === trackId) {
+      state.currentTrack.thumbnail = coverUrl;
+      const art = document.getElementById('player-track-art');
+      const largeArt = document.getElementById('lyrics-large-art');
+      if (art) art.src = coverUrl;
+      if (largeArt) largeArt.src = coverUrl;
+      updateMediaSession();
+    }
+  }
+
+  async function resolveTrackCover(track) {
+    if (!track || !track.title) return null;
+    const cacheKey = (track.title + '::' + (track.artist || '')).toLowerCase().trim();
+    if (coverCache[cacheKey]) {
+      track.thumbnail = coverCache[cacheKey];
+      updateArtworkInUI(track.id, coverCache[cacheKey]);
+      return coverCache[cacheKey];
+    }
+
+    // Already an authentic high-resolution square cover (googleusercontent, ggpht, or mzstatic)
+    if (track.thumbnail && !track.thumbnail.includes('i.ytimg.com') && track.thumbnail.startsWith('http')) {
+      coverCache[cacheKey] = track.thumbnail;
+      saveCoverCache();
+      return track.thumbnail;
+    }
+
+    try {
+      const cleanT = (track.title || '').replace(/\s*[\(\[](official\s*(music\s*)?(video|audio)|lyrics?|visualizer|hd|4k|mv)[\)\]]/gi, '').trim();
+      const cleanA = (track.artist || '').replace(/ - Topic$/, '').replace(/VEVO$/, '').trim();
+      const res = await fetch(`https://zero.skillissue.gg/api/music-search?cover=1&title=${encodeURIComponent(cleanT)}&artist=${encodeURIComponent(cleanA)}`);
+      if (res.ok) {
+        const data = await res.json();
+        if (data.cover) {
+          coverCache[cacheKey] = data.cover;
+          saveCoverCache();
+          track.thumbnail = data.cover;
+          updateArtworkInUI(track.id, data.cover);
+          return data.cover;
+        }
+      }
+    } catch(e) {}
+    return null;
+  }
+
+  function batchResolveCovers(tracks, count = 12) {
+    if (!tracks || !tracks.length) return;
+    const candidates = tracks.slice(0, count).filter(t => t.thumbnail && t.thumbnail.includes('i.ytimg.com'));
+    candidates.forEach((t, i) => {
+      setTimeout(() => {
+        resolveTrackCover(t);
+      }, i * 140);
+    });
+  }
+
   // ── Playback Controls ──
   function playTrack(track, queueList, index) {
     if (!track || !track.id) return;
@@ -295,6 +369,9 @@
       state.queue = [track];
       state.queueIndex = 0;
     }
+
+    // Upgrade to official album cover page in background
+    resolveTrackCover(track);
 
     addToHistory(track);
     updatePlayerUI(track);
@@ -934,7 +1011,7 @@
       return `
         <div class="track-row-item ${state.currentTrack && state.currentTrack.id === track.id ? 'active-row' : ''}" data-id="${track.id}" data-index="${idx}">
           <span class="row-index ${rankClass}">#${rank}</span>
-          <img class="row-art-thumb" src="${track.thumbnail}" alt="${escapeHtml(track.title)}" loading="lazy" />
+          <img class="row-art-thumb" src="${track.thumbnail}" alt="${escapeHtml(track.title)}" loading="lazy" data-track-id="${track.id}" />
           <div class="row-meta-col">
             <div class="row-track-name">${escapeHtml(track.title)}</div>
             <div class="row-artist-name">${escapeHtml(track.artist)}</div>
@@ -951,6 +1028,8 @@
         </div>
       `;
     }).join('');
+
+    batchResolveCovers(tracks, 20);
 
     container.querySelectorAll('.track-row-item').forEach(row => {
       const idx = parseInt(row.dataset.index, 10);
@@ -1054,7 +1133,7 @@
     container.innerHTML = tracks.map((track, idx) => `
       <div class="track-card ${state.currentTrack && state.currentTrack.id === track.id ? 'now-playing-card' : ''}" data-id="${track.id}" data-index="${idx}">
         <div class="card-art-box">
-          <img src="${track.thumbnail}" alt="${escapeHtml(track.title)}" loading="lazy" />
+          <img src="${track.thumbnail}" alt="${escapeHtml(track.title)}" loading="lazy" data-track-id="${track.id}" />
           <button class="card-hover-play" aria-label="Play ${escapeHtml(track.title)}">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 18 12 6 20 6 4"/></svg>
           </button>
@@ -1071,6 +1150,8 @@
         </div>
       </div>
     `).join('');
+
+    batchResolveCovers(tracks, 12);
 
     container.querySelectorAll('.track-card').forEach(card => {
       const idx = parseInt(card.dataset.index, 10);
@@ -1113,7 +1194,7 @@
     container.innerHTML = tracks.map((track, idx) => `
       <div class="track-row-item ${state.currentTrack && state.currentTrack.id === track.id ? 'active-row' : ''}" data-id="${track.id}" data-index="${idx}">
         <span class="row-index">${idx + 1}</span>
-        <img class="row-art-thumb" src="${track.thumbnail}" alt="${escapeHtml(track.title)}" loading="lazy" />
+        <img class="row-art-thumb" src="${track.thumbnail}" alt="${escapeHtml(track.title)}" loading="lazy" data-track-id="${track.id}" />
         <div class="row-meta-col">
           <div class="row-track-name">${escapeHtml(track.title)}</div>
           <div class="row-artist-name">${escapeHtml(track.artist)}</div>
@@ -1135,6 +1216,8 @@
         ` : ''}
       </div>
     `).join('');
+
+    batchResolveCovers(tracks, 15);
 
     container.querySelectorAll('.track-row-item').forEach(row => {
       const idx = parseInt(row.dataset.index, 10);
@@ -1186,7 +1269,7 @@
 
     list.innerHTML = state.queue.map((track, i) => `
       <div class="queue-item-card ${i === state.queueIndex ? 'current-playing' : ''}" data-index="${i}">
-        <img class="queue-art-thumb" src="${track.thumbnail}" alt="${escapeHtml(track.title)}" />
+        <img class="queue-art-thumb" src="${track.thumbnail}" alt="${escapeHtml(track.title)}" data-track-id="${track.id}" />
         <div class="queue-info-text">
           <div class="queue-song-name">${escapeHtml(track.title)}</div>
           <div class="queue-song-artist">${escapeHtml(track.artist)}</div>

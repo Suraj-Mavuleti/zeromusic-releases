@@ -53,28 +53,35 @@
   ];
 
   // ── Device Routing & View Switcher ──
-  function initDeviceRouting() {
+  function isUserMobileDevice() {
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
     const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
     const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
     const isSmallScreen = window.innerWidth <= 820;
-    const isMobileDevice = isMobileUA || (isTouch && isSmallScreen);
+    return isMobileUA || (isTouch && isSmallScreen);
+  }
 
+  function initDeviceRouting() {
+    const isMobile = isUserMobileDevice();
     const storedPref = localStorage.getItem('zm_view_preference');
-    const defaultMode = isMobileDevice ? 'download' : 'player';
-    const activeMode = storedPref || defaultMode;
+    // Laptop / Desktop: strictly 'player'. Mobile / Tablet: default 'download' or stored preference
+    const activeMode = isMobile ? (storedPref || 'download') : 'player';
 
     setViewMode(activeMode, false);
 
-    // Header View Switcher Pill
+    // Header View Switcher Pill (only active on mobile/tablet)
     const toggleBtn = document.getElementById('btn-toggle-view');
     if (toggleBtn) {
-      toggleBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const currentMode = document.body.dataset.zmView || defaultMode;
-        const newMode = currentMode === 'player' ? 'download' : 'player';
-        setViewMode(newMode, true);
-      });
+      if (!isMobile) {
+        toggleBtn.style.display = 'none';
+      } else {
+        toggleBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const currentMode = document.body.dataset.zmView || 'download';
+          const newMode = currentMode === 'player' ? 'download' : 'player';
+          setViewMode(newMode, true);
+        });
+      }
     }
 
     // Direct switch triggers inside panes
@@ -88,10 +95,17 @@
   }
 
   function setViewMode(mode, savePreference) {
+    const isMobile = isUserMobileDevice();
+    // Enforce web player only on laptop/desktop
+    if (!isMobile) {
+      mode = 'player';
+    }
+
     document.body.dataset.zmView = mode;
     const downloadView = document.getElementById('zm-download-view');
     const playerView = document.getElementById('zm-player-view');
     const playerDock = document.getElementById('floating-player-dock');
+    const toggleBtn = document.getElementById('btn-toggle-view');
     const toggleIcon = document.getElementById('toggle-icon');
     const toggleText = document.getElementById('toggle-text');
 
@@ -99,8 +113,17 @@
       if (downloadView) downloadView.style.display = 'none';
       if (playerView) playerView.style.display = 'flex';
       if (playerDock) playerDock.style.display = 'flex';
-      if (toggleIcon) toggleIcon.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`;
-      if (toggleText) toggleText.textContent = 'Android APK';
+      
+      // On laptop/desktop, keep toggle button hidden
+      if (toggleBtn) {
+        if (!isMobile) {
+          toggleBtn.style.display = 'none';
+        } else {
+          toggleBtn.style.display = 'inline-flex';
+          if (toggleIcon) toggleIcon.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`;
+          if (toggleText) toggleText.textContent = 'Android APK';
+        }
+      }
 
       if (state.queue.length === 0) {
         state.queue = [...TRENDING_TRACKS];
@@ -114,11 +137,14 @@
       if (downloadView) downloadView.style.display = 'flex';
       if (playerView) playerView.style.display = 'none';
       if (playerDock) playerDock.style.display = 'none';
-      if (toggleIcon) toggleIcon.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>`;
-      if (toggleText) toggleText.textContent = 'Web Player';
+      if (toggleBtn) {
+        toggleBtn.style.display = isMobile ? 'inline-flex' : 'none';
+        if (toggleIcon) toggleIcon.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>`;
+        if (toggleText) toggleText.textContent = 'Web Player';
+      }
     }
 
-    if (savePreference) {
+    if (savePreference && isMobile) {
       localStorage.setItem('zm_view_preference', mode);
       showToast(mode === 'player' ? 'ZeroMusic Web Player Active' : 'Switched to Android Download View');
     }

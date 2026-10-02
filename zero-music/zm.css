@@ -1400,3 +1400,110 @@ body {
   .hero-spotlight-card { flex-direction: column; text-align: center; }
   .spotlight-actions { justify-content: center; }
 }
+
+/* ═════════════════════════════════════════════════════════════════════════
+   PURE BOTTOM FOOTERS (TERMS, PRIVACY, RELEASE NOTES, LEGAL)
+   ═════════════════════════════════════════════════════════════════════════ */
+.zm-player-footer {
+  margin-top: auto;
+  padding-top: 56px;
+  padding-bottom: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-mono, monospace);
+  font-size: 12px;
+  color: var(--zm-text-dim);
+  width: 100%;
+}
+
+.zm-player-footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.zm-player-footer-left a {
+  color: var(--zm-text-muted);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.zm-player-footer-left a:hover {
+  color: var(--zm-orange);
+}
+
+.zm-player-footer-sub {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.02em;
+}
+
+.zm-player-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+}
+
+.zm-player-footer-links a {
+  color: var(--zm-text-muted);
+  text-decoration: none;
+  font-size: 12px;
+  transition: color 0.15s ease;
+}
+
+.zm-player-footer-links a:hover {
+  color: var(--zm-orange);
+  text-decoration: underline;
+}
+
+.zm-footer {
+  margin-top: 60px;
+  padding-top: 32px;
+  padding-bottom: 48px;
+  border-top: 1px solid var(--zm-border);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-mono, monospace);
+  font-size: 12px;
+  color: var(--zm-text-muted);
+  width: 100%;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.zm-footer a {
+  color: var(--zm-text-muted);
+  text-decoration: none;
+  margin-left: 16px;
+  transition: color 0.15s ease;
+}
+
+.zm-footer a:first-child {
+  margin-left: 0;
+}
+
+.zm-footer a:hover {
+  color: var(--zm-orange);
+}
+
+/* ═════════════════════════════════════════════════════════════════════════
+   LAPTOP & DESKTOP RULES
+   - Never show Download APK buttons or banners on laptop/desktop
+   ═════════════════════════════════════════════════════════════════════════ */
+@media (min-width: 801px) {
+  #btn-toggle-view,
+  .zm-view-pill,
+  .sidebar-download-banner {
+    display: none !important;
+  }
+}
+

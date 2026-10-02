@@ -47,7 +47,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <!-- Core site styles & ZeroMusic theme -->
   <link rel="stylesheet" href="/styles/main.css?v=34" />
-  <link rel="stylesheet" href="/zero-music/zm.css?v=11" />
+  <link rel="stylesheet" href="/zero-music/zm.css?v=12" />
   <script src="https://unpkg.com/lenis@1.0.42/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -65,15 +65,12 @@
     </a>
 
     <div class="zm-topbar-actions">
-      <!-- Dynamic View Toggle (Web Player ↔ Android APK) -->
-      <button id="btn-toggle-view" class="zm-view-pill magnetic" aria-label="Toggle Mode">
+      <!-- Dynamic View Toggle (Shown only on mobile/tablet if needed, hidden on laptop) -->
+      <button id="btn-toggle-view" class="zm-view-pill magnetic" aria-label="Toggle Mode" style="display: none;">
         <span id="toggle-icon">🎧</span>
         <span id="toggle-text">Web Player</span>
       </button>
 
-      <a href="/zero-music/release-notes" class="zm-nav-link hide-sm">release notes</a>
-      <a href="/zero-music/privacy" class="zm-nav-link hide-sm">privacy</a>
-      <a href="/zero-music/terms" class="zm-nav-link hide-sm">terms</a>
       <a href="/wiki" class="zm-return-btn magnetic">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
         <span>Return to Core</span>
@@ -247,15 +244,6 @@
         </div>
       </div>
 
-      <!-- Android App Promo Card -->
-      <div class="sidebar-download-banner">
-        <h5>ZeroMusic on Phone</h5>
-        <p>Get background audio and 500+ offline songs on your Android device.</p>
-        <a class="btn-sidebar-apk" href="/zero-music/download/ZeroMusic.apk" download="Zero-Music.apk">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download APK
-        </a>
-      </div>
     </aside>
 
     <!-- Main Stage -->
@@ -339,6 +327,21 @@
           <div class="zm-empty">Your listening history will appear here.</div>
         </div>
       </section>
+
+      <!-- ── Pure Bottom Footer: Legal, Terms, Release Notes, Contact ── -->
+      <footer class="zm-player-footer">
+        <div class="zm-player-footer-left">
+          <span>© 2026 devzero // ZeroMusic // built by <a href="/">Suraj Mavuleti</a></span>
+          <span class="zm-player-footer-sub">Ad-free high-fidelity web audio engine</span>
+        </div>
+        <div class="zm-player-footer-links">
+          <a href="/zero-music">home</a>
+          <a href="/zero-music/release-notes">release notes</a>
+          <a href="/zero-music/privacy">privacy</a>
+          <a href="/zero-music/terms">terms</a>
+          <a href="mailto:surajmavuleti@gmail.com">contact</a>
+        </div>
+      </footer>
     </main>
   </div>
 
@@ -454,7 +457,7 @@
 
   <!-- Core site scripts & ZeroMusic engine -->
   <script src="/scripts/main.js?v=35"></script>
-  <script src="/zero-music/player.js?v=2"></script>
+  <script src="/zero-music/player.js?v=3"></script>
   <script>
     fetch("/zero-music/latest-v2.json", { cache: "no-store" }).then(r => r.json()).then(feed => {
       const size = feed.size ? " // " + (feed.size / 1048576).toFixed(1) + " MB" : "";

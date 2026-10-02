@@ -1,5 +1,10 @@
 [
   {
+    "version": "2.4.3",
+    "date": "2026-10-02T18:28:03Z",
+    "notes": "Auto-archive listened songs to zero-music-songs in MP3"
+  },
+  {
     "version": "2.4.2",
     "date": "2026-10-02T15:52:12Z",
     "notes": "- **Spotify sign-in loading indicator**: added an in-page loading spinner and clear status display during Spotify sign-in initialization, preventing any black screen while connecting."

@@ -703,6 +703,7 @@
 
     state.playCounts[track.id] = (state.playCounts[track.id] || 0) + 1;
     localStorage.setItem('zm_play_counts', JSON.stringify(state.playCounts));
+    triggerAutoSync();
   }
 
   function renderRecentlyPlayed() {
@@ -745,6 +746,7 @@
     if (state.activePlaylistId === 'liked') {
       openPlaylistView('liked');
     }
+    triggerAutoSync();
   }
 
   function getMostPlayedTracks() {
@@ -874,6 +876,7 @@
           showToast(`Deleted "${playlistTitle}"`);
           switchMainView('home');
           renderPlaylistsSidebar();
+          triggerAutoSync();
         }
       };
     }
@@ -892,6 +895,7 @@
     renderPlaylistsSidebar();
     openPlaylistView(newPl.id);
     showToast(`Created playlist "${newPl.name}"`);
+    triggerAutoSync();
   }
 
   function addTrackToPlaylist(playlistId, track) {
@@ -908,6 +912,7 @@
     if (state.activePlaylistId === playlistId) {
       openPlaylistView(playlistId);
     }
+    triggerAutoSync();
   }
 
   function removeTrackFromPlaylist(playlistId, trackId) {
@@ -918,6 +923,7 @@
     renderPlaylistsSidebar();
     openPlaylistView(playlistId);
     showToast('Removed from playlist');
+    triggerAutoSync();
   }
 
   function openAddToPlaylistModal(track) {
@@ -1713,6 +1719,614 @@
     updateBecauseYouListened();
   }
 
+  // ══════════════════════════════════════════════════════════════════════
+  // GOOGLE CLOUD SYNC & CROSS-DEVICE ACCOUNT SYSTEM (Phone ↔ PC)
+  // ══════════════════════════════════════════════════════════════════════
+
+  const GOOGLE_SCOPES = 'https://www.googleapis.com/auth/drive.appdata https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile';
+  const DRIVE_BACKUP_FILE = 'zeromusic-backup.json';
+  let googleTokenClient = null;
+  let autoSyncDebounceTimer = null;
+  let isDriveSyncing = false;
+
+  function getGoogleClientId() {
+    return localStorage.getItem('zm_google_client_id') ||
+           window.ZERO_MUSIC_CLIENT_ID ||
+           '';
+  }
+
+  function setGoogleClientId(id) {
+    if (id) {
+      localStorage.setItem('zm_google_client_id', id.trim());
+    } else {
+      localStorage.removeItem('zm_google_client_id');
+    }
+    googleTokenClient = null;
+  }
+
+  function getGoogleUser() {
+    try {
+      return JSON.parse(localStorage.getItem('zm_google_user') || 'null');
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function getGoogleToken() {
+    const token = localStorage.getItem('zm_google_token');
+    const exp = parseInt(localStorage.getItem('zm_google_token_exp') || '0', 10);
+    if (!token) return null;
+    if (Date.now() >= exp) {
+      localStorage.removeItem('zm_google_token');
+      localStorage.removeItem('zm_google_token_exp');
+      return null;
+    }
+    return token;
+  }
+
+  // Conversion: Web Track -> Android Track
+  function toAndroidTrack(t) {
+    if (!t || !t.id) return null;
+    let durationMs = 0;
+    if (t.durationMs) {
+      durationMs = Number(t.durationMs) || 0;
+    } else if (typeof t.duration === 'string' && t.duration.includes(':')) {
+      const parts = t.duration.split(':').map(Number);
+      if (parts.length === 2) durationMs = (parts[0] * 60 + parts[1]) * 1000;
+      else if (parts.length === 3) durationMs = (parts[0] * 3600 + parts[1] * 60 + parts[2]) * 1000;
+    } else if (typeof t.duration === 'number') {
+      durationMs = Math.round(t.duration > 1000 ? t.duration : t.duration * 1000);
+    }
+    return {
+      id: String(t.id),
+      title: t.title || 'Unknown Title',
+      artist: t.artist || 'Unknown Artist',
+      durationMs: durationMs,
+      artworkUrl: t.thumbnail || t.artworkUrl || `https://i.ytimg.com/vi/${t.id}/hqdefault.jpg`,
+      album: t.album || null
+    };
+  }
+
+  // Conversion: Android Track -> Web Track
+  function fromAndroidTrack(t) {
+    if (!t || !t.id) return null;
+    const durSec = Math.round((t.durationMs || 0) / 1000);
+    const m = Math.floor(durSec / 60);
+    const s = durSec % 60;
+    const durationStr = durSec > 0 ? `${m}:${s < 10 ? '0' : ''}${s}` : '3:30';
+    return {
+      id: String(t.id),
+      title: t.title || 'Unknown Title',
+      artist: t.artist || 'Unknown Artist',
+      duration: durationStr,
+      durationMs: t.durationMs || 0,
+      thumbnail: t.artworkUrl || t.thumbnail || `https://i.ytimg.com/vi/${t.id}/hqdefault.jpg`,
+      artworkUrl: t.artworkUrl || t.thumbnail || `https://i.ytimg.com/vi/${t.id}/hqdefault.jpg`,
+      album: t.album || null
+    };
+  }
+
+  // Build complete backup snapshot matching Android CloudBackup
+  function buildCloudBackupSnapshot() {
+    return {
+      savedAt: Date.now(),
+      liked: state.likedTracks.map(toAndroidTrack).filter(Boolean),
+      playlists: state.playlists.map(p => ({
+        id: p.id,
+        name: p.name,
+        source: 'mine',
+        url: p.url || `playlist:${p.id}`,
+        imageUrl: p.imageUrl || (p.tracks[0]?.thumbnail || null),
+        tracks: (p.tracks || []).map(toAndroidTrack).filter(Boolean),
+        addedAt: p.createdAt || Date.now()
+      })),
+      history: state.history.slice(0, 50).map(t => ({
+        track: toAndroidTrack(t),
+        lastPlayedAt: t.playedAt || Date.now(),
+        plays: state.playCounts[t.id] || 1,
+        seed: false
+      })).filter(h => h.track),
+      mix: null,
+      spotifyMatches: {},
+      autoplay: true,
+      offlineBackup: false,
+      offlineBackupSize: 500,
+      offlineBackupWifiOnly: true,
+      taste: null
+    };
+  }
+
+  // Merge remote backup (from Phone/Google Drive) into local web player state
+  function mergeCloudBackup(remote) {
+    if (!remote) return false;
+    let modified = false;
+
+    // 1. Liked songs merge
+    if (Array.isArray(remote.liked) && remote.liked.length > 0) {
+      const existingLiked = new Set(state.likedTracks.map(t => t.id));
+      const incoming = [];
+      remote.liked.forEach(rt => {
+        const t = fromAndroidTrack(rt);
+        if (t && !existingLiked.has(t.id)) {
+          incoming.push(t);
+          existingLiked.add(t.id);
+        }
+      });
+      if (incoming.length > 0) {
+        state.likedTracks = [...incoming, ...state.likedTracks];
+        localStorage.setItem('zm_liked', JSON.stringify(state.likedTracks));
+        modified = true;
+      }
+    }
+
+    // 2. Playlists merge
+    if (Array.isArray(remote.playlists) && remote.playlists.length > 0) {
+      remote.playlists.forEach(rp => {
+        if (!rp) return;
+        const targetUrl = rp.url || `playlist:${rp.id}`;
+        const existing = state.playlists.find(p => (p.url && p.url === targetUrl) || p.id === rp.id);
+
+        if (existing) {
+          const existingIds = new Set(existing.tracks.map(t => t.id));
+          let plChanged = false;
+          (rp.tracks || []).forEach(rt => {
+            const t = fromAndroidTrack(rt);
+            if (t && !existingIds.has(t.id)) {
+              existing.tracks.push(t);
+              existingIds.add(t.id);
+              plChanged = true;
+            }
+          });
+          if (plChanged) modified = true;
+        } else {
+          state.playlists.push({
+            id: rp.id || 'pl_' + Date.now(),
+            name: rp.name || 'Playlist',
+            url: rp.url || `playlist:${rp.id}`,
+            imageUrl: rp.imageUrl || null,
+            tracks: (rp.tracks || []).map(fromAndroidTrack).filter(Boolean),
+            createdAt: rp.addedAt || Date.now()
+          });
+          modified = true;
+        }
+      });
+      if (modified) {
+        localStorage.setItem('zm_playlists', JSON.stringify(state.playlists));
+      }
+    }
+
+    // 3. Listening history & counts merge
+    if (Array.isArray(remote.history) && remote.history.length > 0) {
+      const histMap = new Map(state.history.map(t => [t.id, t]));
+      let histChanged = false;
+      remote.history.forEach(rec => {
+        if (rec && rec.track && rec.track.id) {
+          const trackId = rec.track.id;
+          state.playCounts[trackId] = Math.max(state.playCounts[trackId] || 0, rec.plays || 1);
+          if (!histMap.has(trackId)) {
+            const t = fromAndroidTrack(rec.track);
+            if (t) {
+              t.playedAt = rec.lastPlayedAt || Date.now();
+              histMap.set(trackId, t);
+              state.history.push(t);
+              histChanged = true;
+            }
+          }
+        }
+      });
+      if (histChanged) {
+        state.history.sort((a, b) => (b.playedAt || 0) - (a.playedAt || 0));
+        state.history = state.history.slice(0, 50);
+        localStorage.setItem('zm_history', JSON.stringify(state.history));
+        localStorage.setItem('zm_play_counts', JSON.stringify(state.playCounts));
+        modified = true;
+      }
+    }
+
+    if (modified) {
+      renderPlaylistsSidebar();
+      renderRecentlyPlayed();
+      if (state.activePlaylistId === 'liked') openPlaylistView('liked');
+      if (state.currentTrack) updatePlayerUI(state.currentTrack);
+    }
+    return modified;
+  }
+
+  // Record user login to zero-music-db via DevZero backend
+  function logUserLoginToDb(user) {
+    if (!user || !user.email) return;
+    fetch('/api/music-auth', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: user.email,
+        name: user.name || 'Anonymous User',
+        avatar: user.avatar || '',
+        stats: {
+          likedSongs: state.likedTracks.length,
+          playlists: state.playlists.length,
+          historyTracks: state.history.length,
+          platform: 'web-desktop'
+        }
+      })
+    }).then(r => r.json()).then(res => {
+      console.log('ZeroMusic user logged to zero-music-db:', res);
+    }).catch(err => {
+      console.warn('Logging notice:', err);
+    });
+  }
+
+  // Google Drive REST APIs for hidden appDataFolder
+  async function findDriveBackupFile(token) {
+    const q = encodeURIComponent(`name = '${DRIVE_BACKUP_FILE}' and 'appDataFolder' in parents and trashed = false`);
+    const res = await fetch(`https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&q=${q}&fields=files(id,name,modifiedTime)`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    if (!res.ok) throw new Error(`Drive list error (${res.status})`);
+    const data = await res.json();
+    return (data.files && data.files.length > 0) ? data.files[0].id : null;
+  }
+
+  async function downloadDriveBackup(token, fileId) {
+    const res = await fetch(`https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    if (!res.ok) throw new Error(`Drive download error (${res.status})`);
+    return await res.json();
+  }
+
+  async function uploadDriveBackup(token, fileId, backupData) {
+    const bodyStr = JSON.stringify(backupData);
+    if (fileId) {
+      const res = await fetch(`https://www.googleapis.com/upload/drive/v3/files/${fileId}?uploadType=media`, {
+        method: 'PATCH',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: bodyStr
+      });
+      if (!res.ok) throw new Error(`Drive upload error (${res.status})`);
+      return await res.json();
+    } else {
+      // Step 1: Create metadata entry in appDataFolder
+      const metaRes = await fetch('https://www.googleapis.com/drive/v3/files', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: DRIVE_BACKUP_FILE,
+          parents: ['appDataFolder']
+        })
+      });
+      if (!metaRes.ok) throw new Error(`Drive init error (${metaRes.status})`);
+      const meta = await metaRes.json();
+      // Step 2: Upload payload
+      const uploadRes = await fetch(`https://www.googleapis.com/upload/drive/v3/files/${meta.id}?uploadType=media`, {
+        method: 'PATCH',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: bodyStr
+      });
+      if (!uploadRes.ok) throw new Error(`Drive write error (${uploadRes.status})`);
+      return await uploadRes.json();
+    }
+  }
+
+  // Master Sync Execution
+  async function syncWithGoogleDrive(interactive = false) {
+    if (isDriveSyncing) return;
+    const token = getGoogleToken();
+    if (!token) {
+      if (interactive) {
+        showToast('Please sign in to Google to sync');
+        signInWithGoogle();
+      }
+      return;
+    }
+
+    isDriveSyncing = true;
+    updateSyncStatusBadge('syncing');
+
+    try {
+      // 1. Locate backup in Drive AppData
+      const fileId = await findDriveBackupFile(token);
+
+      // 2. Download and merge if file already exists
+      if (fileId) {
+        try {
+          const remoteBackup = await downloadDriveBackup(token, fileId);
+          mergeCloudBackup(remoteBackup);
+        } catch (e) {
+          console.warn('Could not read existing remote backup, writing local snapshot:', e);
+        }
+      }
+
+      // 3. Upload merged snapshot back to Drive
+      const snapshot = buildCloudBackupSnapshot();
+      await uploadDriveBackup(token, fileId, snapshot);
+
+      localStorage.setItem('zm_last_synced_at', Date.now().toString());
+      updateSyncStatusBadge('online');
+
+      if (interactive) {
+        showToast('Synced with your Android phone ♥');
+      }
+
+      const user = getGoogleUser();
+      if (user) logUserLoginToDb(user);
+    } catch (err) {
+      console.error('Drive sync failed:', err);
+      updateSyncStatusBadge('error');
+      if (interactive) {
+        showToast('Sync error: ' + (err.message || 'Please check connection'));
+      }
+    } finally {
+      isDriveSyncing = false;
+      renderSyncUI();
+    }
+  }
+
+  // Debounced auto-sync trigger whenever local library changes
+  function triggerAutoSync() {
+    const token = getGoogleToken();
+    if (!token) return;
+    clearTimeout(autoSyncDebounceTimer);
+    autoSyncDebounceTimer = setTimeout(() => {
+      syncWithGoogleDrive(false);
+    }, 2000);
+  }
+
+  // Update Status Dots & Badges
+  function updateSyncStatusBadge(status) {
+    const dot = document.querySelector('#user-sync-status .sync-status-dot');
+    const badge = document.getElementById('sync-modal-status-badge');
+    const syncText = document.getElementById('btn-modal-sync-text');
+
+    if (dot) {
+      dot.className = 'sync-status-dot ' + (status === 'syncing' ? 'syncing' : (status === 'online' ? 'online' : ''));
+    }
+    if (badge) {
+      if (status === 'syncing') {
+        badge.className = 'sync-badge';
+        badge.textContent = 'Syncing...';
+      } else if (status === 'online') {
+        badge.className = 'sync-badge active';
+        badge.textContent = 'Phone Synced';
+      } else if (status === 'error') {
+        badge.className = 'sync-badge';
+        badge.style.color = '#ef4444';
+        badge.textContent = 'Sync Error';
+      } else {
+        badge.className = 'sync-badge';
+        badge.textContent = 'Disconnected';
+      }
+    }
+    if (syncText) {
+      syncText.textContent = status === 'syncing' ? 'Syncing...' : 'Sync Now';
+    }
+  }
+
+  // Render Auth UI (Header pill and Modal stats)
+  function renderSyncUI() {
+    const user = getGoogleUser();
+    const token = getGoogleToken();
+    const isSignedIn = !!(user && token);
+
+    const btnAuth = document.getElementById('btn-google-auth');
+    const badgeProfile = document.getElementById('user-profile-badge');
+    const avatarImg = document.getElementById('user-avatar-img');
+    const nameEl = document.getElementById('user-display-name');
+
+    if (isSignedIn) {
+      if (btnAuth) btnAuth.style.display = 'none';
+      if (badgeProfile) badgeProfile.style.display = 'flex';
+      if (avatarImg) {
+        avatarImg.src = user.avatar || "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23aaa'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E";
+      }
+      if (nameEl) nameEl.textContent = user.name || user.email.split('@')[0];
+    } else {
+      if (btnAuth) btnAuth.style.display = 'flex';
+      if (badgeProfile) badgeProfile.style.display = 'none';
+    }
+
+    // Modal elements
+    const modalAvatar = document.getElementById('sync-modal-avatar');
+    const modalName = document.getElementById('sync-modal-name');
+    const modalEmail = document.getElementById('sync-modal-email');
+    const modalTime = document.getElementById('sync-modal-time');
+    const btnSignOut = document.getElementById('btn-modal-sign-out');
+
+    if (modalAvatar) {
+      modalAvatar.src = (user && user.avatar) ? user.avatar : "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23666'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E";
+    }
+    if (modalName) modalName.textContent = user ? (user.name || 'Google User') : 'Not Signed In';
+    if (modalEmail) modalEmail.textContent = user ? user.email : 'Sign in with Google to enable cross-device sync';
+
+    const lastSync = parseInt(localStorage.getItem('zm_last_synced_at') || '0', 10);
+    if (modalTime) {
+      if (lastSync > 0) {
+        const d = new Date(lastSync);
+        modalTime.textContent = 'Last: ' + d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      } else {
+        modalTime.textContent = 'Never synced';
+      }
+    }
+
+    if (btnSignOut) {
+      btnSignOut.style.display = isSignedIn ? 'block' : 'none';
+    }
+
+    // Stats
+    const statLiked = document.getElementById('sync-stat-liked');
+    const statPlaylists = document.getElementById('sync-stat-playlists');
+    const statHistory = document.getElementById('sync-stat-history');
+    if (statLiked) statLiked.textContent = state.likedTracks.length;
+    if (statPlaylists) statPlaylists.textContent = state.playlists.length;
+    if (statHistory) statHistory.textContent = state.history.length;
+
+    // Client ID input
+    const inputClientId = document.getElementById('input-custom-client-id');
+    if (inputClientId && !inputClientId.value) {
+      inputClientId.value = getGoogleClientId();
+    }
+  }
+
+  // Google OAuth Flow
+  function signInWithGoogle() {
+    const clientId = getGoogleClientId();
+    if (!clientId) {
+      openSyncModal();
+      const drawer = document.getElementById('sync-client-id-drawer');
+      if (drawer) drawer.style.display = 'block';
+      const input = document.getElementById('input-custom-client-id');
+      if (input) {
+        input.focus();
+        input.scrollIntoView({ behavior: 'smooth' });
+      }
+      showToast('Please enter your Google Cloud Web Client ID');
+      return;
+    }
+
+    if (!window.google || !window.google.accounts || !window.google.accounts.oauth2) {
+      showToast('Google Services initializing, please try again in a moment...');
+      return;
+    }
+
+    try {
+      if (!googleTokenClient) {
+        googleTokenClient = google.accounts.oauth2.initTokenClient({
+          client_id: clientId,
+          scope: GOOGLE_SCOPES,
+          callback: async (resp) => {
+            if (resp.error) {
+              console.error('Google Sign-in error:', resp);
+              showToast('Google Sign-In: ' + (resp.error_description || resp.error));
+              return;
+            }
+            if (resp.access_token) {
+              const expiresIn = Number(resp.expires_in) || 3500;
+              localStorage.setItem('zm_google_token', resp.access_token);
+              localStorage.setItem('zm_google_token_exp', (Date.now() + expiresIn * 1000).toString());
+
+              // Fetch user profile info
+              try {
+                const profileRes = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
+                  headers: { Authorization: `Bearer ${resp.access_token}` }
+                });
+                if (profileRes.ok) {
+                  const p = await profileRes.json();
+                  const userObj = {
+                    email: p.email,
+                    name: p.name || p.email.split('@')[0],
+                    avatar: p.picture || ''
+                  };
+                  localStorage.setItem('zm_google_user', JSON.stringify(userObj));
+                  logUserLoginToDb(userObj);
+                }
+              } catch (pe) {
+                console.warn('Profile fetch note:', pe);
+              }
+
+              renderSyncUI();
+              showToast('Signed in as ' + (getGoogleUser()?.name || 'Google User'));
+              await syncWithGoogleDrive(true);
+            }
+          }
+        });
+      }
+
+      googleTokenClient.requestAccessToken({ prompt: '' });
+    } catch (e) {
+      console.error('Failed to initiate Google Sign-in:', e);
+      showToast('OAuth Error: ' + e.message);
+    }
+  }
+
+  function signOutGoogle() {
+    const token = localStorage.getItem('zm_google_token');
+    if (token && window.google?.accounts?.oauth2?.revoke) {
+      try { google.accounts.oauth2.revoke(token, () => {}); } catch (_) {}
+    }
+    localStorage.removeItem('zm_google_token');
+    localStorage.removeItem('zm_google_token_exp');
+    localStorage.removeItem('zm_google_user');
+    updateSyncStatusBadge('disconnected');
+    renderSyncUI();
+    showToast('Signed out of Google Sync');
+  }
+
+  function openSyncModal() {
+    renderSyncUI();
+    const modal = document.getElementById('modal-sync-account');
+    if (modal) modal.style.display = 'flex';
+  }
+
+  function closeSyncModal() {
+    const modal = document.getElementById('modal-sync-account');
+    if (modal) modal.style.display = 'none';
+  }
+
+  function initGoogleAuth() {
+    renderSyncUI();
+
+    // Event listeners
+    document.getElementById('btn-google-auth')?.addEventListener('click', signInWithGoogle);
+    document.getElementById('btn-open-sync-modal')?.addEventListener('click', openSyncModal);
+    document.getElementById('btn-quick-sync')?.addEventListener('click', () => syncWithGoogleDrive(true));
+    document.getElementById('btn-user-signout')?.addEventListener('click', signOutGoogle);
+    document.getElementById('btn-close-sync-modal')?.addEventListener('click', closeSyncModal);
+    document.getElementById('btn-modal-sync-now')?.addEventListener('click', () => syncWithGoogleDrive(true));
+    document.getElementById('btn-modal-sign-out')?.addEventListener('click', () => {
+      signOutGoogle();
+      closeSyncModal();
+    });
+
+    const backdrop = document.getElementById('modal-sync-account');
+    if (backdrop) {
+      backdrop.addEventListener('click', (e) => {
+        if (e.target === backdrop) closeSyncModal();
+      });
+    }
+
+    // Client ID drawer toggle and save
+    const btnToggleDrawer = document.getElementById('btn-toggle-client-id');
+    const drawer = document.getElementById('sync-client-id-drawer');
+    const btnSaveClientId = document.getElementById('btn-save-client-id');
+    const inputClientId = document.getElementById('input-custom-client-id');
+
+    if (btnToggleDrawer && drawer) {
+      btnToggleDrawer.addEventListener('click', () => {
+        drawer.style.display = drawer.style.display === 'none' ? 'block' : 'none';
+      });
+    }
+
+    if (btnSaveClientId && inputClientId) {
+      btnSaveClientId.addEventListener('click', () => {
+        const val = inputClientId.value.trim();
+        if (val) {
+          setGoogleClientId(val);
+          showToast('Saved Google Client ID');
+          if (drawer) drawer.style.display = 'none';
+          if (!getGoogleToken()) {
+            signInWithGoogle();
+          }
+        } else {
+          showToast('Please enter a valid Client ID');
+        }
+      });
+    }
+
+    // Auto-sync on startup if previously signed in and token is fresh
+    if (getGoogleToken()) {
+      syncWithGoogleDrive(false);
+    }
+  }
+
   // ── Initializer ──
   document.addEventListener('DOMContentLoaded', () => {
     initDeviceRouting();
@@ -1720,6 +2334,7 @@
     initSearch();
     initUIListeners();
     initHomeFeeds();
+    initGoogleAuth();
   });
 
 })();

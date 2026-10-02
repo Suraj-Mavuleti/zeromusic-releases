@@ -50,8 +50,14 @@
   <!-- Google Identity Services for Drive AppData Cloud Sync -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   <!-- Standalone ZeroMusic Design System (No interference from external css) -->
-  <link rel="stylesheet" href="/zero-music/zm.css?v=21" />
-  <script>if (/Android/i.test(navigator.userAgent)) document.documentElement.classList.add("android");</script>
+  <link rel="stylesheet" href="/zero-music/zm.css?v=22" />
+  <script>
+    (function() {
+      var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 820;
+      if (isMobile) document.documentElement.classList.add("mobile-device");
+      if (/Android/i.test(navigator.userAgent)) document.documentElement.classList.add("android");
+    })();
+  </script>
 </head>
 <body data-theme="dark" class="zm-app-body">
 
@@ -65,10 +71,6 @@
         <span class="zm-mobile-title">ZeroMusic</span>
       </a>
       <div class="zm-mobile-actions">
-        <button id="btn-toggle-view" class="zm-mobile-toggle-btn" aria-label="Toggle Player">
-          <span id="toggle-icon">🎧</span>
-          <span id="toggle-text">Web Player</span>
-        </button>
         <a href="/wiki" class="zm-mobile-core-link">Core</a>
       </div>
     </header>
@@ -87,10 +89,6 @@
             <span>Download APK</span>
             <span class="mobile-version-badge" id="version">Latest</span>
           </a>
-          <button class="btn-mobile-webplayer" data-switch-view="player">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 18 12 6 20 6 4"/></svg>
-            <span>Launch Web Player</span>
-          </button>
         </div>
       </div>
 
@@ -700,7 +698,7 @@
   <div id="zm-toast" class="zm-toast-message"></div>
 
   <!-- ZeroMusic Player Engine (Self-contained, ad-free) -->
-  <script src="/zero-music/player.js?v=21"></script>
+  <script src="/zero-music/player.js?v=22"></script>
   <script>
     fetch("/zero-music/latest-v2.json", { cache: "no-store" }).then(r => r.json()).then(feed => {
       const size = feed.size ? " // " + (feed.size / 1048576).toFixed(1) + " MB" : "";

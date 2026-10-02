@@ -79,62 +79,53 @@
     { id: 'k2qgadSvNyU', title: 'Good Luck, Babe!', artist: 'Chappell Roan', duration: '3:38', thumbnail: 'https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/29/a7/c4/29a7c478-351d-25eb-a116-3e68118cdab8/24UMGIM31246.rgb.jpg/600x600bb.jpg' }
   ];
 
-  // ── Device Routing & View Switcher ──
+  // ── Device Routing & Access Control ──
+  function isAndroidDevice() {
+    const ua = navigator.userAgent || navigator.vendor || window.opera || '';
+    return /Android/i.test(ua);
+  }
+
   function isUserMobileDevice() {
-    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera || '';
     const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
     const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
     const isSmallScreen = window.innerWidth <= 820;
-    return isMobileUA || (isTouch && isSmallScreen);
+    return isAndroidDevice() || isMobileUA || (isTouch && isSmallScreen);
   }
 
   function initDeviceRouting() {
-    const isMobile = isUserMobileDevice();
-    const storedPref = localStorage.getItem('zm_view_preference');
-    const activeMode = isMobile ? (storedPref || 'download') : 'player';
+    const isRestricted = isAndroidDevice() || isUserMobileDevice();
 
-    setViewMode(activeMode, false);
-
-    const toggleBtn = document.getElementById('btn-toggle-view');
-    if (toggleBtn) {
-      if (!isMobile) {
-        toggleBtn.style.display = 'none';
-      } else {
-        toggleBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          const currentMode = document.body.dataset.zmView || 'download';
-          const newMode = currentMode === 'player' ? 'download' : 'player';
-          setViewMode(newMode, true);
-        });
-      }
+    if (isRestricted) {
+      // Android & Mobile devices are strictly locked to the APK download view
+      localStorage.removeItem('zm_view_preference');
+      setViewMode('download', false);
+      return;
     }
 
-    document.querySelectorAll('[data-switch-view]').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const targetView = btn.dataset.switchView;
-        setViewMode(targetView, true);
-      });
-    });
+    // Laptop & Desktop users get the Web Player
+    setViewMode('player', false);
   }
 
   function setViewMode(mode, savePreference) {
-    const isMobile = isUserMobileDevice();
-    if (!isMobile) mode = 'player';
+    const isRestricted = isAndroidDevice() || isUserMobileDevice();
+
+    // STRICT LOCK: Android and mobile devices CANNOT access the web player under any circumstance
+    if (isRestricted) {
+      mode = 'download';
+    } else {
+      mode = 'player';
+    }
 
     document.body.dataset.zmView = mode;
     const downloadView = document.getElementById('zm-download-view');
     const playerView = document.getElementById('zm-player-view');
     const playerDock = document.getElementById('floating-player-dock');
-    const toggleBtn = document.getElementById('btn-toggle-view');
-    const toggleIcon = document.getElementById('toggle-icon');
-    const toggleText = document.getElementById('toggle-text');
 
     if (mode === 'player') {
       if (downloadView) downloadView.style.display = 'none';
       if (playerView) playerView.style.display = 'flex';
       if (playerDock) playerDock.style.display = 'flex';
-      if (toggleBtn) toggleBtn.style.display = isMobile ? 'inline-flex' : 'none';
 
       if (state.queue.length === 0) {
         state.queue = [...SEED_YOUR_MIX];
@@ -147,16 +138,11 @@
       if (downloadView) downloadView.style.display = 'flex';
       if (playerView) playerView.style.display = 'none';
       if (playerDock) playerDock.style.display = 'none';
-      if (toggleBtn) {
-        toggleBtn.style.display = isMobile ? 'inline-flex' : 'none';
-        if (toggleIcon) toggleIcon.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>`;
-        if (toggleText) toggleText.textContent = 'Web Player';
-      }
-    }
 
-    if (savePreference && isMobile) {
-      localStorage.setItem('zm_view_preference', mode);
-      showToast(mode === 'player' ? 'ZeroMusic Web Player Active' : 'Switched to Android Download View');
+      // Terminate audio engine playback if on Android/mobile
+      if (state.isPlaying && ytPlayer && typeof ytPlayer.stopVideo === 'function') {
+        try { ytPlayer.stopVideo(); } catch (_) {}
+      }
     }
   }
 
@@ -2330,6 +2316,11 @@
   // ── Initializer ──
   document.addEventListener('DOMContentLoaded', () => {
     initDeviceRouting();
+    if (isAndroidDevice() || isUserMobileDevice()) {
+      // Android / mobile users are strictly restricted to the APK download showcase.
+      // Audio engine, lyrics sync, desktop feeds, and player DOM are never initialized.
+      return;
+    }
     initYouTubeEngine();
     initSearch();
     initUIListeners();

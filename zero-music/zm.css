@@ -2236,3 +2236,52 @@ html, body.zm-app-body {
     display: none;
   }
 }
+
+/* ═════════════════════════════════════════════════════════════════════════
+   STRICT DEVICE ACCESS CONTROL: ANDROID RESTRICTED TO DOWNLOAD VIEW
+   ═════════════════════════════════════════════════════════════════════════ */
+html.android #zm-player-view,
+html.android #floating-player-dock,
+html.android #modal-sync-account,
+html.android #yt-audio-container,
+html.android .btn-mobile-webplayer,
+html.android #btn-toggle-view,
+html.mobile-device #zm-player-view,
+html.mobile-device #floating-player-dock,
+html.mobile-device #modal-sync-account,
+html.mobile-device #yt-audio-container,
+html.mobile-device .btn-mobile-webplayer,
+html.mobile-device #btn-toggle-view,
+body[data-zm-view="download"] #zm-player-view,
+body[data-zm-view="download"] #floating-player-dock,
+body[data-zm-view="download"] #modal-sync-account,
+body[data-zm-view="download"] #yt-audio-container {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  height: 0 !important;
+  width: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+}
+
+html.android #zm-download-view,
+html.mobile-device #zm-download-view,
+body[data-zm-view="download"] #zm-download-view {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Desktop & Laptop Users: Strictly Web Player */
+html:not(.android):not(.mobile-device) body[data-zm-view="player"] #zm-download-view {
+  display: none !important;
+}
+
+html:not(.android):not(.mobile-device) body[data-zm-view="player"] #zm-player-view {
+  display: flex !important;
+}
+
+html:not(.android):not(.mobile-device) body[data-zm-view="player"] #floating-player-dock {
+  display: flex !important;
+}

@@ -1,8 +1,8 @@
 {
-  "version": "2.3",
-  "notes": "Smart playlists (Most played, Recently added, Forgotten favourites, Never played), app icon shortcuts (Resume, Shuffle liked, Search, Car mode), and Blend: a shared playlist of you and your friends' favourites",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v2.3/ZeroMusic-2.3.apk",
-  "size": 17276903,
+  "version": "2.4",
+  "notes": "Spotify library import: import Liked Songs and playlists with free web sign-in, persistent browser sessions for Spotify and YouTube Music",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v2.4/ZeroMusic-2.4.apk",
+  "size": 17309671,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk"

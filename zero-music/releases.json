@@ -1,5 +1,10 @@
 [
   {
+    "version": "2.4",
+    "date": "2026-10-02T14:16:15Z",
+    "notes": "Spotify library import: import Liked Songs and playlists with free web sign-in, persistent browser sessions for Spotify and YouTube Music"
+  },
+  {
     "version": "2.3",
     "date": "2026-10-01T08:59:22Z",
     "notes": "- **Smart playlists** in Library: Most played, Recently added, Forgotten favourites and Never played. They update by themselves.\n- **App shortcuts**: long-press the app icon for Resume, Shuffle liked, Search and Car mode.\n- **Blend**: one playlist of you and your friends' favourites, refreshed every day. Library → Blend with a friend."

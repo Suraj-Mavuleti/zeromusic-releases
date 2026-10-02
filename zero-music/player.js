@@ -1,8 +1,10 @@
 /**
- * ZeroMusic Web Player Engine
+ * ZeroMusic Web Player Engine v2.0
+ * - Ultra-Modern Glassmorphic UI with Dynamic Ambient Palette
  * - Ad-Free YouTube Playback via Privacy Sandbox + Active Ad-Shield Watchdog
- * - Real-Time As-You-Type Search & Suggestions
- * - Time-Synced Karaoke Lyrics powered by LRCLIB
+ * - Real-Time Animated Equalizer Canvas Visualizer
+ * - As-You-Type Search & Autocomplete
+ * - Apple Music-Style Immersive Synced Lyrics (LRCLIB)
  * - LocalStorage Library (Liked Songs, History, Playlists)
  * - MediaSession API & Keyboard Shortcuts
  * - Device Detection & View Switcher (Desktop Web Player vs Mobile Download Pane)
@@ -25,17 +27,16 @@
     repeatMode: parseInt(localStorage.getItem('zm_repeat') || '0', 10), // 0: off, 1: all, 2: one
     likedTracks: JSON.parse(localStorage.getItem('zm_liked') || '[]'),
     history: JSON.parse(localStorage.getItem('zm_history') || '[]'),
-    playlists: JSON.parse(localStorage.getItem('zm_playlists') || '[]'),
     lyrics: [],
     activeLyricIndex: -1,
-    activeView: 'home', // 'home', 'search', 'library', 'lyrics'
+    activeView: 'home',
     isLyricsOpen: false,
     isQueueOpen: false,
     adShieldActive: true,
     isBypassingAd: false,
   };
 
-  // ── Curated Starter Tracks (Home / Trending Hits) ──
+  // ── Curated High-Fidelity Starter Tracks ──
   const TRENDING_TRACKS = [
     { id: '4NRXx6U8ABQ', title: 'Blinding Lights', artist: 'The Weeknd', duration: '3:20', thumbnail: 'https://i.ytimg.com/vi/4NRXx6U8ABQ/hqdefault.jpg' },
     { id: '34Na4j8AVgA', title: 'Starboy', artist: 'The Weeknd ft. Daft Punk', duration: '3:50', thumbnail: 'https://i.ytimg.com/vi/34Na4j8AVgA/hqdefault.jpg' },
@@ -46,7 +47,7 @@
     { id: 'b8m9zhNAgKs', title: 'Sunflower', artist: 'Post Malone, Swae Lee', duration: '2:38', thumbnail: 'https://i.ytimg.com/vi/b8m9zhNAgKs/hqdefault.jpg' },
     { id: 'fJ9rUzIMcZQ', title: 'Bohemian Rhapsody', artist: 'Queen', duration: '5:55', thumbnail: 'https://i.ytimg.com/vi/fJ9rUzIMcZQ/hqdefault.jpg' },
     { id: 'fKopy74weus', title: 'Thunder', artist: 'Imagine Dragons', duration: '3:07', thumbnail: 'https://i.ytimg.com/vi/fKopy74weus/hqdefault.jpg' },
-    { id: '0VjIjW4GlUZAMYd2vXMi3b', title: 'Midnight City', artist: 'M83', duration: '4:03', thumbnail: 'https://i.ytimg.com/vi/dX3k_QDnzHE/hqdefault.jpg', id: 'dX3k_QDnzHE' },
+    { id: 'dX3k_QDnzHE', title: 'Midnight City', artist: 'M83', duration: '4:03', thumbnail: 'https://i.ytimg.com/vi/dX3k_QDnzHE/hqdefault.jpg' },
     { id: 'kXYiU_JCYtU', title: 'Numb', artist: 'Linkin Park', duration: '3:07', thumbnail: 'https://i.ytimg.com/vi/kXYiU_JCYtU/hqdefault.jpg' },
     { id: 'JGwWNGJdvx8', title: 'Shape of You', artist: 'Ed Sheeran', duration: '3:53', thumbnail: 'https://i.ytimg.com/vi/JGwWNGJdvx8/hqdefault.jpg' },
   ];
@@ -59,14 +60,13 @@
     const isSmallScreen = window.innerWidth <= 820;
     const isMobileDevice = isMobileUA || (isTouch && isSmallScreen);
 
-    // Stored preference
     const storedPref = localStorage.getItem('zm_view_preference');
     const defaultMode = isMobileDevice ? 'download' : 'player';
     const activeMode = storedPref || defaultMode;
 
     setViewMode(activeMode, false);
 
-    // Toggle button in header
+    // Header View Switcher Pill
     const toggleBtn = document.getElementById('btn-toggle-view');
     if (toggleBtn) {
       toggleBtn.addEventListener('click', (e) => {
@@ -77,7 +77,7 @@
       });
     }
 
-    // Direct links inside panes to switch mode
+    // Direct switch triggers inside panes
     document.querySelectorAll('[data-switch-view]').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
@@ -91,33 +91,40 @@
     document.body.dataset.zmView = mode;
     const downloadView = document.getElementById('zm-download-view');
     const playerView = document.getElementById('zm-player-view');
+    const playerDock = document.getElementById('floating-player-dock');
     const toggleIcon = document.getElementById('toggle-icon');
     const toggleText = document.getElementById('toggle-text');
 
     if (mode === 'player') {
       if (downloadView) downloadView.style.display = 'none';
       if (playerView) playerView.style.display = 'flex';
-      if (toggleIcon) toggleIcon.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`;
+      if (playerDock) playerDock.style.display = 'flex';
+      if (toggleIcon) toggleIcon.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`;
       if (toggleText) toggleText.textContent = 'Android APK';
-      // If no track loaded yet, set initial queue to trending tracks
+
       if (state.queue.length === 0) {
         state.queue = [...TRENDING_TRACKS];
         renderQueue();
       }
+      // Populate spotlight card if not set
+      if (!state.currentTrack && TRENDING_TRACKS.length > 0) {
+        updateSpotlightCard(TRENDING_TRACKS[0]);
+      }
     } else {
-      if (downloadView) downloadView.style.display = 'block';
+      if (downloadView) downloadView.style.display = 'flex';
       if (playerView) playerView.style.display = 'none';
-      if (toggleIcon) toggleIcon.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>`;
+      if (playerDock) playerDock.style.display = 'none';
+      if (toggleIcon) toggleIcon.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>`;
       if (toggleText) toggleText.textContent = 'Web Player';
     }
 
     if (savePreference) {
       localStorage.setItem('zm_view_preference', mode);
-      showToast(mode === 'player' ? 'Switched to ZeroMusic Web Player' : 'Switched to Android Download View');
+      showToast(mode === 'player' ? 'ZeroMusic Web Player Active' : 'Switched to Android Download View');
     }
   }
 
-  // ── YouTube Audio Engine & Ad-Shield ──
+  // ── YouTube Audio Engine & Active Ad-Shield ──
   let ytPlayer = null;
   let ytReady = false;
   let progressInterval = null;
@@ -139,9 +146,6 @@
   }
 
   function createYTIframe() {
-    const container = document.getElementById('yt-audio-container');
-    if (!container) return;
-
     ytPlayer = new YT.Player('yt-audio-player', {
       height: '1',
       width: '1',
@@ -165,7 +169,7 @@
     });
   }
 
-  function onPlayerReady(event) {
+  function onPlayerReady() {
     ytReady = true;
     ytPlayer.setVolume(state.volume);
     updateAdShieldStatus('Protected');
@@ -173,7 +177,6 @@
   }
 
   function onPlayerStateChange(event) {
-    // YT.PlayerState: -1 (unstarted), 0 (ended), 1 (playing), 2 (paused), 3 (buffering), 5 (video cued)
     if (event.data === YT.PlayerState.PLAYING) {
       state.isPlaying = true;
       updatePlayPauseButton();
@@ -204,7 +207,7 @@
       if (state.isPlaying) {
         checkAndBypassAds();
       }
-    }, 250);
+    }, 200);
   }
 
   function checkAndBypassAds() {
@@ -214,19 +217,16 @@
       const videoData = ytPlayer.getVideoData();
       const currentVideoId = videoData ? videoData.video_id : null;
 
-      // If video_id does not match our current requested track id, an ad is playing!
       if (state.currentTrack && currentVideoId && currentVideoId !== state.currentTrack.id) {
         if (!state.isBypassingAd) {
           state.isBypassingAd = true;
           ytPlayer.mute();
-          // Fast-forward through ad at maximum rate
           if (typeof ytPlayer.setPlaybackRate === 'function') {
             ytPlayer.setPlaybackRate(16);
           }
           updateAdShieldStatus('Bypassing Ad ⚡', true);
         }
       } else {
-        // Real track is playing
         if (state.isBypassingAd) {
           state.isBypassingAd = false;
           if (typeof ytPlayer.setPlaybackRate === 'function') {
@@ -239,15 +239,14 @@
           updateAdShieldStatus('Protected');
         }
       }
-    } catch (e) {
-      // Ignore cross-origin security glitches
-    }
+    } catch (e) {}
   }
 
   function updateAdShieldStatus(text, isBypassing) {
-    const badge = document.getElementById('ad-shield-badge');
-    if (!badge) return;
-    badge.innerHTML = `<span class="ad-pulse ${isBypassing ? 'active-bypass' : ''}"></span> Ad-Shield: ${text}`;
+    const pulseDot = document.getElementById('adshield-pulse-dot');
+    const statusText = document.getElementById('adshield-status-text');
+    if (pulseDot) pulseDot.classList.toggle('bypassing', !!isBypassing);
+    if (statusText) statusText.textContent = text;
   }
 
   // ── Playback Controls ──
@@ -263,16 +262,11 @@
       state.queueIndex = 0;
     }
 
-    // Save to history
     addToHistory(track);
-
-    // Update bottom player UI
     updatePlayerUI(track);
-
-    // Fetch synced lyrics
+    updateSpotlightCard(track);
     fetchLyrics(track);
 
-    // Load in YouTube player
     if (ytReady && ytPlayer) {
       ytPlayer.loadVideoById({
         videoId: track.id,
@@ -281,7 +275,6 @@
       state.isPlaying = true;
       updatePlayPauseButton();
     } else {
-      // If player not yet ready, retry shortly
       setTimeout(() => playTrack(track), 400);
     }
 
@@ -304,17 +297,16 @@
 
   function playNext() {
     if (state.queue.length === 0) return;
-
     let nextIndex;
     if (state.isShuffle) {
       nextIndex = Math.floor(Math.random() * state.queue.length);
     } else {
       nextIndex = state.queueIndex + 1;
       if (nextIndex >= state.queue.length) {
-        if (state.repeatMode === 1) { // Repeat All
+        if (state.repeatMode === 1) {
           nextIndex = 0;
         } else {
-          return; // Stop at end of queue
+          return;
         }
       }
     }
@@ -327,16 +319,13 @@
       return;
     }
     if (state.queue.length === 0) return;
-
     let prevIndex = state.queueIndex - 1;
-    if (prevIndex < 0) {
-      prevIndex = state.queue.length - 1;
-    }
+    if (prevIndex < 0) prevIndex = state.queue.length - 1;
     playTrack(state.queue[prevIndex], state.queue, prevIndex);
   }
 
   function handleTrackEnd() {
-    if (state.repeatMode === 2) { // Repeat One
+    if (state.repeatMode === 2) {
       seekTo(0);
       ytPlayer.playVideo();
       return;
@@ -458,11 +447,31 @@
 
   function updatePlayPauseButton() {
     const btn = document.getElementById('btn-play-pause');
-    if (!btn) return;
-    btn.innerHTML = state.isPlaying
-      ? `<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>`
-      : `<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>`;
-    btn.setAttribute('aria-label', state.isPlaying ? 'Pause' : 'Play');
+    const spotlightBtn = document.getElementById('btn-spotlight-play');
+
+    const iconSvg = state.isPlaying
+      ? `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>`
+      : `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>`;
+
+    if (btn) btn.innerHTML = iconSvg;
+    if (spotlightBtn) {
+      spotlightBtn.innerHTML = state.isPlaying
+        ? `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg> Pause`
+        : `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Play Now`;
+    }
+  }
+
+  function updateSpotlightCard(track) {
+    const titleEl = document.getElementById('spotlight-title');
+    const artistEl = document.getElementById('spotlight-artist');
+    const artEl = document.getElementById('spotlight-art');
+
+    if (titleEl) titleEl.textContent = track.title;
+    if (artistEl) artistEl.textContent = track.artist;
+    if (artEl) {
+      artEl.src = track.thumbnail;
+      artEl.alt = track.title;
+    }
   }
 
   function updatePlayerUI(track) {
@@ -485,7 +494,7 @@
         : `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`;
     }
 
-    // Now playing drawer artwork
+    // Update Lyrics hero
     const lyricsArt = document.getElementById('lyrics-large-art');
     const lyricsTitle = document.getElementById('lyrics-track-title');
     const lyricsArtist = document.getElementById('lyrics-track-artist');
@@ -526,16 +535,12 @@
     state.activeLyricIndex = -1;
 
     try {
-      // 1. Direct match with trackName + artistName
       let url = `https://lrclib.net/api/get?artist_name=${encodeURIComponent(track.artist)}&track_name=${encodeURIComponent(track.title)}`;
       let res = await fetch(url);
       let data = null;
 
-      if (res.ok) {
-        data = await res.json();
-      }
+      if (res.ok) data = await res.json();
 
-      // 2. Fallback to search if exact match empty
       if (!data || (!data.syncedLyrics && !data.plainLyrics)) {
         const cleanQuery = (track.title + ' ' + track.artist).replace(/[^\w\s]/gi, ' ').trim();
         const searchUrl = `https://lrclib.net/api/search?q=${encodeURIComponent(cleanQuery)}`;
@@ -555,11 +560,10 @@
         state.lyrics = [];
         renderPlainLyrics(data.plainLyrics);
       } else {
-        container.innerHTML = '<div class="lyrics-status">No lyrics found for this track.</div>';
+        container.innerHTML = '<div class="lyrics-status">No synced lyrics available for this song.</div>';
       }
     } catch (e) {
-      console.warn('[ZeroMusic] Lyrics fetch failed:', e);
-      container.innerHTML = '<div class="lyrics-status">Couldn\'t load lyrics at this moment.</div>';
+      container.innerHTML = '<div class="lyrics-status">Couldn\'t load lyrics right now.</div>';
     }
   }
 
@@ -576,9 +580,7 @@
         const millis = match[3] ? parseFloat('0.' + match[3]) : 0;
         const totalSec = minutes * 60 + seconds + millis;
         const text = line.replace(/\[\d{2}:\d{2}(?:\.\d{2,3})?\]/g, '').trim();
-        if (text) {
-          result.push({ time: totalSec, text: text });
-        }
+        if (text) result.push({ time: totalSec, text: text });
       }
     }
     return result.sort((a, b) => a.time - b.time);
@@ -599,7 +601,6 @@
       </div>
     `).join('');
 
-    // Clicking a line seeks directly to that line!
     container.querySelectorAll('.lyric-line').forEach(el => {
       el.addEventListener('click', () => {
         const time = parseFloat(el.dataset.time);
@@ -611,7 +612,7 @@
   function renderPlainLyrics(plainText) {
     const container = document.getElementById('lyrics-lines-container');
     if (!container) return;
-    container.innerHTML = `<div class="plain-lyrics">${escapeHtml(plainText).replace(/\n/g, '<br/>')}</div>`;
+    container.innerHTML = `<div class="plain-lyrics" style="line-height:2; font-size:16px; color:var(--zm-text);">${escapeHtml(plainText).replace(/\n/g, '<br/>')}</div>`;
   }
 
   function syncLyricsWithTime(currentTime) {
@@ -642,7 +643,7 @@
     }
   }
 
-  // ── Search & Instant Suggestions ──
+  // ── Search & Autocomplete ──
   let searchTimeout = null;
 
   function initSearch() {
@@ -662,7 +663,6 @@
         return;
       }
 
-      // Fast typing suggestions
       searchTimeout = setTimeout(() => {
         fetchSuggestions(q);
       }, 180);
@@ -687,10 +687,12 @@
       });
     }
 
-    // Genre / Mood tags
-    document.querySelectorAll('.genre-tag').forEach(tag => {
-      tag.addEventListener('click', () => {
-        const genre = tag.dataset.genre;
+    // Mood / Genre chips
+    document.querySelectorAll('.mood-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('.mood-chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        const genre = chip.dataset.genre;
         if (genre === 'all') {
           switchMainView('home');
         } else {
@@ -702,10 +704,6 @@
   }
 
   function fetchSuggestions(query) {
-    const suggestDropdown = document.getElementById('zm-search-suggestions');
-    if (!suggestDropdown) return;
-
-    // Use JSONP with Google's public YouTube suggest endpoint
     const scriptId = 'yt-suggest-script';
     const existing = document.getElementById(scriptId);
     if (existing) existing.remove();
@@ -732,7 +730,7 @@
 
     dropdown.innerHTML = list.slice(0, 6).map(text => `
       <div class="suggest-item" data-query="${escapeHtml(text)}">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         <span>${escapeHtml(text)}</span>
       </div>
     `).join('');
@@ -750,17 +748,15 @@
     });
   }
 
-  // ── Full Search Execution ──
   async function executeSearch(query) {
     switchMainView('search');
     const container = document.getElementById('search-results-grid');
     const searchHeader = document.getElementById('search-results-header');
 
-    if (searchHeader) searchHeader.textContent = `Results for "${query}"`;
+    if (searchHeader) searchHeader.textContent = `Search results for "${query}"`;
     if (container) container.innerHTML = '<div class="zm-loading"><span class="zm-spinner"></span> Searching ZeroMusic catalog...</div>';
 
     try {
-      // 1. Try our serverless API endpoint on zero.skillissue.gg
       let res = await fetch(`/api/music-search?q=${encodeURIComponent(query)}`);
       let tracks = [];
 
@@ -769,7 +765,6 @@
         tracks = data.tracks || [];
       }
 
-      // 2. Client-side fallback if API is not deployed on current host
       if (!tracks || tracks.length === 0) {
         tracks = await fallbackSearch(query);
       }
@@ -777,60 +772,58 @@
       if (tracks.length > 0) {
         renderTrackGrid(container, tracks);
       } else {
-        container.innerHTML = '<div class="zm-empty">No tracks found. Try a different search term.</div>';
+        container.innerHTML = '<div class="zm-empty">No tracks found. Try a different search query.</div>';
       }
     } catch (e) {
-      console.warn('[ZeroMusic] Search API failed, trying fallback:', e);
       const fallbackTracks = await fallbackSearch(query);
       if (fallbackTracks.length > 0) {
         renderTrackGrid(container, fallbackTracks);
       } else {
-        container.innerHTML = '<div class="zm-empty">Unable to fetch search results right now.</div>';
+        container.innerHTML = '<div class="zm-empty">Search unavailable at this second.</div>';
       }
     }
   }
 
   async function fallbackSearch(query) {
-    // Curated matching or filter against popular songs
     const qLower = query.toLowerCase();
     const matches = TRENDING_TRACKS.filter(t =>
       t.title.toLowerCase().includes(qLower) || t.artist.toLowerCase().includes(qLower)
     );
-    return matches.length > 0 ? matches : TRENDING_TRACKS.slice(0, 6);
+    return matches.length > 0 ? matches : TRENDING_TRACKS.slice(0, 8);
   }
 
+  // ── Render Components ──
   function renderTrackGrid(container, tracks) {
     if (!container) return;
     container.innerHTML = tracks.map((track, idx) => `
       <div class="track-card ${state.currentTrack && state.currentTrack.id === track.id ? 'now-playing-card' : ''}" data-id="${track.id}" data-index="${idx}">
-        <div class="card-art-wrap">
+        <div class="card-art-box">
           <img src="${track.thumbnail}" alt="${escapeHtml(track.title)}" loading="lazy" />
-          <button class="card-play-btn" aria-label="Play ${escapeHtml(track.title)}">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <button class="card-hover-play" aria-label="Play ${escapeHtml(track.title)}">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
           </button>
         </div>
-        <div class="card-info">
-          <h4 class="card-title" title="${escapeHtml(track.title)}">${escapeHtml(track.title)}</h4>
-          <p class="card-artist" title="${escapeHtml(track.artist)}">${escapeHtml(track.artist)}</p>
-        </div>
-        <div class="card-actions">
-          <span class="card-duration">${track.duration || '3:30'}</span>
-          <button class="btn-icon btn-card-queue" title="Add to Queue" aria-label="Add to Queue">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          </button>
-          <button class="btn-icon btn-card-like ${isTrackLiked(track.id) ? 'liked' : ''}" title="Like" aria-label="Like">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="${isTrackLiked(track.id) ? '#f97316' : 'none'}" stroke="${isTrackLiked(track.id) ? '#f97316' : 'currentColor'}" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </button>
+        <h4 class="card-title" title="${escapeHtml(track.title)}">${escapeHtml(track.title)}</h4>
+        <p class="card-artist" title="${escapeHtml(track.artist)}">${escapeHtml(track.artist)}</p>
+        <div class="card-footer-meta">
+          <span class="card-duration-text">${track.duration || '3:30'}</span>
+          <div class="card-quick-actions">
+            <button class="btn-card-action btn-card-queue" title="Add to Queue">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <button class="btn-card-action btn-card-like ${isTrackLiked(track.id) ? 'liked' : ''}" title="Like">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="${isTrackLiked(track.id) ? '#f97316' : 'none'}" stroke="${isTrackLiked(track.id) ? '#f97316' : 'currentColor'}" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
         </div>
       </div>
     `).join('');
 
-    // Attach click events
     container.querySelectorAll('.track-card').forEach(card => {
       const idx = parseInt(card.dataset.index, 10);
       const track = tracks[idx];
 
-      card.querySelector('.card-play-btn').addEventListener('click', (e) => {
+      card.querySelector('.card-hover-play').addEventListener('click', (e) => {
         e.stopPropagation();
         playTrack(track, tracks, idx);
       });
@@ -854,7 +847,7 @@
     });
   }
 
-  // ── Library & Local Persistence ──
+  // ── Library & Liked Songs ──
   function isTrackLiked(id) {
     return state.likedTracks.some(t => t.id === id);
   }
@@ -892,7 +885,7 @@
 
     if (likedContainer) {
       if (state.likedTracks.length === 0) {
-        likedContainer.innerHTML = '<div class="zm-empty">No liked songs yet. Click ♥ on any track to save it here.</div>';
+        likedContainer.innerHTML = '<div class="zm-empty">No liked tracks yet. Click the heart icon on any song to save it here.</div>';
       } else {
         renderTrackRows(likedContainer, state.likedTracks);
       }
@@ -900,7 +893,7 @@
 
     if (historyContainer) {
       if (state.history.length === 0) {
-        historyContainer.innerHTML = '<div class="zm-empty">Your listening history will appear here.</div>';
+        historyContainer.innerHTML = '<div class="zm-empty">Recently played tracks will appear here.</div>';
       } else {
         renderTrackRows(historyContainer, state.history);
       }
@@ -909,21 +902,18 @@
 
   function renderTrackRows(container, tracks) {
     container.innerHTML = tracks.map((track, idx) => `
-      <div class="track-row ${state.currentTrack && state.currentTrack.id === track.id ? 'active-row' : ''}" data-id="${track.id}" data-index="${idx}">
-        <span class="row-num">${idx + 1}</span>
-        <img class="row-art" src="${track.thumbnail}" alt="${escapeHtml(track.title)}" />
-        <div class="row-info">
-          <div class="row-title">${escapeHtml(track.title)}</div>
-          <div class="row-artist">${escapeHtml(track.artist)}</div>
+      <div class="track-row-item ${state.currentTrack && state.currentTrack.id === track.id ? 'active-row' : ''}" data-id="${track.id}" data-index="${idx}">
+        <span class="row-index">${idx + 1}</span>
+        <img class="row-art-thumb" src="${track.thumbnail}" alt="${escapeHtml(track.title)}" />
+        <div class="row-meta-col">
+          <div class="row-track-name">${escapeHtml(track.title)}</div>
+          <div class="row-artist-name">${escapeHtml(track.artist)}</div>
         </div>
-        <span class="row-duration">${track.duration || '3:30'}</span>
-        <button class="btn-icon btn-row-play" title="Play">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        </button>
+        <span class="row-duration-tag">${track.duration || '3:30'}</span>
       </div>
     `).join('');
 
-    container.querySelectorAll('.track-row').forEach(row => {
+    container.querySelectorAll('.track-row-item').forEach(row => {
       const idx = parseInt(row.dataset.index, 10);
       const track = tracks[idx];
       row.addEventListener('click', () => {
@@ -944,21 +934,20 @@
     }
 
     list.innerHTML = state.queue.map((track, i) => `
-      <div class="queue-row ${i === state.queueIndex ? 'current-queue-item' : ''}" data-index="${i}">
-        <span class="queue-num">${i === state.queueIndex ? '▶' : i + 1}</span>
-        <img class="queue-art" src="${track.thumbnail}" alt="${escapeHtml(track.title)}" />
-        <div class="queue-info">
-          <div class="queue-title">${escapeHtml(track.title)}</div>
-          <div class="queue-artist">${escapeHtml(track.artist)}</div>
+      <div class="queue-item-card ${i === state.queueIndex ? 'current-playing' : ''}" data-index="${i}">
+        <img class="queue-art-thumb" src="${track.thumbnail}" alt="${escapeHtml(track.title)}" />
+        <div class="queue-info-text">
+          <div class="queue-song-name">${escapeHtml(track.title)}</div>
+          <div class="queue-song-artist">${escapeHtml(track.artist)}</div>
         </div>
-        <button class="queue-remove" title="Remove" aria-label="Remove">✕</button>
+        <button class="btn-queue-del" title="Remove">✕</button>
       </div>
     `).join('');
 
-    list.querySelectorAll('.queue-row').forEach(row => {
+    list.querySelectorAll('.queue-item-card').forEach(row => {
       const idx = parseInt(row.dataset.index, 10);
       row.addEventListener('click', (e) => {
-        if (e.target.classList.contains('queue-remove')) {
+        if (e.target.classList.contains('btn-queue-del')) {
           e.stopPropagation();
           state.queue.splice(idx, 1);
           if (idx < state.queueIndex) state.queueIndex--;
@@ -974,7 +963,7 @@
   function switchMainView(viewName) {
     state.activeView = viewName;
 
-    document.querySelectorAll('.sidebar-nav-item').forEach(item => {
+    document.querySelectorAll('.sidebar-item').forEach(item => {
       item.classList.toggle('active', item.dataset.view === viewName);
     });
 
@@ -988,56 +977,66 @@
   }
 
   function initNavigation() {
-    document.querySelectorAll('.sidebar-nav-item').forEach(item => {
+    document.querySelectorAll('.sidebar-item').forEach(item => {
       item.addEventListener('click', (e) => {
         e.preventDefault();
         switchMainView(item.dataset.view);
       });
     });
 
-    // Lyrics drawer toggle
-    const lyricsBtn = document.getElementById('btn-lyrics-toggle');
-    const lyricsDrawer = document.getElementById('lyrics-drawer');
-    const closeLyricsBtn = document.getElementById('btn-close-lyrics');
-
-    if (lyricsBtn && lyricsDrawer) {
-      lyricsBtn.addEventListener('click', () => {
-        state.isLyricsOpen = !state.isLyricsOpen;
-        lyricsDrawer.classList.toggle('open', state.isLyricsOpen);
-        lyricsBtn.classList.toggle('active', state.isLyricsOpen);
+    // Spotlight Play button
+    const spotlightPlayBtn = document.getElementById('btn-spotlight-play');
+    if (spotlightPlayBtn) {
+      spotlightPlayBtn.addEventListener('click', () => {
+        if (state.currentTrack) {
+          togglePlay();
+        } else if (TRENDING_TRACKS.length > 0) {
+          playTrack(TRENDING_TRACKS[0], TRENDING_TRACKS, 0);
+        }
       });
     }
 
-    if (closeLyricsBtn && lyricsDrawer) {
+    // Lyrics overlay toggle
+    const lyricsBtn = document.getElementById('btn-lyrics-toggle');
+    const lyricsOverlay = document.getElementById('lyrics-drawer');
+    const closeLyricsBtn = document.getElementById('btn-close-lyrics');
+
+    if (lyricsBtn && lyricsOverlay) {
+      lyricsBtn.addEventListener('click', () => {
+        state.isLyricsOpen = !state.isLyricsOpen;
+        lyricsOverlay.classList.toggle('open', state.isLyricsOpen);
+        lyricsBtn.classList.toggle('active', state.isLyricsOpen);
+      });
+    }
+    if (closeLyricsBtn && lyricsOverlay) {
       closeLyricsBtn.addEventListener('click', () => {
         state.isLyricsOpen = false;
-        lyricsDrawer.classList.remove('open');
+        lyricsOverlay.classList.remove('open');
         if (lyricsBtn) lyricsBtn.classList.remove('active');
       });
     }
 
-    // Queue drawer toggle
+    // Queue overlay toggle
     const queueBtn = document.getElementById('btn-queue-toggle');
-    const queueDrawer = document.getElementById('queue-drawer');
+    const queueOverlay = document.getElementById('queue-drawer');
     const closeQueueBtn = document.getElementById('btn-close-queue');
 
-    if (queueBtn && queueDrawer) {
+    if (queueBtn && queueOverlay) {
       queueBtn.addEventListener('click', () => {
         state.isQueueOpen = !state.isQueueOpen;
-        queueDrawer.classList.toggle('open', state.isQueueOpen);
+        queueOverlay.classList.toggle('open', state.isQueueOpen);
         queueBtn.classList.toggle('active', state.isQueueOpen);
       });
     }
-
-    if (closeQueueBtn && queueDrawer) {
+    if (closeQueueBtn && queueOverlay) {
       closeQueueBtn.addEventListener('click', () => {
         state.isQueueOpen = false;
-        queueDrawer.classList.remove('open');
+        queueOverlay.classList.remove('open');
         if (queueBtn) queueBtn.classList.remove('active');
       });
     }
 
-    // Play/Pause, Next, Prev, Shuffle, Repeat buttons
+    // Buttons: Play/Pause, Next, Prev, Shuffle, Repeat
     const playPauseBtn = document.getElementById('btn-play-pause');
     const nextBtn = document.getElementById('btn-next');
     const prevBtn = document.getElementById('btn-prev');
@@ -1056,19 +1055,18 @@
       });
     }
 
-    // Progress bar dragging/clicking
+    // Progress bar
     const progressBar = document.getElementById('playback-progress');
     if (progressBar) {
       progressBar.addEventListener('input', (e) => {
         const pct = parseFloat(e.target.value);
         if (state.duration > 0) {
-          const targetSec = (pct / 100) * state.duration;
-          seekTo(targetSec);
+          seekTo((pct / 100) * state.duration);
         }
       });
     }
 
-    // Volume slider & mute
+    // Volume
     const volumeSlider = document.getElementById('volume-slider');
     const muteBtn = document.getElementById('btn-mute');
     if (volumeSlider) {
@@ -1082,11 +1080,7 @@
   // ── Keyboard Shortcuts ──
   function initKeyboardShortcuts() {
     window.addEventListener('keydown', (e) => {
-      // Ignore if user is currently typing in an input
-      if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
-        return;
-      }
-
+      if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
       switch (e.code) {
         case 'Space':
           e.preventDefault();
@@ -1114,19 +1108,55 @@
           break;
         case 'KeyL':
           e.preventDefault();
-          const lyricsBtn = document.getElementById('btn-lyrics-toggle');
-          if (lyricsBtn) lyricsBtn.click();
+          document.getElementById('btn-lyrics-toggle')?.click();
           break;
         case 'KeyQ':
           e.preventDefault();
-          const queueBtn = document.getElementById('btn-queue-toggle');
-          if (queueBtn) queueBtn.click();
+          document.getElementById('btn-queue-toggle')?.click();
           break;
       }
     });
   }
 
-  // ── Toast Notifications ──
+  // ── Live Canvas Equalizer Visualizer ──
+  function initVisualizer() {
+    const canvas = document.getElementById('spotlight-visualizer-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const numBars = 18;
+    const barWidth = 4;
+    const gap = 3;
+    const heights = new Array(numBars).fill(2);
+
+    function draw() {
+      requestAnimationFrame(draw);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = 0; i < numBars; i++) {
+        if (state.isPlaying) {
+          // Dynamic organic equalizer pulse
+          const target = Math.random() * (canvas.height - 4) + 4;
+          heights[i] += (target - heights[i]) * 0.25;
+        } else {
+          heights[i] += (2 - heights[i]) * 0.1;
+        }
+
+        const h = Math.max(2, heights[i]);
+        const x = i * (barWidth + gap);
+        const y = canvas.height - h;
+
+        ctx.fillStyle = '#f97316';
+        ctx.shadowColor = 'rgba(249, 115, 22, 0.4)';
+        ctx.shadowBlur = 6;
+        ctx.beginPath();
+        ctx.roundRect(x, y, barWidth, h, [2]);
+        ctx.fill();
+      }
+    }
+    draw();
+  }
+
+  // ── Toast & Helpers ──
   function showToast(msg) {
     let toast = document.getElementById('zm-toast');
     if (!toast) {
@@ -1153,21 +1183,19 @@
     }[m]));
   }
 
-  // ── Initialize App ──
+  // ── Launch on DOM Ready ──
   document.addEventListener('DOMContentLoaded', () => {
     initDeviceRouting();
     initYouTubeEngine();
     initSearch();
     initNavigation();
     initKeyboardShortcuts();
+    initVisualizer();
 
-    // Initial render of trending tracks on Home
     const trendingGrid = document.getElementById('trending-tracks-grid');
     if (trendingGrid) {
       renderTrackGrid(trendingGrid, TRENDING_TRACKS);
     }
-
-    // Set initial volume UI
     updateVolumeUI();
   });
 

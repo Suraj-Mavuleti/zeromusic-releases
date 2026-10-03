@@ -1,5 +1,10 @@
 [
   {
+    "version": "2.4.9",
+    "date": "2026-10-03T11:51:59Z",
+    "notes": "Fix blank screen when signing into YouTube Music and Spotify, add connection progress indicator, and ensure full compatibility with device accounts"
+  },
+  {
     "version": "2.4.8",
     "date": "2026-10-03T10:24:32Z",
     "notes": "Seamless 1-tap Spotify and YouTube Music sign-in with phone accounts, removed cookie prompts, and improved sign-in flow."

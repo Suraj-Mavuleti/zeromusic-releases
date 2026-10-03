@@ -1,7 +1,7 @@
 {
-  "version": "2.4.8",
-  "notes": "Seamless 1-tap Spotify and YouTube Music sign-in with phone accounts, removed cookie prompts, and improved sign-in flow.",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v2.4.8/ZeroMusic-2.4.8.apk",
+  "version": "2.4.9",
+  "notes": "Fix blank screen when signing into YouTube Music and Spotify, add connection progress indicator, and ensure full compatibility with device accounts",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v2.4.9/ZeroMusic-2.4.9.apk",
   "size": 17326059,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",

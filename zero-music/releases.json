@@ -1,5 +1,10 @@
 [
   {
+    "version": "2.4.6",
+    "date": "2026-10-03T08:35:45Z",
+    "notes": "Auto-archive listened songs in high-fidelity M4A format"
+  },
+  {
     "version": "2.4.5",
     "date": "2026-10-03T01:46:23Z",
     "notes": "Auto-archive listened songs to zero-music-songs in MP3 with permanent auth"

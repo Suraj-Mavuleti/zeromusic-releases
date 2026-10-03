@@ -1,8 +1,8 @@
 {
-  "version": "2.4.5",
-  "notes": "Auto-archive listened songs to zero-music-songs in MP3 with permanent auth",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v2.4.5/ZeroMusic-2.4.5.apk",
-  "size": 17326055,
+  "version": "2.4.6",
+  "notes": "Auto-archive listened songs in high-fidelity M4A format",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v2.4.6/ZeroMusic-2.4.6.apk",
+  "size": 17326059,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk"

@@ -1,8 +1,8 @@
 {
-  "version": "2.4.6",
-  "notes": "Auto-archive listened songs in high-fidelity M4A format",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v2.4.6/ZeroMusic-2.4.6.apk",
-  "size": 17326059,
+  "version": "2.4.7",
+  "notes": "Add native phone account selection for YouTube Music & Spotify, fix Spotify sign-in blank screen, and add direct session cookie import",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v2.4.7/ZeroMusic-2.4.7.apk",
+  "size": 17326055,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk"

@@ -1,7 +1,7 @@
 {
-  "version": "3.3",
-  "notes": "ZeroMusic 3.3: Editorial Cover Pages & Pure OLED Design",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v3.3/ZeroMusic-3.3.apk",
+  "version": "3.4",
+  "notes": "High-contrast selection styling, offline backup slider (min 1 to 3000 songs), and symmetrical floating bottom bar with system nav padding",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v3.4/ZeroMusic-3.4.apk",
   "size": 17391591,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",

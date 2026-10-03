@@ -1,5 +1,10 @@
 [
   {
+    "version": "3.4",
+    "date": "2026-10-03T14:59:28Z",
+    "notes": "High-contrast selection styling, offline backup slider (min 1 to 3000 songs), and symmetrical floating bottom bar with system nav padding"
+  },
+  {
     "version": "3.3",
     "date": "2026-10-03T14:18:17Z",
     "notes": "ZeroMusic 3.3: Editorial Cover Pages & Pure OLED Design"

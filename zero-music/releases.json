@@ -1,5 +1,10 @@
 [
   {
+    "version": "3.3",
+    "date": "2026-10-03T14:18:17Z",
+    "notes": "ZeroMusic 3.3: Editorial Cover Pages & Pure OLED Design"
+  },
+  {
     "version": "3.2",
     "date": "2026-10-03T13:56:24Z",
     "notes": "Fix library import for Spotify Liked Songs and YouTube Music playlists"

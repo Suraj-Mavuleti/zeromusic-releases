@@ -1,8 +1,8 @@
 {
-  "version": "2.4.7",
-  "notes": "Add native phone account selection for YouTube Music & Spotify, fix Spotify sign-in blank screen, and add direct session cookie import",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v2.4.7/ZeroMusic-2.4.7.apk",
-  "size": 17326055,
+  "version": "2.4.8",
+  "notes": "Seamless 1-tap Spotify and YouTube Music sign-in with phone accounts, removed cookie prompts, and improved sign-in flow.",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v2.4.8/ZeroMusic-2.4.8.apk",
+  "size": 17326059,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk"

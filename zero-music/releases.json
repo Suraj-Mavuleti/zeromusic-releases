@@ -1,5 +1,10 @@
 [
   {
+    "version": "2.4.8",
+    "date": "2026-10-03T10:24:32Z",
+    "notes": "Seamless 1-tap Spotify and YouTube Music sign-in with phone accounts, removed cookie prompts, and improved sign-in flow."
+  },
+  {
     "version": "2.4.7",
     "date": "2026-10-03T09:06:32Z",
     "notes": "Add native phone account selection for YouTube Music & Spotify, fix Spotify sign-in blank screen, and add direct session cookie import"

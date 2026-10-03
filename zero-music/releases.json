@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.0.1",
+    "date": "2026-10-03T18:12:00Z",
+    "notes": "ZeroMusic 4.0.1: Fix WebView singlefile bundle and file access"
+  },
+  {
     "version": "4.0",
     "date": "2026-10-03T17:52:05Z",
     "notes": "ZeroMusic 4.0: Hybrid Web Shell with 100% silent background OTA updates, modern React 19 UI, and cloud song archival"

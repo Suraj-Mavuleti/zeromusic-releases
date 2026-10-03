@@ -1,6 +1,6 @@
 {
   "version": "4.0.1",
   "bundleUrl": "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/web_bundle.zip",
-  "notes": "Fix singlefile bundle for Android WebView",
-  "timestamp": 1791050662226
+  "notes": "ZeroMusic 4.0.1: Fix WebView singlefile bundle and file access",
+  "timestamp": 1791051124186
 }

@@ -1,8 +1,8 @@
 {
-  "version": "3.5",
-  "notes": "Fix Spotify rate limiting with Retry-After backoff and resolve YouTube Music library import with multi-scheme authorization",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v3.5/ZeroMusic-3.5.apk",
-  "size": 17391591,
+  "version": "4.0",
+  "notes": "ZeroMusic 4.0: Hybrid Web Shell with 100% silent background OTA updates, modern React 19 UI, and cloud song archival",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.0/ZeroMusic-4.0.apk",
+  "size": 17539515,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk"

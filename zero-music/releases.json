@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.0",
+    "date": "2026-10-03T17:52:05Z",
+    "notes": "ZeroMusic 4.0: Hybrid Web Shell with 100% silent background OTA updates, modern React 19 UI, and cloud song archival"
+  },
+  {
     "version": "3.5",
     "date": "2026-10-03T15:49:23Z",
     "notes": "Fix Spotify rate limiting with Retry-After backoff and resolve YouTube Music library import with multi-scheme authorization"

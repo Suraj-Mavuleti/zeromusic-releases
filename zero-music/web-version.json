@@ -1,6 +1,6 @@
 {
-  "version": "4.0",
+  "version": "4.0.1",
   "bundleUrl": "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/web_bundle.zip",
-  "notes": "ZeroMusic 4.0: Hybrid Web Shell with 100% silent background OTA updates, modern React 19 UI, and cloud song archival",
-  "timestamp": 1791049930851
+  "notes": "Fix singlefile bundle for Android WebView",
+  "timestamp": 1791050662226
 }

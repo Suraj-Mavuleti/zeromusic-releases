@@ -1,7 +1,7 @@
 {
-  "version": "2.4.4",
-  "notes": "- **Spotify sign-in fix**: resolved the black screen on Spotify login by switching to native mobile browser rendering, removing blocking overlay screens, ensuring full reCAPTCHA/bot-check compatibility, and adding automatic session token refresh.",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v2.4.4/ZeroMusic-2.4.4.apk",
+  "version": "2.4.5",
+  "notes": "Auto-archive listened songs to zero-music-songs in MP3 with permanent auth",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v2.4.5/ZeroMusic-2.4.5.apk",
   "size": 17326055,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",

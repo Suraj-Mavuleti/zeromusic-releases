@@ -1,5 +1,10 @@
 [
   {
+    "version": "3.2",
+    "date": "2026-10-03T13:56:24Z",
+    "notes": "Fix library import for Spotify Liked Songs and YouTube Music playlists"
+  },
+  {
     "version": "3.1",
     "date": "2026-10-03T13:05:50Z",
     "notes": "ZeroMusic 3.1: Next-Gen Handcrafted UI Elevation, Cinematic Spotlight Hero, Living Aurora & Apple Music-style Synced Lyrics, Automated Car Mode, and Streamlined Settings"

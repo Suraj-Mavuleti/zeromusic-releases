@@ -1,8 +1,8 @@
 {
-  "version": "2.4.9",
-  "notes": "Fix blank screen when signing into YouTube Music and Spotify, add connection progress indicator, and ensure full compatibility with device accounts",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v2.4.9/ZeroMusic-2.4.9.apk",
-  "size": 17326059,
+  "version": "3.0",
+  "notes": "ZeroMusic 3.0: Complete UI Overhaul - Modern OLED aesthetic, floating capsule miniplayer, full-bleed ambient player, kinetic synced lyrics, and redesigned discovery.",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v3.0/ZeroMusic-3.0.apk",
+  "size": 17358823,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk"

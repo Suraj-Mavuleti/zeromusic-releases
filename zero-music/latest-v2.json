@@ -1,8 +1,8 @@
 {
-  "version": "3.0",
-  "notes": "ZeroMusic 3.0: Complete UI Overhaul - Modern OLED aesthetic, floating capsule miniplayer, full-bleed ambient player, kinetic synced lyrics, and redesigned discovery.",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v3.0/ZeroMusic-3.0.apk",
-  "size": 17358823,
+  "version": "3.1",
+  "notes": "ZeroMusic 3.1: Next-Gen Handcrafted UI Elevation, Cinematic Spotlight Hero, Living Aurora & Apple Music-style Synced Lyrics, Automated Car Mode, and Streamlined Settings",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v3.1/ZeroMusic-3.1.apk",
+  "size": 17375207,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk"

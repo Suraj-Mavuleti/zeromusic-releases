@@ -723,7 +723,7 @@
           duration: track.duration || 0,
           cover: track.cover || '',
           device: 'web',
-          format: 'mp3'
+          format: 'm4a'
         })
       }).catch(err => {
         console.warn('Song archival report warning:', err);

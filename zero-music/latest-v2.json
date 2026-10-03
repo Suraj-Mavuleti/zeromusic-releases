@@ -1,8 +1,8 @@
 {
-  "version": "4.0.1",
-  "notes": "ZeroMusic 4.0.1: Fix WebView singlefile bundle and file access",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.0.1/ZeroMusic-4.0.1.apk",
-  "size": 17666339,
+  "version": "4.0.2",
+  "notes": "ZeroMusic 4.0.2: Fix DOM root mounting and script placement",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.0.2/ZeroMusic-4.0.2.apk",
+  "size": 17815075,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk"

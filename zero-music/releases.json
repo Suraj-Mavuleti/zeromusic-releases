@@ -1,5 +1,10 @@
 [
   {
+    "version": "3.5",
+    "date": "2026-10-03T15:49:23Z",
+    "notes": "Fix Spotify rate limiting with Retry-After backoff and resolve YouTube Music library import with multi-scheme authorization"
+  },
+  {
     "version": "3.4",
     "date": "2026-10-03T14:59:28Z",
     "notes": "High-contrast selection styling, offline backup slider (min 1 to 3000 songs), and symmetrical floating bottom bar with system nav padding"

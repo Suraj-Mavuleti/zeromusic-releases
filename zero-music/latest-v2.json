@@ -1,7 +1,7 @@
 {
-  "version": "3.4",
-  "notes": "High-contrast selection styling, offline backup slider (min 1 to 3000 songs), and symmetrical floating bottom bar with system nav padding",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v3.4/ZeroMusic-3.4.apk",
+  "version": "3.5",
+  "notes": "Fix Spotify rate limiting with Retry-After backoff and resolve YouTube Music library import with multi-scheme authorization",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v3.5/ZeroMusic-3.5.apk",
   "size": 17391591,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",

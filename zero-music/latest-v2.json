@@ -1,8 +1,8 @@
 {
-  "version": "4.0.4",
-  "notes": "ZeroMusic 4.0.4: Restore native Jetpack Compose architecture and all 3.6 features",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.0.4/ZeroMusic-4.0.4.apk",
-  "size": 17391595,
+  "version": "4.0.5",
+  "notes": "ZeroMusic 4.0.5: Display installed version in settings, remove permission prompt, and suppress update notifications",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.0.5/ZeroMusic-4.0.5.apk",
+  "size": 17407979,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk"

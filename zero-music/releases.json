@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.0.5",
+    "date": "2026-10-04T04:13:43Z",
+    "notes": "ZeroMusic 4.0.5: Display installed version in settings, remove permission prompt, and suppress update notifications"
+  },
+  {
     "version": "4.0.4",
     "date": "2026-10-04T03:56:40Z",
     "notes": "ZeroMusic 4.0.4: Restore native Jetpack Compose architecture and all 3.6 features"

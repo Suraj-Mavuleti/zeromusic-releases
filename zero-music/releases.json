@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.1.0",
+    "date": "2026-10-04T07:35:14Z",
+    "notes": "Drop-down settings accordion panes, silent background updates, one-time install permission prompt on first launch, gliding dock indicator & fluid navigation transitions"
+  },
+  {
     "version": "4.0.9",
     "date": "2026-10-04T06:42:43Z",
     "notes": "Smooth physics-based animations across navigation tabs, hierarchical subpages, full player, and MiniPlayer"

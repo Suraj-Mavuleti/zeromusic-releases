@@ -1,8 +1,8 @@
 {
-  "version": "4.0.9",
-  "notes": "Smooth physics-based animations across navigation tabs, hierarchical subpages, full player, and MiniPlayer",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.0.9/ZeroMusic-4.0.9.apk",
-  "size": 17424403,
+  "version": "4.1.0",
+  "notes": "Drop-down settings accordion panes, silent background updates, one-time install permission prompt on first launch, gliding dock indicator & fluid navigation transitions",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.1.0/ZeroMusic-4.1.0.apk",
+  "size": 17440787,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk"

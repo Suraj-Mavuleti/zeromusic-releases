@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.0.4",
+    "date": "2026-10-04T03:56:40Z",
+    "notes": "ZeroMusic 4.0.4: Restore native Jetpack Compose architecture and all 3.6 features"
+  },
+  {
     "version": "4.0.3",
     "date": "2026-10-04T03:35:20Z",
     "notes": "ZeroMusic 4.0.3: Fix DOM mount and bundle placement"

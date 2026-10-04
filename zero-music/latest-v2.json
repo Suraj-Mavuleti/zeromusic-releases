@@ -1,8 +1,8 @@
 {
-  "version": "4.0.3",
-  "notes": "ZeroMusic 4.0.3: Fix DOM mount and bundle placement",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.0.3/ZeroMusic-4.0.3.apk",
-  "size": 17666679,
+  "version": "4.0.4",
+  "notes": "ZeroMusic 4.0.4: Restore native Jetpack Compose architecture and all 3.6 features",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.0.4/ZeroMusic-4.0.4.apk",
+  "size": 17391595,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk"

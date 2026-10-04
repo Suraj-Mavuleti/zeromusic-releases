@@ -1,8 +1,8 @@
 {
-  "version": "4.0.6",
-  "notes": "Auto-fill Google credentials and bypass manual email entry in Spotify and YouTube Music sign-in",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.0.6/ZeroMusic-4.0.6.apk",
-  "size": 17407979,
+  "version": "4.0.7",
+  "notes": "Fix Google sign-in email validation error and auto-updater permission flow",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.0.7/ZeroMusic-4.0.7.apk",
+  "size": 17408019,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk"

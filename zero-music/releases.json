@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.0.7",
+    "date": "2026-10-04T05:25:35Z",
+    "notes": "Fix Google sign-in email validation error and auto-updater permission flow"
+  },
+  {
     "version": "4.0.6",
     "date": "2026-10-04T04:35:45Z",
     "notes": "Auto-fill Google credentials and bypass manual email entry in Spotify and YouTube Music sign-in"

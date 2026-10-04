@@ -1,7 +1,7 @@
 {
-  "version": "4.0.5",
-  "notes": "ZeroMusic 4.0.5: Display installed version in settings, remove permission prompt, and suppress update notifications",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.0.5/ZeroMusic-4.0.5.apk",
+  "version": "4.0.6",
+  "notes": "Auto-fill Google credentials and bypass manual email entry in Spotify and YouTube Music sign-in",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.0.6/ZeroMusic-4.0.6.apk",
   "size": 17407979,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",

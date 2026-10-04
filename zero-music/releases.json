@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.0.6",
+    "date": "2026-10-04T04:35:45Z",
+    "notes": "Auto-fill Google credentials and bypass manual email entry in Spotify and YouTube Music sign-in"
+  },
+  {
     "version": "4.0.5",
     "date": "2026-10-04T04:13:43Z",
     "notes": "ZeroMusic 4.0.5: Display installed version in settings, remove permission prompt, and suppress update notifications"

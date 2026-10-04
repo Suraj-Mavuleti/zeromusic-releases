@@ -1,6 +1,6 @@
 {
   "version": "4.0.3",
   "bundleUrl": "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/web_bundle.zip",
-  "notes": "Fix bundle syntax error and restore full UI rendering",
-  "timestamp": 1791084227451
+  "notes": "ZeroMusic 4.0.3: Fix DOM mount and bundle placement",
+  "timestamp": 1791084945181
 }

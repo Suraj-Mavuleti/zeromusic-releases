@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.0.3",
+    "date": "2026-10-04T03:35:20Z",
+    "notes": "ZeroMusic 4.0.3: Fix DOM mount and bundle placement"
+  },
+  {
     "version": "4.0.2",
     "date": "2026-10-03T18:30:22Z",
     "notes": "ZeroMusic 4.0.2: Fix DOM root mounting and script placement"

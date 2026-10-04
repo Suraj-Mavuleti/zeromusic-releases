@@ -1,8 +1,8 @@
 {
-  "version": "4.0.2",
-  "notes": "ZeroMusic 4.0.2: Fix DOM root mounting and script placement",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.0.2/ZeroMusic-4.0.2.apk",
-  "size": 17815075,
+  "version": "4.0.3",
+  "notes": "ZeroMusic 4.0.3: Fix DOM mount and bundle placement",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.0.3/ZeroMusic-4.0.3.apk",
+  "size": 17666679,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk"

@@ -1,7 +1,7 @@
 {
-  "version": "4.1.0",
-  "notes": "Drop-down settings accordion panes, silent background updates, one-time install permission prompt on first launch, gliding dock indicator & fluid navigation transitions",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.1.0/ZeroMusic-4.1.0.apk",
+  "version": "4.1.1",
+  "notes": "Clean up settings header by removing redundant status pills",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.1.1/ZeroMusic-4.1.1.apk",
   "size": 17440787,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",

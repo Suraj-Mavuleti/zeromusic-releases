@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.1.1",
+    "date": "2026-10-04T11:26:41Z",
+    "notes": "Clean up settings header by removing redundant status pills"
+  },
+  {
     "version": "4.1.0",
     "date": "2026-10-04T07:35:14Z",
     "notes": "Drop-down settings accordion panes, silent background updates, one-time install permission prompt on first launch, gliding dock indicator & fluid navigation transitions"

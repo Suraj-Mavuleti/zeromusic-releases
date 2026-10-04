@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.0.8",
+    "date": "2026-10-04T06:17:55Z",
+    "notes": "Readable M4A song archival, archive reset, and silent download notifications"
+  },
+  {
     "version": "4.0.7",
     "date": "2026-10-04T05:25:35Z",
     "notes": "Fix Google sign-in email validation error and auto-updater permission flow"

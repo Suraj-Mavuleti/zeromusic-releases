@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.0.9",
+    "date": "2026-10-04T06:42:43Z",
+    "notes": "Smooth physics-based animations across navigation tabs, hierarchical subpages, full player, and MiniPlayer"
+  },
+  {
     "version": "4.0.8",
     "date": "2026-10-04T06:17:55Z",
     "notes": "Readable M4A song archival, archive reset, and silent download notifications"

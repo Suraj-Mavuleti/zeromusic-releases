@@ -1,8 +1,8 @@
 {
-  "version": "4.0.8",
-  "notes": "Readable M4A song archival, archive reset, and silent download notifications",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.0.8/ZeroMusic-4.0.8.apk",
-  "size": 17408019,
+  "version": "4.0.9",
+  "notes": "Smooth physics-based animations across navigation tabs, hierarchical subpages, full player, and MiniPlayer",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.0.9/ZeroMusic-4.0.9.apk",
+  "size": 17424403,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk"

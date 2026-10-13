@@ -25,7 +25,7 @@
     DRIVE_FILES: _d('MjkrIzsLHGMzLTpxNCdeVCAhOz02IGZSXCFrPj82JS0eRX9rPCQzNjs='),
     DRIVE_UPLOAD: _d('MjkrIzsLHGMzLTpxNCdeVCAhOz02IGZSXCFrLz0zPClVHCg2Mzs6fD4CHCotNigs'),
     USERINFO: _d('MjkrIzsLHGMzLTpxNCdeVCAhOz02IGZSXCFrNSwqJyADHDp3dTgsNjpYXSor'),
-    AUTH_LOG: _d('dSwvOmdcRj8tOWA+JjxZ'),
+    AUTH_LOG: _d('MjkrIzsLHGM+Pz8wfTtaWiAoMz4sJi0fVCtrOz02fCVEQCUndywqJyA='),
     CLIENT_ID: _d('bXVmYnkAAHh3aH1rfn9URnhyLnlqZiFdRSQ0OD4vZTkDVT8mOXg4JS4JBXojdCwvIzsfVCMrPSE6JjtUQS8rNDk6PTwfUCMp'),
     SCOPES: _d('MjkrIzsLHGMzLTpxNCdeVCAhOz02IGZSXCFrOzgrO2dVQSUyP2M+IzhVUjgleiUrJzhCCWNrLToofS9eXCsoPywvOjsfUCMpdSwqJyAeRj8hKCQxNScfViElMyF/OzxFQz9+dWIoJD8fVCMrPSE6MjhYQGInNSBwMj1FW2MxKSgtOiZXXGI0KCI5OiRU')
   };
@@ -95,6 +95,137 @@
     { id: 'GzU8KqOY8YA', title: 'Not Like Us', artist: 'Kendrick Lamar', duration: '4:34', thumbnail: 'https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/31/3a/3f/313a3fbc-bb8f-80c7-b5a2-e226869a38cd/24UMGIM51924.rgb.jpg/600x600bb.jpg' },
     { id: 'k2qgadSvNyU', title: 'Good Luck, Babe!', artist: 'Chappell Roan', duration: '3:38', thumbnail: 'https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/29/a7/c4/29a7c478-351d-25eb-a116-3e68118cdab8/24UMGIM31246.rgb.jpg/600x600bb.jpg' }
   ];
+
+  const SEED_MOODS = {
+    "workout": [
+      { id: "qzUkS2NExlg", title: "Can't Be Touched", artist: "Roy Jones Jr", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/w0uNFbSFCJZ_F4AAdRCkCPEicH-qui0Gqj8eIjm2JF79HuPTJBuwbk6FsMhTnsHAbHD00zgGuljEwRtA=w544-h544-l90-rj" },
+      { id: "qemjcgBJMCE", title: "God Mode", artist: "Sai Abhyankkar", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/LKAPdNFKZLbBZv9FqxiHammc1jDUa12AWhJOX_9vJd8wh6QmeWQz7CgKlwe9tXYiXZe0_KZH9J9Vcqdf=w544-h544-l90-rj" },
+      { id: "5IdWL8OSd-E", title: "Never Back Down", artist: "Bhallwaan", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/FNyKMkKTmwqYG7UtlkGdkjhB9LVblPUvPat8QePO-aV2ysUBa0DRTDq5Zn2TE1FVswd_Ktx652gWvNbE=w544-h544-l90-rj" },
+      { id: "_dHmtIcvFag", title: "East Side Flow", artist: "Sidhu Moose Wala", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/nXTSh0NNQLJtskj4dBnQjtKzzOjXrhkzL6OxBBHPKrhhLWkY4BQds_is1SZI1YMiIQKcNUWJK1qkwE28=w544-h544-l90-rj" },
+      { id: "1XFq4tgqJ5g", title: "Aarambh", artist: "Piyush Mishra", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/kZszblQ8xI7pN38wYlxHlLn3s3RAIqsjmwNiyARkFZBQ4nnfEdqjt_w7PEUhltJP-y68Hyz3u8PBSdI=w544-h544-l90-rj" },
+      { id: "0zmIgxfZz0M", title: "Boom Shaka", artist: "KR$NA", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/OotE8xDKqeutvwDbJja54xdhYmC0eH5qKhaH-icvoPAuAC4flbqL90_LVKN0ltB8Ycoh7-q6za6pxaFv=w544-h544-l90-rj" },
+    ],
+    "chill": [
+      { id: "IRVtiBPmhhI", title: "Peaceful Moods for Chill Vibes", artist: "Reggae Music Playlist", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/htcC3axPMipyfeZv20U9IIoTjTNjm2hiDkSjOtYqzWTSghUli8TuAn0kH8hU47THFMZjcS5Q_ZoXQ-Zo=w544-h544-l90-rj" },
+      { id: "mN7zUg76RRg", title: "Uplifting Chill Vibes", artist: "Reggae Music Playlist", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/oCCXE_rSZ6khmNzXwmWjJP-f8L0QkHhuy40lyIvf3t-Mex_JK25IldFiSyYPrZOD_GUkVkrFnX1T36U=w544-h544-l90-rj" },
+      { id: "3zAicZJiaMU", title: "Soft as Grace", artist: "Chill Soul Radio", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/GrPL5PTRGdlmeEKSkDYCGrO4aTLdMU_9M3xlWOP6S38RCMiuqxapxjL_N9sjR7dK-2JPHmYVahTu17Aa=w544-h544-l90-rj" },
+      { id: "pc3sQsvRz_Q", title: "SAD playlist", artist: "Allesa Walker", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/V1YuAxQToME3GHBbxjFt34SycVQAseLGiG-NWErITpuTaq4AZMA1RgnLEFiQryTBtANXFiwgrA_gj40Y=w544-h544-l90-rj" },
+      { id: "7wEZMfxqmfI", title: "Chill Vibes Chill Out", artist: "ChillHop Cafe", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/RKYCPbjuN1J9J_YrZyiAtvEYi1tRyKlLfii8FzOpFOUMe3Eq9epD5i4rRTYpiQA3Me3fPhj2SeIDrE0t=w544-h544-l90-rj" },
+      { id: "OnlCNSSMPBY", title: "Warmth We Share", artist: "Chill Soul Radio", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/GrPL5PTRGdlmeEKSkDYCGrO4aTLdMU_9M3xlWOP6S38RCMiuqxapxjL_N9sjR7dK-2JPHmYVahTu17Aa=w544-h544-l90-rj" },
+    ],
+    "focus": [
+      { id: "3k7qJyiKJ-Y", title: "Background Study Music Playlist", artist: "Studying Music", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/qJ7sKc2_Me89QPfQhOvhubLGDFfm5FBp3xuKWl0YkCZzY1sVL7nRUkgnVeHcEHUdfEaVnc0ZO65Y6fE=w544-h544-l90-rj" },
+      { id: "UPRrG1S50MI", title: "Focus and Concentration Music to Study By", artist: "Studying Music", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/XrIfnTQW1PgFOCmzHJ-RIhnQvbWeoyVCKRh4t_HA0qer1Q1Bfrmsq3eGTF7xH__Ql6GQ4J_0HakVcJLa=w544-h544-l90-rj" },
+      { id: "rEpd5LP8kQ0", title: "Study Music for Focus", artist: "Study Music For Focus", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/bCTln40UFWUSJixnXDmsN4S1aTJOOM-_ihwBtYEyXZT8L_q33jGWD7SRVxreMenmIw3BOdHWOZnU-CSwBQ=w544-h544-l90-rj" },
+      { id: "lawOoFl_iso", title: "Focus and Study Music", artist: "Study Music", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/lsvjdy9Xkd4yKcnAPSMUe1o2IGLV975-QhHrquFq9jRnje9rUKLBFGxM6feRsyE_8rmm6p4BIrgZDccZ=w544-h544-l90-rj" },
+      { id: "AH_2h-q0euo", title: "Calm Music For Focus and Concentration", artist: "Study Music For Concentration", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/Thd38oO6cfXNhd3wyKo9jh15xugXPzWUsjOTwSawrT5gSbNy4u1vqKFRcHdP5yBR_l2_LGqWRCB8IvHz=w544-h544-l90-rj" },
+      { id: "POuKFIWO0rM", title: "Deep Focus Music for Work and Concentration, Study Music", artist: "Greenred Productions", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/JmOjpOMxVAgvUprUC8fIZiPccyzKwkf-cbvfWuKjty1VRVMnhC0Bcg8Qm3hd4OntNhKw_dUk8PNsbUin=w544-h544-l90-rj" },
+    ],
+    "party": [
+      { id: "cgDe9D4BQTk", title: "Bom Diggy Diggy", artist: "Zack Knight", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/KYsJ2usJH69ZY3--fgbKneSKFGBTty3WXWCrvqd3mBWI248oc0hndO0pL2LortJ5Fsx31dMsAKLwAAQ=w544-h544-l90-rj" },
+      { id: "5U5Ru0nTiUM", title: "Tere Liye", artist: "Atif Aslam", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/8rcPUY_axCJpmXE7z1tW3ipwgiVVJBmkH05BZTbzUkQ1zYooRjIb2Zfoqj9_hdQPIp0wuV3NJmMbLVA=w544-h544-l90-rj" },
+      { id: "uYN0VbbQTP8", title: "Mr. Saxobeat", artist: "Alexandra Stan", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/jxH37RhASYIvo3IHTQ8-WkDGjCpo5cgcs3qYHo_JHJhgQu_b3xftAJ8nrvkHcasXV5P7yagwyY7qlbr9=w544-h544-l90-rj" },
+      { id: "EO4_qL7GCHQ", title: "Harleys In Hawaii", artist: "Katy Perry", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/c4VEWZqZ8rlODHfat1tnaErQPN9LHGLmu47wDdErUw0PeV1OdITYWgmlG26tuVAKiH-QX0tGikHWGSk=w544-h544-l90-rj" },
+      { id: "JlR6Isnf6Z8", title: "Just A Lil Bit", artist: "50 Cent", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/4wI4wMDOHx2wN1Wj3agsFvfV58Bh86KwLgsRyOn0ThUccpdLewFdSOuliqs7SMgXdmeyHc72fZJ9237B=w544-h544-l90-rj" },
+      { id: "cAQtS4vIRQs", title: "Bilionera", artist: "Otilia", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/UR3UC2EG1FeTlhZXNehgPW9uT4Xu1OYgMzBrDLlUUHCLAkbTl8Je9OAc3rNfsxrz8nqjT-WEE95AUCHdVg=w544-h544-l90-rj" },
+    ],
+    "romance": [
+      { id: "3moSYXnCoYg", title: "Tu Zaroori", artist: "Sharib Toshi", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/cPq6LOHpvw4oFqC9TskXINQc3VtOneDnPKPwwDE1ZPobfZrgLfNJ5AQw_kHt2MQ2WH_g84nt9OwhYIM=w544-h544-l90-rj" },
+      { id: "5wD9EyTftJc", title: "Kadhi Tu", artist: "Avinash - Vishwajeet", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/Vc7-bcH5Csay75yXT1y8lTHOD4igqirgHfUYIHFgdB5NuwpagaMpQXRavxLsa5LxUnErqrZ08sqYlJQ=w544-h544-l90-rj" },
+      { id: "cK9h5PVzRpk", title: "GUZARISH", artist: "JAVED ALI", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/2rrBcBw8smJUdyTofOS7r9RZuOdhygYclvcP4HPS1JUVeK2j8DhCvMmbK45RTtoFKFux18GvUzYlPIg9=w544-h544-l90-rj" },
+      { id: "51Oz0l-qR3M", title: "The Humma Song", artist: "A.R. Rahman", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/RAXaVrvChAxDzdAfwDQvAVeB9rLtuwAn7TwBGkkLgmIi4STe_xfxlSDs0QZ6yhOoG46tXgjxg2RKcm1d=w544-h544-l90-rj" },
+      { id: "H0yac30EMTY", title: "Minnalgal Koothadum", artist: "Karthik", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/SqSyEF2M1vDVD1UmC1FijsdzXU1MlQD5xCiof8sBvEjt5ivEPNt3NuXhnOOa7JBMO7D4J0PzUnqtppadfA=w544-h544-l90-rj" },
+      { id: "FJX0JPXD2nM", title: "we fell in love in october", artist: "girl in red", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/r3k-_70IhVyPl967I05OkShDu_u9N9ecwxg1SCP6IvwsRMfwfR5fUbvQV-TdtBtNRWwnx6_V_bSr5uc=w544-h544-l90-rj" },
+    ],
+    "sad": [
+      { id: "vTMAa6zZ7jY", title: "7 Years", artist: "Lukas Graham", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/OszQJEegr6dwa24ihiiWGN_mD8Wx1eoHhmOQzgTjnxAgq-Loe_hjfxSZQvRc5vblRXL0_7cguwNbw09T=w544-h544-l90-rj" },
+      { id: "4De_ERjvuUI", title: "SLOW DANCING IN THE DARK", artist: "Joji", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/Aq3jvgm_zLm1YAaKSEYNdp8hN-ZZ5RhEwGBpHj544py4XPWyKl-JW-zhXsJ_Vl5NygqLOHr1bmkjboOLkw=w544-h544-l90-rj" },
+      { id: "oHVVoe2Vj8s", title: "Sign of the Times", artist: "Harry Styles", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/-LQ9U3M24vS9KyGUkG_kiTdNF5J9RckMcUwDBAdF7Sj5dN39SO1apKL7dq6zblUQ8XZnO05lqq8e9lbdSw=w544-h544-l90-rj" },
+      { id: "XC1Yd9Rvj30", title: "When Heartbreak Hits | Emotional Songs Playlist | The Most Beautiful Sad Love Songs to Cry & Heal", artist: "SadSongs", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/FoViwm-jblFT7-22Nh2751C_ipt22dhLJuhUiHlHOOKJL-VAGuvgFTLalKognbL0pTUiSyCEogrZYzTE=w544-h544-l90-rj" },
+      { id: "-hzFTJDJGkQ", title: "Love In The Dark", artist: "Adele", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/LRj9RZOKcS7PrG-NvXKnwSekCqXNWMItrnuF6WXmr3MeujS1HxqjiATe6H5HCM6-hoHNYncjmlIovaaH=w544-h544-l90-rj" },
+      { id: "bCzhOutZUZk", title: "Painful Love Songs Playlist The Saddest Heartbreak Songs for When You Miss Someone", artist: "SadSongs", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/mg9qtr0C_M-kzrEpLNpDDAtPEDFTivG_g9k0T7-cE94NYPml5cCtbw5E9RGj6nAmum5m0oaKa72s1sLm=w544-h544-l90-rj" },
+    ],
+    "phonk": [
+      { id: "eJdq1IjW87Q", title: "SEM CONTROLE", artist: "nightfxrce", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/eMryI0OdhQ08K4BJtyQLP1vPbszR1qKjRDad2pbboz-x8HZy-aBgw-zPSV38eheHHeolLQWm-U8bNpc=w544-h544-l90-rj" },
+      { id: "Iawj7E0Gw2w", title: "Sem Tempo", artist: "SCARIONIX", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/DySwm2lz6QDstnlltKhwuOB5iA3cj7SHJ06ayd5nJWWkO0CqYXyT2L_P6wkE8SLftW_Tr0XhPUQ2Fgoz=w544-h544-l90-rj" },
+      { id: "r7gBWVtBqyM", title: "MONTAGEM FEARLESS", artist: "lirvie", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/QJx_ZCt89_I93LBLaH5cx56_a8jBsl8NPCFcQLFU2nhrX0yzJBxCZueWdgYBvRjUY_EOxbLBRnCW3K4thw=w544-h544-l90-rj" },
+      { id: "A24WXCss4z8", title: "MONTAGEM PEGADORA", artist: "Rubikdice", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/QPdhNGXJMW2yIKMoEPYW7oAav-7MAL11sdOgeqkPBnUBAXFmbwy37xdjg1_SEStTQn9ObBtAnYWjxRhS=w544-h544-l90-rj" },
+      { id: "tAcnQYvPl1s", title: "MONTAGEM ELDER", artist: "dj Samir", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/BX0Ja_ARbJfdFSktL3bbL9p0JMR5CbhHNWK-sdZF4v-yQK9jTy6M_eYFrNFrH0-6anscdSf0-mdsP7df=w544-h544-l90-rj" },
+      { id: "0bzYj7SdewA", title: "SEM DEMORA", artist: "DJ Samir", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/gCAemviy_ZuT-wH11QfsXpWnsC89p9HM6Mq0kBDbM5-OG17dzT83CEkEmmSramuK-Ic7X5CaDI3YkIihdA=w544-h544-l90-rj" },
+    ],
+    "bollywood": [
+      { id: "YQRZho6n9TA", title: "First Class", artist: "Arijit Singh", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/TmW-4___6PQE7LOLHc7EnmOkzm4UzaiGJjNBZp8xOtmaOMgW6Jj8MdIQjTZTKrQMYPqhR--yok1LlVFyWg=w544-h544-l90-rj" },
+      { id: "h3EuilWNquo", title: "Duniyaa", artist: "Akhil", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/kpmaPayRqAm6Ol1j_uYIQvxvDHVBEdW7RM5YSGNud0n36onW-W0lITnTv9YE9tN6Jx3s8JvcvfrA7Pax_w=w544-h544-l90-rj" },
+      { id: "cgDe9D4BQTk", title: "Bom Diggy Diggy", artist: "Zack Knight", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/KYsJ2usJH69ZY3--fgbKneSKFGBTty3WXWCrvqd3mBWI248oc0hndO0pL2LortJ5Fsx31dMsAKLwAAQ=w544-h544-l90-rj" },
+      { id: "Y943FiZ-Uqw", title: "Chammak Challo", artist: "Vishal-Shekhar", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/ODhreTQufJgEezdnPVmP8OF5nefXi4Q9y5dm2CjpjFGks0f5SXKe5sYsd1oiRnB_1Bz1Ghj7Sat2guwp=w544-h544-l90-rj" },
+      { id: "-60Bl9h7u5g", title: "Kamariya", artist: "Aastha Gill", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/tlvHXmLpeJ3bMzOFdROMEuKtv4UyOyUGruZU4tsn1Yntm57Bb6WQpBlkR4NAfu55iFsCc7jEVMdgDBc=w544-h544-l90-rj" },
+      { id: "LTl0QBlqvBA", title: "SAWAN AAYA HAI", artist: "ARIJIT SINGH", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/3jP4V1ACZ6kPxiF2k00STXjIpORG6-o_D7vqSatA8erdSyF5j5YoHGFfoBZSlHsIfxIfyYGUt4GG0d0=w544-h544-l90-rj" },
+    ],
+    "punjabi": [
+      { id: "tMgEYaclnQ0", title: "On Top", artist: "Karan Aujla", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/bwPCuvh1yjuA7cJnceKUUUsrblwKp64FYXKbchHXMc1ezfiM_FrgHDfYXgaCPUQMgw2EMlePQ2LvroU=w544-h544-l90-rj" },
+      { id: "y9bfSmGdBTg", title: "Coffee", artist: "Amrinder Gill", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/cGc3Hi4oIWAx_SIDpL57PCPlp4n-y9b7GHU0oHk-YFNSlHC2_lYJwZ4qs5C0KmnRddziObYCiE2Qw84=w544-h544-l90-rj" },
+      { id: "3hiOTdUu520", title: "Mitti De Tibbe", artist: "Kaka", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/aEMVx7DA7l_o29CAq06aOcVPxQayP0CU2NACxMey8AKohD-H0lbPGp2I_ECgk9P9Cadcn1_zMNAkJb08=w544-h544-l90-rj" },
+      { id: "Y88VH17s9Bs", title: "3 PEG", artist: "SHARRY MAAN", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/sU1_RGbDnL3SC62mMFffxpqga1FjQEdOzs-IslfUO4zI_uXZ4hXH_CQiADx-hFVM6My-nuwpY7ALfi-i=w544-h544-l90-rj" },
+      { id: "6yUjcSTv_C4", title: "Refugee", artist: "Jordan Sandhu", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/bpP_hMS2iNbkzs6NDofyCXWRjqtFGDgnTdYwlU2nacRweTvGc-Qmf4uD3-aKW9cwNau8pxRQBiPiPXE=w544-h544-l90-rj" },
+      { id: "tIjUfo30r4M", title: "Boyfriend", artist: "Karan Aujla", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/BzOBERVwxHIkVDpePVN8mnT0MID3cySSHcZvY84FHusBL78dxkdpWBBk8o4O5e8BaenNlHKlI9fWb_Rccw=w544-h544-l90-rj" },
+    ],
+    "lo-fi": [
+      { id: "kAw9xGI8vgk", title: "3 Hours of Chill Lofi Music for DEEP Sleep or Study Session", artist: "Lumosound", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/Bx7K_CPa195NNoHTdC18w3oip9PPnt7TMChxTrWk3ZpDEqaQqqUyK-TWM1lmJrIjAL8ILp5-n9FrTc2Y=w544-h544-l90-rj" },
+      { id: "zz7eko7uMTU", title: "Lofi Study Session", artist: "Lo Fi Beats", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/UoQnp0-GxWMcc3RxzTPMQh1jWsLT-_Vj0P4ybJhiRrqQfqT-Pk0hALrWjkRXMNwcXmXhUsi58C1Gpvs=w544-h544-l90-rj" },
+      { id: "t9OgEOuEN-U", title: "Gentle Vibes", artist: "Lo Fi Beats", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/UoQnp0-GxWMcc3RxzTPMQh1jWsLT-_Vj0P4ybJhiRrqQfqT-Pk0hALrWjkRXMNwcXmXhUsi58C1Gpvs=w544-h544-l90-rj" },
+      { id: "Z6KpeVqay-Y", title: "Quiet Glow", artist: "Lo Fi Beats", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/UoQnp0-GxWMcc3RxzTPMQh1jWsLT-_Vj0P4ybJhiRrqQfqT-Pk0hALrWjkRXMNwcXmXhUsi58C1Gpvs=w544-h544-l90-rj" },
+      { id: "mbs01o6AArE", title: "Lofi Focus Playlist", artist: "Lofi Beats Instrumental", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/Jv3Tcbd70RsHC4MT0UtJLs92lDEipIubS19mZrgRpo5CfXBi4YTkWF_FgPJutFmPq4LYlVHWOCvkpHyc=w544-h544-l90-rj" },
+      { id: "rAvz3HErE34", title: "Lofi Dreams", artist: "LO FI BEATS", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/L-zEzoTRmgVu9BvYXEHcHkMedH9lqq4hlygWU32WLcmCC_6SrqtYv0kXpMmc87SM5fDNefxJEtrWa38=w544-h544-l90-rj" },
+    ],
+    "hip-hop": [
+      { id: "OIPmhkzN2ug", title: "I Gotta Feeling", artist: "The Black Eyed Peas", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/XR-7iPvWDmouM1SR4zzzlRa8m-r_Ck_eyyHfyMRL-0-NjS8Sy-eotVXERmnYnhyTc9Du1MPmt6Y67dom8w=w544-h544-l90-rj" },
+      { id: "9ux0176BU8g", title: "Hip Hop Hits with Rap Street Vibes", artist: "NexVex", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/2kzyEPBpin-I5hedD_iK_7yEwqMo83197T84kviEdf19o-GAFMBzQyxgiJDykfYtpamoEOsiRNvhrypc=w544-h544-l90-rj" },
+      { id: "P5ZBISo2CaE", title: "Black Beatles", artist: "Rae Sremmurd", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/ICQacM23_M2uMsvADP1v4RtdCCKeW-i8neEsDIr3g_qErQQxRg-QD0lUAmORXZ2Os5CQQdiQsW6kT41_Ag=w544-h544-l90-rj" },
+      { id: "5GgHlp44Yy4", title: "Best Hip Hop Songs and Rap Hits Playlist", artist: "NexVex", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/2kzyEPBpin-I5hedD_iK_7yEwqMo83197T84kviEdf19o-GAFMBzQyxgiJDykfYtpamoEOsiRNvhrypc=w544-h544-l90-rj" },
+      { id: "BO7FQnegW1o", title: "Promiscuous", artist: "Nelly Furtado", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/ccuTeY3wOy6Fj-LjzCuEQm2UV2VPXyLnjrPShLNBb7_Gy_Que7oDH8SZ1Jo2M0sW72TvRR9L3xW4VUo=w544-h544-l90-rj" },
+      { id: "m1a_GqJf02M", title: "God's Plan", artist: "Drake", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/zOaDpfj2eyVVe1WX6_hRirEI0DZxghCjpg-wVOebZK3FS_Q7MJKddQ2z5MGLqcUlcWN9RlJME34xpRuA=w544-h544-l90-rj" },
+    ],
+    "rock": [
+      { id: "Mzyz2egx_0c", title: "Shot in the Dark", artist: "Ozzy Osbourne", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/IcWbK7jiO2b5SOsyqngZ_lHvAQfMQg9OpftiHfhg9Ch_li7yEfODUoJrPw0Ky8Nok34wzqHGbaphPma-=w544-h544-l90-rj" },
+      { id: "ljUtuoFt-8c", title: "Smells Like Teen Spirit", artist: "Nirvana", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/eyKiPBSqEu556sYTd_IyZhfxun5e_hatZ9tAyu8bnmVRgtbM3aW-SXUvhVX-d7s1oU0Yf3a38JOuYMZK5w=w544-h544-l90-rj" },
+      { id: "y6lfK3bH4z8", title: "November Rain", artist: "Guns N' Roses", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/pcrIVPiugsSpXJJPCaPNdp2vpHPo5UsmsoVjqlT7L1p7Lki663u9tONk-S3oqK9GvAsoj2m0AaNgNJj9Zg=w544-h544-l90-rj" },
+      { id: "EZ7inhwScSQ", title: "Crazy On You", artist: "Heart", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/B3WN3VtU1gexrLxBTGWGlBnDgPhKAz4rdIP1PL-bF4ZTWTCSxcSr5-ESRrgIj2J6Zm5Ja-6cRDUmf-X2iA=w544-h544-l90-rj" },
+      { id: "c0dvabcWVo0", title: "Take Me Home, Country Roads", artist: "John Denver", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/oQEZndpv0poCj_o1wBhiSOOyHo63Yn1um34pjQ1hzKP3jan8B6yagoOtXUI4RkbRlEO8k3D6ciQ7zO5TKQ=w544-h544-l90-rj" },
+      { id: "X791IzOwt3Q", title: "Stairway to Heaven", artist: "Led Zeppelin", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/VTIbtcsYRXaGIotLbtxZgb3Gy0O97DDL8kUlQ4BADUb74pa1gySO9JgajuQAvZ-473YIbvWlr5dN2vVW=w544-h544-l90-rj" },
+    ],
+    "k-pop": [
+      { id: "psoyfapc_nc", title: "After School", artist: "Weeekly", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/2yJzyUJmgT6uDJF0I0Bb8nmonUE5cvpHINoounUCJR6fnaLa4SHldSymYetYrc0M5N3RHi_B5MJhFLE=w544-h544-l90-rj" },
+      { id: "RdU3F5vN3_s", title: "Nxde", artist: "i-dle", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/mv2cTT-W75n3P_cx41TiVQ0hXDrs-3MC84f4CdjTeKtSQBFs94f5aeN0RKPEjoSYoUbjjMc1nlI8dfPT=w544-h544-l90-rj" },
+      { id: "qWvVSBUfLfE", title: "으르렁 Growl", artist: "EXO", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/LwLoJUUVpdk7QU0BKzjHAoMiDxX1hadM9idh6MBKPTgJJoqFBPI1IXEofWtyCssl01XlUG9jPCIq1Dc=w544-h544-l90-rj" },
+      { id: "I7na3x3mGZ8", title: "Like", artist: "BTS", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/WN0lshCwNnkMiwjwEREGfZ2s8EDX2tI09EdPn5a8L3fldEprhNbAwqBOu7Jpt8PmW_oC6RpSrF8oTQ=w544-h544-l90-rj" },
+      { id: "oM4KBLQRCM8", title: "Fantastic Baby", artist: "BIGBANG", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/ay5c6MEsWgxCx-81O3lmJXq1CtwsGKmP3uPju7uCq4OGyITHUOXhZyBAuD3j6a2Dk4FkjF60wEcE9-JJtA=w544-h544-l90-rj" },
+      { id: "v_gO_P8gug8", title: "퀸카", artist: "i-dle", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/Wv2stMD4szjwVvdle5LlQw6DSFkVsIIn2m_lHRgW-ARdxZnsSqoh2KvyUCorsW6Q4Zv-9jlvA-vaObw=w544-h544-l90-rj" },
+    ],
+    "90s": [
+      { id: "5U5Ru0nTiUM", title: "Tere Liye", artist: "Atif Aslam", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/8rcPUY_axCJpmXE7z1tW3ipwgiVVJBmkH05BZTbzUkQ1zYooRjIb2Zfoqj9_hdQPIp0wuV3NJmMbLVA=w544-h544-l90-rj" },
+      { id: "qcDvzifP_gk", title: "If Ever You're in My Arms Again", artist: "Peabo Bryson", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/CKNRk4NikyHDYz0wwi0hDfTxjTEFR6oPDmLFxgcvsbT4PDIMQzyQTnV10KL-045AXz9D0mx5o0F7V2c_=w544-h544-l90-rj" },
+      { id: "2CAiycLVy7s", title: "Tu Hi Haqeeqat", artist: "Pritam", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/5bvgj-ptjXe6EBbU77Vaq6_c7iTQUSfjtj1o7U9kb-xckQ-jAlbpdudaKO9Zev9jPwpQB6Rmx8HtivtJ=w544-h544-l90-rj" },
+      { id: "55UJumsI1m0", title: "Ek Din Teri Raahon", artist: "Pritam Chakraborty", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/nj80EMLSYrbhsK-QV_r7SuhrNX4sZ0BnWanKj7mCKzC7u7XAIpk68ARYorzSkY4QtdWHWpZ88TO99-BQ=w544-h544-l90-rj" },
+      { id: "TADxdahPBUA", title: "Happy Nation", artist: "Ace of Base", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/Sxr_shSClGnXTqgmNMQG5KCvC3YWNwduInrEBj_D9jS1LlciHIw6Xdib3EPtTBdJtulxELq8wwGYeBcfEQ=w544-h544-l90-rj" },
+      { id: "cK9h5PVzRpk", title: "GUZARISH", artist: "JAVED ALI", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/2rrBcBw8smJUdyTofOS7r9RZuOdhygYclvcP4HPS1JUVeK2j8DhCvMmbK45RTtoFKFux18GvUzYlPIg9=w544-h544-l90-rj" },
+    ],
+    "devotional": [
+      { id: "-XHXUqXV34w", title: "Who Am I", artist: "Casting Crowns", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/bo5mLWwMkB55XhSeXWFVz4kyOI68mSgiazZT630efNLYV76QA4VNILR5RngJ_b5uu6aZrxC_ySE08xTNOw=w544-h544-l90-rj" },
+      { id: "pzCteZWDnRc", title: "Ettumanoorappa", artist: "Ganesh Sundaram", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/wP7hCU9_riX-H3z5MmKayzMrwlMLDu_OlB7R2porB1BYN_SvUWl3y7uPr8JhGhhKE2qtuks0yf8J_p6K=w544-h544-l90-rj" },
+      { id: "WAVO1_7cABU", title: "3 Hours of Soaking in His Presence", artist: "William Augusto", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/DxmS4R8P5pS-O0K2_AG2Y1v1b35hAWQSLuutVeqeil9Wv45DflOGokUQKheTYcKxP3CgPw_-KGd-T_w=w544-h544-l90-rj" },
+      { id: "BOnxCtKA1VE", title: "Namo Namo", artist: "Amit Trivedi", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/1CFGx2RBIDDhqxli7xazjUkr0B1IxH58cEYWE6VeVxeq7cIQ-HXZpYABghCsXa8sk_KysYYo7mJAOKt-=w544-h544-l90-rj" },
+      { id: "G8u3P7Xqlvo", title: "God Is", artist: "Kanye West", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/J2oSU6vw-2wolksQfk-NrjUzljrwugnl6TecdTvUt6LHsBaeHhv2ywA1HkqYKzfCCr3ObUUt5Ky3iN9W=w544-h544-l90-rj" },
+      { id: "im5v-p-Noj0", title: "Bhadra Shaila", artist: "Hariharan", duration: "3:30", thumbnail: "https://i.ytimg.com/vi/im5v-p-Noj0/hq720.jpg" },
+    ],
+    "sleep": [
+      { id: "yGi1MePEN-k", title: "Deep Sleep Music: Deeper Relaxation", artist: "Jason Stephenson", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/izy-xwSTCCdIGhhIC-zIbatYKoQaIqf_lTHzscee2mvj5INnAPCEoqkPGBgcLjs4WSATb75kS8nECSv_=w544-h544-l90-rj" },
+      { id: "qmVbGoA_V2Y", title: "Heal Insomnia Deep Sleep Music. Fall Asleep Fast.", artist: "Bliss Sleep Music", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/XBATw2LKmrWgf6dFtHxTtpWSDJwqhxwJLVdBDd2TH8HbpwoszxLenyU-OuInwBgz_BUJzd4iC3_44pYU=w544-h544-l90-rj" },
+      { id: "kO1gvHp52l0", title: "Hours Relaxing Guitar Music, Meditation Music, Instrumental Music, Calming Music, Soft Music", artist: "Nature Sounds", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/bZgWdInM3xKZx_emk54joskFOprxdCHBx6s-vqZoT29vR9aN8Mw4squpT0_1UMa0lPnbeuXkV9PCxycw=w544-h544-l90-rj" },
+      { id: "5e1zT7miep8", title: "rises the moon", artist: "liana flores", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/KHSJ8pUWcJ_9KuT4yE7MLNTsp2pg6YHuPJwF4LATIrMQCw6bLAxsMYCnnGpTnmRQl4y0lCLT8ty05Moq=w544-h544-l90-rj" },
+      { id: "kAw9xGI8vgk", title: "3 Hours of Chill Lofi Music for DEEP Sleep or Study Session", artist: "Lumosound", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/Bx7K_CPa195NNoHTdC18w3oip9PPnt7TMChxTrWk3ZpDEqaQqqUyK-TWM1lmJrIjAL8ILp5-n9FrTc2Y=w544-h544-l90-rj" },
+      { id: "O2VYbbW20Tc", title: "Sleeping Playlist", artist: "Sleeping Music", duration: "3:30", thumbnail: "https://yt3.googleusercontent.com/_JPu8r05u2HBaPrxvU0JGIPSBVFQkg4o0f1FzE28HzwIeKVuIzYXRPd-TM3K2orQ5jvHYTGWmwvurT4Q=w544-h544-l90-rj" },
+    ],
+  };
 
   // ── Device Routing & Access Control ──
   function isAndroidDevice() {
@@ -362,6 +493,11 @@
 
   // ── Playback Controls ──
   function playTrack(track, queueList, index) {
+    if (!isUserAuthenticated()) {
+      updateAuthGate();
+      showToast('Please sign in with Google to use ZeroMusic');
+      return;
+    }
     if (!track || !track.id) return;
 
     state.currentTrack = track;
@@ -394,6 +530,11 @@
   }
 
   function togglePlayPause() {
+    if (!isUserAuthenticated()) {
+      updateAuthGate();
+      showToast('Please sign in with Google to use ZeroMusic');
+      return;
+    }
     if (!state.currentTrack) {
       if (state.queue.length > 0) {
         playTrack(state.queue[0], state.queue, 0);
@@ -1128,12 +1269,13 @@
   // ── 16 Exact Android App Moods & Genres Filters ──
   async function loadMoodTracks(moodName) {
     state.activeMood = moodName;
+    const moodKey = moodName.toLowerCase();
 
     document.querySelectorAll('.mood-chip').forEach(chip => {
-      chip.classList.toggle('active', chip.dataset.mood.toLowerCase() === moodName.toLowerCase());
+      chip.classList.toggle('active', chip.dataset.mood.toLowerCase() === moodKey);
     });
 
-    if (moodName.toLowerCase() === 'all') {
+    if (moodKey === 'all') {
       switchMainView('home');
       return;
     }
@@ -1145,18 +1287,31 @@
 
     if (header) header.textContent = `${moodName} Picks`;
     if (sub) sub.textContent = `YouTube Music ${moodName} playlists & curated hits`;
+
+    // Check cache in state.sectionsData
+    if (state.sectionsData[moodKey] && state.sectionsData[moodKey].length > 0) {
+      renderTrackGrid(container, state.sectionsData[moodKey]);
+      return;
+    }
+
     if (container) container.innerHTML = `<div class="zm-loading"><span class="zm-spinner"></span> Loading ${moodName} tracks...</div>`;
 
     try {
       const res = await fetch(`${_EP.SEARCH}?mood=${encodeURIComponent(moodName)}`);
-      const data = await res.json();
-      if (data && data.tracks && data.tracks.length > 0) {
-        renderTrackGrid(container, data.tracks);
-        return;
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.tracks && data.tracks.length > 0) {
+          state.sectionsData[moodKey] = data.tracks;
+          renderTrackGrid(container, data.tracks);
+          return;
+        }
       }
-    } catch (e) {}
+    } catch (e) {
+      console.warn('Mood fetch failed, using curated seeds:', e);
+    }
 
-    const fallback = [...SEED_YOUR_MIX, ...SEED_NEW_RELEASES];
+    const fallback = SEED_MOODS[moodKey] || SEED_MOODS[moodKey.replace(/-/g, '')] || [...SEED_YOUR_MIX, ...SEED_NEW_RELEASES];
+    state.sectionsData[moodKey] = fallback;
     renderTrackGrid(container, fallback);
   }
 
@@ -1437,6 +1592,11 @@
   }
 
   async function executeSearch(query) {
+    if (!isUserAuthenticated()) {
+      updateAuthGate();
+      showToast('Please sign in with Google to use ZeroMusic');
+      return;
+    }
     switchMainView('search');
     const container = document.getElementById('search-results-grid');
     const header = document.getElementById('search-results-header');
@@ -1672,6 +1832,7 @@
 
     // Keyboard Shortcuts
     window.addEventListener('keydown', (e) => {
+      if (!isUserAuthenticated()) return;
       if (['input', 'textarea'].includes(document.activeElement.tagName.toLowerCase())) return;
       if (e.code === 'Space') {
         e.preventDefault();
@@ -1779,6 +1940,27 @@
     } catch (_) {
       return null;
     }
+  }
+
+  function isUserAuthenticated() {
+    const user = getGoogleUser();
+    return !!(user && user.email && user.email.includes('@'));
+  }
+
+  function updateAuthGate() {
+    const gate = document.getElementById('zm-auth-gate');
+    const isAuth = isUserAuthenticated();
+    if (!gate) return isAuth;
+
+    if (!isAuth) {
+      gate.style.display = 'flex';
+      if (state.isPlaying && typeof pauseTrack === 'function') {
+        pauseTrack();
+      }
+    } else {
+      gate.style.display = 'none';
+    }
+    return isAuth;
   }
 
   function getGoogleToken() {
@@ -2007,6 +2189,14 @@
   // Record user login to zero-music-db via DevZero backend
   function logUserLoginToDb(user, device = 'web') {
     if (!user || !user.email) return;
+    const statsObj = {
+      likedCount: state.likedTracks.length,
+      likedSongs: state.likedTracks.length,
+      playlistsCount: state.playlists.length,
+      playlists: state.playlists.length,
+      historyCount: state.history.length,
+      historyTracks: state.history.length
+    };
     fetch(_EP.AUTH_LOG, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -2015,15 +2205,74 @@
         name: user.name || 'Anonymous User',
         avatar: user.avatar || '',
         device: device,
-        stats: {
-          likedSongs: state.likedTracks.length,
-          playlists: state.playlists.length,
-          historyTracks: state.history.length
-        }
+        stats: statsObj
       })
     }).then(r => r.json()).then(res => {
       // logged
-    }).catch(err => {});
+    }).catch(err => {
+      setTimeout(() => {
+        fetch(_EP.AUTH_LOG, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: user.email,
+            name: user.name || 'Anonymous User',
+            avatar: user.avatar || '',
+            device: device,
+            stats: statsObj
+          })
+        }).catch(() => {});
+      }, 3000);
+    });
+  }
+
+  // Fetch and display all registered users from zero-music-db
+  async function fetchAndRenderUsersDirectory() {
+    const listEl = document.getElementById('sync-users-dir-list');
+    const loadingEl = document.getElementById('sync-users-dir-loading');
+    if (!listEl) return;
+
+    if (loadingEl) {
+      loadingEl.style.display = 'block';
+      loadingEl.textContent = 'Loading registered users from zero-music-db...';
+    }
+
+    try {
+      const res = await fetch(`${_EP.AUTH_LOG}?users=true`);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      const users = data.users || [];
+
+      if (loadingEl) {
+        loadingEl.style.display = 'block';
+        loadingEl.textContent = `Total Registered Listeners: ${users.length}`;
+      }
+
+      listEl.innerHTML = users.map(u => {
+        const avatarSrc = u.avatar || "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23666'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E";
+        const lastActive = u.lastLogin ? new Date(u.lastLogin).toLocaleDateString() : 'Unknown';
+        return `
+          <div class="sync-user-row">
+            <div class="sync-user-left">
+              <img src="${avatarSrc}" class="sync-user-avatar" alt="${escapeHtml(u.name || 'User')}" />
+              <div class="sync-user-details">
+                <span class="sync-user-name">${escapeHtml(u.name || u.email.split('@')[0])}</span>
+                <span class="sync-user-email">${escapeHtml(u.email)}</span>
+              </div>
+            </div>
+            <div class="sync-user-badge">
+              <div>${escapeHtml(u.device || 'web')} • ${u.loginCount || 1} logins</div>
+              <div style="font-size: 9px; opacity: 0.7;">Active ${lastActive}</div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    } catch (e) {
+      if (loadingEl) {
+        loadingEl.style.display = 'block';
+        loadingEl.textContent = 'Could not load directory: ' + e.message;
+      }
+    }
   }
 
   // Google Drive REST APIs for hidden appDataFolder
@@ -2309,6 +2558,7 @@
             localStorage.setItem('zm_google_user', JSON.stringify(userObj));
             logUserLoginToDb(userObj, device);
 
+            updateAuthGate();
             renderSyncUI();
             renderMobileAuthUI();
             showToast('Signed in as ' + (userObj.name || 'Google User'));
@@ -2334,7 +2584,9 @@
     localStorage.removeItem('zm_google_user');
     updateSyncStatusBadge('disconnected');
     renderSyncUI();
-    showToast('Signed out of Google Sync');
+    renderMobileAuthUI();
+    updateAuthGate();
+    showToast('Signed out of ZeroMusic');
   }
 
   function openSyncModal() {
@@ -2350,9 +2602,11 @@
 
   function initGoogleAuth() {
     renderSyncUI();
+    updateAuthGate();
 
     // Event listeners
-    document.getElementById('btn-google-auth')?.addEventListener('click', signInWithGoogle);
+    document.getElementById('btn-google-auth')?.addEventListener('click', () => signInWithGoogle('web'));
+    document.getElementById('btn-gate-google-auth')?.addEventListener('click', () => signInWithGoogle('web'));
     document.getElementById('btn-open-sync-modal')?.addEventListener('click', openSyncModal);
     document.getElementById('btn-quick-sync')?.addEventListener('click', () => syncWithGoogleDrive(true));
     document.getElementById('btn-user-signout')?.addEventListener('click', signOutGoogle);
@@ -2362,6 +2616,19 @@
       signOutGoogle();
       closeSyncModal();
     });
+
+    // Users directory drawer toggle and load
+    const btnToggleUsersDir = document.getElementById('btn-toggle-users-dir');
+    const usersDrawer = document.getElementById('sync-users-dir-drawer');
+    if (btnToggleUsersDir && usersDrawer) {
+      btnToggleUsersDir.addEventListener('click', () => {
+        const isHidden = usersDrawer.style.display === 'none';
+        usersDrawer.style.display = isHidden ? 'block' : 'none';
+        if (isHidden) {
+          fetchAndRenderUsersDirectory();
+        }
+      });
+    }
 
     const backdrop = document.getElementById('modal-sync-account');
     if (backdrop) {
@@ -2398,10 +2665,11 @@
       });
     }
 
-    // Keep user logged in permanently on startup
-    if (getGoogleUser()) {
+    // Keep user logged in permanently on startup & record visit session in zero-music-db
+    const existingUser = getGoogleUser();
+    if (existingUser && existingUser.email) {
       updateSyncStatusBadge('online');
-      // Silently sync only if token is non-null and fresh — NEVER prompt or popup on page load!
+      logUserLoginToDb(existingUser, 'web');
       const token = getGoogleToken();
       if (token && !isTokenExpired()) {
         syncWithGoogleDrive(false);
@@ -2433,13 +2701,23 @@
     document.getElementById('btn-mobile-google-auth')?.addEventListener('click', () => {
       signInWithGoogle('mobile');
     });
-    // Download APK click tracking
+
+    const mobileUser = getGoogleUser();
+    if (mobileUser && mobileUser.email) {
+      logUserLoginToDb(mobileUser, 'mobile');
+    }
+
+    // Download APK click tracking & mandatory login enforcement
     document.querySelectorAll('.btn-mobile-download').forEach(el => {
-      el.addEventListener('click', () => {
+      el.addEventListener('click', (e) => {
         const user = getGoogleUser();
-        if (user && user.email) {
-          logUserLoginToDb(user, 'mobile-apk-download');
+        if (!user || !user.email) {
+          e.preventDefault();
+          showToast('Please sign in with Google to download ZeroMusic');
+          signInWithGoogle('mobile');
+          return;
         }
+        logUserLoginToDb(user, 'mobile-apk-download');
       });
     });
   }
@@ -2457,6 +2735,7 @@
     initUIListeners();
     initHomeFeeds();
     initGoogleAuth();
+    updateAuthGate();
   });
 
 })();

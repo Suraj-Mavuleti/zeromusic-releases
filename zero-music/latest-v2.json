@@ -1,7 +1,7 @@
 {
-  "version": "4.2.9",
-  "notes": "Direct search auto-correction, queue reordering with Play Next bump, and player volume control fix",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.2.9/ZeroMusic-4.2.9.apk",
+  "version": "4.3.0",
+  "notes": "Universal volume slider across all Android OSes/OEMs, unified Add to queue replacing Play next, elevated Home dashboard with 2x3 Quick Picks grid, and redesigned original Search discovery interface",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.3.0/ZeroMusic-4.3.0.apk",
   "size": 17522787,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",

@@ -1,8 +1,8 @@
 {
-  "version": "4.3.3",
-  "notes": "Refine Search pane with authentic genre mosaic and upgrade Home Hi-Fi stage",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.3.3/ZeroMusic-4.3.3.apk",
-  "size": 17539167,
+  "version": "4.3.4",
+  "notes": "Minimal monochrome search discovery tiles and large 156dp cover art on Home",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.3.4/ZeroMusic-4.3.4.apk",
+  "size": 17539171,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk"

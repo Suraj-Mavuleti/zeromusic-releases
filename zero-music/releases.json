@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.3.4",
+    "date": "2026-10-15T12:30:56Z",
+    "notes": "Minimal monochrome search discovery tiles and large 156dp cover art on Home"
+  },
+  {
     "version": "4.3.3",
     "date": "2026-10-15T11:53:25Z",
     "notes": "Refine Search pane with authentic genre mosaic and upgrade Home Hi-Fi stage"

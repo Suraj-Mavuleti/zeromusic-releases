@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.3.9",
+    "date": "2026-10-15T13:48:35Z",
+    "notes": "Live lyrics on home screen mini-player and widget, upgraded lock screen notification, and remove release alert popups"
+  },
+  {
     "version": "4.3.8",
     "date": "2026-10-15T13:35:58Z",
     "notes": "Manual on-demand lyrics translation without auto-translation"

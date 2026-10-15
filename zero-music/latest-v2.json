@@ -1,7 +1,7 @@
 {
-  "version": "4.3.8",
-  "notes": "Manual on-demand lyrics translation without auto-translation",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.3.8/ZeroMusic-4.3.8.apk",
+  "version": "4.3.9",
+  "notes": "Live lyrics on home screen mini-player and widget, upgraded lock screen notification, and remove release alert popups",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.3.9/ZeroMusic-4.3.9.apk",
   "size": 17539231,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",

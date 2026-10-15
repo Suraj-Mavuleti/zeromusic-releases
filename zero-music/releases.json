@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.2.2",
+    "date": "2026-10-15T08:17:58Z",
+    "notes": "Strictly filter search suggestions and autoplay to official music songs only, eliminating non-music YouTube videos, ringtones, and view counts"
+  },
+  {
     "version": "4.2.1",
     "date": "2026-10-15T07:47:36Z",
     "notes": "Improve autoplay reliability with queue pre-buffering, multi-tier recommendation fallbacks, and curated homescreen starters"

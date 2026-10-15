@@ -1,7 +1,7 @@
 {
-  "version": "4.2.1",
-  "notes": "Improve autoplay reliability with queue pre-buffering, multi-tier recommendation fallbacks, and curated homescreen starters",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.2.1/ZeroMusic-4.2.1.apk",
+  "version": "4.2.2",
+  "notes": "Strictly filter search suggestions and autoplay to official music songs only, eliminating non-music YouTube videos, ringtones, and view counts",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.2.2/ZeroMusic-4.2.2.apk",
   "size": 17489975,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",

@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.2.4",
+    "date": "2026-10-15T08:38:42Z",
+    "notes": "Comprehensively block mashups, medleys, jukeboxes, AI covers, megamixes, and amateur compilation uploads from searches, suggestions, and autoplay"
+  },
+  {
     "version": "4.2.3",
     "date": "2026-10-15T08:31:33Z",
     "notes": "Upgraded music filtering: comprehensive rejection of UGC queries, ringtones, slowed/reverb edits, file uploads, and clean video tags from titles"

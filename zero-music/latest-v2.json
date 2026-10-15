@@ -1,7 +1,7 @@
 {
-  "version": "4.2.3",
-  "notes": "Upgraded music filtering: comprehensive rejection of UGC queries, ringtones, slowed/reverb edits, file uploads, and clean video tags from titles",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.2.3/ZeroMusic-4.2.3.apk",
+  "version": "4.2.4",
+  "notes": "Comprehensively block mashups, medleys, jukeboxes, AI covers, megamixes, and amateur compilation uploads from searches, suggestions, and autoplay",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.2.4/ZeroMusic-4.2.4.apk",
   "size": 17489975,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",

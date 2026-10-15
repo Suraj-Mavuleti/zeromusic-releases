@@ -1,8 +1,8 @@
 {
-  "version": "4.4.4",
-  "notes": "Fixed stuck update downloads: added connection timeouts, fast CDN mirrors, real-time download progress, and direct browser download fallback.",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.4.4/ZeroMusic-4.4.4.apk",
-  "size": 17571995,
+  "version": "4.4.5",
+  "notes": "Added tactile swipe gestures on album artwork to play next or previous track, and double-tap seeking (+/- 10s) with floating badge feedback.",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.4.5/ZeroMusic-4.4.5.apk",
+  "size": 17571999,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

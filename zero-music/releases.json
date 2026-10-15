@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.2.1",
+    "date": "2026-10-15T07:47:36Z",
+    "notes": "Improve autoplay reliability with queue pre-buffering, multi-tier recommendation fallbacks, and curated homescreen starters"
+  },
+  {
     "version": "4.2.0",
     "date": "2026-10-15T07:22:55Z",
     "notes": "Curated suggestion playlists and elimination of third-party user playlists"

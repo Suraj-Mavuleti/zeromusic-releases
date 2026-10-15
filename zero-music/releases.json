@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.4.2",
+    "date": "2026-10-15T14:16:08Z",
+    "notes": "Removed the black background circle behind the three-dots options menu on Home screen cover art."
+  },
+  {
     "version": "4.4.1",
     "date": "2026-10-15T14:11:50Z",
     "notes": "Removed manual duplicate button; queue, auto-play radio, playlists, and liked songs now automatically deduplicate in the background."

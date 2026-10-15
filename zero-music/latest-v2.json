@@ -1,8 +1,8 @@
 {
-  "version": "4.3.9",
-  "notes": "Live lyrics on home screen mini-player and widget, upgraded lock screen notification, and remove release alert popups",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.3.9/ZeroMusic-4.3.9.apk",
-  "size": 17539231,
+  "version": "4.4.0",
+  "notes": "Overhauled recommendation engine with genre & vibe clustering, cohesive radio sequencing without abrupt genre jumps, personalized Daily Mixes rendered directly on Home, and strictly diverse Discover Weekly recommendations.",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.4.0/ZeroMusic-4.4.0.apk",
+  "size": 17555615,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk"

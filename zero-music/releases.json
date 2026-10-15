@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.3.3",
+    "date": "2026-10-15T11:53:25Z",
+    "notes": "Refine Search pane with authentic genre mosaic and upgrade Home Hi-Fi stage"
+  },
+  {
     "version": "4.3.2",
     "date": "2026-10-15T11:40:58Z",
     "notes": "Enforce install updates permission popups and Home alert banner"

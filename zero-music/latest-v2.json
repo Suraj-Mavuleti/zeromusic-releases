@@ -1,8 +1,8 @@
 {
-  "version": "4.3.2",
-  "notes": "Enforce install updates permission popups and Home alert banner",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.3.2/ZeroMusic-4.3.2.apk",
-  "size": 17539171,
+  "version": "4.3.3",
+  "notes": "Refine Search pane with authentic genre mosaic and upgrade Home Hi-Fi stage",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.3.3/ZeroMusic-4.3.3.apk",
+  "size": 17539167,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk"

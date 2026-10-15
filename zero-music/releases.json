@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.2.6",
+    "date": "2026-10-15T09:10:20Z",
+    "notes": "Eliminate fake music note logo lines and improve lyrics matching precision"
+  },
+  {
     "version": "4.2.5",
     "date": "2026-10-15T08:47:11Z",
     "notes": "Filter record label artist names, fancams, sleep frequencies, and enhance Bollywood singer extraction"

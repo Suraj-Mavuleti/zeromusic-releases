@@ -1,7 +1,7 @@
 {
-  "version": "4.2.5",
-  "notes": "Filter record label artist names, fancams, sleep frequencies, and enhance Bollywood singer extraction",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.2.5/ZeroMusic-4.2.5.apk",
+  "version": "4.2.6",
+  "notes": "Eliminate fake music note logo lines and improve lyrics matching precision",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.2.6/ZeroMusic-4.2.6.apk",
   "size": 17489975,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",

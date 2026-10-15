@@ -1,7 +1,7 @@
 {
-  "version": "4.4.0",
-  "notes": "Overhauled recommendation engine with genre & vibe clustering, cohesive radio sequencing without abrupt genre jumps, personalized Daily Mixes rendered directly on Home, and strictly diverse Discover Weekly recommendations.",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.4.0/ZeroMusic-4.4.0.apk",
+  "version": "4.4.1",
+  "notes": "Removed manual duplicate button; queue, auto-play radio, playlists, and liked songs now automatically deduplicate in the background.",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.4.1/ZeroMusic-4.4.1.apk",
   "size": 17555615,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",

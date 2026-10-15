@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.4.1",
+    "date": "2026-10-15T14:11:50Z",
+    "notes": "Removed manual duplicate button; queue, auto-play radio, playlists, and liked songs now automatically deduplicate in the background."
+  },
+  {
     "version": "4.4.0",
     "date": "2026-10-15T14:02:24Z",
     "notes": "Overhauled recommendation engine with genre & vibe clustering, cohesive radio sequencing without abrupt genre jumps, personalized Daily Mixes rendered directly on Home, and strictly diverse Discover Weekly recommendations."

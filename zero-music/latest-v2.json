@@ -1,7 +1,7 @@
 {
-  "version": "4.4.2",
-  "notes": "Removed the black background circle behind the three-dots options menu on Home screen cover art.",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.4.2/ZeroMusic-4.4.2.apk",
+  "version": "4.4.3",
+  "notes": "Purged YouTuber skits, motivational speeches, emojis, and keyboard-mash spam from search, radios, and playback.",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.4.3/ZeroMusic-4.4.3.apk",
   "size": 17555615,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",

@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.4.3",
+    "date": "2026-10-15T14:30:32Z",
+    "notes": "Purged YouTuber skits, motivational speeches, emojis, and keyboard-mash spam from search, radios, and playback."
+  },
+  {
     "version": "4.4.2",
     "date": "2026-10-15T14:16:08Z",
     "notes": "Removed the black background circle behind the three-dots options menu on Home screen cover art."

@@ -1,7 +1,7 @@
 {
-  "version": "4.4.5",
-  "notes": "Added tactile swipe gestures on album artwork to play next or previous track, and double-tap seeking (+/- 10s) with floating badge feedback.",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.4.5/ZeroMusic-4.4.5.apk",
+  "version": "4.4.6",
+  "notes": "Fixed Spotify library import: validated genuine user session tokens (purging guest/anonymous tokens), added internal GraphQL Pathfinder queries to fetch all liked songs and library playlists without rate-limits, and removed stale fallback loops.",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.4.6/ZeroMusic-4.4.6.apk",
   "size": 17571999,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",

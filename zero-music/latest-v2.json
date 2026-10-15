@@ -1,7 +1,7 @@
 {
-  "version": "4.4.6",
-  "notes": "Fixed Spotify library import: validated genuine user session tokens (purging guest/anonymous tokens), added internal GraphQL Pathfinder queries to fetch all liked songs and library playlists without rate-limits, and removed stale fallback loops.",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.4.6/ZeroMusic-4.4.6.apk",
+  "version": "4.4.7",
+  "notes": "Fixed Spotify library extraction: corrected GraphQL response parsing for liked tracks and playlists.",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.4.7/ZeroMusic-4.4.7.apk",
   "size": 17571999,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",

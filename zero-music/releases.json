@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.2.3",
+    "date": "2026-10-15T08:31:33Z",
+    "notes": "Upgraded music filtering: comprehensive rejection of UGC queries, ringtones, slowed/reverb edits, file uploads, and clean video tags from titles"
+  },
+  {
     "version": "4.2.2",
     "date": "2026-10-15T08:17:58Z",
     "notes": "Strictly filter search suggestions and autoplay to official music songs only, eliminating non-music YouTube videos, ringtones, and view counts"

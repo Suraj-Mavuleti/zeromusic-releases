@@ -1,7 +1,7 @@
 {
-  "version": "4.1.9",
-  "notes": "Fix sign-out button layout wrapping and Spotify rate-limit cooldown",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.1.9/ZeroMusic-4.1.9.apk",
+  "version": "4.2.0",
+  "notes": "Curated suggestion playlists and elimination of third-party user playlists",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.2.0/ZeroMusic-4.2.0.apk",
   "size": 17473591,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",

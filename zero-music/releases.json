@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.2.0",
+    "date": "2026-10-15T07:22:55Z",
+    "notes": "Curated suggestion playlists and elimination of third-party user playlists"
+  },
+  {
     "version": "4.1.9",
     "date": "2026-10-15T07:13:35Z",
     "notes": "Fix sign-out button layout wrapping and Spotify rate-limit cooldown"

@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.3.8",
+    "date": "2026-10-15T13:35:58Z",
+    "notes": "Manual on-demand lyrics translation without auto-translation"
+  },
+  {
     "version": "4.3.7",
     "date": "2026-10-15T13:27:25Z",
     "notes": "Fix Spotify library import, add rootlist endpoint support, and harden authentication token capture"

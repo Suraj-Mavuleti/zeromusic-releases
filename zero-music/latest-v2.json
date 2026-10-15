@@ -1,10 +1,10 @@
 {
-  "version": "4.4.3",
-  "notes": "Purged YouTuber skits, motivational speeches, emojis, and keyboard-mash spam from search, radios, and playback.",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.4.3/ZeroMusic-4.4.3.apk",
-  "size": 17555615,
+  "version": "4.4.4",
+  "notes": "Fixed stuck update downloads: added connection timeouts, fast CDN mirrors, real-time download progress, and direct browser download fallback.",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.4.4/ZeroMusic-4.4.4.apk",
+  "size": 17571995,
   "mirrors": [
-    "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",
-    "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk"
+    "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
+    "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"
   ]
 }

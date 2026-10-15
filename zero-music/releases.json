@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.3.2",
+    "date": "2026-10-15T11:40:58Z",
+    "notes": "Enforce install updates permission popups and Home alert banner"
+  },
+  {
     "version": "4.3.1",
     "date": "2026-10-15T11:22:20Z",
     "notes": "Hi-Fi Masterstage console redesign, precision search bar, prominent sleep timer, and English script lyrics transliteration"

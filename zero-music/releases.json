@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.3.1",
+    "date": "2026-10-15T11:22:20Z",
+    "notes": "Hi-Fi Masterstage console redesign, precision search bar, prominent sleep timer, and English script lyrics transliteration"
+  },
+  {
     "version": "4.3.0",
     "date": "2026-10-15T10:50:13Z",
     "notes": "Universal volume slider across all Android OSes/OEMs, unified Add to queue replacing Play next, elevated Home dashboard with 2x3 Quick Picks grid, and redesigned original Search discovery interface"

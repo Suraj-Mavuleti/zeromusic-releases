@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.3.6",
+    "date": "2026-10-15T13:09:22Z",
+    "notes": "Fix Google Assistant voice controls, add Android Quick Settings tile, rich lock screen media controls, and 1-tap duplicate song removal"
+  },
+  {
     "version": "4.3.5",
     "date": "2026-10-15T12:49:32Z",
     "notes": "Fix cover art resolution and letterboxing, show search history in vertical lines, and remove HI-FI badge"

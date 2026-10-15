@@ -1,8 +1,8 @@
 {
-  "version": "4.1.4",
-  "notes": "Fix lyrics parsing and synced display, fix Spotify import, fix cross-device library sync, and direct git song archival",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.1.4/ZeroMusic-4.1.4.apk",
-  "size": 17457167,
+  "version": "4.1.7",
+  "notes": "Fix GitHub song archival, Spotify import, cross-device sync, and synced lyrics",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.1.7/ZeroMusic-4.1.7.apk",
+  "size": 17473591,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk"

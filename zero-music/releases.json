@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.1.7",
+    "date": "2026-10-15T06:34:52Z",
+    "notes": "Fix GitHub song archival, Spotify import, cross-device sync, and synced lyrics"
+  },
+  {
     "version": "4.1.4",
     "date": "2026-10-13T12:59:44Z",
     "notes": "Fix lyrics parsing and synced display, fix Spotify import, fix cross-device library sync, and direct git song archival"

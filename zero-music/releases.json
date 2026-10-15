@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.2.9",
+    "date": "2026-10-15T10:23:17Z",
+    "notes": "Direct search auto-correction, queue reordering with Play Next bump, and player volume control fix"
+  },
+  {
     "version": "4.2.8",
     "date": "2026-10-15T09:49:17Z",
     "notes": "Curated dynamic artist playlists without UGC filler and intelligent mood-consistent autoplay transitions"

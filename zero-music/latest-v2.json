@@ -1,8 +1,8 @@
 {
-  "version": "4.2.8",
-  "notes": "Curated dynamic artist playlists without UGC filler and intelligent mood-consistent autoplay transitions",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.2.8/ZeroMusic-4.2.8.apk",
-  "size": 17506359,
+  "version": "4.2.9",
+  "notes": "Direct search auto-correction, queue reordering with Play Next bump, and player volume control fix",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.2.9/ZeroMusic-4.2.9.apk",
+  "size": 17522787,
   "mirrors": [
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk"

@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.2.8",
+    "date": "2026-10-15T09:49:17Z",
+    "notes": "Curated dynamic artist playlists without UGC filler and intelligent mood-consistent autoplay transitions"
+  },
+  {
     "version": "4.2.7",
     "date": "2026-10-15T09:29:05Z",
     "notes": "Fix Spotify rate limiting with web fallbacks, fix sign-out button styling and cancel controls, and eliminate Bluetooth car audio switching delay"

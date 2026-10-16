@@ -1,11 +1,11 @@
 {
-  "version": "4.6.0",
-  "notes": "Fix song matching poisoning, purge cached Buzeira tracks, and ensure clicked tracks always play correct audio",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.6.0/ZeroMusic-4.6.0.apk",
-  "size": 17715055,
+  "version": "4.6.1",
+  "notes": "Ensure rock-solid song playback, eliminate matching poisoning, and enforce update delivery",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.6.1/ZeroMusic-4.6.1.apk",
+  "size": 17715074,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"
   ],
-  "minVersion": "4.5.9"
+  "minVersion": "4.6.1"
 }

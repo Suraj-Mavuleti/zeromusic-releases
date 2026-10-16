@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.6.1",
+    "date": "2026-10-16T16:49:00Z",
+    "notes": "Ensure rock-solid song playback, eliminate matching poisoning, and enforce update delivery"
+  },
+  {
     "version": "4.6.0",
     "date": "2026-10-16T15:40:01Z",
     "notes": "Fix song matching poisoning, purge cached Buzeira tracks, and ensure clicked tracks always play correct audio"

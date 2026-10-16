@@ -1,9 +1,10 @@
 {
-  "version": "4.5.3",
-  "notes": "Critical fix: restored v4.4.9 signing compatibility (resolved 'Package appears to be invalid' update error), auto-clears corrupted cache and stale queue, and removes wrong audio matches.",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.5.3/ZeroMusic-4.5.3.apk",
-  "size": 17698689,
+  "version": "4.5.4",
+  "notes": "Fix song playback mismatch and purge corrupted history/mix caches",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.5.4/ZeroMusic-4.5.4.apk",
+  "size": 17698683,
   "mirrors": [
-    "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.5.3/ZeroMusic-4.5.3.apk"
+    "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
+    "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"
   ]
 }

@@ -1,11 +1,11 @@
 {
-  "version": "4.5.8",
-  "notes": "Fix slowed/remix song matching, community video search, and instantaneous playback switching",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.5.8/ZeroMusic-4.5.8.apk",
-  "size": 17715068,
+  "version": "4.5.9",
+  "notes": "Fix song matching poisoning, purge cached bad matches, and improve track switching",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.5.9/ZeroMusic-4.5.9.apk",
+  "size": 17715075,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"
   ],
-  "minVersion": "4.5.8"
+  "minVersion": "4.5.9"
 }

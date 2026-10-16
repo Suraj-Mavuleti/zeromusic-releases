@@ -1,11 +1,11 @@
 {
-  "version": "4.5.7",
-  "notes": "Fix Spotify track matching with artist verification and add one-tap update banner",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.5.7/ZeroMusic-4.5.7.apk",
-  "size": 17715067,
+  "version": "4.5.8",
+  "notes": "Fix slowed/remix song matching, community video search, and instantaneous playback switching",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.5.8/ZeroMusic-4.5.8.apk",
+  "size": 17715068,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"
   ],
-  "minVersion": "4.5.7"
+  "minVersion": "4.5.8"
 }

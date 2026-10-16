@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.5.8",
+    "date": "2026-10-16T14:01:17Z",
+    "notes": "Fix slowed/remix song matching, community video search, and instantaneous playback switching"
+  },
+  {
     "version": "4.5.7",
     "date": "2026-10-16T13:25:00Z",
     "notes": "Fix Spotify track matching with artist verification and add one-tap update banner"

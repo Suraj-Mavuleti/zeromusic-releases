@@ -1,10 +1,10 @@
 {
-  "version": "4.4.9",
-  "notes": "Fix song playback clicks on home screen and add swipe-to-queue / swipe-to-play-next gestures.",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.4.9/ZeroMusic-4.4.9.apk",
-  "size": 17604767,
+  "version": "4.5.0",
+  "notes": "Fix song playback click handling and restore instant queueing",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.5.0/ZeroMusic-4.5.0.apk",
+  "size": 17588383,
   "mirrors": [
-    "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
-    "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"
+    "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk",
+    "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk"
   ]
 }

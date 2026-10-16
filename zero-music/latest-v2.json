@@ -1,9 +1,9 @@
 {
-  "version": "4.5.2",
-  "notes": "Fix song playback redirecting to top trending track (Andaaz e Karam), add strict search matching, and auto-purge false cached mappings.",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.5.2/ZeroMusic-4.5.2.apk",
-  "size": 17698692,
+  "version": "4.5.3",
+  "notes": "Critical fix: restored v4.4.9 signing compatibility (resolved 'Package appears to be invalid' update error), auto-clears corrupted cache and stale queue, and removes wrong audio matches.",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.5.3/ZeroMusic-4.5.3.apk",
+  "size": 17698689,
   "mirrors": [
-    "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.5.2/ZeroMusic-4.5.2.apk"
+    "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.5.3/ZeroMusic-4.5.3.apk"
   ]
 }

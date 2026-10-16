@@ -1,8 +1,8 @@
 {
-  "version": "4.5.4",
-  "notes": "Fix song playback mismatch and purge corrupted history/mix caches",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.5.4/ZeroMusic-4.5.4.apk",
-  "size": 17698683,
+  "version": "4.5.5",
+  "notes": "Fix player skipping on playback error, broaden stream resolution formats, and purge poisoned cache on upgrade",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.5.5/ZeroMusic-4.5.5.apk",
+  "size": 17698685,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.5.5",
+    "date": "2026-10-16T12:15:46Z",
+    "notes": "Fix player skipping on playback error, broaden stream resolution formats, and purge poisoned cache on upgrade"
+  },
+  {
     "version": "4.5.4",
     "date": "2026-10-16T11:41:32Z",
     "notes": "Fix song playback mismatch and purge corrupted history/mix caches"

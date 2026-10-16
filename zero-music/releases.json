@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.5.7",
+    "date": "2026-10-16T13:25:00Z",
+    "notes": "Fix Spotify track matching with artist verification and add one-tap update banner"
+  },
+  {
     "version": "4.5.6",
     "date": "2026-10-16T12:46:42Z",
     "notes": "Fix song click playback routing, auto-play hero cards, sanitize history/cache, and enforce update delivery"

@@ -1,8 +1,8 @@
 {
-  "version": "4.4.8",
-  "notes": "Added Spotify import item selection dialog and improved playlist track fetching.",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.4.8/ZeroMusic-4.4.8.apk",
-  "size": 17588383,
+  "version": "4.4.9",
+  "notes": "Fix song playback clicks on home screen and add swipe-to-queue / swipe-to-play-next gestures.",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.4.9/ZeroMusic-4.4.9.apk",
+  "size": 17604767,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

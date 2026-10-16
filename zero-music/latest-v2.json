@@ -1,9 +1,9 @@
 {
-  "version": "4.5.1",
-  "notes": "Fix song playback click handling and restore instant queueing. Update package installer integrity verification.",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.5.1/ZeroMusic-4.5.1.apk",
-  "size": 17698691,
+  "version": "4.5.2",
+  "notes": "Fix song playback redirecting to top trending track (Andaaz e Karam), add strict search matching, and auto-purge false cached mappings.",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.5.2/ZeroMusic-4.5.2.apk",
+  "size": 17698692,
   "mirrors": [
-    "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.5.1/ZeroMusic-4.5.1.apk"
+    "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.5.2/ZeroMusic-4.5.2.apk"
   ]
 }

@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.6.0",
+    "date": "2026-10-16T15:40:01Z",
+    "notes": "Fix song matching poisoning, purge cached Buzeira tracks, and ensure clicked tracks always play correct audio"
+  },
+  {
     "version": "4.5.9",
     "date": "2026-10-16T15:05:16Z",
     "notes": "Fix song matching poisoning, purge cached bad matches, and improve track switching"

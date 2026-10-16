@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.5.2",
+    "date": "2026-10-16T10:22:53.378Z",
+    "notes": "Fixed song playback redirecting to top trending track (Andaaz e Karam), resolved download-only index coercion bug, added strict search matching, and auto-purged false cached mappings."
+  },
+  {
     "version": "4.4.8",
     "date": "2026-10-15T17:15:10Z",
     "notes": "Added Spotify import item selection dialog and improved playlist track fetching."
@@ -404,4 +409,4 @@
     "date": "2026-09-30T11:46:15Z",
     "notes": "- **Import from a link, no API needed:** Settings → paste any Spotify or YouTube Music playlist, album or song link. Works with Spotify-made playlists too (up to 100 songs).\n- **Imported playlists** are saved in Library.\n- **In-app updates:** ZeroMusic now tells you when a new version is out and installs it with one tap.\n\nUpdating from 1.0: install this APK once by hand. Future updates install from inside the app."
   }
-]
+    ]

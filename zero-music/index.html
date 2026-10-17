@@ -813,6 +813,17 @@
             <button id="btn-save-client-id" class="btn-action-ghost btn-save-id">Update Client ID</button>
           </div>
         </div>
+
+        <!-- Registered Listeners Directory Section -->
+        <div class="sync-advanced-section" style="margin-top: 14px;">
+          <button id="btn-toggle-users-dir" class="btn-text-link">Registered Listeners Directory (zero-music-db) ▾</button>
+          <div id="sync-users-dir-drawer" style="display: none; margin-top: 10px;">
+            <div id="sync-users-dir-loading" style="font-size: 12px; color: var(--zm-text-secondary); text-align: center; padding: 10px;">
+              Loading registered users...
+            </div>
+            <div id="sync-users-dir-list" class="sync-users-list"></div>
+          </div>
+        </div>
       </div>
 
       <div class="zm-modal-actions sync-modal-actions">
@@ -825,6 +836,51 @@
     </div>
   </div>
 
+  <!-- ══════════════════════════════════════════════════════════════
+       MANDATORY ZERO-MUSIC AUTHENTICATION GATE (LOCKDOWN MODE)
+       ══════════════════════════════════════════════════════════════ -->
+  <div id="zm-auth-gate" class="zm-auth-gate-overlay" style="display: none;">
+    <div class="zm-auth-gate-card">
+      <div class="zm-auth-gate-badge">AUTHENTICATION REQUIRED</div>
+      <div class="zm-auth-gate-icon">
+        <img src="/zero-music/icon.svg" alt="ZeroMusic" width="56" height="56" />
+      </div>
+      <h2 class="zm-auth-gate-title">Welcome to ZeroMusic</h2>
+      <p class="zm-auth-gate-desc">
+        ZeroMusic is a free, completely ad-free streaming player. Sign in with your Google account to unlock full playback, synced lyrics, and cross-device library sync.
+      </p>
+
+      <div class="zm-auth-gate-features">
+        <div class="zm-auth-gate-feat">
+          <span class="feat-bullet">✦</span>
+          <span>Ad-Free High-Fidelity Audio Stream Engine</span>
+        </div>
+        <div class="zm-auth-gate-feat">
+          <span class="feat-bullet">✦</span>
+          <span>Real-Time Time-Synced LRCLIB Lyrics</span>
+        </div>
+        <div class="zm-auth-gate-feat">
+          <span class="feat-bullet">✦</span>
+          <span>Permanent Android ↔ Web Cloud Library Sync</span>
+        </div>
+      </div>
+
+      <button id="btn-gate-google-auth" class="btn-gate-signin">
+        <svg class="google-auth-icon" width="18" height="18" viewBox="0 0 24 24">
+          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+        </svg>
+        <span>Continue with Google</span>
+      </button>
+
+      <p class="zm-auth-gate-footnote">
+        Private & Secure • Zero Ads • Google Drive AppData Sync
+      </p>
+    </div>
+  </div>
+
   <!-- Hidden Audio Engine -->
   <div id="yt-audio-container" aria-hidden="true" style="position:absolute;width:1px;height:1px;left:-9999px;opacity:0;">
     <div id="yt-audio-player"></div>
@@ -834,7 +890,7 @@
   <div id="zm-toast" class="zm-toast-message"></div>
 
   <!-- ZeroMusic Player Engine (Self-contained, ad-free) -->
-  <script src="/zero-music/player.js?v=26"></script>
+  <script src="/zero-music/player.js?v=27"></script>
   <script>
     fetch("/zero-music/latest-v2.json", { cache: "no-store" }).then(r => r.json()).then(feed => {
       const size = feed.size ? " // " + (feed.size / 1048576).toFixed(1) + " MB" : "";

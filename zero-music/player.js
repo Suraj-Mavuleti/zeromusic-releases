@@ -346,8 +346,13 @@
     startAdWatchdog();
   }
 
+  let playNextTimeout = null;
+  let consecutiveErrors = 0;
+  let currentPlaybackToken = 0;
+
   function onPlayerStateChange(event) {
     if (event.data === YT.PlayerState.PLAYING) {
+      consecutiveErrors = 0;
       state.isPlaying = true;
       updatePlayPauseButton();
       startProgressTimer();
@@ -364,10 +369,68 @@
     }
   }
 
-  function onPlayerError(event) {
-    console.warn('[ZeroMusic] Playback error code:', event.data);
+  async function onPlayerError(event) {
+    console.warn('[ZeroMusic] Playback error code:', event.data, 'on track:', state.currentTrack?.title);
+    if (playNextTimeout) {
+      clearTimeout(playNextTimeout);
+      playNextTimeout = null;
+    }
+
+    const track = state.currentTrack;
+    if (!track) {
+      playNextTimeout = setTimeout(playNext, 1200);
+      return;
+    }
+
+    // Try finding an alternative stream if not already attempted for this song
+    if (!track._retriedAlternative) {
+      track._retriedAlternative = true;
+      const badId = (ytPlayer && typeof ytPlayer.getVideoData === 'function')
+        ? ytPlayer.getVideoData()?.video_id
+        : track.youtubeId;
+
+      if (isSpotifyTrackId(track.id)) {
+        const spKey = getSpotifyKey(track.id);
+        delete spotifyMatches[spKey];
+        delete spotifyMatches[track.id];
+        delete track.youtubeId;
+        saveSpotifyMatches();
+      }
+
+      showToast('Finding alternative stream for this song...');
+      const altVideoId = await findAlternativeYouTubeTrack(track, badId);
+      if (altVideoId && altVideoId !== badId) {
+        if (isSpotifyTrackId(track.id)) {
+          const spKey = getSpotifyKey(track.id);
+          if (spKey) spotifyMatches[spKey] = altVideoId;
+          spotifyMatches[track.id] = altVideoId;
+          saveSpotifyMatches();
+        }
+        track.youtubeId = altVideoId;
+        console.log('[ZeroMusic] Loaded alternative stream:', altVideoId);
+        if (ytReady && ytPlayer) {
+          ytPlayer.loadVideoById({
+            videoId: altVideoId,
+            suggestedQuality: 'hd720'
+          });
+          state.isPlaying = true;
+          updatePlayPauseButton();
+          return;
+        }
+      }
+    }
+
+    consecutiveErrors++;
+    if (consecutiveErrors >= 5) {
+      showToast('Multiple songs failed to play. Stopping.');
+      consecutiveErrors = 0;
+      state.isPlaying = false;
+      updatePlayPauseButton();
+      return;
+    }
+
     showToast('Playback error on this song. Skipping to next...');
-    setTimeout(playNext, 1200);
+    playNextTimeout = setTimeout(playNext, 1200);
   }
 
   function startAdWatchdog() {
@@ -385,7 +448,12 @@
       const videoData = ytPlayer.getVideoData();
       const currentVideoId = videoData ? videoData.video_id : null;
 
-      if (state.currentTrack && currentVideoId && currentVideoId !== state.currentTrack.id) {
+      const expectedVideoId = state.currentTrack ? (
+        state.currentTrack.youtubeId ||
+        (isSpotifyTrackId(state.currentTrack.id) ? spotifyMatches[getSpotifyKey(state.currentTrack.id)] : state.currentTrack.id)
+      ) : null;
+
+      if (state.currentTrack && currentVideoId && expectedVideoId && currentVideoId !== expectedVideoId) {
         if (!state.isBypassingAd) {
           state.isBypassingAd = true;
           ytPlayer.mute();
@@ -491,14 +559,148 @@
     });
   }
 
+  // ── Spotify-to-YouTube Music Resolver & Match Cache ──
+  const MATCHES_CACHE_KEY = 'zm_spotify_matches';
+  let spotifyMatches = {};
+  try {
+    spotifyMatches = JSON.parse(localStorage.getItem(MATCHES_CACHE_KEY) || '{}');
+  } catch (e) {
+    spotifyMatches = {};
+  }
+
+  function saveSpotifyMatches() {
+    try {
+      localStorage.setItem(MATCHES_CACHE_KEY, JSON.stringify(spotifyMatches));
+    } catch (e) {}
+  }
+
+  function isSpotifyTrackId(id) {
+    return typeof id === 'string' && (id.startsWith('sp:') || !/^[a-zA-Z0-9_-]{11}$/.test(id));
+  }
+
+  function getSpotifyKey(id) {
+    return typeof id === 'string' ? id.replace(/^sp:/, '').trim() : '';
+  }
+
+  function getKnownYouTubeId(track) {
+    if (!track) return null;
+    if (track.youtubeId && /^[a-zA-Z0-9_-]{11}$/.test(track.youtubeId)) {
+      return track.youtubeId;
+    }
+    if (!isSpotifyTrackId(track.id)) {
+      return /^[a-zA-Z0-9_-]{11}$/.test(track.id) ? track.id : null;
+    }
+    const spKey = getSpotifyKey(track.id);
+    if (spKey && spotifyMatches[spKey] && /^[a-zA-Z0-9_-]{11}$/.test(spotifyMatches[spKey])) {
+      track.youtubeId = spotifyMatches[spKey];
+      return spotifyMatches[spKey];
+    }
+    if (spotifyMatches[track.id] && /^[a-zA-Z0-9_-]{11}$/.test(spotifyMatches[track.id])) {
+      track.youtubeId = spotifyMatches[track.id];
+      return spotifyMatches[track.id];
+    }
+    return null;
+  }
+
+  async function resolveSpotifyTrack(track) {
+    if (!track) return null;
+    const known = getKnownYouTubeId(track);
+    if (known) return known;
+
+    const cleanTitle = (track.title || '')
+      .replace(/\s*[\(\[](official\s*(music\s*)?(video|audio)|lyrics?|visualizer|hd|4k|mv)[\)\]]/gi, '')
+      .trim();
+    const cleanArtist = (track.artist || '')
+      .replace(/ - Topic$/i, '')
+      .replace(/VEVO$/i, '')
+      .replace(/Unknown Artist/i, '')
+      .trim();
+
+    const primaryArtist = cleanArtist ? cleanArtist.split(',')[0].split('&')[0].trim() : '';
+    const query = (cleanTitle + ' ' + primaryArtist).trim() || cleanTitle;
+    if (!query) return null;
+
+    try {
+      const res = await fetch(`${_EP.SEARCH}?q=${encodeURIComponent(query)}`);
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.tracks && data.tracks.length > 0) {
+          const match = data.tracks.find(t => t.id && /^[a-zA-Z0-9_-]{11}$/.test(t.id));
+          if (match) {
+            const spKey = getSpotifyKey(track.id);
+            if (spKey) spotifyMatches[spKey] = match.id;
+            spotifyMatches[track.id] = match.id;
+            saveSpotifyMatches();
+            track.youtubeId = match.id;
+            return match.id;
+          }
+        }
+      }
+    } catch (e) {
+      console.warn('[ZeroMusic] Spotify resolve failed:', e);
+    }
+    return null;
+  }
+
+  function preResolveQueue(startIndex) {
+    if (!state.queue || state.queue.length === 0) return;
+    const upcoming = state.queue.slice(startIndex + 1, startIndex + 5);
+    upcoming.forEach((t, i) => {
+      if (isSpotifyTrackId(t.id) && !getKnownYouTubeId(t)) {
+        setTimeout(() => {
+          resolveSpotifyTrack(t);
+        }, i * 250);
+      }
+    });
+  }
+
+  async function findAlternativeYouTubeTrack(track, badVideoId) {
+    const cleanTitle = (track.title || '')
+      .replace(/\s*[\(\[](official\s*(music\s*)?(video|audio)|lyrics?|visualizer|hd|4k|mv)[\)\]]/gi, '')
+      .trim();
+    const cleanArtist = (track.artist || '')
+      .replace(/ - Topic$/i, '')
+      .replace(/VEVO$/i, '')
+      .replace(/Unknown Artist/i, '')
+      .trim();
+    const primaryArtist = cleanArtist ? cleanArtist.split(',')[0].split('&')[0].trim() : '';
+
+    const queries = [
+      `${cleanTitle} ${primaryArtist} audio`.trim(),
+      `${cleanTitle} ${primaryArtist} topic`.trim(),
+      `${cleanTitle} ${primaryArtist}`.trim()
+    ];
+
+    for (const q of queries) {
+      try {
+        const res = await fetch(`${_EP.SEARCH}?q=${encodeURIComponent(q)}`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.tracks && data.tracks.length > 0) {
+            const cand = data.tracks.find(t => t.id && t.id !== badVideoId && /^[a-zA-Z0-9_-]{11}$/.test(t.id));
+            if (cand) return cand.id;
+          }
+        }
+      } catch (e) {}
+    }
+    return null;
+  }
+
   // ── Playback Controls ──
-  function playTrack(track, queueList, index) {
+  async function playTrack(track, queueList, index) {
     if (!isUserAuthenticated()) {
       updateAuthGate();
       showToast('Please sign in with Google to use ZeroMusic');
       return;
     }
     if (!track || !track.id) return;
+
+    if (playNextTimeout) {
+      clearTimeout(playNextTimeout);
+      playNextTimeout = null;
+    }
+
+    const token = ++currentPlaybackToken;
 
     state.currentTrack = track;
     if (queueList) {
@@ -516,17 +718,40 @@
     updatePlayerUI(track);
     updateSpotlightCard(track);
     fetchLyrics(track);
+    renderRecentlyPlayed();
+    updateBecauseYouListened();
+
+    let targetVideoId = getKnownYouTubeId(track);
+
+    if (!targetVideoId) {
+      updateAdShieldStatus('Matching Song...', false);
+      targetVideoId = await resolveSpotifyTrack(track);
+      if (token !== currentPlaybackToken) return;
+
+      if (!targetVideoId) {
+        console.warn('[ZeroMusic] Could not match track:', track.title);
+        showToast(`Could not match "${track.title}". Skipping to next...`);
+        consecutiveErrors++;
+        if (consecutiveErrors >= 5) {
+          showToast('Multiple songs failed to play. Stopping.');
+          consecutiveErrors = 0;
+          return;
+        }
+        playNextTimeout = setTimeout(playNext, 1200);
+        return;
+      }
+    }
 
     if (ytReady && ytPlayer) {
       ytPlayer.loadVideoById({
-        videoId: track.id,
+        videoId: targetVideoId,
         suggestedQuality: 'hd720'
       });
       state.isPlaying = true;
       updatePlayPauseButton();
+      updateAdShieldStatus('Protected');
+      preResolveQueue(state.queueIndex);
     }
-    renderRecentlyPlayed();
-    updateBecauseYouListened();
   }
 
   function togglePlayPause() {
@@ -853,16 +1078,18 @@
 
   function archiveTrackToSongsRepo(track) {
     if (!track || !track.id) return;
+    const actualVideoId = getKnownYouTubeId(track) || track.id;
+    if (isSpotifyTrackId(actualVideoId)) return;
     try {
       fetch('https://zero.skillissue.gg/api/music-songs', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          id: track.id,
+          id: actualVideoId,
           title: track.title || '',
           artist: track.artist || '',
           duration: track.duration || 0,
-          cover: track.cover || '',
+          cover: track.cover || track.thumbnail || '',
           device: 'web',
           format: 'm4a'
         })
@@ -1253,12 +1480,15 @@
     section.style.display = 'block';
 
     try {
-      const res = await fetch(`${_EP.SEARCH}?radio=${topTrack.id}`);
-      const data = await res.json();
-      if (data && data.tracks && data.tracks.length > 0) {
-        state.sectionsData.because = data.tracks;
-        renderTrackGrid(grid, data.tracks.slice(0, 12));
-        return;
+      const radioSeedId = getKnownYouTubeId(topTrack);
+      if (radioSeedId && !isSpotifyTrackId(radioSeedId)) {
+        const res = await fetch(`${_EP.SEARCH}?radio=${radioSeedId}`);
+        const data = await res.json();
+        if (data && data.tracks && data.tracks.length > 0) {
+          state.sectionsData.because = data.tracks;
+          renderTrackGrid(grid, data.tracks.slice(0, 12));
+          return;
+        }
       }
     } catch (e) {}
 
@@ -2081,7 +2311,7 @@
         seed: false
       })).filter(h => h.track),
       mix: null,
-      spotifyMatches: {},
+      spotifyMatches: { ...spotifyMatches },
       autoplay: true,
       offlineBackup: false,
       offlineBackupSize: 500,
@@ -2094,6 +2324,18 @@
   function mergeCloudBackup(remote) {
     if (!remote) return false;
     let modified = false;
+
+    // 0. Spotify matches merge
+    if (remote.spotifyMatches && typeof remote.spotifyMatches === 'object') {
+      let matchesChanged = false;
+      for (const [k, v] of Object.entries(remote.spotifyMatches)) {
+        if (k && v && !spotifyMatches[k]) {
+          spotifyMatches[k] = v;
+          matchesChanged = true;
+        }
+      }
+      if (matchesChanged) saveSpotifyMatches();
+    }
 
     // 1. Liked songs merge
     if (Array.isArray(remote.liked) && remote.liked.length > 0) {

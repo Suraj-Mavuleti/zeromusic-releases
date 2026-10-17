@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.6.5",
+    "date": "2026-10-17T09:47:59Z",
+    "notes": "Fix audio mismatch for Liked Songs and Spotify imported tracks"
+  },
+  {
     "version": "4.6.4",
     "date": "2026-10-17T08:18:43Z",
     "notes": "Fix track playback snapback/fallback bug when selecting songs from charts, mixes, and playlists"

@@ -973,6 +973,112 @@
   }
 
   // ── Synced Lyrics (LRCLIB & Dynamic Tempo-Scaler) ──
+  const RECORD_LABELS = new Set([
+    't-series', 'tseries', 'zee music company', 'sony music india', 'speed records',
+    'yrf', 'tips official', 'saregama music', 'eros now', 'aditya music', 'lahari music',
+    'times music', 'white hill music', 'geet mp3', 'desi music factory', 'sonymusicindiavevo',
+    'warner music', 'universal music', 'spinnin records', 'monstercat', 'ultra records',
+    'nocopyrightsounds', 'ncs', 'vevo'
+  ]);
+
+  function isRecordLabel(name) {
+    if (!name) return false;
+    const s = name.toLowerCase().replace(/[^a-z0-9 ]/g, '').trim();
+    for (const label of RECORD_LABELS) {
+      if (s.includes(label)) return true;
+    }
+    return false;
+  }
+
+  const VERSION_MODIFIERS = /\b(slowed|sped\s*up|speed\s*up|fast|nightcore|daycore|reverb|remix|edit|mix|version|audio|video|official|visualizer|lyric|lyrics|hd|4k)\b/i;
+
+  function resolveTrackInfo(rawTitle, rawArtist) {
+    let title = (rawTitle || '').trim();
+    let artist = (rawArtist || '').trim();
+
+    artist = artist.replace(/\s*-\s*Topic$/i, '').replace(/VEVO$/i, '').trim();
+
+    // 1. Pipe format: "Song Name | Movie Name | Singer Name"
+    if (title.includes(' | ')) {
+      const segments = title.split(' | ').map(s => s.trim()).filter(Boolean);
+      if (segments.length >= 2) {
+        const candidateTitle = segments[0];
+        const other = segments.slice(1);
+        const singerSeg = other.find(s => /\b(singers?|sung by|vocals?)\b/i.test(s));
+        if (singerSeg) {
+          artist = singerSeg.replace(/^(singers?:?|sung by:?|vocals?:?|by)\s*/i, '').trim();
+        } else {
+          const nonMovie = other.filter(s => !/\b(movie|video|song|audio|teaser|trailer|film)\b/i.test(s) && !isRecordLabel(s));
+          if (nonMovie.length > 0) {
+            artist = nonMovie[nonMovie.length - 1];
+          }
+        }
+        title = candidateTitle;
+      }
+    }
+
+    // 2. Dash delimiter format: "Artist - Title" vs "Title - Artist" vs "Title - Tag"
+    const delims = [' - ', ' – ', ' — '];
+    for (const d of delims) {
+      if (title.includes(d)) {
+        const parts = title.split(d).map(s => s.trim()).filter(Boolean);
+        if (parts.length >= 2) {
+          const p1 = parts[0];
+          const p2 = parts.slice(1).join(' - ');
+
+          if (VERSION_MODIFIERS.test(p2) && !p2.includes(' ')) {
+            title = p1;
+            break;
+          }
+
+          if (isRecordLabel(artist) || artist.toLowerCase() === p1.toLowerCase() || p1.toLowerCase().includes(artist.toLowerCase())) {
+            artist = p1;
+            title = p2;
+            break;
+          }
+
+          if (artist.toLowerCase() === p2.toLowerCase() || p2.toLowerCase().includes(artist.toLowerCase())) {
+            title = p1;
+            artist = p2;
+            break;
+          }
+
+          if (isRecordLabel(artist) || !artist) {
+            artist = p1;
+            title = p2;
+            break;
+          }
+        }
+      }
+    }
+
+    // Clean title: remove parentheticals like (Official Video), [Music Video], etc.
+    const cleanTitle = title
+      .replace(/\s*[\(\[\{][^\)\]\}]*(official|music\s*video|video|audio|visualizer|hd|4k|lyric|lyrics|full\s*song)[^\)\]\}]*[\)\]\}]/gi, '')
+      .replace(/\s*[-–—]\s*(official|music\s*video|video|audio|visualizer|hd|4k|lyric|lyrics|full\s*song).*$/gi, '')
+      .replace(/\s*[\(\[\{]\s*(slowed|sped\s*up|speed\s*up|fast|nightcore|daycore|reverb|remix|edit|version).*?[\)\]\}]/gi, '')
+      .replace(/\s*[-–—]\s*(slowed|sped\s*up|speed\s*up|fast|nightcore|daycore|reverb|remix|edit|version).*$/gi, '')
+      .trim();
+
+    // Stripped title: removes any remaining parentheses or featured artists
+    const strippedTitle = cleanTitle
+      .replace(/\s*[\(\[\{].*?[\)\]\}]/g, '')
+      .replace(/\s*[-–—].*$/, '')
+      .trim();
+
+    // Clean artist: take primary artist
+    const cleanArtist = artist
+      .split(/[,;&]|\bfeat\.?|\bft\.?|\bwith\b/i)[0]
+      .replace(/\s*-\s*Topic$/i, '')
+      .trim();
+
+    return {
+      title: cleanTitle || title,
+      strippedTitle: strippedTitle || cleanTitle || title,
+      artist: cleanArtist || artist
+    };
+  }
+
   function parseDurationSec(dur) {
     if (typeof dur === 'number') return dur;
     if (!dur || typeof dur !== 'string') return 0;
@@ -981,22 +1087,6 @@
     if (parts.length === 3) return (parts[0] || 0) * 3600 + (parts[1] || 0) * 60 + (parts[2] || 0);
     const num = parseFloat(dur);
     return isNaN(num) ? 0 : num;
-  }
-
-  function cleanLyricsTitle(title) {
-    if (!title) return '';
-    return title
-      .replace(/\s*[\(\[\{].*?[\)\]\}]/g, '')
-      .replace(/\s*[-–—]\s*(slowed|sped\s*up|speed\s*up|fast|nightcore|daycore|reverb|remix|edit|audio|version).*$/i, '')
-      .replace(/[-–—].*$/, '')
-      .trim();
-  }
-
-  function cleanLyricsArtist(artist) {
-    if (!artist) return '';
-    return artist
-      .split(/[,;&]|\bfeat\.?|\bft\.?/i)[0]
-      .trim();
   }
 
   function isTempoVariantTrack(title, artist, album, videoTitle) {
@@ -1102,8 +1192,10 @@
     const trackArtist = document.getElementById('lyrics-track-artist');
     const largeArt = document.getElementById('lyrics-large-art');
 
-    if (trackTitle) trackTitle.textContent = track.title;
-    if (trackArtist) trackArtist.textContent = track.artist;
+    const info = resolveTrackInfo(track.title, track.artist);
+
+    if (trackTitle) trackTitle.textContent = info.title || track.title;
+    if (trackArtist) trackArtist.textContent = info.artist || track.artist;
     if (largeArt) largeArt.src = track.thumbnail;
 
     if (!container) return;
@@ -1116,45 +1208,44 @@
     state.activeLyricIndex = -1;
 
     try {
-      const cleanSong = cleanLyricsTitle(track.title);
-      const cleanArt = cleanLyricsArtist(track.artist);
-      const url = `${_EP.LRCLIB}?track_name=${encodeURIComponent(cleanSong)}&artist_name=${encodeURIComponent(cleanArt)}`;
+      const searchPlans = [];
 
-      let data = null;
-      try {
-        const res = await fetch(url);
-        if (res.ok) {
-          const json = await res.json();
-          if (json && (json.syncedLyrics || json.plainLyrics)) {
-            data = json;
-          }
-        }
-      } catch (e) {}
-
-      // Fallback 1: search LRCLIB if exact get did not return lyrics
-      if (!data) {
-        try {
-          const searchUrl = `${_EP.LRCLIB.replace('/get', '/search')}?q=${encodeURIComponent(cleanSong + ' ' + cleanArt)}`;
-          const sRes = await fetch(searchUrl);
-          if (sRes.ok) {
-            const list = await sRes.json();
-            if (Array.isArray(list) && list.length > 0) {
-              data = list.find(item => item.syncedLyrics) || list.find(item => item.plainLyrics) || list[0];
-            }
-          }
-        } catch (e) {}
+      // 1. Exact track & artist get
+      if (info.title && info.artist) {
+        searchPlans.push({ type: 'get', params: `track_name=${encodeURIComponent(info.title)}&artist_name=${encodeURIComponent(info.artist)}` });
+      }
+      // 2. Stripped title & artist get
+      if (info.strippedTitle && info.strippedTitle !== info.title && info.artist) {
+        searchPlans.push({ type: 'get', params: `track_name=${encodeURIComponent(info.strippedTitle)}&artist_name=${encodeURIComponent(info.artist)}` });
+      }
+      // 3. Search with stripped title & artist
+      if (info.strippedTitle && info.artist) {
+        searchPlans.push({ type: 'search', params: `track_name=${encodeURIComponent(info.strippedTitle)}&artist_name=${encodeURIComponent(info.artist)}` });
+      }
+      // 4. Search with stripped title alone (great for remixes or different featured artists)
+      if (info.strippedTitle) {
+        searchPlans.push({ type: 'search', params: `track_name=${encodeURIComponent(info.strippedTitle)}` });
       }
 
-      // Fallback 2: search by song name alone if still not found
-      if (!data) {
+      let data = null;
+
+      for (const plan of searchPlans) {
         try {
-          const searchUrl2 = `${_EP.LRCLIB.replace('/get', '/search')}?q=${encodeURIComponent(cleanSong)}`;
-          const sRes2 = await fetch(searchUrl2);
-          if (sRes2.ok) {
-            const list2 = await sRes2.json();
-            if (Array.isArray(list2) && list2.length > 0) {
-              data = list2.find(item => item.syncedLyrics) || list2.find(item => item.plainLyrics) || list2[0];
+          const endpoint = plan.type === 'get' ? _EP.LRCLIB : _EP.LRCLIB.replace('/get', '/search');
+          const res = await fetch(`${endpoint}?${plan.params}`);
+          if (!res.ok) continue;
+          const json = await res.json();
+          if (Array.isArray(json) && json.length > 0) {
+            const candidate = json.find(d => d.syncedLyrics && !d.instrumental) ||
+                              json.find(d => d.plainLyrics && !d.instrumental) ||
+                              json[0];
+            if (candidate && (candidate.syncedLyrics || candidate.plainLyrics)) {
+              data = candidate;
+              if (candidate.syncedLyrics) break;
             }
+          } else if (json && (json.syncedLyrics || json.plainLyrics)) {
+            data = json;
+            if (json.syncedLyrics) break;
           }
         } catch (e) {}
       }
@@ -1175,12 +1266,15 @@
       }
 
       if (data.plainLyrics) {
-        container.innerHTML = `<div class="plain-lyrics">${escapeHtml(data.plainLyrics).replace(/\n/g, '<br/>')}</div>`;
+        container.innerHTML = `
+          <div class="lyrics-badge-unsynced">Unsynced Lyrics</div>
+          <div class="plain-lyrics">${escapeHtml(data.plainLyrics).replace(/\n/g, '<br/>')}</div>
+        `;
       } else {
         throw new Error('No lyrics');
       }
     } catch (e) {
-      container.innerHTML = '<div class="lyrics-status">No synchronized lyrics available for this song.</div>';
+      container.innerHTML = `<div class="lyrics-status">No synchronized lyrics available for this song.</div>`;
     }
   }
 
@@ -1188,24 +1282,33 @@
     if (!lrcText) return [];
     const lines = lrcText.split('\n');
     const result = [];
-    const timeReg = /\[(\d{2}):(\d{2})\.(\d{2,3})\]/;
     let offsetMs = 0;
     const offsetMatch = /\[offset:\s*([+-]?\d+)\]/i.exec(lrcText);
     if (offsetMatch) {
       offsetMs = parseInt(offsetMatch[1], 10) || 0;
     }
 
-    for (const line of lines) {
-      const match = timeReg.exec(line);
-      if (match) {
-        const min = parseInt(match[1], 10);
-        const sec = parseInt(match[2], 10);
-        const ms = parseFloat('0.' + match[3]);
-        let time = min * 60 + sec + ms + (offsetMs / 1000);
-        if (time < 0) time = 0;
-        const text = line.replace(timeReg, '').trim();
-        if (text) {
-          result.push({ time, text });
+    for (const rawLine of lines) {
+      const line = rawLine.trim();
+      if (!line || /^\[[a-zA-Z]+:[^\]]*\]$/.test(line)) continue;
+
+      const stamps = [];
+      let m;
+      const re = /\[(\d{1,2}):(\d{2})(?:\.(\d{2,3}))?\]/g;
+      while ((m = re.exec(line)) !== null) {
+        const min = parseInt(m[1], 10);
+        const sec = parseInt(m[2], 10);
+        const ms = m[3] ? parseFloat('0.' + m[3]) : 0;
+        stamps.push(min * 60 + sec + ms + (offsetMs / 1000));
+      }
+
+      if (stamps.length > 0) {
+        let text = line.replace(/\[\d{1,2}:\d{2}(?:\.\d{2,3})?\]/g, '').trim();
+        text = text.replace(/^\[[a-zA-Z]+:[^\]]*\]\s*/, '').trim();
+        if (text && !/^[♪♫\s]+$/.test(text)) {
+          for (const t of stamps) {
+            result.push({ time: Math.max(0, Math.round(t * 100) / 100), text });
+          }
         }
       }
     }

@@ -1,8 +1,8 @@
 {
-  "version": "4.6.2",
-  "notes": "Fix song selection falling back to previous track, eliminate player.stop() resumption race, and wipe stale queue caches",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.6.2/ZeroMusic-4.6.2.apk",
-  "size": 17715062,
+  "version": "4.6.3",
+  "notes": "Fix song selection falling back to previous track, bind MediaLibrarySession to ExoPlayer, and guard asynchronous track transitions",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.6.3/ZeroMusic-4.6.3.apk",
+  "size": 17715069,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

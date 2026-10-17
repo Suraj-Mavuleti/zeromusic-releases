@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.6.3",
+    "date": "2026-10-17T06:18:20Z",
+    "notes": "Fix song selection falling back to previous track, bind MediaLibrarySession to ExoPlayer, and guard asynchronous track transitions"
+  },
+  {
     "version": "4.6.2",
     "date": "2026-10-17T04:47:00Z",
     "notes": "Fix song selection falling back to previous track, eliminate player.stop() resumption race, and wipe stale queue caches"

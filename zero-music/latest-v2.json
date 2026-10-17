@@ -1,8 +1,8 @@
 {
-  "version": "4.6.5",
-  "notes": "Fix audio mismatch for Liked Songs and Spotify imported tracks",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.6.5/ZeroMusic-4.6.5.apk",
-  "size": 17715077,
+  "version": "4.6.6",
+  "notes": "Replace sleep timer options with interactive duration slider",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.6.6/ZeroMusic-4.6.6.apk",
+  "size": 17731455,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

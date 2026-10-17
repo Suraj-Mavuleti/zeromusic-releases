@@ -1,8 +1,8 @@
 {
-  "version": "4.6.3",
-  "notes": "Fix song selection falling back to previous track, bind MediaLibrarySession to ExoPlayer, and guard asynchronous track transitions",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.6.3/ZeroMusic-4.6.3.apk",
-  "size": 17715069,
+  "version": "4.6.4",
+  "notes": "Fix track playback snapback/fallback bug when selecting songs from charts, mixes, and playlists",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.6.4/ZeroMusic-4.6.4.apk",
+  "size": 17715066,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

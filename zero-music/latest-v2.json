@@ -1,8 +1,8 @@
 {
-  "version": "4.6.6",
-  "notes": "Replace sleep timer options with interactive duration slider",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.6.6/ZeroMusic-4.6.6.apk",
-  "size": 17731455,
+  "version": "4.7.1",
+  "notes": "Official Spotify-grade studio search filtering and canonical deduplication; removes YouTube audio junk and covers",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.7.1/ZeroMusic-4.7.1.apk",
+  "size": 17731461,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

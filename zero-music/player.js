@@ -48,6 +48,9 @@
     playlists: JSON.parse(localStorage.getItem('zm_playlists') || '[]'),
     activePlaylistId: null,
     lyrics: [],
+    rawLyrics: [],
+    lyricsOriginalDuration: 0,
+    lyricsRatio: 1.0,
     activeLyricIndex: -1,
     activeView: 'home',
     activeChart: 'global', // 'global' or 'india'
@@ -358,6 +361,7 @@
       startProgressTimer();
       updateMediaSession();
       checkAndBypassAds();
+      applyLyricsTimeScaling();
     } else if (event.data === YT.PlayerState.PAUSED) {
       state.isPlaying = false;
       updatePlayPauseButton();
@@ -854,7 +858,13 @@
       if (!ytReady || !ytPlayer || !state.isPlaying) return;
       try {
         state.currentTime = ytPlayer.getCurrentTime() || 0;
-        state.duration = ytPlayer.getDuration() || 0;
+        const curDur = ytPlayer.getDuration() || 0;
+        if (curDur > 0 && Math.abs(curDur - state.duration) >= 0.5) {
+          state.duration = curDur;
+          applyLyricsTimeScaling();
+        } else if (curDur > 0) {
+          state.duration = curDur;
+        }
         updateProgressUI();
         syncLyricsWithTime(state.currentTime);
       } catch (e) {}
@@ -962,7 +972,130 @@
     });
   }
 
-  // ── Synced Lyrics (LRCLIB) ──
+  // ── Synced Lyrics (LRCLIB & Dynamic Tempo-Scaler) ──
+  function parseDurationSec(dur) {
+    if (typeof dur === 'number') return dur;
+    if (!dur || typeof dur !== 'string') return 0;
+    const parts = dur.split(':').map(p => parseFloat(p));
+    if (parts.length === 2) return (parts[0] || 0) * 60 + (parts[1] || 0);
+    if (parts.length === 3) return (parts[0] || 0) * 3600 + (parts[1] || 0) * 60 + (parts[2] || 0);
+    const num = parseFloat(dur);
+    return isNaN(num) ? 0 : num;
+  }
+
+  function cleanLyricsTitle(title) {
+    if (!title) return '';
+    return title
+      .replace(/\s*[\(\[\{].*?[\)\]\}]/g, '')
+      .replace(/\s*[-–—]\s*(slowed|sped\s*up|speed\s*up|fast|nightcore|daycore|reverb|remix|edit|audio|version).*$/i, '')
+      .replace(/[-–—].*$/, '')
+      .trim();
+  }
+
+  function cleanLyricsArtist(artist) {
+    if (!artist) return '';
+    return artist
+      .split(/[,;&]|\bfeat\.?|\bft\.?/i)[0]
+      .trim();
+  }
+
+  function isTempoVariantTrack(title, artist, album, videoTitle) {
+    const combined = [title, artist, album, videoTitle].filter(Boolean).join(' ');
+    const tempoRegex = /\b(slowed(\s*(down|\+\s*reverb|and\s*reverb|reverb))?|sped\s*up|speed\s*up|speedup|nightcore|daycore|reverb(ed)?|chopped(\s*and\s*screwed)?|screwed|pitch(ed)?\s*(up|down)|tempo\s*(up|down))\b/i;
+    if (tempoRegex.test(combined)) return true;
+    if (/[-–—\(\[\{]\s*(fast|slow)\s*([\)\]\}]|version|ver|remix|edit|audio|song|tempo|$)/i.test(combined)) return true;
+    if (/\b(fast|slow)\s*(version|ver|remix|edit|audio|tempo)\b/i.test(combined)) return true;
+    return false;
+  }
+
+  function getActualTrackDuration() {
+    if (ytPlayer && typeof ytPlayer.getDuration === 'function') {
+      try {
+        const vData = (typeof ytPlayer.getVideoData === 'function') ? ytPlayer.getVideoData() : null;
+        const currentYtId = vData ? vData.video_id : null;
+        const expectedYtId = getKnownYouTubeId(state.currentTrack) || state.currentTrack?.youtubeId;
+        if (!expectedYtId || !currentYtId || currentYtId === expectedYtId) {
+          const d = ytPlayer.getDuration();
+          if (typeof d === 'number' && d > 5 && !isNaN(d)) return d;
+        }
+      } catch (e) {}
+    }
+    if (typeof state.duration === 'number' && state.duration > 5 && !isNaN(state.duration)) {
+      return state.duration;
+    }
+    if (state.currentTrack) {
+      if (typeof state.currentTrack.durationMs === 'number' && state.currentTrack.durationMs > 5000) {
+        return state.currentTrack.durationMs / 1000;
+      }
+      const parsed = parseDurationSec(state.currentTrack.duration);
+      if (parsed > 5) return parsed;
+    }
+    return 0;
+  }
+
+  function applyLyricsTimeScaling() {
+    if (!state.rawLyrics || state.rawLyrics.length === 0) return;
+    const origDur = state.lyricsOriginalDuration;
+    if (!origDur || origDur <= 0) {
+      state.lyrics = state.rawLyrics;
+      return;
+    }
+
+    const actualDur = getActualTrackDuration();
+    if (!actualDur || actualDur <= 0) {
+      state.lyrics = state.rawLyrics;
+      return;
+    }
+
+    const rawRatio = actualDur / origDur;
+    const isTempo = isTempoVariantTrack(
+      state.currentTrack?.title,
+      state.currentTrack?.artist,
+      state.currentTrack?.album,
+      (ytPlayer && typeof ytPlayer.getVideoData === 'function' && ytPlayer.getVideoData()?.title) || ''
+    );
+
+    let ratio = 1.0;
+    if (isTempo) {
+      if (Math.abs(rawRatio - 1.0) >= 0.02 && rawRatio >= 0.35 && rawRatio <= 2.8) {
+        ratio = rawRatio;
+      }
+    } else {
+      if (Math.abs(actualDur - origDur) >= 18 && (rawRatio < 0.85 || rawRatio > 1.18) && rawRatio >= 0.45 && rawRatio <= 2.2) {
+        ratio = rawRatio;
+      }
+    }
+
+    if (Math.abs((state.lyricsRatio || 1.0) - ratio) < 0.005 && state.lyrics.length > 0) {
+      return;
+    }
+
+    state.lyricsRatio = ratio;
+    state.lyrics = state.rawLyrics.map(l => ({
+      time: Math.round(l.time * ratio * 100) / 100,
+      text: l.text
+    }));
+
+    if (Math.abs(ratio - 1.0) >= 0.02) {
+      console.log(`[ZeroMusic] Scaled lyrics timing by ${ratio.toFixed(3)}x (${origDur.toFixed(1)}s -> ${actualDur.toFixed(1)}s)`);
+    }
+
+    const container = document.getElementById('lyrics-lines-container');
+    if (container) {
+      const lineEls = container.querySelectorAll('.lyric-line');
+      if (lineEls.length === state.lyrics.length) {
+        lineEls.forEach((el, i) => {
+          if (state.lyrics[i]) {
+            el.dataset.time = state.lyrics[i].time;
+          }
+        });
+        syncLyricsWithTime(state.currentTime);
+      } else {
+        renderLyrics();
+      }
+    }
+  }
+
   async function fetchLyrics(track) {
     const container = document.getElementById('lyrics-lines-container');
     const trackTitle = document.getElementById('lyrics-track-title');
@@ -977,21 +1110,71 @@
     container.innerHTML = '<div class="lyrics-status"><span class="zm-spinner"></span> Searching time-synced lyrics...</div>';
 
     state.lyrics = [];
+    state.rawLyrics = [];
+    state.lyricsOriginalDuration = 0;
+    state.lyricsRatio = 1.0;
     state.activeLyricIndex = -1;
 
     try {
-      const cleanSong = encodeURIComponent(track.title.split('-')[0].split('(')[0].trim());
-      const cleanArt = encodeURIComponent(track.artist.split(',')[0].split('&')[0].trim());
-      const url = `${_EP.LRCLIB}?track_name=${cleanSong}&artist_name=${cleanArt}`;
+      const cleanSong = cleanLyricsTitle(track.title);
+      const cleanArt = cleanLyricsArtist(track.artist);
+      const url = `${_EP.LRCLIB}?track_name=${encodeURIComponent(cleanSong)}&artist_name=${encodeURIComponent(cleanArt)}`;
 
-      const res = await fetch(url);
-      if (!res.ok) throw new Error('Lyrics not found');
-      const data = await res.json();
+      let data = null;
+      try {
+        const res = await fetch(url);
+        if (res.ok) {
+          const json = await res.json();
+          if (json && (json.syncedLyrics || json.plainLyrics)) {
+            data = json;
+          }
+        }
+      } catch (e) {}
+
+      // Fallback 1: search LRCLIB if exact get did not return lyrics
+      if (!data) {
+        try {
+          const searchUrl = `${_EP.LRCLIB.replace('/get', '/search')}?q=${encodeURIComponent(cleanSong + ' ' + cleanArt)}`;
+          const sRes = await fetch(searchUrl);
+          if (sRes.ok) {
+            const list = await sRes.json();
+            if (Array.isArray(list) && list.length > 0) {
+              data = list.find(item => item.syncedLyrics) || list.find(item => item.plainLyrics) || list[0];
+            }
+          }
+        } catch (e) {}
+      }
+
+      // Fallback 2: search by song name alone if still not found
+      if (!data) {
+        try {
+          const searchUrl2 = `${_EP.LRCLIB.replace('/get', '/search')}?q=${encodeURIComponent(cleanSong)}`;
+          const sRes2 = await fetch(searchUrl2);
+          if (sRes2.ok) {
+            const list2 = await sRes2.json();
+            if (Array.isArray(list2) && list2.length > 0) {
+              data = list2.find(item => item.syncedLyrics) || list2.find(item => item.plainLyrics) || list2[0];
+            }
+          }
+        } catch (e) {}
+      }
+
+      if (!data) throw new Error('Lyrics not found');
 
       if (data.syncedLyrics) {
-        state.lyrics = parseLRC(data.syncedLyrics);
-        renderLyrics();
-      } else if (data.plainLyrics) {
+        const parsed = parseLRC(data.syncedLyrics);
+        if (parsed.length > 0) {
+          state.rawLyrics = parsed;
+          state.lyricsOriginalDuration = (typeof data.duration === 'number' && data.duration > 0)
+            ? data.duration
+            : (parsed[parsed.length - 1].time + 6);
+          applyLyricsTimeScaling();
+          renderLyrics();
+          return;
+        }
+      }
+
+      if (data.plainLyrics) {
         container.innerHTML = `<div class="plain-lyrics">${escapeHtml(data.plainLyrics).replace(/\n/g, '<br/>')}</div>`;
       } else {
         throw new Error('No lyrics');
@@ -1002,9 +1185,15 @@
   }
 
   function parseLRC(lrcText) {
+    if (!lrcText) return [];
     const lines = lrcText.split('\n');
     const result = [];
     const timeReg = /\[(\d{2}):(\d{2})\.(\d{2,3})\]/;
+    let offsetMs = 0;
+    const offsetMatch = /\[offset:\s*([+-]?\d+)\]/i.exec(lrcText);
+    if (offsetMatch) {
+      offsetMs = parseInt(offsetMatch[1], 10) || 0;
+    }
 
     for (const line of lines) {
       const match = timeReg.exec(line);
@@ -1012,7 +1201,8 @@
         const min = parseInt(match[1], 10);
         const sec = parseInt(match[2], 10);
         const ms = parseFloat('0.' + match[3]);
-        const time = min * 60 + sec + ms;
+        let time = min * 60 + sec + ms + (offsetMs / 1000);
+        if (time < 0) time = 0;
         const text = line.replace(timeReg, '').trim();
         if (text) {
           result.push({ time, text });
@@ -2035,13 +2225,18 @@
         queueDrawer.classList.remove('open');
         state.isQueueOpen = false;
       }
-      if (state.isLyricsOpen && state.currentTrack) {
-        syncLyricsWithTime(state.currentTime);
+      if (state.isLyricsOpen) {
+        state.activeLyricIndex = -1;
+        applyLyricsTimeScaling();
+        if (state.currentTrack) {
+          syncLyricsWithTime(state.currentTime);
+        }
       }
     });
 
     document.getElementById('btn-close-lyrics')?.addEventListener('click', () => {
       state.isLyricsOpen = false;
+      state.activeLyricIndex = -1;
       if (lyricsDrawer) lyricsDrawer.classList.remove('open');
     });
 

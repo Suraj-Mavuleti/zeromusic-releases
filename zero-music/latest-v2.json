@@ -1,8 +1,8 @@
 {
-  "version": "4.7.2",
-  "notes": "Special ZeroMusic song sharing with dedicated web cover page, in-browser player & story card generator",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.7.2/ZeroMusic-4.7.2.apk",
-  "size": 17748097,
+  "version": "4.7.3",
+  "notes": "Clean ZeroMusic short links, dedicated song cover page sharing, and 100% exclusive ZeroMusic web player",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.7.3/ZeroMusic-4.7.3.apk",
+  "size": 17748125,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.7.2",
+    "date": "2026-10-18T05:49:21Z",
+    "notes": "Special ZeroMusic song sharing with dedicated web cover page, in-browser player & story card generator"
+  },
+  {
     "version": "4.7.1",
     "date": "2026-10-17T17:02:13Z",
     "notes": "Official Spotify-grade studio search filtering and canonical deduplication; removes YouTube audio junk and covers"

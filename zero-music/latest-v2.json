@@ -1,8 +1,8 @@
 {
-  "version": "4.7.1",
-  "notes": "Official Spotify-grade studio search filtering and canonical deduplication; removes YouTube audio junk and covers",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.7.1/ZeroMusic-4.7.1.apk",
-  "size": 17731461,
+  "version": "4.7.2",
+  "notes": "Special ZeroMusic song sharing with dedicated web cover page, in-browser player & story card generator",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.7.2/ZeroMusic-4.7.2.apk",
+  "size": 17748097,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

@@ -1,8 +1,8 @@
 {
-  "version": "4.7.3",
-  "notes": "Clean ZeroMusic short links, dedicated song cover page sharing, and 100% exclusive ZeroMusic web player",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.7.3/ZeroMusic-4.7.3.apk",
-  "size": 17748125,
+  "version": "4.7.4",
+  "notes": "Immediate native bottom share menu on click with Song Cover Page photo and clean short link",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.7.4/ZeroMusic-4.7.4.apk",
+  "size": 17731769,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

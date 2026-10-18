@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.7.4",
+    "date": "2026-10-18T08:10:22Z",
+    "notes": "Immediate native bottom share menu on click with Song Cover Page photo and clean short link"
+  },
+  {
     "version": "4.7.3",
     "date": "2026-10-18T06:56:32Z",
     "notes": "Clean ZeroMusic short links, dedicated song cover page sharing, and 100% exclusive ZeroMusic web player"

@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZeroMusic | Song Cover</title>
+  <meta name="description" content="Listen to songs on ZeroMusic. Ad-free audio player with offline backup and synced lyrics." />
+
+  <!-- Open Graph / WhatsApp / Facebook / Telegram Meta Tags -->
+  <meta property="og:type" content="music.song" />
+  <meta property="og:site_name" content="ZeroMusic" />
+  <meta property="og:title" content="ZeroMusic | Shared Song" />
+  <meta property="og:description" content="Listen on ZeroMusic — Ad-free high fidelity audio" />
+  <meta property="og:image" content="https://zero.skillissue.gg/zero-music/icon.png" />
+  <meta property="og:url" content="https://zero.skillissue.gg/zero-music/track" />
+
+  <!-- Twitter / X Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ZeroMusic | Shared Song" />
+  <meta name="twitter:description" content="Listen on ZeroMusic — Ad-free high fidelity audio" />
+  <meta name="twitter:image" content="https://zero.skillissue.gg/zero-music/icon.png" />
+
+  <link rel="icon" type="image/svg+xml" href="/zero-music/icon.svg" />
+  <link rel="apple-touch-icon" href="/zero-music/icon.png" />
+  <link rel="canonical" href="https://zero.skillissue.gg/zero-music/track" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #07070a;
+      --surface: #101016;
+      --surface-border: rgba(255, 255, 255, 0.08);
+      --accent: #f97316;
+      --accent-glow: rgba(249, 115, 22, 0.35);
+      --text: #ffffff;
+      --text-muted: #a1a1aa;
+      --text-sub: #71717a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .ambient-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-size: cover;
+      background-position: center center;
+      filter: blur(80px) saturate(1.8) brightness(0.28);
+      transform: scale(1.15);
+      z-index: 0;
+      pointer-events: none;
+      transition: background-image 0.5s ease;
+    }
+
+    .ambient-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(circle at 50% 20%, rgba(7, 7, 10, 0.35) 0%, rgba(7, 7, 10, 0.88) 75%, #07070a 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 520px;
+      padding: 24px 20px 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .nav {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .brand img {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    .brand-name {
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: -0.3px;
+    }
+
+    .brand-pill {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(249, 115, 22, 0.15);
+      color: #fb923c;
+      border: 1px solid rgba(249, 115, 22, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-get {
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+      text-decoration: none;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--surface-border);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-get:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .cover-card {
+      position: relative;
+      width: 280px;
+      height: 280px;
+      border-radius: 24px;
+      overflow: hidden;
+      margin-top: 10px;
+      margin-bottom: 28px;
+      box-shadow: 0 24px 50px -10px rgba(0, 0, 0, 0.8), 0 0 40px var(--accent-glow);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .cover-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .cover-card.playing {
+      transform: scale(1.03);
+      box-shadow: 0 28px 60px -8px rgba(0, 0, 0, 0.9), 0 0 50px var(--accent-glow);
+    }
+
+    .track-info {
+      text-align: center;
+      width: 100%;
+      margin-bottom: 24px;
+    }
+
+    .track-title {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+      line-height: 1.3;
+      margin-bottom: 8px;
+      color: #ffffff;
+      word-break: break-word;
+    }
+
+    .track-artist {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .badges {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--surface-border);
+      color: #d4d4d8;
+    }
+
+    .player-box {
+      width: 100%;
+      background: rgba(16, 16, 22, 0.7);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--surface-border);
+      border-radius: 20px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .progress-wrap {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #f97316, #fb923c);
+      border-radius: 999px;
+      transition: width 0.1s linear;
+    }
+
+    .time-row {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-sub);
+    }
+
+    .player-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    .btn-circle {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #f97316;
+      color: #000;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 6px 20px var(--accent-glow);
+      transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .btn-circle:hover {
+      transform: scale(1.06);
+      background: #fb923c;
+    }
+
+    .btn-circle svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+
+    .btn-icon-secondary {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s;
+    }
+
+    .btn-icon-secondary:hover {
+      color: #fff;
+    }
+
+    .actions-grid {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .btn-primary-app {
+      width: 100%;
+      padding: 16px 24px;
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      border-radius: 16px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 10px 28px var(--accent-glow);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .btn-primary-app:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 34px var(--accent-glow);
+    }
+
+    .btn-secondary {
+      width: 100%;
+      padding: 14px 20px;
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 14px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid var(--surface-border);
+      transition: background 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .lyrics-container {
+      width: 100%;
+      background: rgba(16, 16, 22, 0.6);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--surface-border);
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 24px;
+      display: none;
+    }
+
+    .lyrics-container.open {
+      display: block;
+    }
+
+    .lyrics-header {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .lyrics-content {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #e4e4e7;
+      max-height: 320px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+    }
+
+    .lyric-line {
+      margin-bottom: 8px;
+      transition: color 0.2s, font-weight 0.2s;
+    }
+
+    .lyric-line.active {
+      color: #f97316;
+      font-weight: 700;
+    }
+
+    .promo-card {
+      width: 100%;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 18px 20px;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    .promo-card h4 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: #fff;
+    }
+
+    .promo-card p {
+      font-size: 12px;
+      color: var(--text-sub);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      font-size: 12px;
+      color: var(--text-sub);
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: #fff;
+    }
+
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      background: #18181b;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s, transform 0.2s;
+      transform: translateY(10px);
+      z-index: 100;
+    }
+
+    #toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient-backdrop" id="backdrop"></div>
+  <div class="ambient-overlay"></div>
+
+  <div class="container">
+    <header class="nav">
+      <a href="/zero-music" class="brand">
+        <img src="/zero-music/icon.png" alt="ZeroMusic" />
+        <span class="brand-name">ZeroMusic</span>
+        <span class="brand-pill">Shared</span>
+      </a>
+      <a href="/zero-music/download/ZeroMusic.apk" class="nav-get" download="ZeroMusic.apk">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>Get App</span>
+      </a>
+    </header>
+
+    <div class="cover-card" id="coverCard">
+      <img src="/zero-music/icon.png" alt="Song Cover Art" id="trackImg" />
+    </div>
+
+    <div class="track-info">
+      <h1 class="track-title" id="trackTitle">Shared Song</h1>
+      <p class="track-artist" id="trackArtist">ZeroMusic</p>
+      <div class="badges">
+        <span class="badge">Ad-Free Stream</span>
+        <span class="badge">Lossless Audio</span>
+        <span class="badge">Synced Lyrics</span>
+      </div>
+    </div>
+
+    <div class="player-box">
+      <div class="progress-wrap" id="progressWrap">
+        <div class="progress-bar-bg" id="progressBar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="time-row">
+          <span id="currentTime">0:00</span>
+          <span id="totalTime">--:--</span>
+        </div>
+      </div>
+      <div class="player-controls">
+        <button class="btn-icon-secondary" id="btnLyrics" title="Toggle Lyrics">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        </button>
+        <button class="btn-circle" id="btnPlayPause" title="Play">
+          <svg id="playIcon" viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20"/></svg>
+          <svg id="pauseIcon" viewBox="0 0 24 24" style="display: none;"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+        </button>
+        <button class="btn-icon-secondary" id="btnCopyShare" title="Copy Share Link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="lyrics-container" id="lyricsContainer">
+      <div class="lyrics-header">
+        <span>Lyrics</span>
+        <span id="lyricsSource" style="font-size: 11px; opacity: 0.6;">LRCLIB</span>
+      </div>
+      <div class="lyrics-content" id="lyricsText">Loading lyrics…</div>
+    </div>
+
+    <div class="actions-grid">
+      <a class="btn-primary-app" id="btnOpenApp" href="#">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        <span>Open in ZeroMusic</span>
+      </a>
+
+      <a class="btn-secondary" id="btnYtMusic" href="#" target="_blank" rel="noopener" style="display: none;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+        <span>Listen on YouTube Music</span>
+      </a>
+
+      <a class="btn-secondary" id="btnSpotify" href="#" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424c-.18.295-.563.387-.857.207-2.35-1.435-5.308-1.76-8.792-.963-.335.077-.67-.133-.746-.468-.077-.334.132-.67.467-.746 3.808-.87 7.076-.496 9.72 1.115.294.18.388.562.208.855zm1.226-2.723c-.226.367-.706.482-1.072.257-2.687-1.652-6.785-2.131-9.965-1.166-.413.127-.849-.106-.974-.517-.125-.413.108-.849.52-975 3.632-1.102 8.147-.568 11.234 1.328.366.226.481.707.257 1.073zm.105-2.835C14.692 8.95 8.085 8.73 4.244 9.897c-.494.15-1.02-.128-1.17-.622-.15-.495.128-1.02.622-1.17 4.416-1.34 11.67-1.087 15.48 1.174.445.264.59.84.325 1.285-.264.442-.838.59-1.282.325z"/></svg>
+        <span>Search on Spotify</span>
+      </a>
+    </div>
+
+    <div class="promo-card">
+      <h4>Get ZeroMusic for Android</h4>
+      <p>Stream YouTube Music ad-free, download songs for offline listening, and enjoy lock-screen lyrics and Android Auto.</p>
+      <a class="btn-secondary" href="/zero-music/download/ZeroMusic.apk" download="ZeroMusic.apk" style="display: inline-flex; width: auto; padding: 10px 20px; font-size: 13px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>Download Free APK (v4.7.1)</span>
+      </a>
+    </div>
+
+    <footer style="margin-top: 32px; text-align: center;">
+      <div class="footer-links">
+        <a href="/zero-music">ZeroMusic Home</a>
+        <span>&bull;</span>
+        <a href="/zero-music/release-notes">Release Notes</a>
+        <span>&bull;</span>
+        <a href="/zero-music/privacy">Privacy</a>
+        <span>&bull;</span>
+        <a href="/zero-music/terms">Terms</a>
+      </div>
+      <p style="font-size: 11px; color: var(--text-sub); margin-top: 8px;">&copy; 2026 Dev Zero &bull; ZeroMusic</p>
+    </footer>
+  </div>
+
+  <div id="yt-player-host" style="position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; pointer-events: none;"></div>
+  <div id="toast">Link copied to clipboard!</div>
+
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script>
+    (function () {
+      var params = new URLSearchParams(location.search);
+      var videoId = params.get('v') || params.get('id') || '';
+      var spotifyId = params.get('sp') || '';
+      if (videoId.startsWith('sp:')) {
+        spotifyId = videoId.replace('sp:', '');
+        videoId = '';
+      }
+
+      var title = params.get('title') || '';
+      var artist = params.get('artist') || '';
+      var artwork = params.get('artwork') || '';
+
+      var trackTitleEl = document.getElementById('trackTitle');
+      var trackArtistEl = document.getElementById('trackArtist');
+      var trackImg = document.getElementById('trackImg');
+      var backdrop = document.getElementById('backdrop');
+      var btnOpenApp = document.getElementById('btnOpenApp');
+      var btnYtMusic = document.getElementById('btnYtMusic');
+      var btnSpotify = document.getElementById('btnSpotify');
+
+      function updateUI() {
+        if (title) {
+          trackTitleEl.textContent = title;
+          document.title = title + ' – ' + (artist || 'ZeroMusic') + ' | ZeroMusic';
+        }
+        if (artist) {
+          trackArtistEl.textContent = artist;
+        }
+        if (artwork) {
+          trackImg.src = artwork;
+          backdrop.style.backgroundImage = 'url("' + artwork + '")';
+        } else if (videoId) {
+          var yImg = 'https://i.ytimg.com/vi/' + videoId + '/hqdefault.jpg';
+          trackImg.src = yImg;
+          backdrop.style.backgroundImage = 'url("' + yImg + '")';
+        }
+
+        var appIntent = 'intent://zero.skillissue.gg/zero-music/track?v=' + encodeURIComponent(videoId) +
+          '&title=' + encodeURIComponent(title) + '&artist=' + encodeURIComponent(artist) +
+          '&artwork=' + encodeURIComponent(artwork) +
+          '#Intent;scheme=https;package=com.zeromusic.app;S.browser_fallback_url=' +
+          encodeURIComponent('https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk') + ';end';
+        btnOpenApp.href = appIntent;
+
+        if (videoId) {
+          btnYtMusic.href = 'https://music.youtube.com/watch?v=' + encodeURIComponent(videoId);
+          btnYtMusic.style.display = 'flex';
+        }
+
+        btnSpotify.href = 'https://open.spotify.com/search/' + encodeURIComponent((title || '') + ' ' + (artist || ''));
+      }
+
+      if (videoId && (!title || !artist)) {
+        fetch('https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=' + encodeURIComponent(videoId) + '&format=json')
+          .then(function(r){ return r.json(); })
+          .then(function(data){
+            if (!title && data.title) title = data.title.replace(/\\s*[\\(\\[](official|music\\s*video|audio|lyrics?|visualizer|hd|4k)[\\)\\]]/gi, '').trim();
+            if (!artist && data.author_name) artist = data.author_name.replace(/ - Topic$/i, '').trim();
+            if (!artwork && data.thumbnail_url) artwork = data.thumbnail_url;
+            updateUI();
+          })
+          .catch(function(){ updateUI(); });
+      } else {
+        updateUI();
+      }
+
+      // Elements
+      var btnPlayPause = document.getElementById('btnPlayPause');
+      var playIcon = document.getElementById('playIcon');
+      var pauseIcon = document.getElementById('pauseIcon');
+      var progressBar = document.getElementById('progressBar');
+      var progressFill = document.getElementById('progressFill');
+      var currentTimeEl = document.getElementById('currentTime');
+      var totalTimeEl = document.getElementById('totalTime');
+      var coverCard = document.getElementById('coverCard');
+      var btnLyrics = document.getElementById('btnLyrics');
+      var lyricsContainer = document.getElementById('lyricsContainer');
+      var lyricsText = document.getElementById('lyricsText');
+      var btnCopyShare = document.getElementById('btnCopyShare');
+      var toast = document.getElementById('toast');
+
+      var ytPlayer = null;
+      var isPlaying = false;
+      var progressTimer = null;
+      var syncedLyrics = [];
+
+      function showToast(msg) {
+        toast.textContent = msg;
+        toast.classList.add('show');
+        setTimeout(function () { toast.classList.remove('show'); }, 2200);
+      }
+
+      btnCopyShare.addEventListener('click', function () {
+        navigator.clipboard.writeText(location.href).then(function () {
+          showToast('ZeroMusic link copied!');
+        }).catch(function () {
+          showToast('Share link: ' + location.href);
+        });
+      });
+
+      window.onYouTubeIframeAPIReady = function () {
+        if (!videoId) return;
+        ytPlayer = new YT.Player('yt-player-host', {
+          height: '1',
+          width: '1',
+          videoId: videoId,
+          playerVars: {
+            autoplay: 0,
+            controls: 0,
+            disablekb: 1,
+            fs: 0,
+            modestbranding: 1,
+            rel: 0,
+            playsinline: 1
+          },
+          events: {
+            onStateChange: onPlayerStateChange
+          }
+        });
+      };
+
+      function onPlayerStateChange(e) {
+        if (e.data === YT.PlayerState.PLAYING) {
+          isPlaying = true;
+          playIcon.style.display = 'none';
+          pauseIcon.style.display = 'block';
+          coverCard.classList.add('playing');
+          startProgressLoop();
+        } else {
+          isPlaying = false;
+          playIcon.style.display = 'block';
+          pauseIcon.style.display = 'none';
+          coverCard.classList.remove('playing');
+          clearInterval(progressTimer);
+        }
+      }
+
+      function formatTime(s) {
+        if (!s || isNaN(s)) return '0:00';
+        var m = Math.floor(s / 60);
+        var sec = Math.floor(s % 60);
+        return m + ':' + (sec < 10 ? '0' : '') + sec;
+      }
+
+      function startProgressLoop() {
+        clearInterval(progressTimer);
+        progressTimer = setInterval(function () {
+          if (!ytPlayer || !ytPlayer.getCurrentTime) return;
+          var cur = ytPlayer.getCurrentTime();
+          var dur = ytPlayer.getDuration();
+          if (dur > 0) {
+            var pct = (cur / dur) * 100;
+            progressFill.style.width = pct + '%';
+            currentTimeEl.textContent = formatTime(cur);
+            totalTimeEl.textContent = formatTime(dur);
+            highlightSyncedLyric(cur);
+          }
+        }, 250);
+      }
+
+      btnPlayPause.addEventListener('click', function () {
+        if (!ytPlayer || !ytPlayer.playVideo) {
+          showToast('Player loading, one moment…');
+          return;
+        }
+        if (isPlaying) {
+          ytPlayer.pauseVideo();
+        } else {
+          ytPlayer.playVideo();
+        }
+      });
+
+      progressBar.addEventListener('click', function (e) {
+        if (!ytPlayer || !ytPlayer.getDuration) return;
+        var rect = progressBar.getBoundingClientRect();
+        var pos = (e.clientX - rect.left) / rect.width;
+        var dur = ytPlayer.getDuration();
+        if (dur > 0) {
+          ytPlayer.seekTo(pos * dur, true);
+        }
+      });
+
+      var lyricsLoaded = false;
+      btnLyrics.addEventListener('click', function () {
+        lyricsContainer.classList.toggle('open');
+        if (lyricsContainer.classList.contains('open') && !lyricsLoaded) {
+          loadLyrics();
+        }
+      });
+
+      function parseLrc(lrc) {
+        var lines = lrc.split('\\n');
+        var res = [];
+        var timeRegex = /\\[(\\d{2}):(\\d{2})\\.(\\d{2,3})\\]/;
+        for (var i = 0; i < lines.length; i++) {
+          var match = timeRegex.exec(lines[i]);
+          if (match) {
+            var min = parseInt(match[1], 10);
+            var sec = parseInt(match[2], 10);
+            var ms = parseInt(match[3], 10) / (match[3].length === 3 ? 1000 : 100);
+            var time = min * 60 + sec + ms;
+            var text = lines[i].replace(timeRegex, '').trim();
+            if (text) res.push({ time: time, text: text });
+          }
+        }
+        return res;
+      }
+
+      function loadLyrics() {
+        lyricsLoaded = true;
+        lyricsText.textContent = 'Searching synced lyrics…';
+        var cleanT = (title || '').replace(/\\s*[\\(\\[].*?[\\)\\]]/g, '').trim();
+        var cleanA = (artist || '').replace(/ - Topic$/i, '').trim();
+        var url = 'https://lrclib.net/api/get?track_name=' + encodeURIComponent(cleanT) + '&artist_name=' + encodeURIComponent(cleanA);
+        fetch(url)
+          .then(function (res) { return res.json(); })
+          .then(function (data) {
+            if (data && data.syncedLyrics) {
+              syncedLyrics = parseLrc(data.syncedLyrics);
+              renderSyncedLyrics();
+            } else if (data && data.plainLyrics) {
+              lyricsText.textContent = data.plainLyrics;
+            } else {
+              fallbackSearchLyrics(cleanT);
+            }
+          })
+          .catch(function () {
+            fallbackSearchLyrics(cleanT);
+          });
+      }
+
+      function fallbackSearchLyrics(query) {
+        fetch('https://lrclib.net/api/search?q=' + encodeURIComponent(query))
+          .then(function (res) { return res.json(); })
+          .then(function (list) {
+            if (Array.isArray(list) && list.length > 0) {
+              var item = list[0];
+              if (item.syncedLyrics) {
+                syncedLyrics = parseLrc(item.syncedLyrics);
+                renderSyncedLyrics();
+                return;
+              } else if (item.plainLyrics) {
+                lyricsText.textContent = item.plainLyrics;
+                return;
+              }
+            }
+            lyricsText.textContent = 'No lyrics found for this track.';
+          })
+          .catch(function () {
+            lyricsText.textContent = 'Could not load lyrics.';
+          });
+      }
+
+      function renderSyncedLyrics() {
+        lyricsText.innerHTML = '';
+        for (var i = 0; i < syncedLyrics.length; i++) {
+          var div = document.createElement('div');
+          div.className = 'lyric-line';
+          div.id = 'lyric-' + i;
+          div.textContent = syncedLyrics[i].text;
+          lyricsText.appendChild(div);
+        }
+      }
+
+      function highlightSyncedLyric(currentTime) {
+        if (!syncedLyrics.length) return;
+        var activeIndex = -1;
+        for (var i = 0; i < syncedLyrics.length; i++) {
+          if (currentTime >= syncedLyrics[i].time) {
+            activeIndex = i;
+          } else {
+            break;
+          }
+        }
+        for (var j = 0; j < syncedLyrics.length; j++) {
+          var el = document.getElementById('lyric-' + j);
+          if (el) {
+            if (j === activeIndex) {
+              el.classList.add('active');
+              el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } else {
+              el.classList.remove('active');
+            }
+          }
+        }
+      }
+    })();
+  </script>
+</body>
+</html>

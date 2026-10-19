@@ -1,30 +1,11 @@
 {
-  
-  "version": "4.7.6",
-  
-  "notes": "Strictly prioritize ultra slowed over super slowed in search and playback matching",
-  
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.7.6/ZeroMusic-4.7.6.apk",
-  
-  "size": 17748136,
-  
+  "version": "4.7.7",
+  "notes": "Pull-down player menu to collapse to miniplayer mode; strictly distinguish ultra slowed from ultra slowed + reverb",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.7.7/ZeroMusic-4.7.7.apk",
+  "size": 17748135,
   "mirrors": [
-    
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
-    
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"
-    
   ],
-  
   "minVersion": "4.6.1"
-  
 }
-
-
-
-
-
-
-
-
-

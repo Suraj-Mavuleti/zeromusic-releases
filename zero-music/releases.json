@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.7.7",
+    "date": "2026-10-19T13:50:47Z",
+    "notes": "Pull-down player menu to collapse to miniplayer mode; strictly distinguish ultra slowed from ultra slowed + reverb"
+  },
+  {
     "version": "4.7.6",
     "date": "2026-10-19T13:00:43Z",
     "notes": "Strictly prioritize ultra slowed over super slowed in search and playback matching"

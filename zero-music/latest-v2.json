@@ -1,7 +1,7 @@
 {
-  "version": "4.7.7",
-  "notes": "Pull-down player menu to collapse to miniplayer mode; strictly distinguish ultra slowed from ultra slowed + reverb",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.7.7/ZeroMusic-4.7.7.apk",
+  "version": "4.7.8",
+  "notes": "Fix pull-down collapse animation and eliminate glitchy re-opening snap",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.7.8/ZeroMusic-4.7.8.apk",
   "size": 17748135,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",

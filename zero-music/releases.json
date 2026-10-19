@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.7.6",
+    "date": "2026-10-19T13:00:43Z",
+    "notes": "Strictly prioritize ultra slowed over super slowed in search and playback matching"
+  },
+  {
     "version": "4.7.5",
     "date": "2026-10-19T04:47:06Z",
     "notes": "Fix ultra slowed playback and search matching for odonogo & community edits"

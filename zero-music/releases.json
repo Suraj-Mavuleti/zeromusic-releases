@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.8.1",
+    "date": "2026-10-21T07:31:24Z",
+    "notes": "Fix versioned song resolution for ultra slowed, super slowed, and sped up tracks"
+  },
+  {
     "version": "4.7.8",
     "date": "2026-10-19T16:43:36.142Z",
     "notes": "Fix pull-down collapse animation and eliminate glitchy re-opening snap"

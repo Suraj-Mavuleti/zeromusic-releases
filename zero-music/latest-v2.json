@@ -1,8 +1,8 @@
 {
-  "version": "4.7.8",
-  "notes": "Fix pull-down collapse animation and eliminate glitchy re-opening snap",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.7.8/ZeroMusic-4.7.8.apk",
-  "size": 17748135,
+  "version": "4.8.1",
+  "notes": "Fix versioned song resolution for ultra slowed, super slowed, and sped up tracks",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.1/ZeroMusic-4.8.1.apk",
+  "size": 17797283,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.8.3",
+    "date": "2026-10-21T16:51:59Z",
+    "notes": "Final bulletproof fix for slowed, ultra slowed, super slowed, and sped up song matching and playback"
+  },
+  {
     "version": "4.8.2",
     "date": "2026-10-21T13:31:37Z",
     "notes": "Fix ODNOGO ULTRAFUNK ultra slowed resolution, permanent playlist deletion, and library options"

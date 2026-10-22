@@ -1,8 +1,8 @@
 {
-  "version": "4.8.5",
-  "notes": "Fix liked songs unliking by tracking deleted likes across cloud sync",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.5/ZeroMusic-4.8.5.apk",
-  "size": 17797288,
+  "version": "4.8.6",
+  "notes": "Strict isolation of slowed modifier tiers: Ultra Slowed, Mega Slowed, Super Slowed, Hyper Slowed, Extreme Slowed, and Standard Slowed",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.6/ZeroMusic-4.8.6.apk",
+  "size": 17797284,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

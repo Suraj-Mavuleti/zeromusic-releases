@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.8.4",
+    "date": "2026-10-22T05:07:04Z",
+    "notes": "Reset song backup repository and local archiver cache for clean M4A backups"
+  },
+  {
     "version": "4.8.3",
     "date": "2026-10-21T16:51:59Z",
     "notes": "Final bulletproof fix for slowed, ultra slowed, super slowed, and sped up song matching and playback"

@@ -1,8 +1,8 @@
 {
-  "version": "4.8.3",
-  "notes": "Final bulletproof fix for slowed, ultra slowed, super slowed, and sped up song matching and playback",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.3/ZeroMusic-4.8.3.apk",
-  "size": 17797289,
+  "version": "4.8.4",
+  "notes": "Reset song backup repository and local archiver cache for clean M4A backups",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.4/ZeroMusic-4.8.4.apk",
+  "size": 17797290,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

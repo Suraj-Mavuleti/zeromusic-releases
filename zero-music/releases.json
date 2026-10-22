@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.8.5",
+    "date": "2026-10-22T05:25:31Z",
+    "notes": "Fix liked songs unliking by tracking deleted likes across cloud sync"
+  },
+  {
     "version": "4.8.4",
     "date": "2026-10-22T05:07:04Z",
     "notes": "Reset song backup repository and local archiver cache for clean M4A backups"

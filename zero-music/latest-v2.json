@@ -1,8 +1,8 @@
 {
-  "version": "4.8.8",
-  "notes": "Fix slowed, ultra slowed, and phonk song search resolution & audio stream playback",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.8/ZeroMusic-4.8.8.apk",
-  "size": 17813687,
+  "version": "4.8.9",
+  "notes": "Eliminate UI lag: configure Coil disk cache, isolate MiniPlayer progress, optimize equalizer and GPU graphicsLayer scaling",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.9/ZeroMusic-4.8.9.apk",
+  "size": 17813668,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

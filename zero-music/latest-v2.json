@@ -1,8 +1,8 @@
 {
-  "version": "4.8.11",
-  "notes": "Fix lag and multi-second freezes: offload Home data generation to background IO dispatcher, eliminate SongArchiver memory thrashing, async disk writes for liked and playlists, and throttle download progress recompositions",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.11/ZeroMusic-4.8.11.apk",
-  "size": 17813666,
+  "version": "4.8.12",
+  "notes": "Dramatically reduce song loading times: 500ms playback buffer, persistent 6-hour stream URL cache, background next-track prefetching, and parallelized search matching",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.12/ZeroMusic-4.8.12.apk",
+  "size": 17813660,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

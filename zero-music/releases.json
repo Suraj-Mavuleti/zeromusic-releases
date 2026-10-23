@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.8.12",
+    "date": "2026-10-23T13:48:15Z",
+    "notes": "Dramatically reduce song loading times: 500ms playback buffer, persistent 6-hour stream URL cache, background next-track prefetching, and parallelized search matching"
+  },
+  {
     "version": "4.8.11",
     "date": "2026-10-23T13:18:25Z",
     "notes": "Fix lag and multi-second freezes: offload Home data generation to background IO dispatcher, eliminate SongArchiver memory thrashing, async disk writes for liked and playlists, and throttle download progress recompositions"

@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.8.16",
+    "date": "2026-10-23T14:59:59Z",
+    "notes": "Eliminate community edits and bootlegs across search and music feeds"
+  },
+  {
     "version": "4.8.15",
     "date": "2026-10-23T14:36:01Z",
     "notes": "Prioritize official artist releases and filter out community re-uploads in search"

@@ -1,8 +1,8 @@
 {
-  "version": "4.8.15",
-  "notes": "Prioritize official artist releases and filter out community re-uploads in search",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.15/ZeroMusic-4.8.15.apk",
-  "size": 17813665,
+  "version": "4.8.16",
+  "notes": "Eliminate community edits and bootlegs across search and music feeds",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.16/ZeroMusic-4.8.16.apk",
+  "size": 17813680,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

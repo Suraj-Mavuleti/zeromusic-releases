@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.8.13",
+    "date": "2026-10-23T14:02:37Z",
+    "notes": "Redesign share stats to pure pitch-black OLED aesthetic: zero color clutter, editorial typography, obsidian cards, and authentic album artwork showcase"
+  },
+  {
     "version": "4.8.12",
     "date": "2026-10-23T13:48:15Z",
     "notes": "Dramatically reduce song loading times: 500ms playback buffer, persistent 6-hour stream URL cache, background next-track prefetching, and parallelized search matching"

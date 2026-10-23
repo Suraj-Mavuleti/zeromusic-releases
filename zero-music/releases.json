@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.8.8",
+    "date": "2026-10-23T12:02:57Z",
+    "notes": "Fix slowed, ultra slowed, and phonk song search resolution & audio stream playback"
+  },
+  {
     "version": "4.8.7",
     "date": "2026-10-23T06:51:47Z",
     "notes": "Smoother 120fps UI, speed variant audio fixes, playlist deletion & unlike cloud sync, and permanent song backup"

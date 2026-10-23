@@ -1,8 +1,8 @@
 {
-  "version": "4.8.7",
-  "notes": "Smoother 120fps UI, speed variant audio fixes, playlist deletion & unlike cloud sync, and permanent song backup",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.7/ZeroMusic-4.8.7.apk",
-  "size": 17797281,
+  "version": "4.8.8",
+  "notes": "Fix slowed, ultra slowed, and phonk song search resolution & audio stream playback",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.8/ZeroMusic-4.8.8.apk",
+  "size": 17813687,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.8.7",
+    "date": "2026-10-23T06:51:47Z",
+    "notes": "Smoother 120fps UI, speed variant audio fixes, playlist deletion & unlike cloud sync, and permanent song backup"
+  },
+  {
     "version": "4.8.6",
     "date": "2026-10-22T05:56:43Z",
     "notes": "Strict isolation of slowed modifier tiers: Ultra Slowed, Mega Slowed, Super Slowed, Hyper Slowed, Extreme Slowed, and Standard Slowed"

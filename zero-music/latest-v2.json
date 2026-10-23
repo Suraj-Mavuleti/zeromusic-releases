@@ -1,8 +1,8 @@
 {
-  "version": "4.8.6",
-  "notes": "Strict isolation of slowed modifier tiers: Ultra Slowed, Mega Slowed, Super Slowed, Hyper Slowed, Extreme Slowed, and Standard Slowed",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.6/ZeroMusic-4.8.6.apk",
-  "size": 17797284,
+  "version": "4.8.7",
+  "notes": "Smoother 120fps UI, speed variant audio fixes, playlist deletion & unlike cloud sync, and permanent song backup",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.7/ZeroMusic-4.8.7.apk",
+  "size": 17797281,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

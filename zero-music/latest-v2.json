@@ -1,8 +1,8 @@
 {
-  "version": "4.8.16",
-  "notes": "Eliminate community edits and bootlegs across search and music feeds",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.16/ZeroMusic-4.8.16.apk",
-  "size": 17813680,
+  "version": "4.8.17",
+  "notes": "Fix UI lag, application not responding freezes, and song loading latency",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.17/ZeroMusic-4.8.17.apk",
+  "size": 17813656,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.8.17",
+    "date": "2026-10-23T16:37:30Z",
+    "notes": "Fix UI lag, application not responding freezes, and song loading latency"
+  },
+  {
     "version": "4.8.16",
     "date": "2026-10-23T14:59:59Z",
     "notes": "Eliminate community edits and bootlegs across search and music feeds"

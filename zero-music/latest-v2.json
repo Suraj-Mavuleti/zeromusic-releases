@@ -1,8 +1,8 @@
 {
-  "version": "4.8.10",
-  "notes": "Fix playback of liked and Spotify-imported slowed/ultra-slowed songs: enable stream mismatch healing on saved tracks and purge stale match cache",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.10/ZeroMusic-4.8.10.apk",
-  "size": 17813662,
+  "version": "4.8.11",
+  "notes": "Fix lag and multi-second freezes: offload Home data generation to background IO dispatcher, eliminate SongArchiver memory thrashing, async disk writes for liked and playlists, and throttle download progress recompositions",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.11/ZeroMusic-4.8.11.apk",
+  "size": 17813666,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

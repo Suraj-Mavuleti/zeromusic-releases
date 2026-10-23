@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.8.11",
+    "date": "2026-10-23T13:18:25Z",
+    "notes": "Fix lag and multi-second freezes: offload Home data generation to background IO dispatcher, eliminate SongArchiver memory thrashing, async disk writes for liked and playlists, and throttle download progress recompositions"
+  },
+  {
     "version": "4.8.10",
     "date": "2026-10-23T12:52:47Z",
     "notes": "Fix playback of liked and Spotify-imported slowed/ultra-slowed songs: enable stream mismatch healing on saved tracks and purge stale match cache"

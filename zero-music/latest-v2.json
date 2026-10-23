@@ -1,8 +1,8 @@
 {
-  "version": "4.8.9",
-  "notes": "Eliminate UI lag: configure Coil disk cache, isolate MiniPlayer progress, optimize equalizer and GPU graphicsLayer scaling",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.9/ZeroMusic-4.8.9.apk",
-  "size": 17813668,
+  "version": "4.8.10",
+  "notes": "Fix playback of liked and Spotify-imported slowed/ultra-slowed songs: enable stream mismatch healing on saved tracks and purge stale match cache",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.10/ZeroMusic-4.8.10.apk",
+  "size": 17813662,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

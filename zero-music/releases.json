@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.8.10",
+    "date": "2026-10-23T12:52:47Z",
+    "notes": "Fix playback of liked and Spotify-imported slowed/ultra-slowed songs: enable stream mismatch healing on saved tracks and purge stale match cache"
+  },
+  {
     "version": "4.8.9",
     "date": "2026-10-23T12:30:19Z",
     "notes": "Eliminate UI lag: configure Coil disk cache, isolate MiniPlayer progress, optimize equalizer and GPU graphicsLayer scaling"

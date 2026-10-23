@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.8.14",
+    "date": "2026-10-23T14:13:54Z",
+    "notes": "Settings auto-accordion: automatically collapse previous dropdown menu when opening a new one"
+  },
+  {
     "version": "4.8.13",
     "date": "2026-10-23T14:02:37Z",
     "notes": "Redesign share stats to pure pitch-black OLED aesthetic: zero color clutter, editorial typography, obsidian cards, and authentic album artwork showcase"

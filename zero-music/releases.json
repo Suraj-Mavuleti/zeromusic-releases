@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.8.15",
+    "date": "2026-10-23T14:36:01Z",
+    "notes": "Prioritize official artist releases and filter out community re-uploads in search"
+  },
+  {
     "version": "4.8.14",
     "date": "2026-10-23T14:13:54Z",
     "notes": "Settings auto-accordion: automatically collapse previous dropdown menu when opening a new one"

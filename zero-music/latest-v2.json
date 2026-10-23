@@ -1,8 +1,8 @@
 {
-  "version": "4.8.14",
-  "notes": "Settings auto-accordion: automatically collapse previous dropdown menu when opening a new one",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.14/ZeroMusic-4.8.14.apk",
-  "size": 17813658,
+  "version": "4.8.15",
+  "notes": "Prioritize official artist releases and filter out community re-uploads in search",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.15/ZeroMusic-4.8.15.apk",
+  "size": 17813665,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.8.24",
+    "date": "2026-10-24T13:29:52Z",
+    "notes": "Fix main-thread ANRs, catastrophic regex backtracking, media streaming socket timeout, and background 2-minute freeze"
+  },
+  {
     "version": "4.8.23",
     "date": "2026-10-24T12:46:36Z",
     "notes": "Autonomous song verification and collaborative global lock, stream healing, purge of non-Spotify community edits, and gateway migration to zero.skillissue.gg/zero-music"

@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.8.23",
+    "date": "2026-10-24T12:46:36Z",
+    "notes": "Autonomous song verification and collaborative global lock, stream healing, purge of non-Spotify community edits, and gateway migration to zero.skillissue.gg/zero-music"
+  },
+  {
     "version": "4.8.20",
     "date": "2026-10-24T07:20:57Z",
     "notes": "Fix periodic ANRs, UI jank, thread starvation, and idle polling churn"

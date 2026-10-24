@@ -1,8 +1,8 @@
 {
-  "version": "4.8.17",
-  "notes": "Fix UI lag, application not responding freezes, and song loading latency",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.17/ZeroMusic-4.8.17.apk",
-  "size": 17813656,
+  "version": "4.8.18",
+  "notes": "Fix offline mode lock with Go Online button, resolve search song drops, optimize song playback startup latency, and eliminate UI lag",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.18/ZeroMusic-4.8.18.apk",
+  "size": 17813671,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

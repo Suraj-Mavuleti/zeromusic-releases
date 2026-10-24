@@ -1,8 +1,8 @@
 {
-  "version": "4.8.20",
-  "notes": "Fix periodic ANRs, UI jank, thread starvation, and idle polling churn",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.20/ZeroMusic-4.8.20.apk",
-  "size": 17813659,
+  "version": "4.8.23",
+  "notes": "Autonomous song verification and collaborative global lock, stream healing, purge of non-Spotify community edits, and gateway migration to zero.skillissue.gg/zero-music",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.23/ZeroMusic-4.8.23.apk",
+  "size": 17830062,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.8.20",
+    "date": "2026-10-24T07:20:57Z",
+    "notes": "Fix periodic ANRs, UI jank, thread starvation, and idle polling churn"
+  },
+  {
     "version": "4.8.19",
     "date": "2026-10-24T05:52:27Z",
     "notes": "Fix liked songs version matching (slowed/sped up), auto-heal liked tracks, and eliminate UI lag"

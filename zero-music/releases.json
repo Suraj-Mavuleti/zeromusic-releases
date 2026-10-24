@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.8.19",
+    "date": "2026-10-24T05:52:27Z",
+    "notes": "Fix liked songs version matching (slowed/sped up), auto-heal liked tracks, and eliminate UI lag"
+  },
+  {
     "version": "4.8.18",
     "date": "2026-10-24T04:24:43Z",
     "notes": "Fix offline mode lock with Go Online button, resolve search song drops, optimize song playback startup latency, and eliminate UI lag"

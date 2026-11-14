@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.8.28",
+    "date": "2026-11-14T15:47:44Z",
+    "notes": "Fix googlevideo IPv6 DNS resolution, optimize artist page memory, and streamline search"
+  },
+  {
     "version": "4.8.26",
     "date": "2026-11-14T13:16:50Z",
     "notes": "Comprehensive audio performance optimization, lock-free visualizer, and UI smoothness"

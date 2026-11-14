@@ -1,8 +1,8 @@
 {
-  "version": "4.8.26",
-  "notes": "Comprehensive audio performance optimization, lock-free visualizer, and UI smoothness",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.26/ZeroMusic-4.8.26.apk",
-  "size": 17830042,
+  "version": "4.8.28",
+  "notes": "Fix googlevideo IPv6 DNS resolution, optimize artist page memory, and streamline search",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.28/ZeroMusic-4.8.28.apk",
+  "size": 17879214,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

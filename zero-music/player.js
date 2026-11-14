@@ -1374,7 +1374,7 @@
     const actualVideoId = getKnownYouTubeId(track) || track.id;
     if (isSpotifyTrackId(actualVideoId)) return;
     try {
-      fetch('https://zero.skillissue.gg/api/music-songs', {
+      fetch('https://zero.skillissue.gg/zero-music/api/music-songs', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

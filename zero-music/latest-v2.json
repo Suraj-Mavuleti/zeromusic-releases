@@ -1,8 +1,8 @@
 {
-  "version": "4.8.24",
-  "notes": "Fix main-thread ANRs, catastrophic regex backtracking, media streaming socket timeout, and background 2-minute freeze",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.24/ZeroMusic-4.8.24.apk",
-  "size": 17830055,
+  "version": "4.8.25",
+  "notes": "Fix googlevideo playback DNS, search crashes, and thermal ANRs",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.25/ZeroMusic-4.8.25.apk",
+  "size": 17846450,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

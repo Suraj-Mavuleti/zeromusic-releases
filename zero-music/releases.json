@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.8.31",
+    "date": "2026-11-15T13:46:46Z",
+    "notes": "Remove background proxy service, restore 100% clean battery-friendly playback, and improve search suggestions"
+  },
+  {
     "version": "4.8.30",
     "date": "2026-11-15T06:13:00Z",
     "notes": "- Fix search suggestions: gate song/artist relevance and block non-music queries"

@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.8.32",
+    "date": "2026-11-15T14:23:37Z",
+    "notes": "Clean release: completely remove proxy SDK, restore pure playback, and fix update delivery"
+  },
+  {
     "version": "4.8.31",
     "date": "2026-11-15T13:46:46Z",
     "notes": "Remove background proxy service, restore 100% clean battery-friendly playback, and improve search suggestions"

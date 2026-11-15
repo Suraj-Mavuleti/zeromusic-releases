@@ -1,7 +1,7 @@
 {
   "version": "4.8.31",
   "notes": "Remove background proxy service, restore 100% clean battery-friendly playback, and improve search suggestions",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.31/ZeroMusic-4.8.31.apk",
+  "apk": "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
   "size": 17879197,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",

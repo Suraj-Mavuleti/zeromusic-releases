@@ -1,8 +1,8 @@
 {
-  "version": "4.8.29",
-  "notes": "- Fix unofficial songs filter: prioritize official studio audio, - Topic, and VEVO tracks while filtering out bootlegs, slowed, reverb, karaoke, and covers\n- Fix imported song matching: Spotify and Apple Music imports resolve to exact original studio tracks instead of slowed/reverb variants\n- Fix playlist maker: expand smart and curated playlists to rich 25-50+ track collections\n- Full artist songs catalog: infinite scroll pagination to browse all songs of an artist\n- Fix search suggestions: restore query completions combining history and trending suggestions\n- Improved song recommendations: enhanced discovery with vibe compatibility and deduplication",
-  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.29/ZeroMusic-4.8.29.apk",
-  "size": 17879195,
+  "version": "4.8.30",
+  "notes": "- Fix search suggestions: gate song/artist relevance and block non-music queries",
+  "apk": "https://github.com/Suraj-Mavuleti/zeromusic-releases/releases/download/v4.8.30/ZeroMusic-4.8.30.apk",
+  "size": 87686663,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

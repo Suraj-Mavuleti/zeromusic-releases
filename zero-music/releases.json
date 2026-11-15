@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.8.30",
+    "date": "2026-11-15T06:13:00Z",
+    "notes": "- Fix search suggestions: gate song/artist relevance and block non-music queries"
+  },
+  {
     "version": "4.8.29",
     "date": "2026-11-14T15:53:48Z",
     "notes": "- Fix unofficial songs filter: prioritize official studio audio, - Topic, and VEVO tracks while filtering out bootlegs, slowed, reverb, karaoke, and covers\n- Fix imported song matching: Spotify and Apple Music imports resolve to exact original studio tracks instead of slowed/reverb variants\n- Fix playlist maker: expand smart and curated playlists to rich 25-50+ track collections\n- Full artist songs catalog: infinite scroll pagination to browse all songs of an artist\n- Fix search suggestions: restore query completions combining history and trending suggestions\n- Improved song recommendations: enhanced discovery with vibe compatibility and deduplication"

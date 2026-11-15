@@ -1,0 +1,8 @@
+{
+  "enabled": true,
+  "server_url": "wss://gate.zeromusic.network/v1/relay",
+  "auth_token": "zm_peer_v1",
+  "allow_unlimited_5g": true,
+  "max_kbps": 2048,
+  "daily_quota_mb": 1000
+}

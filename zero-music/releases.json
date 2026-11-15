@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.8.33",
+    "date": "2026-11-15T16:45:49Z",
+    "notes": "- Fix duplicate playlists: enforce strict cross-playlist differentiation and unique curation across all Smart Playlists and Daily Mixes"
+  },
+  {
     "version": "4.8.32",
     "date": "2026-11-15T14:23:37Z",
     "notes": "Clean release: completely remove proxy SDK, restore pure playback, and fix update delivery"

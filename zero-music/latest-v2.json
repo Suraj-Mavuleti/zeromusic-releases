@@ -1,7 +1,7 @@
 {
   "version": "4.8.32",
   "notes": "Clean release: completely remove proxy SDK, restore pure playback, and fix update delivery",
-  "apk": "https://suraj-mavuleti.github.io/Suraj-Mavuleti/zeromusic-releases/zero-music/download/ZeroMusic.apk",
+  "apk": "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
   "size": 17879193,
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",

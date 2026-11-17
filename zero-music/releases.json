@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.8.38",
+    "date": "2026-11-17T16:52:15Z",
+    "notes": "- Fix artist playlists & albums switching to random artists after 10-15 songs: enforce strict artist filtering on playlist loading and dominant-artist queue extension\n- Normalize artist matching across punctuation, initials, and spelling variations (e.g. A.R. Rahman / A. R. Rahman / AR Rahman / a.r rahaman)\n- Automatically loop back to earlier unplayed playlist songs when starting from the middle of an artist playlist or album\n- Eagerly load 35-50+ catalog songs on artist pages and fall back cleanly when Spotify playlist endpoints fail"
+  },
+  {
     "version": "4.8.37",
     "date": "2026-11-17T16:23:55Z",
     "notes": "- Fix startup crashes: synchronous SharedPreferences initialization and PlaybackService crossfader initialization order\n- Add defensive initialization guards across OfflineBackup, SongArchiver, CloudSync, and CollabPlaylists\n- Fix AGSL AuroraShaderRenderer float4 color uniform binding and Room destructive migration fallback\n- Hardened Auto-Updater: streaming SHA-256 verification, resumable HTTP Range downloads, mirror failover, and exponential backoff"

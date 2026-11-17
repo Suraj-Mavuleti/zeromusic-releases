@@ -1,9 +1,9 @@
 {
-  "version": "4.8.37",
-  "notes": "- Fix startup crashes: synchronous SharedPreferences initialization and PlaybackService crossfader initialization order\n- Add defensive initialization guards across OfflineBackup, SongArchiver, CloudSync, and CollabPlaylists\n- Fix AGSL AuroraShaderRenderer float4 color uniform binding and Room destructive migration fallback\n- Hardened Auto-Updater: streaming SHA-256 verification, resumable HTTP Range downloads, mirror failover, and exponential backoff",
+  "version": "4.8.38",
+  "notes": "- Fix artist playlists & albums switching to random artists after 10-15 songs: enforce strict artist filtering on playlist loading and dominant-artist queue extension\n- Normalize artist matching across punctuation, initials, and spelling variations (e.g. A.R. Rahman / A. R. Rahman / AR Rahman / a.r rahaman)\n- Automatically loop back to earlier unplayed playlist songs when starting from the middle of an artist playlist or album\n- Eagerly load 35-50+ catalog songs on artist pages and fall back cleanly when Spotify playlist endpoints fail",
   "apk": "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
-  "size": 18323131,
-  "sha256": "c0b9f8ab31824dd783d6fbf651d55016a3bb39200b0ec121163112c4eed9fcd8",
+  "size": 18323126,
+  "sha256": "b258057053f1352963a278a5c2571c1bf712a585870e096b558145120cd5a2f8",
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

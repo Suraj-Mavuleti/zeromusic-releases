@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.8.37",
+    "date": "2026-11-17T16:23:55Z",
+    "notes": "- Fix startup crashes: synchronous SharedPreferences initialization and PlaybackService crossfader initialization order\n- Add defensive initialization guards across OfflineBackup, SongArchiver, CloudSync, and CollabPlaylists\n- Fix AGSL AuroraShaderRenderer float4 color uniform binding and Room destructive migration fallback\n- Hardened Auto-Updater: streaming SHA-256 verification, resumable HTTP Range downloads, mirror failover, and exponential backoff"
+  },
+  {
     "version": "4.8.36",
     "date": "2026-11-17T16:07:54Z",
     "notes": "- 10-band cascaded BiQuad parametric/graphic EQ, stereo balance, preamp & adaptive BS.1770-4 LUFS loudness normalization\n- YouTube loudnessDb stream metadata extraction, equal-power crossfades & RMS silence trimming\n- Syllable-level karaoke lyrics preservation & proportional word timing interpolation\n- Pure-Kotlin MP4/M4A (ilst) and Ogg/Opus (OpusTags) multi-format tag editor\n- Waveform seekbar with quartile haptic ticks, vertical drag-to-expand MiniPlayer & Search in bottom navigation bar\n- Local device MediaStore audio scanner & time-of-day context-aware Home recommendations"

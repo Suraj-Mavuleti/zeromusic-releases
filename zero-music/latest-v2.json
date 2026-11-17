@@ -1,8 +1,9 @@
 {
-  "version": "4.8.35",
-  "notes": "- Comprehensive UI/UX overhaul: MiniPlayer fluid swipe-to-skip & spring snap, dynamic AGSL Aurora backdrop mesh shader, and thumb-tracking scrubber tooltip with haptic feedback\n- Reorderable drag-and-drop queue with multi-selection batch actions and full-screen blind gestures in Car Mode\n- Adaptive multi-column grid layouts for foldables and tablets, plus Material 3 dynamic Monet theming\n- Native AudioProcessor crossfader for gapless transitions and 10-band audiophile DSP suite (EQ, virtualizer, reverb, limiter, balance)\n- Two-tier 512MB LRU streaming disk cache and lookahead prebuffering for instant playback\n- MediaSession Coil 3 BitmapLoader for lock screen artwork and Android Auto hierarchy & fast pagination\n- Interactive Glance home screen widgets, Quick Settings tile, and physical headset multi-click controls\n- Perceptual sleep timer exponential fade and bit-perfect 32-bit float Hi-Res audio output\n- Non-blocking startup pipeline, allocation-free video export rendering, and battery-friendly event-driven lyrics\n- Relational Room database architecture with retained MVVM/MVI ViewModels and playback CoroutineExceptionHandler crash isolation\n- Type-Safe Jetpack Navigation Compose, Smart Playlist Rule Engine & Studio, Syllable-level Karaoke Lyrics with shareable lyric cards, Native ID3 tag editor, and ReplayGain / EBU R128 loudness normalization",
+  "version": "4.8.36",
+  "notes": "- 10-band cascaded BiQuad parametric/graphic EQ, stereo balance, preamp & adaptive BS.1770-4 LUFS loudness normalization\n- YouTube loudnessDb stream metadata extraction, equal-power crossfades & RMS silence trimming\n- Syllable-level karaoke lyrics preservation & proportional word timing interpolation\n- Pure-Kotlin MP4/M4A (ilst) and Ogg/Opus (OpusTags) multi-format tag editor\n- Waveform seekbar with quartile haptic ticks, vertical drag-to-expand MiniPlayer & Search in bottom navigation bar\n- Local device MediaStore audio scanner & time-of-day context-aware Home recommendations",
   "apk": "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
-  "size": 18224762,
+  "size": 18323125,
+  "sha256": "c431abf1ecbe2fdb194fbe02f6762ccaf1d56d20577908b26e2ab0009fd6d6bf",
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

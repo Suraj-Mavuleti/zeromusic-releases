@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.8.35",
+    "date": "2026-11-17T06:38:30Z",
+    "notes": "- Comprehensive UI/UX overhaul: MiniPlayer fluid swipe-to-skip & spring snap, dynamic AGSL Aurora backdrop mesh shader, and thumb-tracking scrubber tooltip with haptic feedback\n- Reorderable drag-and-drop queue with multi-selection batch actions and full-screen blind gestures in Car Mode\n- Adaptive multi-column grid layouts for foldables and tablets, plus Material 3 dynamic Monet theming\n- Native AudioProcessor crossfader for gapless transitions and 10-band audiophile DSP suite (EQ, virtualizer, reverb, limiter, balance)\n- Two-tier 512MB LRU streaming disk cache and lookahead prebuffering for instant playback\n- MediaSession Coil 3 BitmapLoader for lock screen artwork and Android Auto hierarchy & fast pagination\n- Interactive Glance home screen widgets, Quick Settings tile, and physical headset multi-click controls\n- Perceptual sleep timer exponential fade and bit-perfect 32-bit float Hi-Res audio output\n- Non-blocking startup pipeline, allocation-free video export rendering, and battery-friendly event-driven lyrics\n- Relational Room database architecture with retained MVVM/MVI ViewModels and playback CoroutineExceptionHandler crash isolation\n- Type-Safe Jetpack Navigation Compose, Smart Playlist Rule Engine & Studio, Syllable-level Karaoke Lyrics with shareable lyric cards, Native ID3 tag editor, and ReplayGain / EBU R128 loudness normalization"
+  },
+  {
     "version": "4.8.34",
     "date": "2026-11-16T03:49:53Z",
     "notes": "Spotify catalog-first search & verified official stream matching"

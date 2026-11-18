@@ -1,9 +1,9 @@
 {
-  "version": "4.8.44",
-  "notes": "Added rich in-car voice commands (next/previous, like, more like this, artist non-stop, saved playlist fuzzy matching), spoken TTS confirmation, Driving Mix in Android Auto, cabin road-noise bass & vocal EQ compensation, 3-track highway tunnel pre-buffering, and automatic update deferral while driving.",
+  "version": "4.8.45",
+  "notes": "Wired the car Microphone button to launch the native Hey Google / Google Assistant voice overlay on Android Auto, routed Hey Google MEDIA_PLAY_FROM_SEARCH intents directly to PlaybackService even when the phone screen is off, fixed the top-left Android Auto musical note badge, and added 1:1 HD square artwork cropping.",
   "apk": "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
-  "size": 18373096,
-  "sha256": "708c4c851dcc9bf6827aa27363b934222bf356901b0a85ec506d2e12fc6b46b2",
+  "size": 18389513,
+  "sha256": "eb75cd782865cb6faccf0014302be0da8afbd50fff913f8760a5ffad25c6a70d",
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

@@ -1,9 +1,9 @@
 {
-  "version": "4.8.43",
-  "notes": "Preserved both Previous (|<) and Next (>|) buttons in their standard Android Auto and Car Mode positions while displaying the Microphone (Voice Search) button alongside them.",
+  "version": "4.8.44",
+  "notes": "Added rich in-car voice commands (next/previous, like, more like this, artist non-stop, saved playlist fuzzy matching), spoken TTS confirmation, Driving Mix in Android Auto, cabin road-noise bass & vocal EQ compensation, 3-track highway tunnel pre-buffering, and automatic update deferral while driving.",
   "apk": "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
-  "size": 18356712,
-  "sha256": "571e0e87dfde2dd520823fc646cd643bf82f83aac0d6d9a1431fe60a1b47fd52",
+  "size": 18373096,
+  "sha256": "708c4c851dcc9bf6827aa27363b934222bf356901b0a85ec506d2e12fc6b46b2",
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

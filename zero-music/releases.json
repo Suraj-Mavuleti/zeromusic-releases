@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.8.44",
+    "date": "2026-11-18T06:29:42Z",
+    "notes": "Added rich in-car voice commands (next/previous, like, more like this, artist non-stop, saved playlist fuzzy matching), spoken TTS confirmation, Driving Mix in Android Auto, cabin road-noise bass & vocal EQ compensation, 3-track highway tunnel pre-buffering, and automatic update deferral while driving."
+  },
+  {
     "version": "4.8.43",
     "date": "2026-11-18T06:07:28Z",
     "notes": "Preserved both Previous (|<) and Next (>|) buttons in their standard Android Auto and Car Mode positions while displaying the Microphone (Voice Search) button alongside them."

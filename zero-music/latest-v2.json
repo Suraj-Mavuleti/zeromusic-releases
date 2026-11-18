@@ -1,9 +1,9 @@
 {
-  "version": "4.8.46",
-  "notes": "Added full support for 'Hey Google, play A.R. Rahman songs', 'Hey Google, open Zero Music', 'Hey Google, play next / previous / pause / resume / like / volume up / down', and updated launcher recognition for 'Zero Music'.",
+  "version": "4.8.47",
+  "notes": "Upgraded Android Auto and Car Mode visuals: crisp musical-note top-left badge, 1080p HD 1:1 square artwork cropping with automatic dark letterbox stripping, 512px dark-glass vector badges for Android Auto browse categories, and a redesigned Car Mode screen with album-tinted ambient radial glow, live progress bar with timestamps, and a glassmorphic control deck.",
   "apk": "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
-  "size": 18389563,
-  "sha256": "6c7d0daf5d5913d47c0d2f3a08337445d8a95353bae34306264cd851dc6af1c2",
+  "size": 18389557,
+  "sha256": "fbbe904dc463faa2380ee103cc4dde226d85c1561c85bb8af78d521fc797886e",
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

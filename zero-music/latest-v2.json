@@ -1,9 +1,9 @@
 {
-  "version": "4.8.38",
-  "notes": "- Fix artist playlists & albums switching to random artists after 10-15 songs: enforce strict artist filtering on playlist loading and dominant-artist queue extension\n- Normalize artist matching across punctuation, initials, and spelling variations (e.g. A.R. Rahman / A. R. Rahman / AR Rahman / a.r rahaman)\n- Automatically loop back to earlier unplayed playlist songs when starting from the middle of an artist playlist or album\n- Eagerly load 35-50+ catalog songs on artist pages and fall back cleanly when Spotify playlist endpoints fail",
+  "version": "4.8.39",
+  "notes": "Fixed random mid-session app closures caused by Coil bitmap cache recycling, Room SQLite foreign-key/unique constraint collisions, Media3 offload & visualizer pipeline races, and Android 14+ foreground service startup.",
   "apk": "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
-  "size": 18323126,
-  "sha256": "b258057053f1352963a278a5c2571c1bf712a585870e096b558145120cd5a2f8",
+  "size": 18323120,
+  "sha256": "830605e186a97269f26c131e58cad04b39a524e4912c9e5f0d27e88d9c8b6b15",
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

@@ -1,9 +1,9 @@
 {
-  "version": "4.8.47",
-  "notes": "Upgraded Android Auto and Car Mode visuals: crisp musical-note top-left badge, 1080p HD 1:1 square artwork cropping with automatic dark letterbox stripping, 512px dark-glass vector badges for Android Auto browse categories, and a redesigned Car Mode screen with album-tinted ambient radial glow, live progress bar with timestamps, and a glassmorphic control deck.",
+  "version": "4.8.48",
+  "notes": "Expanded Hands-Free Voice Command Suite: Added 20+ new voice actions for Android Auto Mic & Hey Google (What song is this, Fast forward/Rewind N seconds, Restart song, Repeat/Loop, Dislike & Skip, Play [Song] next, Add to Queue, Add to [Playlist], Download offline, Bass Boost/Vocal/Acoustic/Late Night EQ presets, Sleep Timer, Playback Speed, and Car Mode toggle)",
   "apk": "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
-  "size": 18389557,
-  "sha256": "fbbe904dc463faa2380ee103cc4dde226d85c1561c85bb8af78d521fc797886e",
+  "size": 18405941,
+  "sha256": "11000e98fcb49e5e6e2a2abe43aaae3858b855be154e75b2a548ff96ff286677",
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

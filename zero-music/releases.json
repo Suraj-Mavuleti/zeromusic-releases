@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.8.48",
+    "date": "2026-11-18T08:08:11Z",
+    "notes": "Expanded Hands-Free Voice Command Suite: Added 20+ new voice actions for Android Auto Mic & Hey Google (What song is this, Fast forward/Rewind N seconds, Restart song, Repeat/Loop, Dislike & Skip, Play [Song] next, Add to Queue, Add to [Playlist], Download offline, Bass Boost/Vocal/Acoustic/Late Night EQ presets, Sleep Timer, Playback Speed, and Car Mode toggle)"
+  },
+  {
     "version": "4.8.47",
     "date": "2026-11-18T07:34:50Z",
     "notes": "Upgraded Android Auto and Car Mode visuals: crisp musical-note top-left badge, 1080p HD 1:1 square artwork cropping with automatic dark letterbox stripping, 512px dark-glass vector badges for Android Auto browse categories, and a redesigned Car Mode screen with album-tinted ambient radial glow, live progress bar with timestamps, and a glassmorphic control deck."

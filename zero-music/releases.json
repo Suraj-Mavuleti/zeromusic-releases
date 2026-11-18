@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.8.42",
+    "date": "2026-11-18T05:47:15Z",
+    "notes": "Added a dedicated Microphone (Voice Search) button directly on the Android Auto car dashboard screen, full-screen car player, and root browse menu so you can tap the mic and speak any song, artist, or playlist to play immediately."
+  },
+  {
     "version": "4.8.41",
     "date": "2026-11-18T04:02:28Z",
     "notes": "Added offline phonetic romanization for Tamil, Telugu, Malayalam, Kannada & Hindi lyrics, karaoke instrumental gap & syllable progress interpolation, taste skip forgiveness & artist de-clustering in mixes, perceptual sleep fade curves, and queue deduplication."

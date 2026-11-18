@@ -1,9 +1,9 @@
 {
-  "version": "4.8.41",
-  "notes": "Added offline phonetic romanization for Tamil, Telugu, Malayalam, Kannada & Hindi lyrics, karaoke instrumental gap & syllable progress interpolation, taste skip forgiveness & artist de-clustering in mixes, perceptual sleep fade curves, and queue deduplication.",
+  "version": "4.8.42",
+  "notes": "Added a dedicated Microphone (Voice Search) button directly on the Android Auto car dashboard screen, full-screen car player, and root browse menu so you can tap the mic and speak any song, artist, or playlist to play immediately.",
   "apk": "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
-  "size": 18355890,
-  "sha256": "6f28347d2a3ffba1768801677426ac454a47dea0b60e1e37309092d0d5341348",
+  "size": 18356686,
+  "sha256": "06253f5c56d54010e65603a0d859d51e38b9ff0589cd19e9d4ee289ef4d8fb26",
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

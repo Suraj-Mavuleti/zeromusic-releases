@@ -1,9 +1,9 @@
 {
-  "version": "4.9.0",
-  "notes": "ZeroMusic 4.9.0 Major UI & Car Suite: Side-by-Side Car HUD with Live Lyric Ticker, Clock/Output Strip, Interactive Seek Scrubber & Up Next Pill; 2x2 4-Album Mosaic Browse Covers & Moods Folder in Android Auto; Mobile Home 2x2 Quick-Resume Bento Grid & Voice Button; Floating Glassmorphic MiniPlayer with Artwork Accent Glow & Mic; 3-Color Mesh Player Backdrop with Hi-Res Quality Badge; and Home Screen Widget Voice Search",
+  "version": "4.9.1",
+  "notes": "Clean Car HUD: Removed the Bluetooth/output device pill from CarModeScreen",
   "apk": "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
-  "size": 18422444,
-  "sha256": "323bb23884ffc52f4e308cc9c81acbbadc99b4e4db6745da4a089ca8c19fc61d",
+  "size": 18422431,
+  "sha256": "c3073e1b35ee96a55a653303785b68e943edc0474e23cbb7dde7ba64985d3f22",
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

@@ -1,9 +1,9 @@
 {
-  "version": "4.8.42",
-  "notes": "Added a dedicated Microphone (Voice Search) button directly on the Android Auto car dashboard screen, full-screen car player, and root browse menu so you can tap the mic and speak any song, artist, or playlist to play immediately.",
+  "version": "4.8.43",
+  "notes": "Preserved both Previous (|<) and Next (>|) buttons in their standard Android Auto and Car Mode positions while displaying the Microphone (Voice Search) button alongside them.",
   "apk": "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
-  "size": 18356686,
-  "sha256": "06253f5c56d54010e65603a0d859d51e38b9ff0589cd19e9d4ee289ef4d8fb26",
+  "size": 18356712,
+  "sha256": "571e0e87dfde2dd520823fc646cd643bf82f83aac0d6d9a1431fe60a1b47fd52",
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

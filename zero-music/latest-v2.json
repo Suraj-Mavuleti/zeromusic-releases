@@ -1,9 +1,9 @@
 {
-  "version": "4.8.39",
-  "notes": "Fixed random mid-session app closures caused by Coil bitmap cache recycling, Room SQLite foreign-key/unique constraint collisions, Media3 offload & visualizer pipeline races, and Android 14+ foreground service startup.",
+  "version": "4.8.40",
+  "notes": "Added Sweet Fades outro RMS decay detection, A-B repeat loop boundary nudging & loop counter, pure-Kotlin APK ZIP/EOCD archive & rollback guards with real-time download telemetry, regional/linguistic radio cohesion scoring, and 5 built-in Smart Playlist templates.",
   "apk": "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
-  "size": 18323120,
-  "sha256": "830605e186a97269f26c131e58cad04b39a524e4912c9e5f0d27e88d9c8b6b15",
+  "size": 18339506,
+  "sha256": "b4700c1fe665a879c884f527b33f03df0979a5e93c5c92703b2ab829dfaf784a",
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

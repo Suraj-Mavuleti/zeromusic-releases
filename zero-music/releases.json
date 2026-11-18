@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.8.40",
+    "date": "2026-11-18T03:38:45Z",
+    "notes": "Added Sweet Fades outro RMS decay detection, A-B repeat loop boundary nudging & loop counter, pure-Kotlin APK ZIP/EOCD archive & rollback guards with real-time download telemetry, regional/linguistic radio cohesion scoring, and 5 built-in Smart Playlist templates."
+  },
+  {
     "version": "4.8.39",
     "date": "2026-11-18T03:11:07Z",
     "notes": "Fixed random mid-session app closures caused by Coil bitmap cache recycling, Room SQLite foreign-key/unique constraint collisions, Media3 offload & visualizer pipeline races, and Android 14+ foreground service startup."

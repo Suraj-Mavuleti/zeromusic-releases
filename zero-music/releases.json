@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.8.41",
+    "date": "2026-11-18T04:02:28Z",
+    "notes": "Added offline phonetic romanization for Tamil, Telugu, Malayalam, Kannada & Hindi lyrics, karaoke instrumental gap & syllable progress interpolation, taste skip forgiveness & artist de-clustering in mixes, perceptual sleep fade curves, and queue deduplication."
+  },
+  {
     "version": "4.8.40",
     "date": "2026-11-18T03:38:45Z",
     "notes": "Added Sweet Fades outro RMS decay detection, A-B repeat loop boundary nudging & loop counter, pure-Kotlin APK ZIP/EOCD archive & rollback guards with real-time download telemetry, regional/linguistic radio cohesion scoring, and 5 built-in Smart Playlist templates."

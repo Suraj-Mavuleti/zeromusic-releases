@@ -1,9 +1,9 @@
 {
-  "version": "4.8.40",
-  "notes": "Added Sweet Fades outro RMS decay detection, A-B repeat loop boundary nudging & loop counter, pure-Kotlin APK ZIP/EOCD archive & rollback guards with real-time download telemetry, regional/linguistic radio cohesion scoring, and 5 built-in Smart Playlist templates.",
+  "version": "4.8.41",
+  "notes": "Added offline phonetic romanization for Tamil, Telugu, Malayalam, Kannada & Hindi lyrics, karaoke instrumental gap & syllable progress interpolation, taste skip forgiveness & artist de-clustering in mixes, perceptual sleep fade curves, and queue deduplication.",
   "apk": "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
-  "size": 18339506,
-  "sha256": "b4700c1fe665a879c884f527b33f03df0979a5e93c5c92703b2ab829dfaf784a",
+  "size": 18355890,
+  "sha256": "6f28347d2a3ffba1768801677426ac454a47dea0b60e1e37309092d0d5341348",
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

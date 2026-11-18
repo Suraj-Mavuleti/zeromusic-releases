@@ -1,9 +1,9 @@
 {
-  "version": "4.8.48",
-  "notes": "Expanded Hands-Free Voice Command Suite: Added 20+ new voice actions for Android Auto Mic & Hey Google (What song is this, Fast forward/Rewind N seconds, Restart song, Repeat/Loop, Dislike & Skip, Play [Song] next, Add to Queue, Add to [Playlist], Download offline, Bass Boost/Vocal/Acoustic/Late Night EQ presets, Sleep Timer, Playback Speed, and Car Mode toggle)",
+  "version": "4.8.49",
+  "notes": "Side-by-Side Automotive HUD: Updated CarModeScreen to lock landscape sensor orientation and render a true side-by-side left/right HUD (Track & Progress on Left, Glassmorphic Control Deck on Right) instead of top/bottom",
   "apk": "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
-  "size": 18405941,
-  "sha256": "11000e98fcb49e5e6e2a2abe43aaae3858b855be154e75b2a548ff96ff286677",
+  "size": 18405934,
+  "sha256": "1f4d17ce440ec659864ff80b4faba5abf3e11f989aaf756f33b0b9ec826c1e9b",
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

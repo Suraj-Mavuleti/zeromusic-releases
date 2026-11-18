@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.8.49",
+    "date": "2026-11-18T08:27:40Z",
+    "notes": "Side-by-Side Automotive HUD: Updated CarModeScreen to lock landscape sensor orientation and render a true side-by-side left/right HUD (Track & Progress on Left, Glassmorphic Control Deck on Right) instead of top/bottom"
+  },
+  {
     "version": "4.8.48",
     "date": "2026-11-18T08:08:11Z",
     "notes": "Expanded Hands-Free Voice Command Suite: Added 20+ new voice actions for Android Auto Mic & Hey Google (What song is this, Fast forward/Rewind N seconds, Restart song, Repeat/Loop, Dislike & Skip, Play [Song] next, Add to Queue, Add to [Playlist], Download offline, Bass Boost/Vocal/Acoustic/Late Night EQ presets, Sleep Timer, Playback Speed, and Car Mode toggle)"

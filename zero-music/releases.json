@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.8.46",
+    "date": "2026-11-18T07:20:05Z",
+    "notes": "Added full support for 'Hey Google, play A.R. Rahman songs', 'Hey Google, open Zero Music', 'Hey Google, play next / previous / pause / resume / like / volume up / down', and updated launcher recognition for 'Zero Music'."
+  },
+  {
     "version": "4.8.45",
     "date": "2026-11-18T06:49:03Z",
     "notes": "Wired the car Microphone button to launch the native Hey Google / Google Assistant voice overlay on Android Auto, routed Hey Google MEDIA_PLAY_FROM_SEARCH intents directly to PlaybackService even when the phone screen is off, fixed the top-left Android Auto musical note badge, and added 1:1 HD square artwork cropping."

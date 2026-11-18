@@ -1,9 +1,9 @@
 {
-  "version": "4.8.45",
-  "notes": "Wired the car Microphone button to launch the native Hey Google / Google Assistant voice overlay on Android Auto, routed Hey Google MEDIA_PLAY_FROM_SEARCH intents directly to PlaybackService even when the phone screen is off, fixed the top-left Android Auto musical note badge, and added 1:1 HD square artwork cropping.",
+  "version": "4.8.46",
+  "notes": "Added full support for 'Hey Google, play A.R. Rahman songs', 'Hey Google, open Zero Music', 'Hey Google, play next / previous / pause / resume / like / volume up / down', and updated launcher recognition for 'Zero Music'.",
   "apk": "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
-  "size": 18389513,
-  "sha256": "eb75cd782865cb6faccf0014302be0da8afbd50fff913f8760a5ffad25c6a70d",
+  "size": 18389563,
+  "sha256": "6c7d0daf5d5913d47c0d2f3a08337445d8a95353bae34306264cd851dc6af1c2",
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

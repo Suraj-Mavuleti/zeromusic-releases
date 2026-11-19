@@ -51,7 +51,7 @@
   <!-- Google Identity Services for Drive AppData Cloud Sync -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   <!-- Standalone ZeroMusic Design System (No interference from external css) -->
-  <link rel="stylesheet" href="/zero-music/zm.css?v=26" />
+  <link rel="stylesheet" href="/zero-music/zm.css?v=27" />
   <script>
     (function() {
       var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 820;
@@ -228,6 +228,21 @@
         </div>
       </div>
 
+      <!-- Interactive Android Highlights Showcase -->
+      <div class="mobile-showcase-strip" id="mobile-showcase-strip">
+        <div class="mobile-showcase-tabs" role="tablist">
+          <button class="mobile-showcase-tab active" data-tab="hud" role="tab" aria-selected="true">Car HUD</button>
+          <button class="mobile-showcase-tab" data-tab="lyrics" role="tab" aria-selected="false">Live Lyrics</button>
+          <button class="mobile-showcase-tab" data-tab="offline" role="tab" aria-selected="false">Offline Vault</button>
+          <button class="mobile-showcase-tab" data-tab="sync" role="tab" aria-selected="false">Cloud Sync</button>
+        </div>
+        <div class="mobile-showcase-card" id="mobile-showcase-body">
+          <div class="showcase-pill-tag">NEW IN ANDROID</div>
+          <h4 class="showcase-card-title">Side-by-Side Automotive Car HUD</h4>
+          <p class="showcase-card-desc">Full-screen ambient artwork glow, live synced lyrics, clock, up-next deck, and 30+ hands-free voice commands built for the road.</p>
+        </div>
+      </div>
+
       <!-- Clean 4-Bullet Feature Grid -->
       <div class="mobile-features-grid">
         <div class="mobile-feat-box">
@@ -295,36 +310,48 @@
        PANE 2: DESKTOP & LAPTOP WEB PLAYER APP (APPLE / SPOTIFY LUXE)
        ══════════════════════════════════════════════════════════════ -->
   <div id="zm-player-view">
+    <!-- Narrow-Screen Sidebar Backdrop -->
+    <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
+
     <!-- Left Navigation Sidebar -->
-    <aside class="player-sidebar">
+    <aside class="player-sidebar" id="player-sidebar">
       <div class="sidebar-top-group">
-        <!-- Brand Lockup -->
-        <a href="/zero-music" class="sidebar-brand-lockup">
-          <img src="/zero-music/icon.svg" alt="ZeroMusic" class="sidebar-brand-icon">
-          <div class="sidebar-brand-meta">
-            <span class="sidebar-brand-text">ZeroMusic</span>
-            <span class="sidebar-brand-sub">by devzero</span>
-          </div>
-        </a>
+        <!-- Brand Lockup + Collapse Toggle -->
+        <div class="sidebar-brand-row">
+          <a href="/zero-music" class="sidebar-brand-lockup">
+            <img src="/zero-music/icon.svg" alt="ZeroMusic" class="sidebar-brand-icon">
+            <div class="sidebar-brand-meta">
+              <span class="sidebar-brand-text">ZeroMusic</span>
+              <span class="sidebar-brand-sub">by devzero</span>
+            </div>
+          </a>
+          <button id="btn-sidebar-collapse" class="sidebar-collapse-btn" title="Toggle Sidebar" aria-label="Toggle Sidebar">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+          </button>
+        </div>
 
         <!-- Main Navigation -->
         <nav class="sidebar-nav-block">
           <div class="sidebar-block-title">DISCOVER</div>
-          <button class="sidebar-item active" data-view="home">
+          <button class="sidebar-item active" data-view="home" title="Listen Now">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             <span>Listen Now</span>
           </button>
-          <button class="sidebar-item" data-view="search">
+          <button class="sidebar-item" data-view="search" title="Search">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
             <span>Search</span>
           </button>
-          <button class="sidebar-item" data-view="chart">
+          <button class="sidebar-item" data-view="chart" title="Top 100 Charts">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
             <span>Top 100 Charts</span>
           </button>
+          <button class="sidebar-item" data-view="stats" title="Listening Stats">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+            <span>Listening Stats</span>
+          </button>
         </nav>
 
-        <!-- User Playlists (Replaces Hardcoded Genres) -->
+        <!-- User Playlists -->
         <div class="sidebar-nav-block">
           <div class="sidebar-block-header">
             <span class="sidebar-block-title">PLAYLISTS</span>
@@ -340,7 +367,12 @@
 
       <!-- Sidebar Footer -->
       <div class="sidebar-bottom-group">
-        <a href="/wiki" class="sidebar-return-link">
+        <button id="btn-open-shortcuts" class="sidebar-return-link sidebar-shortcuts-btn" title="Keyboard Shortcuts (?)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h.01M10 8h.01M14 8h.01M18 8h.01M8 12h.01M12 12h.01M16 12h.01M7 16h10"/></svg>
+          <span>Shortcuts</span>
+          <kbd class="kbd-hint">?</kbd>
+        </button>
+        <a href="/wiki" class="sidebar-return-link" title="Return to Core">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
           <span>Return to Core</span>
         </a>
@@ -352,23 +384,33 @@
     </aside>
 
     <!-- Center Stage Container -->
-    <main class="player-main-stage">
-      <!-- Stage Nav Header: Clean Single Row with Search and Quick Links -->
+    <main class="player-main-stage" id="player-main-stage">
+      <!-- Stage Nav Header -->
       <div class="stage-nav-header">
-        <div class="stage-search-shell">
-          <div class="stage-search-box">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="search-icon"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <input type="text" id="zm-search-input" class="search-input-field" placeholder="Search songs, artists, albums..." autocomplete="off">
-            <button id="zm-search-clear" class="search-btn-clear" aria-label="Clear Search">✕</button>
+        <div class="stage-nav-left">
+          <button id="btn-mobile-nav-open" class="nav-hamburger-btn" title="Open Navigation" aria-label="Open Navigation">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <div class="stage-search-shell">
+            <div class="stage-search-box">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="search-icon"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="text" id="zm-search-input" class="search-input-field" placeholder="Search songs, artists, albums..." autocomplete="off">
+              <button id="zm-search-clear" class="search-btn-clear" aria-label="Clear Search">✕</button>
+              <button id="btn-open-cmdk" class="search-cmdk-badge" title="Command Palette (⌘K)" aria-label="Open Command Palette">⌘K</button>
+            </div>
+            <!-- Autocomplete Dropdown -->
+            <div id="zm-search-suggestions" class="stage-suggest-dropdown"></div>
           </div>
-          <!-- Autocomplete Dropdown -->
-          <div id="zm-search-suggestions" class="stage-suggest-dropdown"></div>
         </div>
 
         <div class="stage-header-actions">
           <button id="btn-quick-chart-global" class="header-action-pill active" data-chart-switch="global">Global Top 100</button>
           <button id="btn-quick-chart-india" class="header-action-pill" data-chart-switch="india">India Top 100</button>
-          
+
+          <button id="btn-appearance-toggle" class="header-icon-btn" title="Appearance & Theme" aria-label="Appearance & Theme">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+          </button>
+
           <div class="header-actions-separator" aria-hidden="true"></div>
 
           <!-- Google Sync & Profile Pill (Phone ↔ PC Account Sync) -->
@@ -401,9 +443,12 @@
         </div>
       </div>
 
-      <!-- Separate Moods/Genres Sub-Bar (Divided exactly like Android App MOODS) -->
+      <!-- Separate Moods/Genres Sub-Bar with Scroll Chevrons -->
       <nav class="moods-subbar" aria-label="Moods and Genres">
-        <div class="mood-chips-scroll">
+        <button id="btn-moods-left" class="mood-scroll-btn prev" aria-label="Scroll moods left">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="mood-chips-scroll" id="mood-chips-scroll">
           <button class="mood-chip active" data-mood="all">All</button>
           <button class="mood-chip" data-mood="Workout">Workout</button>
           <button class="mood-chip" data-mood="Chill">Chill</button>
@@ -422,39 +467,65 @@
           <button class="mood-chip" data-mood="Devotional">Devotional</button>
           <button class="mood-chip" data-mood="Sleep">Sleep</button>
         </div>
+        <button id="btn-moods-right" class="mood-scroll-btn next" aria-label="Scroll moods right">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
       </nav>
 
       <!-- Scrollable Stage Content -->
-      <div class="stage-scroll-canvas">
+      <div class="stage-scroll-canvas" id="stage-scroll-canvas">
         <!-- ══════════════════════════════════════════════════════════
-             SECTION: HOME / DISCOVER (EXACT ANDROID APP SECTIONS)
+             SECTION: HOME / DISCOVER (BENTO + HORIZONTAL CAROUSELS)
              ══════════════════════════════════════════════════════════ -->
         <section id="section-home" class="main-content-section active-section">
-          <!-- 1. Listening History at the TOP (Matches Android app HomeScreen.kt line 288) -->
+          <!-- 0. Time-of-Day Greeting + Bento Quick-Jump Grid -->
+          <div class="home-bento-header" id="home-bento-header">
+            <div class="home-greeting-row">
+              <div>
+                <h2 id="home-greeting-title" class="home-greeting-title">Good evening</h2>
+                <p id="home-greeting-sub" class="home-greeting-sub">Pick up right where you left off</p>
+              </div>
+              <button id="btn-home-shuffle-liked" class="btn-action-pill" style="display: none;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
+                <span>Shuffle Liked</span>
+              </button>
+            </div>
+            <div id="home-bento-grid" class="home-bento-grid"></div>
+          </div>
+
+          <!-- 1. Listening History Carousel -->
           <div id="recently-played-section" class="home-feed-section" style="display: none;">
             <div class="section-heading-bar">
               <div>
                 <h3 class="section-title">Recently played</h3>
                 <p class="section-subtitle">Jump back in</p>
               </div>
-              <button id="btn-clear-history" class="btn-action-ghost">Clear</button>
+              <div class="section-heading-actions">
+                <button class="btn-shelf-expand" data-expand-grid="recently-played-grid">See all</button>
+                <button id="btn-clear-history" class="btn-action-ghost">Clear</button>
+              </div>
             </div>
-            <div id="recently-played-grid" class="tracks-grid"></div>
+            <div class="shelf-carousel-wrap">
+              <button class="shelf-scroll-btn prev" data-carousel-dir="-1" aria-label="Scroll left"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button>
+              <div id="recently-played-grid" class="tracks-grid tracks-carousel"></div>
+              <button class="shelf-scroll-btn next" data-carousel-dir="1" aria-label="Scroll right"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>
+            </div>
           </div>
 
-          <!-- Empty History Tip (Android app style when user has no plays yet) -->
+          <!-- Empty History Tip -->
           <div id="empty-history-tip" class="home-welcome-tip" style="display: none;">
-            <div class="welcome-tip-icon">✨</div>
-            <div class="welcome-tip-text">Play a few songs and Home will fill up with picks based on what you like.</div>
+            <div class="welcome-tip-icon">✦</div>
+            <div class="welcome-tip-text">Play a few songs and Home will personalize with mixes, stats, and picks based on your taste.</div>
           </div>
 
-          <!-- 2. Cinematic Editorial Billboard (Apple Music / Spotify Style) -->
-          <div class="editorial-billboard">
+          <!-- 2. Cinematic Rotating Editorial Spotlight Carousel -->
+          <div class="editorial-billboard" id="editorial-billboard">
+            <div id="spotlight-ambient-bg" class="billboard-ambient-bg" aria-hidden="true"></div>
             <div class="editorial-art-frame">
               <img id="spotlight-art" class="editorial-art-img" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/6f/bc/e6/6fbce6c4-c38c-72d8-4fd0-66cfff32f679/20UMGIM12176.rgb.jpg/600x600bb.jpg" alt="Featured Track">
             </div>
             <div class="editorial-info-pane">
-              <span class="editorial-eyebrow">SPOTLIGHT RELEASE</span>
+              <span class="editorial-eyebrow" id="spotlight-eyebrow">SPOTLIGHT RELEASE</span>
               <h2 id="spotlight-title" class="editorial-heading">Blinding Lights</h2>
               <div id="spotlight-artist" class="editorial-subheading">The Weeknd</div>
               <div class="editorial-actions-row">
@@ -462,47 +533,86 @@
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 18 12 6 20 6 4"/></svg>
                   <span>Play Now</span>
                 </button>
+                <button id="btn-spotlight-queue" class="btn-action-pill">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                  <span>Up Next</span>
+                </button>
+                <button id="btn-spotlight-like" class="btn-spotlight-icon" title="Like Spotlight Track" aria-label="Like">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                </button>
+              </div>
+            </div>
+            <div class="spotlight-nav-controls">
+              <div id="spotlight-dots" class="spotlight-dots"></div>
+              <div class="spotlight-arrow-pair">
+                <button id="btn-spotlight-prev" class="spotlight-arrow-btn" aria-label="Previous Spotlight">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <button id="btn-spotlight-next" class="spotlight-arrow-btn" aria-label="Next Spotlight">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
               </div>
             </div>
           </div>
 
-          <!-- 3. Your Mix (Android app Recommender) -->
+          <!-- 3. Your Mix -->
           <div id="your-mix-section" class="home-feed-section">
             <div class="section-heading-bar">
               <div>
                 <h3 class="section-title">Your Mix</h3>
                 <p class="section-subtitle">Songs like your favourites, new every day</p>
               </div>
-              <button class="btn-play-all-section" data-play-section="your-mix">Play all</button>
+              <div class="section-heading-actions">
+                <button class="btn-shelf-expand" data-expand-grid="your-mix-grid">See all</button>
+                <button class="btn-play-all-section" data-play-section="your-mix">Play all</button>
+              </div>
             </div>
-            <div id="your-mix-grid" class="tracks-grid"></div>
+            <div class="shelf-carousel-wrap">
+              <button class="shelf-scroll-btn prev" data-carousel-dir="-1" aria-label="Scroll left"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button>
+              <div id="your-mix-grid" class="tracks-grid tracks-carousel"></div>
+              <button class="shelf-scroll-btn next" data-carousel-dir="1" aria-label="Scroll right"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>
+            </div>
           </div>
 
-          <!-- 4. Quick picks (Android app Quick picks) -->
+          <!-- 4. Quick picks -->
           <div id="quick-picks-section" class="home-feed-section">
             <div class="section-heading-bar">
               <div>
                 <h3 class="section-title">Quick picks</h3>
                 <p class="section-subtitle">Based on what you've played recently</p>
               </div>
-              <button class="btn-play-all-section" data-play-section="quick-picks">Play all</button>
+              <div class="section-heading-actions">
+                <button class="btn-shelf-expand" data-expand-grid="quick-picks-grid">See all</button>
+                <button class="btn-play-all-section" data-play-section="quick-picks">Play all</button>
+              </div>
             </div>
-            <div id="quick-picks-grid" class="tracks-grid"></div>
+            <div class="shelf-carousel-wrap">
+              <button class="shelf-scroll-btn prev" data-carousel-dir="-1" aria-label="Scroll left"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button>
+              <div id="quick-picks-grid" class="tracks-grid tracks-carousel"></div>
+              <button class="shelf-scroll-btn next" data-carousel-dir="1" aria-label="Scroll right"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>
+            </div>
           </div>
 
-          <!-- 5. Because you listened to (Android app Song Radio Recommender) -->
+          <!-- 5. Because you listened to -->
           <div id="because-listened-section" class="home-feed-section" style="display: none;">
             <div class="section-heading-bar">
               <div>
                 <h3 class="section-title" id="because-title">Because you listened to</h3>
                 <p class="section-subtitle" id="because-subtitle">Recommended tracks</p>
               </div>
-              <button class="btn-play-all-section" data-play-section="because">Play all</button>
+              <div class="section-heading-actions">
+                <button class="btn-shelf-expand" data-expand-grid="because-grid">See all</button>
+                <button class="btn-play-all-section" data-play-section="because">Play all</button>
+              </div>
             </div>
-            <div id="because-grid" class="tracks-grid"></div>
+            <div class="shelf-carousel-wrap">
+              <button class="shelf-scroll-btn prev" data-carousel-dir="-1" aria-label="Scroll left"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button>
+              <div id="because-grid" class="tracks-grid tracks-carousel"></div>
+              <button class="shelf-scroll-btn next" data-carousel-dir="1" aria-label="Scroll right"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>
+            </div>
           </div>
 
-          <!-- 6. Top 100 Songs on Main Screen (YouTube Music Charts) -->
+          <!-- 6. Compact Top 12 Chart Preview on Home -->
           <div id="main-top-100-section" class="home-feed-section">
             <div class="section-heading-bar">
               <div>
@@ -519,36 +629,67 @@
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 18 12 6 20 6 4"/></svg>
                   <span>Play all</span>
                 </button>
+                <button id="btn-view-full-chart" class="btn-shelf-expand">Full Top 100 →</button>
               </div>
             </div>
-            <div id="main-top-100-table" class="track-rows-wrap top-100-table"></div>
+            <div id="main-top-100-table" class="track-rows-wrap top-100-table top-100-compact-grid"></div>
           </div>
 
-          <!-- 7. New Releases (Android app ReleasesRow) -->
+          <!-- 7. New Releases -->
           <div id="new-releases-section" class="home-feed-section">
             <div class="section-heading-bar">
               <div>
                 <h3 class="section-title">New releases for you</h3>
                 <p class="section-subtitle">Fresh singles and albums</p>
               </div>
+              <div class="section-heading-actions">
+                <button class="btn-shelf-expand" data-expand-grid="new-releases-grid">See all</button>
+              </div>
             </div>
-            <div id="new-releases-grid" class="tracks-grid"></div>
+            <div class="shelf-carousel-wrap">
+              <button class="shelf-scroll-btn prev" data-carousel-dir="-1" aria-label="Scroll left"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button>
+              <div id="new-releases-grid" class="tracks-grid tracks-carousel"></div>
+              <button class="shelf-scroll-btn next" data-carousel-dir="1" aria-label="Scroll right"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>
+            </div>
           </div>
         </section>
 
         <!-- ══════════════════════════════════════════════════════════
-             SECTION: SEARCH RESULTS
+             SECTION: SEARCH RESULTS & BROWSE
              ══════════════════════════════════════════════════════════ -->
         <section id="section-search" class="main-content-section" style="display: none;">
           <div class="section-heading-bar">
             <div>
-              <h3 class="section-title" id="search-results-header">Search Results</h3>
-              <p class="section-subtitle" id="search-results-subtitle">Songs, artists, and albums</p>
+              <h3 class="section-title" id="search-results-header">Explore & Search</h3>
+              <p class="section-subtitle" id="search-results-subtitle">Search tracks, artists, or browse moods below</p>
+            </div>
+            <div id="search-view-toggle" class="view-mode-switch" style="display: none;">
+              <button id="btn-search-view-grid" class="view-mode-btn active" title="Grid View" aria-label="Grid View">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              </button>
+              <button id="btn-search-view-list" class="view-mode-btn" title="List View" aria-label="List View">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+              </button>
             </div>
           </div>
-          <div id="search-results-grid" class="tracks-grid">
-            <div class="zm-empty">Type in the search bar above to explore tracks...</div>
+
+          <!-- Browse Empty State (Recent Searches + Visual Mood Tiles) -->
+          <div id="search-browse-panel" class="search-browse-panel">
+            <div id="recent-searches-wrap" class="recent-searches-wrap" style="display: none;">
+              <div class="recent-searches-head">
+                <span class="sidebar-block-title" style="padding: 0;">RECENT SEARCHES</span>
+                <button id="btn-clear-recent-searches" class="btn-text-link">Clear all</button>
+              </div>
+              <div id="recent-searches-list" class="recent-searches-chips"></div>
+            </div>
+            <div class="search-moods-heading">Browse by Mood & Vibe</div>
+            <div id="search-mood-tiles" class="search-mood-tiles"></div>
           </div>
+
+          <!-- Top Result + Songs Split (Shown on Text Search) -->
+          <div id="search-top-result-wrap" class="search-top-result-wrap" style="display: none;"></div>
+
+          <div id="search-results-grid" class="tracks-grid"></div>
         </section>
 
         <!-- ══════════════════════════════════════════════════════════
@@ -579,9 +720,10 @@
              SECTION: PLAYLIST DETAIL VIEW
              ══════════════════════════════════════════════════════════ -->
         <section id="section-playlist" class="main-content-section" style="display: none;">
-          <div class="playlist-editorial-hero">
+          <div class="playlist-editorial-hero" id="playlist-editorial-hero">
+            <div id="playlist-ambient-bg" class="playlist-ambient-bg" aria-hidden="true"></div>
             <div class="playlist-art-frame">
-              <div id="playlist-art-display" class="playlist-art-gradient">🎵</div>
+              <div id="playlist-art-display" class="playlist-art-gradient"></div>
             </div>
             <div class="playlist-info-pane">
               <span class="editorial-eyebrow">PLAYLIST</span>
@@ -596,11 +738,74 @@
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
                   <span>Shuffle</span>
                 </button>
-                <button id="btn-playlist-delete" class="btn-action-ghost" style="display: none;">Delete</button>
+                <button id="btn-playlist-rename" class="btn-action-ghost" style="display: none;">Rename</button>
+                <button id="btn-playlist-delete" class="btn-action-ghost btn-danger-ghost" style="display: none;">Delete</button>
               </div>
             </div>
           </div>
+
+          <!-- In-Playlist Instant Filter & Sort Toolbar -->
+          <div class="playlist-toolbar" id="playlist-toolbar">
+            <div class="playlist-filter-box">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="text" id="playlist-filter-input" class="playlist-filter-input" placeholder="Filter in playlist..." autocomplete="off">
+            </div>
+            <select id="playlist-sort-select" class="playlist-sort-select" aria-label="Sort playlist">
+              <option value="default">Sort: Default Order</option>
+              <option value="title">Sort: Title (A–Z)</option>
+              <option value="artist">Sort: Artist (A–Z)</option>
+              <option value="duration">Sort: Duration</option>
+            </select>
+          </div>
+
           <div id="playlist-tracks-table" class="track-rows-wrap"></div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════════════════
+             SECTION: LISTENING STATS DASHBOARD
+             ══════════════════════════════════════════════════════════ -->
+        <section id="section-stats" class="main-content-section" style="display: none;">
+          <div class="section-heading-bar">
+            <div>
+              <div class="section-badge">YOUR LISTENING INSIGHTS</div>
+              <h2 class="section-title">Listening Stats</h2>
+              <p class="section-subtitle">Synced play activity across your Web & Android library</p>
+            </div>
+            <button id="btn-export-stats-card" class="btn-action-pill">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+              <span>Share Stats Card</span>
+            </button>
+          </div>
+
+          <div class="stats-kpi-grid">
+            <div class="stats-kpi-card">
+              <span class="stats-kpi-label">TOTAL PLAYS</span>
+              <span class="stats-kpi-val" id="stats-total-plays">0</span>
+            </div>
+            <div class="stats-kpi-card">
+              <span class="stats-kpi-label">UNIQUE TRACKS</span>
+              <span class="stats-kpi-val" id="stats-unique-tracks">0</span>
+            </div>
+            <div class="stats-kpi-card">
+              <span class="stats-kpi-label">LIKED SONGS</span>
+              <span class="stats-kpi-val" id="stats-liked-count">0</span>
+            </div>
+            <div class="stats-kpi-card">
+              <span class="stats-kpi-label">PLAYLISTS</span>
+              <span class="stats-kpi-val" id="stats-playlists-count">0</span>
+            </div>
+          </div>
+
+          <div class="stats-columns-grid">
+            <div class="stats-panel-card">
+              <h3 class="stats-panel-title">Top Played Tracks</h3>
+              <div id="stats-top-tracks" class="stats-ranked-list"></div>
+            </div>
+            <div class="stats-panel-card">
+              <h3 class="stats-panel-title">Top Artists</h3>
+              <div id="stats-top-artists" class="stats-ranked-list"></div>
+            </div>
+          </div>
         </section>
 
         <!-- Pure Bottom Legal & Terms Footer -->
@@ -622,9 +827,10 @@
   </div>
 
   <!-- ══════════════════════════════════════════════════════════════
-       SYNCED LYRICS DRAWER (APPLE MUSIC DARK LUXE)
+       SYNCED LYRICS DRAWER (APPLE MUSIC DARK LUXE + STUDIO TOOLS)
        ══════════════════════════════════════════════════════════════ -->
   <aside id="lyrics-drawer" class="lyrics-slideover-sheet">
+    <div id="lyrics-ambient-bg" class="drawer-ambient-bg" aria-hidden="true"></div>
     <div class="lyrics-header">
       <div class="lyrics-header-track">
         <img id="lyrics-large-art" class="lyrics-header-thumb" src="/zero-music/icon.svg" alt="Cover Art">
@@ -633,23 +839,57 @@
           <p id="lyrics-track-artist">Select a song to start</p>
         </div>
       </div>
-      <button id="btn-close-lyrics" class="btn-close-sheet" aria-label="Close Lyrics">✕</button>
+      <div class="lyrics-header-tools">
+        <button id="btn-lyrics-card-mode" class="drawer-tool-btn" title="Share Lyric Card" aria-label="Share Lyric Card">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </button>
+        <button id="btn-lyrics-expand" class="drawer-tool-btn" title="Full-Screen Theater Mode (F)" aria-label="Expand Theater Mode">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+        </button>
+        <button id="btn-close-lyrics" class="btn-close-sheet" aria-label="Close Lyrics">✕</button>
+      </div>
+    </div>
+    <div class="lyrics-controls-strip">
+      <div class="lyrics-offset-group" title="Adjust lyrics timing offset">
+        <span class="lyrics-strip-label">SYNC</span>
+        <button id="btn-lyrics-offset-minus" class="lyrics-mini-btn" aria-label="Earlier by 0.5s">−0.5s</button>
+        <span id="lyrics-offset-badge" class="lyrics-offset-val">0.0s</span>
+        <button id="btn-lyrics-offset-plus" class="lyrics-mini-btn" aria-label="Later by 0.5s">+0.5s</button>
+      </div>
+      <button id="btn-lyrics-fontsize" class="lyrics-mini-btn" title="Cycle lyric text size">Aa · M</button>
     </div>
     <div id="lyrics-lines-container" class="lyrics-scroll-body">
       <div class="lyrics-status">Play a song to follow live time-synced lyrics</div>
     </div>
+    <button id="btn-lyrics-resume-sync" class="lyrics-resume-pill" style="display: none;">↻ Resume Auto-Sync</button>
+    <div id="lyrics-select-bar" class="lyrics-select-bar" style="display: none;">
+      <span id="lyrics-select-count">Tap 1–4 lines</span>
+      <div class="lyrics-select-actions">
+        <button id="btn-lyrics-select-cancel" class="btn-action-ghost" style="padding: 5px 10px; font-size: 12px;">Cancel</button>
+        <button id="btn-lyrics-select-generate" class="btn-action-primary" style="padding: 6px 14px; font-size: 12px;" disabled>Create Card</button>
+      </div>
+    </div>
   </aside>
 
   <!-- ══════════════════════════════════════════════════════════════
-       QUEUE DRAWER
+       QUEUE DRAWER (DRAG-REORDERABLE + SAVE/CLEAR)
        ══════════════════════════════════════════════════════════════ -->
   <aside id="queue-drawer" class="queue-slideover-sheet">
     <div class="queue-header">
       <div class="queue-header-title">
         <span>Up Next</span>
         <span class="queue-counter" id="queue-count-badge">0</span>
+        <span class="queue-duration-tag" id="queue-duration-badge"></span>
       </div>
-      <button id="btn-close-queue" class="btn-close-sheet" aria-label="Close Queue">✕</button>
+      <div class="queue-header-actions">
+        <button id="btn-queue-save-pl" class="drawer-tool-btn" title="Save Queue as Playlist" aria-label="Save Queue as Playlist">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+        </button>
+        <button id="btn-queue-clear" class="drawer-tool-btn" title="Clear Up Next" aria-label="Clear Up Next">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+        </button>
+        <button id="btn-close-queue" class="btn-close-sheet" aria-label="Close Queue">✕</button>
+      </div>
     </div>
     <div id="queue-items-list" class="queue-scroll-body">
       <div class="zm-empty">Queue is empty</div>
@@ -657,49 +897,165 @@
   </aside>
 
   <!-- ══════════════════════════════════════════════════════════════
+       FULL-SCREEN NOW PLAYING / THEATER MODE (3-COLOR MESH AURORA)
+       ══════════════════════════════════════════════════════════════ -->
+  <section id="theater-overlay" class="theater-overlay" aria-hidden="true">
+    <div id="theater-bg-1" class="theater-mesh-layer theater-mesh-1"></div>
+    <div id="theater-bg-2" class="theater-mesh-layer theater-mesh-2"></div>
+    <div id="theater-bg-3" class="theater-mesh-layer theater-mesh-3"></div>
+    <div class="theater-vignette"></div>
+
+    <header class="theater-topbar">
+      <div class="theater-brand-pill">
+        <img src="/zero-music/icon.svg" alt="ZeroMusic" width="20" height="20">
+        <span>NOW PLAYING</span>
+        <span class="theater-quality-badge">AD-FREE DIRECT</span>
+      </div>
+      <div class="theater-topbar-actions">
+        <button id="btn-theater-pip" class="theater-top-btn" title="Pop-out Mini Player">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><rect x="12" y="9" width="8" height="6" rx="1" fill="currentColor"/></svg>
+        </button>
+        <button id="btn-close-theater" class="theater-top-btn" title="Exit Theater Mode (Esc / F)" aria-label="Close Theater Mode">✕</button>
+      </div>
+    </header>
+
+    <div class="theater-stage">
+      <!-- Left Deck: Oversized Art & Transport -->
+      <div class="theater-left-deck">
+        <div class="theater-art-frame" id="theater-art-frame">
+          <img id="theater-art" class="theater-art-img" src="/zero-music/icon.svg" alt="Album Cover">
+        </div>
+
+        <div class="theater-meta-block">
+          <div class="theater-meta-titles">
+            <h2 id="theater-title" class="theater-title">ZeroMusic</h2>
+            <button id="theater-artist" class="theater-artist-btn">Select a track to play</button>
+          </div>
+          <div class="theater-quick-actions">
+            <button id="theater-like" class="theater-action-icon" title="Like" aria-label="Like">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+            <button id="theater-add-pl" class="theater-action-icon" title="Add to Playlist" aria-label="Add to Playlist">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <button id="theater-lyric-card" class="theater-action-icon" title="Share Lyric Card" aria-label="Share Lyric Card">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            </button>
+            <button id="theater-share" class="theater-action-icon" title="Copy Share Link" aria-label="Share Track">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="theater-scrubber-wrap">
+          <div class="scrubber-track-wrap theater-track-wrap">
+            <div id="theater-buffered" class="scrubber-buffered"></div>
+            <div id="theater-fill" class="scrubber-fill"></div>
+            <input type="range" id="theater-progress" class="scrubber-input" min="0" max="100" value="0" step="0.1" aria-label="Seek timeline">
+          </div>
+          <div class="theater-time-row">
+            <span id="theater-elapsed">0:00</span>
+            <span id="theater-duration">0:00</span>
+          </div>
+        </div>
+
+        <div class="theater-transport">
+          <button id="theater-shuffle" class="transport-btn" title="Shuffle (S)" aria-label="Shuffle">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
+          </button>
+          <button id="theater-prev" class="transport-btn" title="Previous (P)" aria-label="Previous">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="19 20 9 12 19 4 19 20"/><line x1="5" y1="19" x2="5" y2="5" stroke="currentColor" stroke-width="2"/></svg>
+          </button>
+          <button id="theater-play-pause" class="theater-play-btn" title="Play/Pause (Space)" aria-label="Play">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 18 12 6 20 6 4"/></svg>
+          </button>
+          <button id="theater-next" class="transport-btn" title="Next (N)" aria-label="Next">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19" stroke="currentColor" stroke-width="2"/></svg>
+          </button>
+          <button id="theater-repeat" class="transport-btn" title="Repeat (R)" aria-label="Repeat">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Deck: Synced Lyrics / Up Next / Visualizer -->
+      <div class="theater-right-deck">
+        <div class="theater-tabs">
+          <button class="theater-tab active" data-theater-tab="lyrics">Synced Lyrics</button>
+          <button class="theater-tab" data-theater-tab="queue">Up Next</button>
+          <button class="theater-tab" data-theater-tab="visualizer">Visualizer</button>
+        </div>
+        <div id="theater-panel-lyrics" class="theater-panel active">
+          <div id="theater-lyrics-body" class="theater-lyrics-scroll">
+            <div class="lyrics-status">Play a song to follow live time-synced lyrics</div>
+          </div>
+        </div>
+        <div id="theater-panel-queue" class="theater-panel">
+          <div id="theater-queue-body" class="theater-queue-scroll"></div>
+        </div>
+        <div id="theater-panel-visualizer" class="theater-panel">
+          <div class="theater-viz-wrap">
+            <canvas id="theater-viz-canvas" width="600" height="320"></canvas>
+            <div id="theater-viz-caption" class="theater-viz-caption">Harmonic Ambient Spectrum</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
        MASTER BOTTOM PLAYER BAR (EDGE-TO-EDGE FLUSH DOCK)
        ══════════════════════════════════════════════════════════════ -->
   <footer id="floating-player-dock" class="master-player-bar">
+    <div id="player-ambient-glow" class="player-ambient-glow" aria-hidden="true"></div>
     <!-- Left: Track Metadata -->
     <div class="player-left-col">
-      <div class="player-art-wrap">
+      <div class="player-art-wrap" id="btn-open-theater-art" title="Open Full-Screen Player (F)">
         <img id="player-track-art" class="player-art-img" src="/zero-music/icon.svg" alt="Album Art">
+        <div class="player-art-expand-hint" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+        </div>
       </div>
-      <div class="player-meta-wrap">
+      <div class="player-meta-wrap" id="player-meta-clickable" title="Open Full-Screen Player (F)">
         <div id="player-track-title" class="player-title-text">ZeroMusic</div>
         <div id="player-track-artist" class="player-artist-text">Select a track to play</div>
       </div>
-      <button id="btn-like-current" class="btn-player-heart" aria-label="Like Track">
+      <button id="btn-like-current" class="btn-player-heart" title="Like Track" aria-label="Like Track">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
       </button>
       <button id="btn-add-playlist-current" class="btn-player-add" title="Add to Playlist" aria-label="Add to Playlist">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
       </button>
+      <button id="btn-more-current" class="btn-player-add" title="More Track Options" aria-label="More Track Options">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg>
+      </button>
     </div>
 
-    <!-- Center: Transport & Scrubber -->
+    <!-- Center: Transport & Pro Scrubber -->
     <div class="player-center-col">
       <div class="player-transport-row">
         <button id="btn-shuffle" class="transport-btn" title="Shuffle (S)" aria-label="Shuffle">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
         </button>
-        <button id="btn-prev" class="transport-btn" title="Previous" aria-label="Previous">
+        <button id="btn-prev" class="transport-btn" title="Previous (P)" aria-label="Previous">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="19 20 9 12 19 4 19 20"/><line x1="5" y1="19" x2="5" y2="5" stroke="currentColor" stroke-width="2"/></svg>
         </button>
         <button id="btn-play-pause" class="btn-circle-playpause" title="Play/Pause (Space)" aria-label="Play">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 18 12 6 20 6 4"/></svg>
         </button>
-        <button id="btn-next" class="transport-btn" title="Next" aria-label="Next">
+        <button id="btn-next" class="transport-btn" title="Next (N)" aria-label="Next">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19" stroke="currentColor" stroke-width="2"/></svg>
         </button>
-        <button id="btn-repeat" class="transport-btn" title="Repeat" aria-label="Repeat">
+        <button id="btn-repeat" class="transport-btn" title="Repeat (R)" aria-label="Repeat">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
         </button>
       </div>
 
       <div class="player-timeline-row">
         <span id="time-elapsed" class="time-digit-text">0:00</span>
-        <div class="scrubber-track-wrap">
+        <div class="scrubber-track-wrap" id="scrubber-track-wrap">
+          <div id="scrubber-tooltip" class="scrubber-tooltip">0:00</div>
+          <div id="scrubber-buffered" class="scrubber-buffered"></div>
           <div id="progress-bar-fill" class="scrubber-fill"></div>
           <input type="range" id="playback-progress" class="scrubber-input" min="0" max="100" value="0" step="0.1" aria-label="Seek timeline">
         </div>
@@ -707,26 +1063,112 @@
       </div>
     </div>
 
-    <!-- Right: Volume, Lyrics, Queue -->
+    <!-- Right: Volume, Speed/Sleep, PiP, Lyrics, Queue, Theater -->
     <div class="player-right-col">
-      <div class="volume-slider-group">
+      <div class="volume-slider-group" id="volume-slider-group" title="Scroll wheel to adjust volume">
         <button id="btn-mute" class="transport-btn" title="Mute (M)" aria-label="Mute">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
         </button>
-        <input type="range" id="volume-slider" class="volume-range-input" min="0" max="100" value="85" aria-label="Volume">
+        <div class="volume-track-wrap">
+          <div id="volume-bar-fill" class="volume-bar-fill" style="width: 85%;"></div>
+          <input type="range" id="volume-slider" class="volume-range-input" min="0" max="100" value="85" aria-label="Volume">
+        </div>
       </div>
+
+      <button id="btn-tools-toggle" class="player-util-btn player-icon-util" title="Speed & Sleep Timer" aria-label="Playback Speed & Sleep Timer">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span id="tools-active-badge" class="util-mini-badge" style="display: none;"></span>
+      </button>
+
+      <button id="btn-pip-toggle" class="player-util-btn player-icon-util" title="Pop-Out Mini Player" aria-label="Mini Player">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><rect x="12" y="9" width="8" height="6" rx="1" fill="currentColor"/></svg>
+      </button>
 
       <button id="btn-lyrics-toggle" class="player-util-btn" title="Lyrics (L)">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="21" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="15" y1="18" x2="3" y2="18"/></svg>
-        <span>Lyrics</span>
+        <span class="util-label">Lyrics</span>
       </button>
 
       <button id="btn-queue-toggle" class="player-util-btn" title="Queue (Q)">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
-        <span>Queue</span>
+        <span class="util-label">Queue</span>
+      </button>
+
+      <button id="btn-theater-toggle" class="player-util-btn player-icon-util" title="Full-Screen Theater Mode (F)" aria-label="Full-Screen Player">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
       </button>
     </div>
   </footer>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       FLOATING POPOVERS: TRACK MENU, PLAYBACK TOOLS, APPEARANCE
+       ══════════════════════════════════════════════════════════════ -->
+  <div id="track-context-menu" class="zm-popover-menu" style="display: none;" role="menu"></div>
+
+  <div id="playback-tools-popover" class="zm-floating-popover playback-tools-popover" style="display: none;">
+    <div class="popover-section">
+      <div class="popover-section-title">PLAYBACK SPEED</div>
+      <div class="speed-pills-row" id="speed-pills-row">
+        <button class="speed-pill" data-speed="0.75">0.75×</button>
+        <button class="speed-pill active" data-speed="1">1×</button>
+        <button class="speed-pill" data-speed="1.25">1.25×</button>
+        <button class="speed-pill" data-speed="1.5">1.5×</button>
+        <button class="speed-pill" data-speed="2">2×</button>
+      </div>
+    </div>
+    <div class="popover-divider"></div>
+    <div class="popover-section">
+      <div class="popover-section-head">
+        <span class="popover-section-title">SLEEP TIMER</span>
+        <span id="sleep-timer-status" class="sleep-timer-countdown">Off</span>
+      </div>
+      <div class="sleep-pills-grid" id="sleep-pills-grid">
+        <button class="sleep-pill active" data-sleep="0">Off</button>
+        <button class="sleep-pill" data-sleep="15">15 min</button>
+        <button class="sleep-pill" data-sleep="30">30 min</button>
+        <button class="sleep-pill" data-sleep="45">45 min</button>
+        <button class="sleep-pill" data-sleep="60">60 min</button>
+        <button class="sleep-pill" data-sleep="track">End of track</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="appearance-popover" class="zm-floating-popover appearance-popover" style="display: none;">
+    <div class="popover-section">
+      <div class="popover-section-title">ACCENT COLOR</div>
+      <div class="accent-swatches-row" id="accent-swatches-row">
+        <button class="accent-swatch active" data-accent="#f97316" title="Zero Orange" style="--sw: #f97316;"></button>
+        <button class="accent-swatch accent-dynamic" data-accent="dynamic" title="Dynamic Cover Accent">✦</button>
+        <button class="accent-swatch" data-accent="#10b981" title="Emerald" style="--sw: #10b981;"></button>
+        <button class="accent-swatch" data-accent="#8b5cf6" title="Violet" style="--sw: #8b5cf6;"></button>
+        <button class="accent-swatch" data-accent="#f43f5e" title="Rose" style="--sw: #f43f5e;"></button>
+        <button class="accent-swatch" data-accent="#38bdf8" title="Sky" style="--sw: #38bdf8;"></button>
+      </div>
+    </div>
+    <div class="popover-divider"></div>
+    <div class="popover-section">
+      <div class="popover-section-title">SURFACE THEME</div>
+      <div class="surface-toggle-row">
+        <button class="surface-pill active" data-surface="midnight">Midnight Glass</button>
+        <button class="surface-pill" data-surface="oled">Pure OLED</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       IN-PAGE FALLBACK MINI PLAYER (WHEN DOCUMENT PIP IS UNAVAILABLE)
+       ══════════════════════════════════════════════════════════════ -->
+  <div id="fallback-mini-player" class="fallback-mini-player" style="display: none;">
+    <img id="mini-art" class="mini-art" src="/zero-music/icon.svg" alt="Cover">
+    <div class="mini-meta">
+      <div id="mini-title" class="mini-title">ZeroMusic</div>
+      <div id="mini-artist" class="mini-artist">Select a track</div>
+    </div>
+    <button id="mini-prev" class="mini-btn" aria-label="Previous">⏮</button>
+    <button id="mini-play-pause" class="mini-btn mini-btn-play" aria-label="Play/Pause">▶</button>
+    <button id="mini-next" class="mini-btn" aria-label="Next">⏭</button>
+    <button id="mini-close" class="mini-btn" aria-label="Close Mini Player">✕</button>
+  </div>
 
   <!-- ══════════════════════════════════════════════════════════════
        MODALS: CREATE PLAYLIST & ADD TO PLAYLIST
@@ -748,6 +1190,106 @@
       <div id="playlist-picker-list" class="playlist-picker-scroll"></div>
       <div class="zm-modal-actions">
         <button id="btn-close-add-playlist" class="btn-action-ghost">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-rename-playlist" class="zm-modal-backdrop" style="display: none;">
+    <div class="zm-modal-card">
+      <h3 class="zm-modal-title">Rename Playlist</h3>
+      <input type="text" id="input-rename-playlist-name" class="zm-modal-input" placeholder="New playlist title" maxlength="40" autocomplete="off">
+      <div class="zm-modal-actions">
+        <button id="btn-cancel-rename-playlist" class="btn-action-ghost">Cancel</button>
+        <button id="btn-confirm-rename-playlist" class="btn-action-primary">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       MODAL: COMMAND PALETTE (⌘K / CTRL+K)
+       ══════════════════════════════════════════════════════════════ -->
+  <div id="modal-command-palette" class="zm-modal-backdrop cmdk-backdrop" style="display: none;">
+    <div class="cmdk-card" role="dialog" aria-label="Command Palette">
+      <div class="cmdk-input-row">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="cmdk-input" class="cmdk-input" placeholder="Search tracks, playlists, moods, or commands..." autocomplete="off">
+        <kbd class="kbd-hint">ESC</kbd>
+      </div>
+      <div id="cmdk-results" class="cmdk-results"></div>
+      <div class="cmdk-footer">
+        <span><kbd>↑↓</kbd> Navigate</span>
+        <span><kbd>↵</kbd> Select</span>
+        <span><kbd>ESC</kbd> Close</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       MODAL: KEYBOARD SHORTCUTS CHEATSHEET (?)
+       ══════════════════════════════════════════════════════════════ -->
+  <div id="modal-shortcuts" class="zm-modal-backdrop" style="display: none;">
+    <div class="zm-modal-card shortcuts-modal-card">
+      <div class="sync-modal-header">
+        <h3 class="zm-modal-title" style="margin: 0;">Keyboard Shortcuts</h3>
+        <button id="btn-close-shortcuts" class="modal-close-cross" aria-label="Close">✕</button>
+      </div>
+      <div class="shortcuts-grid">
+        <div class="shortcut-row"><span>Play / Pause</span><kbd>Space</kbd></div>
+        <div class="shortcut-row"><span>Seek ±5 seconds</span><span><kbd>←</kbd> <kbd>→</kbd></span></div>
+        <div class="shortcut-row"><span>Next / Previous</span><span><kbd>N</kbd> <kbd>P</kbd></span></div>
+        <div class="shortcut-row"><span>Volume ±5%</span><span><kbd>↑</kbd> <kbd>↓</kbd></span></div>
+        <div class="shortcut-row"><span>Mute / Unmute</span><kbd>M</kbd></div>
+        <div class="shortcut-row"><span>Toggle Shuffle</span><kbd>S</kbd></div>
+        <div class="shortcut-row"><span>Cycle Repeat</span><kbd>R</kbd></div>
+        <div class="shortcut-row"><span>Toggle Lyrics</span><kbd>L</kbd></div>
+        <div class="shortcut-row"><span>Toggle Queue</span><kbd>Q</kbd></div>
+        <div class="shortcut-row"><span>Theater Mode</span><kbd>F</kbd></div>
+        <div class="shortcut-row"><span>Command Palette</span><span><kbd>⌘K</kbd> / <kbd>/</kbd></span></div>
+        <div class="shortcut-row"><span>Close Overlay</span><kbd>Esc</kbd></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       MODAL: SHAREABLE LYRIC CARD STUDIO (CANVAS EXPORTER)
+       ══════════════════════════════════════════════════════════════ -->
+  <div id="modal-lyric-card" class="zm-modal-backdrop" style="display: none;">
+    <div class="zm-modal-card studio-modal-card">
+      <div class="sync-modal-header">
+        <h3 class="zm-modal-title" style="margin: 0;">Shareable Lyric Card</h3>
+        <button id="btn-close-lyric-card" class="modal-close-cross" aria-label="Close">✕</button>
+      </div>
+      <div class="studio-canvas-wrap">
+        <canvas id="lyric-card-canvas" width="900" height="900"></canvas>
+      </div>
+      <div class="studio-theme-row" id="lyric-card-themes">
+        <button class="studio-theme-pill active" data-card-theme="ambient">Ambient</button>
+        <button class="studio-theme-pill" data-card-theme="midnight">Midnight</button>
+        <button class="studio-theme-pill" data-card-theme="sunset">Zero Sunset</button>
+        <button class="studio-theme-pill" data-card-theme="emerald">Emerald</button>
+      </div>
+      <div class="zm-modal-actions">
+        <button id="btn-copy-lyric-card" class="btn-action-pill">Copy Image</button>
+        <button id="btn-download-lyric-card" class="btn-action-primary">Download PNG</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       MODAL: SHAREABLE LISTENING STATS CARD (CANVAS EXPORTER)
+       ══════════════════════════════════════════════════════════════ -->
+  <div id="modal-stats-card" class="zm-modal-backdrop" style="display: none;">
+    <div class="zm-modal-card studio-modal-card">
+      <div class="sync-modal-header">
+        <h3 class="zm-modal-title" style="margin: 0;">Share Your Listening Stats</h3>
+        <button id="btn-close-stats-card" class="modal-close-cross" aria-label="Close">✕</button>
+      </div>
+      <div class="studio-canvas-wrap">
+        <canvas id="stats-card-canvas" width="900" height="1125"></canvas>
+      </div>
+      <div class="zm-modal-actions">
+        <button id="btn-copy-stats-card" class="btn-action-pill">Copy Image</button>
+        <button id="btn-download-stats-card" class="btn-action-primary">Download PNG</button>
       </div>
     </div>
   </div>
@@ -890,7 +1432,7 @@
   <div id="zm-toast" class="zm-toast-message"></div>
 
   <!-- ZeroMusic Player Engine (Self-contained, ad-free) -->
-  <script src="/zero-music/player.js?v=29"></script>
+  <script src="/zero-music/player.js?v=30"></script>
   <script>
     fetch("/zero-music/latest-v2.json", { cache: "no-store" }).then(r => r.json()).then(feed => {
       const size = feed.size ? " // " + (feed.size / 1048576).toFixed(1) + " MB" : "";

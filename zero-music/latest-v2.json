@@ -1,9 +1,9 @@
 {
-  "version": "4.9.1",
-  "notes": "Clean Car HUD: Removed the Bluetooth/output device pill from CarModeScreen",
+  "version": "4.9.2",
+  "notes": "- **Web Player Theater Mode**: Full-screen Now Playing overlay with 3-layer ambient artwork mesh, synced lyrics, Up Next, and harmonic visualizer\n- **Bento Home & Carousels**: Personalized greeting, 6-tile quick-jump grid, rotating Spotlight carousel, horizontal shelf carousels, and compact Top 12 chart preview\n- **2x2 Mosaic Playlist Covers & Pro Player Bar**: Dynamic mosaic covers, animated equalizer bars, hover scrubber timestamps, buffered bar, Repeat-1 badge, volume fill, speed & sleep timer, and Document PiP mini-player\n- **Lyrics Studio, Command Palette & Listening Stats**: Sync offset controls, manual-scroll resume pill, PNG Lyric Card & Stats Card exporters, Cmd+K palette, drag-reorderable queue, and 3-dot track menus\n- **Web & Share Page Fixes**: Repaired synced LRC parsing and added Desktop Web Player deep links on shared song pages, styled mobile download guide/footer, and fixed Like/Drawer/Shortcut UI sync bugs",
   "apk": "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
-  "size": 18422431,
-  "sha256": "c3073e1b35ee96a55a653303785b68e943edc0474e23cbb7dde7ba64985d3f22",
+  "size": 18422448,
+  "sha256": "863880127952c8f048b5f21a27684e76eb948a407b5ae851931be20819c23f20",
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

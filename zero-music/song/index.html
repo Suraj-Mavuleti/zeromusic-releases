@@ -25,7 +25,7 @@
   <link rel="canonical" href="https://zero.skillissue.gg/zero-music/track" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
 
   <style>
     :root {
@@ -482,6 +482,89 @@
     #toast.show {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    /* Obsidian Studio Polish & Spring Motion */
+    @keyframes song-rise {
+      from { opacity: 0; transform: translateY(16px) scale(0.985); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .nav { animation: song-rise 0.45s cubic-bezier(0.22, 1, 0.36, 1) both; }
+    .cover-card {
+      border-radius: 20px;
+      box-shadow: 0 28px 64px -12px rgba(0, 0, 0, 0.85), inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+      transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      animation: song-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) 50ms both;
+    }
+    .cover-card.playing {
+      transform: scale(1.035) translateY(-2px);
+      box-shadow: 0 36px 76px -10px rgba(0, 0, 0, 0.92), inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+    }
+    .track-info { animation: song-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) 100ms both; }
+    .track-title { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; letter-spacing: -0.03em; }
+    .player-box {
+      background: rgba(18, 18, 22, 0.72);
+      backdrop-filter: blur(32px) saturate(160%);
+      -webkit-backdrop-filter: blur(32px) saturate(160%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      animation: song-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) 150ms both;
+    }
+    .btn-circle {
+      background: #ffffff;
+      color: #09090b;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5);
+      transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1), background 0.2s ease;
+    }
+    .btn-circle:hover { background: #f4f4f5; transform: scale(1.06); }
+    .btn-circle:active, .btn-primary-app:active, .btn-secondary:active { transform: scale(0.96); }
+    .btn-primary-app {
+      background: #ffffff;
+      color: #09090b;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.48);
+      border: none;
+      transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1), background 0.2s ease;
+    }
+    .btn-primary-app:hover { background: #f4f4f5; transform: translateY(-2px); box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55); }
+    .actions-grid { animation: song-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) 200ms both; }
+    .promo-card { animation: song-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) 250ms both; }
+    .brand-pill {
+      background: rgba(255, 255, 255, 0.06);
+      color: #a1a1aa;
+      border-color: rgba(255, 255, 255, 0.09);
+    }
+    .lyrics-container {
+      display: block;
+      max-height: 0;
+      opacity: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      margin-bottom: 0;
+      border-color: transparent;
+      overflow: hidden;
+      transition: max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease, padding 0.4s cubic-bezier(0.22, 1, 0.36, 1), margin 0.4s ease, border-color 0.3s ease;
+    }
+    .lyrics-container.open {
+      max-height: 440px;
+      opacity: 1;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      margin-bottom: 24px;
+      border-color: var(--surface-border);
+    }
+    .lyric-line {
+      font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+      font-weight: 600;
+      opacity: 0.32;
+      transition: opacity 0.38s cubic-bezier(0.22, 1, 0.36, 1), transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), color 0.3s ease;
+    }
+    .lyric-line.active {
+      color: #ffffff;
+      opacity: 1;
+      transform: scale(1.025) translateX(2px);
+      transform-origin: left center;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
     }
   </style>
 </head>

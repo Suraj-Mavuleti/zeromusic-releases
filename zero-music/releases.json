@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.9.3",
+    "date": "2026-11-19T17:39:34Z",
+    "notes": "- Cleaned up Home header: removed duplicate Search, Car Mode, and Mic buttons\n- Removed top 4 quick-resume blocks from Home screen\n- Moved voice search Mic exclusively inside the Search bar\n- Automatic Car Mode now triggers immediately on car connection and exits on disconnect\n- Simplified Library to focus on Liked Songs and Offline backup (removed Smart Playlists)"
+  },
+  {
     "version": "4.9.2",
     "date": "2026-11-19T05:08:19Z",
     "notes": "- **Web Player Theater Mode**: Full-screen Now Playing overlay with 3-layer ambient artwork mesh, synced lyrics, Up Next, and harmonic visualizer\n- **Bento Home & Carousels**: Personalized greeting, 6-tile quick-jump grid, rotating Spotlight carousel, horizontal shelf carousels, and compact Top 12 chart preview\n- **2x2 Mosaic Playlist Covers & Pro Player Bar**: Dynamic mosaic covers, animated equalizer bars, hover scrubber timestamps, buffered bar, Repeat-1 badge, volume fill, speed & sleep timer, and Document PiP mini-player\n- **Lyrics Studio, Command Palette & Listening Stats**: Sync offset controls, manual-scroll resume pill, PNG Lyric Card & Stats Card exporters, Cmd+K palette, drag-reorderable queue, and 3-dot track menus\n- **Web & Share Page Fixes**: Repaired synced LRC parsing and added Desktop Web Player deep links on shared song pages, styled mobile download guide/footer, and fixed Like/Drawer/Shortcut UI sync bugs"

@@ -1,9 +1,9 @@
 {
-  "version": "4.9.3",
-  "notes": "- Cleaned up Home header: removed duplicate Search, Car Mode, and Mic buttons\n- Removed top 4 quick-resume blocks from Home screen\n- Moved voice search Mic exclusively inside the Search bar\n- Automatic Car Mode now triggers immediately on car connection and exits on disconnect\n- Simplified Library to focus on Liked Songs and Offline backup (removed Smart Playlists)",
+  "version": "4.9.4",
+  "notes": "- **Faster app startup & instant Home load**: Moved startup caches, WorkManager, ExoPlayer cache scans, Cast SDK, and AudioEffect handles off the main thread, added instant Home disk-cache hydration and progressive loading, and tightened offline DNS fail-fast timeouts.\n- **Crash & stability fixes**: Fixed Compose duplicate LazyList key crashes, Player AuroraBackdrop shader/zero-size crashes, Android 12\u201316 background download service exceptions, hardware/recycled bitmap crashes, Room transaction/SQLite limits, and PlaybackService edge-case crashes.",
   "apk": "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
-  "size": 18406070,
-  "sha256": "5cfe6b563ab0113d0ac79ca0d7beb8a902d404164b0b598f5588a188150fb547",
+  "size": 18422445,
+  "sha256": "05bc73ad7d085244ec935d992a0699479e83dec31716007ed2be22e42f5306ca",
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

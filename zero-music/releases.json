@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.9.6",
+    "date": "2026-11-21T13:48:48Z",
+    "notes": "- **Full OLED, Light & Dynamic Monet Theme Support**: Replaced hardcoded dark cards and text with semantic Material3 color tokens and synced system bar contrast across all screens.\n- **Home & Search Polish**: Added cold-start shimmer skeletons, inline API retry banners, live MasterDeckHero equalizer state, Search empty/retry views, counted filter chips, full-list song queuing, and colorful Browse cards.\n- **Library & Smart Mix Studio**: Surfaced Library Sort, Local Device Files in Downloads, Recently Played shelf, Smart Mix Studio, Tag Editor, real Album/Artist badges, and Select All / Remove in multi-select.\n- **Player, Queue, Lyrics & Mini-Player**: Added inline playback error recovery, 1:1 velocity-dismiss artwork, live codec/quality badge, duplicate-safe queue multi-select, Jump to Current chip, 48dp MiniPlayer controls, fullscreen Aurora lyrics, and off-main-thread lyric card sharing.\n- **Car Mode, Settings & Material You Widgets**: Added CarQueueOverlay, Dislike & Skip, 56dp isolated scrubber, portrait/landscape toggle, Settings search, surfaced Car/DSP/ReplayGain/LUFS controls, pre-playback 10-band EQ, and responsive Material You 4x1/4x2 widgets."
+  },
+  {
     "version": "4.9.5",
     "date": "2026-11-21T06:51:47Z",
     "notes": "- **Overhauled Song Recommendations**: Rebuilt scoring with multi-seed consensus, artist-level taste & skip learning, YouTube Music Related tracks, and accurate vibe/region detection.\n- **Smarter Autoplay & Radio**: Fixed the 2-song single-artist lock-in trap, prevented duplicate radio races, and switched Autoplay to multi-track session context with artist variety.\n- **Accurate Listening Signals**: Stopped 0ms play-history pollution from skipped songs, fixed skip detection in Shuffle/Smart Shuffle, and synced likes and skips across Spotify and YouTube IDs.\n- **Fresh Home Feed & Feedback Controls**: Added Pull-to-Refresh, cross-section deduplication, quick Not Interested controls in the player & queue, and Settings options to reset recommendations or re-pick artists."

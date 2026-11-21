@@ -1,9 +1,9 @@
 {
-  "version": "4.9.4",
-  "notes": "- **Faster app startup & instant Home load**: Moved startup caches, WorkManager, ExoPlayer cache scans, Cast SDK, and AudioEffect handles off the main thread, added instant Home disk-cache hydration and progressive loading, and tightened offline DNS fail-fast timeouts.\n- **Crash & stability fixes**: Fixed Compose duplicate LazyList key crashes, Player AuroraBackdrop shader/zero-size crashes, Android 12\u201316 background download service exceptions, hardware/recycled bitmap crashes, Room transaction/SQLite limits, and PlaybackService edge-case crashes.",
+  "version": "4.9.5",
+  "notes": "- **Overhauled Song Recommendations**: Rebuilt scoring with multi-seed consensus, artist-level taste & skip learning, YouTube Music Related tracks, and accurate vibe/region detection.\n- **Smarter Autoplay & Radio**: Fixed the 2-song single-artist lock-in trap, prevented duplicate radio races, and switched Autoplay to multi-track session context with artist variety.\n- **Accurate Listening Signals**: Stopped 0ms play-history pollution from skipped songs, fixed skip detection in Shuffle/Smart Shuffle, and synced likes and skips across Spotify and YouTube IDs.\n- **Fresh Home Feed & Feedback Controls**: Added Pull-to-Refresh, cross-section deduplication, quick Not Interested controls in the player & queue, and Settings options to reset recommendations or re-pick artists.",
   "apk": "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
-  "size": 18422445,
-  "sha256": "05bc73ad7d085244ec935d992a0699479e83dec31716007ed2be22e42f5306ca",
+  "size": 18537130,
+  "sha256": "eb898c9f39352fad286796dd9964987a567525f2303f5792fa1335b4730cdd2e",
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.9.5",
+    "date": "2026-11-21T06:51:47Z",
+    "notes": "- **Overhauled Song Recommendations**: Rebuilt scoring with multi-seed consensus, artist-level taste & skip learning, YouTube Music Related tracks, and accurate vibe/region detection.\n- **Smarter Autoplay & Radio**: Fixed the 2-song single-artist lock-in trap, prevented duplicate radio races, and switched Autoplay to multi-track session context with artist variety.\n- **Accurate Listening Signals**: Stopped 0ms play-history pollution from skipped songs, fixed skip detection in Shuffle/Smart Shuffle, and synced likes and skips across Spotify and YouTube IDs.\n- **Fresh Home Feed & Feedback Controls**: Added Pull-to-Refresh, cross-section deduplication, quick Not Interested controls in the player & queue, and Settings options to reset recommendations or re-pick artists."
+  },
+  {
     "version": "4.9.4",
     "date": "2026-11-20T09:19:31Z",
     "notes": "- **Faster app startup & instant Home load**: Moved startup caches, WorkManager, ExoPlayer cache scans, Cast SDK, and AudioEffect handles off the main thread, added instant Home disk-cache hydration and progressive loading, and tightened offline DNS fail-fast timeouts.\n- **Crash & stability fixes**: Fixed Compose duplicate LazyList key crashes, Player AuroraBackdrop shader/zero-size crashes, Android 12–16 background download service exceptions, hardware/recycled bitmap crashes, Room transaction/SQLite limits, and PlaybackService edge-case crashes."

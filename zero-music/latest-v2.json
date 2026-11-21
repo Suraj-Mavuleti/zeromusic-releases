@@ -1,9 +1,9 @@
 {
-  "version": "4.9.6",
-  "notes": "- **Full OLED, Light & Dynamic Monet Theme Support**: Replaced hardcoded dark cards and text with semantic Material3 color tokens and synced system bar contrast across all screens.\n- **Home & Search Polish**: Added cold-start shimmer skeletons, inline API retry banners, live MasterDeckHero equalizer state, Search empty/retry views, counted filter chips, full-list song queuing, and colorful Browse cards.\n- **Library & Smart Mix Studio**: Surfaced Library Sort, Local Device Files in Downloads, Recently Played shelf, Smart Mix Studio, Tag Editor, real Album/Artist badges, and Select All / Remove in multi-select.\n- **Player, Queue, Lyrics & Mini-Player**: Added inline playback error recovery, 1:1 velocity-dismiss artwork, live codec/quality badge, duplicate-safe queue multi-select, Jump to Current chip, 48dp MiniPlayer controls, fullscreen Aurora lyrics, and off-main-thread lyric card sharing.\n- **Car Mode, Settings & Material You Widgets**: Added CarQueueOverlay, Dislike & Skip, 56dp isolated scrubber, portrait/landscape toggle, Settings search, surfaced Car/DSP/ReplayGain/LUFS controls, pre-playback 10-band EQ, and responsive Material You 4x1/4x2 widgets.",
+  "version": "4.9.7",
+  "notes": "- **Silent In-App Self-Updates (Android 12+)**: Manual install and Home banner updates now use PackageInstaller with USER_ACTION_NOT_REQUIRED first to avoid unnecessary update dialogs, with live installing feedback and installer-of-record fallback.\n- **Reliable Background Auto-Updates**: Preserved periodic background checks across app launches (6-hour schedule), held WorkManager wakelocks through PackageInstaller commit, removed duplicate install races against Android's 30s throttle, enabled quiet installs after background playback pauses, handed off mid-download exits to WorkManager, and prevented Bluetooth earbuds from falsely blocking updates via car detection.",
   "apk": "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
-  "size": 18835839,
-  "sha256": "422f495052d112117902475cf1c93c768301b7e704e34449e388bc92875030e1",
+  "size": 18835843,
+  "sha256": "ce0b3fe548558630c20688ac4e4e45de495df9f30eb1c74516dec9c350ed05b7",
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

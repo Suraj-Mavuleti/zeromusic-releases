@@ -1,9 +1,9 @@
 {
-  "version": "4.9.7",
-  "notes": "- **Silent In-App Self-Updates (Android 12+)**: Manual install and Home banner updates now use PackageInstaller with USER_ACTION_NOT_REQUIRED first to avoid unnecessary update dialogs, with live installing feedback and installer-of-record fallback.\n- **Reliable Background Auto-Updates**: Preserved periodic background checks across app launches (6-hour schedule), held WorkManager wakelocks through PackageInstaller commit, removed duplicate install races against Android's 30s throttle, enabled quiet installs after background playback pauses, handed off mid-download exits to WorkManager, and prevented Bluetooth earbuds from falsely blocking updates via car detection.",
+  "version": "4.9.8",
+  "notes": "- **Auto-Update Reliability & Health Diagnostics**: Moved staged update APKs out of volatile cache storage into persistent app files, kept verified APKs across user cancels, added ETag/no-cache manifest revalidation, throttled the install-permission reminder to 24h, and added an Auto-Update Health card in Settings with a one-tap battery optimization shortcut.\n- **Polished Update UX**: Rendered Markdown bold/bullets in release notes, surfaced live download speed & ETA across Settings, Home, and Update screens, auto-started mobile downloads when toggling the setting on, and added a dismissible in-app What's New card after silent background updates.",
   "apk": "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
-  "size": 18835843,
-  "sha256": "ce0b3fe548558630c20688ac4e4e45de495df9f30eb1c74516dec9c350ed05b7",
+  "size": 18852389,
+  "sha256": "b2e20278fa85415d83bf8b146deb97da8dcc4e687ddc3d969de0f9e107d67539",
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

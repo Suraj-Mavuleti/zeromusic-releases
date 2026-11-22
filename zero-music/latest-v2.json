@@ -1,9 +1,9 @@
 {
-  "version": "4.9.8",
-  "notes": "- **Auto-Update Reliability & Health Diagnostics**: Moved staged update APKs out of volatile cache storage into persistent app files, kept verified APKs across user cancels, added ETag/no-cache manifest revalidation, throttled the install-permission reminder to 24h, and added an Auto-Update Health card in Settings with a one-tap battery optimization shortcut.\n- **Polished Update UX**: Rendered Markdown bold/bullets in release notes, surfaced live download speed & ETA across Settings, Home, and Update screens, auto-started mobile downloads when toggling the setting on, and added a dismissible in-app What's New card after silent background updates.",
+  "version": "4.9.9",
+  "notes": "- Removed the self-hosted audio streaming option from Settings and playback.",
   "apk": "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
-  "size": 18852389,
-  "sha256": "b2e20278fa85415d83bf8b146deb97da8dcc4e687ddc3d969de0f9e107d67539",
+  "size": 18819507,
+  "sha256": "b405985bc06dfc3f93a83d6937d198686bf11fa40d7b47b519ccf9d3336361df",
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

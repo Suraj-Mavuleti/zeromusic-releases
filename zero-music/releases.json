@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.9.9",
+    "date": "2026-11-22T17:49:52Z",
+    "notes": "- Removed the self-hosted audio streaming option from Settings and playback."
+  },
+  {
     "version": "4.9.8",
     "date": "2026-11-21T17:55:03Z",
     "notes": "- **Auto-Update Reliability & Health Diagnostics**: Moved staged update APKs out of volatile cache storage into persistent app files, kept verified APKs across user cancels, added ETag/no-cache manifest revalidation, throttled the install-permission reminder to 24h, and added an Auto-Update Health card in Settings with a one-tap battery optimization shortcut.\n- **Polished Update UX**: Rendered Markdown bold/bullets in release notes, surfaced live download speed & ETA across Settings, Home, and Update screens, auto-started mobile downloads when toggling the setting on, and added a dismissible in-app What's New card after silent background updates."

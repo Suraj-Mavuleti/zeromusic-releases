@@ -1,9 +1,9 @@
 {
-  "version": "4.9.9",
-  "notes": "- Removed the self-hosted audio streaming option from Settings and playback.",
+  "version": "4.9.10",
+  "notes": "- **Android Auto Dashboard Mic**: Put the Voice Search (Mic) button directly on the 3-slot Coolwalk split-screen card next to Pause and Next (Previous remains in the 5-slot full-screen player)\n- **Android Auto Icon Fix**: Fixed the top-left media card app icon showing as a blank white square by using the adaptive launcher icon for PlaybackService\n- **Media3 Button Sync**: Removed conflicting legacy custom-layout overwrite so custom buttons stay in sync on Android Auto",
   "apk": "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
-  "size": 18819507,
-  "sha256": "b405985bc06dfc3f93a83d6937d198686bf11fa40d7b47b519ccf9d3336361df",
+  "size": 18819491,
+  "sha256": "7b00e24b254abd795c0fc8bb66e8cd0f3f672449770b2abd1c72796a62023501",
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

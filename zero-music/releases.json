@@ -1,5 +1,10 @@
 [
   {
+    "version": "4.9.10",
+    "date": "2026-11-25T17:04:26Z",
+    "notes": "- **Android Auto Dashboard Mic**: Put the Voice Search (Mic) button directly on the 3-slot Coolwalk split-screen card next to Pause and Next (Previous remains in the 5-slot full-screen player)\n- **Android Auto Icon Fix**: Fixed the top-left media card app icon showing as a blank white square by using the adaptive launcher icon for PlaybackService\n- **Media3 Button Sync**: Removed conflicting legacy custom-layout overwrite so custom buttons stay in sync on Android Auto"
+  },
+  {
     "version": "4.9.9",
     "date": "2026-11-22T17:49:52Z",
     "notes": "- Removed the self-hosted audio streaming option from Settings and playback."

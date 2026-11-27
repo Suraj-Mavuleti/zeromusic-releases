@@ -1,5 +1,10 @@
 [
   {
+    "version": "5.0.3",
+    "date": "2026-11-27T12:54:29Z",
+    "notes": "**Full-Bleed Edge-to-Edge & Notch Polish 5.0.3** — Extends the app surface and top glow seamlessly into the status bar and camera cutout.\n- Edge-to-Edge Cutout Mode: Enabled display cutout drawing in MainActivity and removed Scaffold top inset clipping so backgrounds extend behind the time, battery, and notch\n- Home Ambient Bloom: Anchored the cover-tinted radial glow at the top screen edge so it flows naturally past the status bar and logo without a black seam\n- Top Bar Spacing: Added statusBarsPadding across Home, CollapsingScreenHeader (Library, Search, Settings), CoverPageBar, and PageBar headers so titles and buttons stay clear of system icons"
+  },
+  {
     "version": "5.0.2",
     "date": "2026-11-27T12:29:53Z",
     "notes": "**Performance & Frame-Pacing Fix 5.0.2** — Eliminates scroll stutter, tab-switch jank, and Player lag.\n- MiniPlayer & Headers: Replaced continuous relayout animations in MiniPlayerProgressBar with pure DrawPhase Canvas drawing and eliminated per-scroll-pixel relayout/recomposition in CollapsingScreenHeader\n- Smooth Scrolling & Transitions: Replaced snap-halting horizontal carousel flings on Home with natural inertial scrolling, removed per-item spring coroutine allocations in bounceClick, downsized list artwork requests, and simplified tab and Player transitions without offscreen saveLayers\n- Player Engine: Isolated live whisper lyrics from root PlayerScreen recomposition, removed expensive dynamic hardware shadows on SeekBar thumb and SwipeableArtwork, and cached Aurora RuntimeShader across opens"

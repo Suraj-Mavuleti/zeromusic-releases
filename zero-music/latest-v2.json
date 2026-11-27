@@ -1,9 +1,9 @@
 {
-  "version": "5.0.0",
-  "notes": "**Monolith \u00d7 Editorial Dark 5.0** \u2014 Pure OLED #000000 redesign across Home, Search, Library, Settings, and Player.\n- Added swipeable Mini Capsule with directional transitions and continuous pull-up morph\n- Added 1:1 Monochrome Listening Stats Share Studio (Obsidian, Paper & Archive) and enhanced Listen Together live pill\n- Added OLED Sleep Display, interactive EQ curve, scroll-collapsing headers, top-of-tab scroll reset, and removed Spotlight Mix & Settings crash log card",
+  "version": "5.0.1",
+  "notes": "**Monolith \u00d7 Editorial Dark 5.0.1** \u2014 Complete native Jetpack Compose redesign matching the approved candidate.\n- Home: Ambient cover-tinted radial glow, sleek 32dp Vibe Strip, Quick Picks 2x2 mosaic, Jump Back In 116dp collectible sleeves, borderless editorial track rows with Play Next, and 188x112 Serif widescreen feature cards\n- Navigation & Capsule: Edge-to-edge solid OLED bottom navigation bar with crisp top indicator and clean Mini Capsule (artwork ring, Play/Pause disc, Next, 1.5dp inset thread)\n- Library, Search & Settings: Monolith OLED category and playlist cards with bottom-right play badges, Collapsing Headers, 3-column Settings Bento stats strip, bare icons, and clean accordion panes\n- Player & Tone EQ: Editorial Serif track typography, frosted whisper lyrics bar, 48-bar waveform scrubber with vertical white playhead needle, peeking adjacent album covers, upgraded Sleep Display, and inline 5-band Tone Curve EQ",
   "apk": "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
-  "size": 18868781,
-  "sha256": "ed1219847507bcb95e1896453c50c832f4c75cb26267a626de64fabf76c799fc",
+  "size": 18885173,
+  "sha256": "c0dd55555b37aa920bd5483f6f64d00875a5d81618d971fa0e1b6f317d138bfe",
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

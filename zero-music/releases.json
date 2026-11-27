@@ -1,5 +1,10 @@
 [
   {
+    "version": "5.0.6",
+    "date": "2026-11-27T14:13:37Z",
+    "notes": "Match player three-dots icon and monochrome popover menu to final design"
+  },
+  {
     "version": "5.0.5",
     "date": "2026-11-27T13:50:56Z",
     "notes": "Fix missing full-screen player visualizer audio capture and bar visibility"

@@ -1,9 +1,9 @@
 {
-  "version": "5.0.5",
-  "notes": "Fix missing full-screen player visualizer audio capture and bar visibility",
+  "version": "5.0.6",
+  "notes": "Match player three-dots icon and monochrome popover menu to final design",
   "apk": "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
-  "size": 18885173,
-  "sha256": "69d7300566ae91aeef8467d7f4a5d67f8bfa2736f75dcdbd273d7af3320e7578",
+  "size": 18901558,
+  "sha256": "dbd4a314c23a27753221227129821f50434e40abfdaf1991ba83a6187012a920",
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

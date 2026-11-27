@@ -1,9 +1,9 @@
 {
-  "version": "5.0.4",
-  "notes": "**Search Keyboard Dismissal Fix 5.0.4** \u2014 Automatically hides the keyboard when playing songs or opening results.\n- Search Screen: Clears focus and hides the IME whenever tapping any song, suggestion, artist, album, playlist, or filter chip in Search\n- Player Overlay: Automatically clears active focus and dismisses the keyboard when opening the full Player",
+  "version": "5.0.5",
+  "notes": "Fix missing full-screen player visualizer audio capture and bar visibility",
   "apk": "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
-  "size": 18885189,
-  "sha256": "411454052d7d51ad90ff95eb498d0001ebe3d105acdc8b9bf25793e8f8713cb8",
+  "size": 18885173,
+  "sha256": "69d7300566ae91aeef8467d7f4a5d67f8bfa2736f75dcdbd273d7af3320e7578",
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

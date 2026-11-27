@@ -1,5 +1,10 @@
 [
   {
+    "version": "5.0.5",
+    "date": "2026-11-27T13:50:56Z",
+    "notes": "Fix missing full-screen player visualizer audio capture and bar visibility"
+  },
+  {
     "version": "5.0.4",
     "date": "2026-11-27T13:24:41Z",
     "notes": "**Search Keyboard Dismissal Fix 5.0.4** — Automatically hides the keyboard when playing songs or opening results.\n- Search Screen: Clears focus and hides the IME whenever tapping any song, suggestion, artist, album, playlist, or filter chip in Search\n- Player Overlay: Automatically clears active focus and dismisses the keyboard when opening the full Player"

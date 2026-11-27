@@ -1,5 +1,10 @@
 [
   {
+    "version": "5.0.0",
+    "date": "2026-11-27T11:27:53Z",
+    "notes": "**Monolith × Editorial Dark 5.0** — Pure OLED #000000 redesign across Home, Search, Library, Settings, and Player.\n- Added swipeable Mini Capsule with directional transitions and continuous pull-up morph\n- Added 1:1 Monochrome Listening Stats Share Studio (Obsidian, Paper & Archive) and enhanced Listen Together live pill\n- Added OLED Sleep Display, interactive EQ curve, scroll-collapsing headers, top-of-tab scroll reset, and removed Spotlight Mix & Settings crash log card"
+  },
+  {
     "version": "4.9.11",
     "date": "2026-11-25T17:58:06Z",
     "notes": "- **Android Auto Card Order**: Reordered the 3-slot Coolwalk dashboard card controls to Pause, Next, and Mic (Previous and Like remain available in the 5-slot full-screen player)"

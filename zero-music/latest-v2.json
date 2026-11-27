@@ -1,9 +1,9 @@
 {
-  "version": "4.9.11",
-  "notes": "- **Android Auto Card Order**: Reordered the 3-slot Coolwalk dashboard card controls to Pause, Next, and Mic (Previous and Like remain available in the 5-slot full-screen player)",
+  "version": "5.0.0",
+  "notes": "**Monolith \u00d7 Editorial Dark 5.0** \u2014 Pure OLED #000000 redesign across Home, Search, Library, Settings, and Player.\n- Added swipeable Mini Capsule with directional transitions and continuous pull-up morph\n- Added 1:1 Monochrome Listening Stats Share Studio (Obsidian, Paper & Archive) and enhanced Listen Together live pill\n- Added OLED Sleep Display, interactive EQ curve, scroll-collapsing headers, top-of-tab scroll reset, and removed Spotlight Mix & Settings crash log card",
   "apk": "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
-  "size": 18819491,
-  "sha256": "6530f1af99a7d9dd58d3187e4ded3dbf28104510b71590fb6ec746d490fa35df",
+  "size": 18868781,
+  "sha256": "ed1219847507bcb95e1896453c50c832f4c75cb26267a626de64fabf76c799fc",
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

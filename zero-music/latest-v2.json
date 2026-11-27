@@ -1,9 +1,9 @@
 {
-  "version": "5.0.6",
-  "notes": "Match player three-dots icon and monochrome popover menu to final design",
+  "version": "5.0.7",
+  "notes": "Fix Listening Stats artist/song artwork, This Week period, centered title, and Genre Split",
   "apk": "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
-  "size": 18901558,
-  "sha256": "dbd4a314c23a27753221227129821f50434e40abfdaf1991ba83a6187012a920",
+  "size": 18901556,
+  "sha256": "b3d6895cf9eaadb6660a93a5e1d0d7597391fcaee573d901378067baef1fbd06",
   "mirrors": [
     "https://suraj-mavuleti.github.io/zeromusic-releases/zero-music/download/ZeroMusic.apk",
     "https://zero.skillissue.gg/zero-music/download/ZeroMusic.apk"

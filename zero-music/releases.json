@@ -1,5 +1,10 @@
 [
   {
+    "version": "5.0.4",
+    "date": "2026-11-27T13:24:41Z",
+    "notes": "**Search Keyboard Dismissal Fix 5.0.4** — Automatically hides the keyboard when playing songs or opening results.\n- Search Screen: Clears focus and hides the IME whenever tapping any song, suggestion, artist, album, playlist, or filter chip in Search\n- Player Overlay: Automatically clears active focus and dismisses the keyboard when opening the full Player"
+  },
+  {
     "version": "5.0.3",
     "date": "2026-11-27T12:54:29Z",
     "notes": "**Full-Bleed Edge-to-Edge & Notch Polish 5.0.3** — Extends the app surface and top glow seamlessly into the status bar and camera cutout.\n- Edge-to-Edge Cutout Mode: Enabled display cutout drawing in MainActivity and removed Scaffold top inset clipping so backgrounds extend behind the time, battery, and notch\n- Home Ambient Bloom: Anchored the cover-tinted radial glow at the top screen edge so it flows naturally past the status bar and logo without a black seam\n- Top Bar Spacing: Added statusBarsPadding across Home, CollapsingScreenHeader (Library, Search, Settings), CoverPageBar, and PageBar headers so titles and buttons stay clear of system icons"
